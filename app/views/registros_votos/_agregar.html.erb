@@ -1,0 +1,77 @@
+<%= javascript_include_tag "modulos/usuarios.js" %>
+<div class="modal-dialog">
+      
+  <div class="modal-content">
+        
+    <div class="modal-header" style="background:#e6e6e6;">
+          
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title" id="myModalLabel">Registrar Voto</h4>
+      
+    </div>
+
+    <%= form_for @registro_voto, remote: true, url: registros_votos_guardar_url, html: { id: "form-agregar-registro-voto", autocomplete: "off"  }, method: 'POST' do |f| %>
+
+      <%= hidden_field_tag :window_id, params[:window_id]%>
+
+      <div class="modal-body">
+
+        <div class="panel-body">
+
+          <div class="col-sm-4"><%= label_tag nil, "N° Documento #{attr_requerido}".html_safe, id: "lbl-documento" %></div>
+          <div class="col-sm-7"><%= number_field_tag :cedula, nil, class: 'form-control input-sm' %></div>
+          <div class="col-sm-1"></div><br />
+
+          <%= hidden_field_tag :votante_id%>
+
+           <div class="col-sm-4"><%= label_tag nil, "Nombre #{attr_requerido}".html_safe, id: "lbl-nombre" %></div>
+          <div class="col-sm-7"><%= text_field_tag :nombres, nil, class: 'form-control input-sm', readonly: true %></div>
+          <div class="col-sm-1"></div><br />
+
+          <div class="col-sm-4"><%= label_tag nil, "Apellido #{attr_requerido}".html_safe, id: "lbl-apellido" %></div>
+          <div class="col-sm-7"><%= text_field_tag :apellidos, nil, class: 'form-control input-sm', readonly: true %></div>
+          <div class="col-sm-1"></div><br />
+
+          <div class="col-sm-4"><%= label_tag :nil, "Eleccion #{attr_requerido}".html_safe, id: "lbl-seccional" %></div>
+          <div class="col-sm-7"><%= f.collection_select :eleccion_id,  Eleccion.orden_descripcion, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div><br /><br />
+
+        
+      </div>
+
+      <div class="modal-footer" style="background:#e6e6e6;">
+        <%= link_to "<span class='glyphicon glyphicon-remove'></span> Cerrar".html_safe, "#", class: "btn btn-default", onclick: "$('##{params[:window_id]}').modal('hide');" %> 
+        <%= f.submit "Guardar".html_safe, class: "btn btn-primary", id: "btn-guardar-registro-voto" %>          
+      </div>
+
+    <% end %>
+
+  </div>
+  
+</div>
+
+<style type="text/css">
+
+  #form-agregar-registro-voto label, #form-agregar-registro-voto input[type='text'], #form-agregar-registro-voto select { float:left; margin-top:5px;}
+  #form-agregar-registro-voto br {clear:both; }
+  #form-agregar-registro-voto label { width:200px;font-size:12px;margin-top:10px;}
+  #form-agregar-registro-voto #descripcion { width:50%;}
+  
+
+</style>
+
+<script type="text/javascript">
+
+  aplicar_datepicker2();
+
+  $("#cedula").bind("keydown", function(e){
+      
+    if(e.keyCode == 13 || e.keyCode == 9){
+    buscar_votante($("#cedula").val(), "<%= url_for(votantes_buscar_votante_path ) %>", "<%= url_for(registros_votos_index_path( agregar: true))%>");
+      return false;
+    }
+    
+ 
+  })
+
+</script>

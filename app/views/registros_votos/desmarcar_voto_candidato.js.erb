@@ -1,0 +1,29 @@
+<% if @desmarcado %>
+
+   $("<div class='col-sm-12' id='msg-marcar-voto' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Marcado exitosamente.</div>").insertBefore("#table-registros-votos");
+   $("#form_buscar_votantes_id").val('<%= @registro_voto.id %>');
+   $("#form_buscar_votantes_descripcion").val('');
+   $("#form_buscar_votantes_sueldo").val('');
+
+    setTimeout(function(){ 
+
+    	$("#msg-marcar-voto").remove(); 
+    	$("#form-buscar-registros-votos").submit(); 
+
+    }, 1500);
+   
+    	swal("Desmarcado Exitosamente.")
+
+<% else %>
+
+  $("<div class='col-sm-12' id='msg-marcar-voto' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'>No se pudo desmarcar el Voto. Intente más tarde.</div>").insertBefore("#table-registros-votos");
+  
+  
+  setTimeout(function(){ 
+
+    $("#msg-marcar-voto").remove(); 
+
+    swal("No fue posible desmarcar el Voto.")
+  
+  }, 2000);
+<% end %>

@@ -1,0 +1,28 @@
+<% if @eliminado %>
+
+   $("<div class='col-sm-12' id='msg-eliminar-votante' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Eliminado exitosamente.</div>").insertBefore("#table-votantes");
+   $("#form_buscar_votantes_id").val('<%= @votante_elim.id %>');
+   $("#form_buscar_votantes_descripcion").val('');
+   $("#form_buscar_votantes_sueldo").val('');
+
+    setTimeout(function(){ 
+
+    	$("#msg-eliminar-votante").remove(); 
+    	$("#form-buscar-votantes").submit(); 
+    }, 1500);
+   
+    	swal("Eliminado Exitosamente.")
+
+<% else %>
+
+  $("<div class='col-sm-12' id='msg-eliminar-votante' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'>No se permite eliminar Votantes. Intente más tarde.</div>").insertBefore("#table-votantes");
+  
+  
+  setTimeout(function(){ 
+
+    $("#msg-eliminar-votante").remove(); 
+
+    swal("No se Permite eliminar Votantes.")
+  
+  }, 2000);
+<% end %>

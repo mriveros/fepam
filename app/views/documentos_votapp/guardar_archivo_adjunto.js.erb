@@ -1,0 +1,21 @@
+<% if @guardado_ok == true %>
+
+	$("#form_buscar_documentos_votapp_id").val('<%= @documento_votapp.id %>');
+  	$("#form_buscar_documentos_votapp_numero").val('');
+  	$("#form-buscar-documentos-votapp").submit();
+
+
+  setTimeout(function(){
+
+    $("#<%= params[:window_id]%>").modal('hide'); 
+   
+    swal("Archivo Adjunto Exitosamente.", "", "success");
+
+  }, 1000);
+  
+
+<% else %>
+  
+  swal({title: "Atención", text: " No se pudo adjuntar el archivo. Intente más tarde. <%= @msg %>", html: false});
+
+<% end %>

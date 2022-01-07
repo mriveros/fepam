@@ -1,0 +1,189 @@
+
+<%= javascript_include_tag "sweetalert.min" %>
+<%= stylesheet_link_tag "sweetalert" %>
+<div>
+<!--
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+-->
+  <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
+    <h3 style="float:left;margin-top:5px;">Padrón Votantes</h3>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-votante", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= modal_window( window_id: "modal-window-agregar-votante", link_to_id: "#link-to-agregar-votante", url: votantes_agregar_path( window_id: "modal-window-agregar-votante") )%>
+    
+  </div>
+</div>
+
+<div style="clear:both;"></div>
+ 
+<div class="table-responsive" id="table-votantes">
+
+  <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
+   
+    <thead>
+
+      <%= form_tag votantes_lista_path, remote: true, id: "form-buscar-votantes"  do  %>
+
+        <tr>
+
+          <th style="width:20px;">
+            <span>ID</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+          
+
+          <th style="width:120px;">
+            <span>Cédula<br/> <em style="font-size: 7px;"></em></span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_cedula, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_cedula');"><i class="fa fa-times"></i></span>
+            </div>
+            
+          </th>
+
+          <th style="width:120px;">
+            <span>Nombres</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_nombre, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_nombre');"><i class="fa fa-times"></i></span>
+            </div>
+            <em class="nmb"></em>
+          </th>
+
+          <th style="width:120px;">
+            <span>Apellidos</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_apellido, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_apellido');"><i class="fa fa-times"></i></span>
+            </div>
+            <em class="nmb"></em>
+          </th>
+
+          <th style="width:120px;">
+            <span>Dirección</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_direccion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_direccion');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th style="width:120px;">
+            <span>Partido</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_partido, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_partido');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th style="width:120px;">
+            <span>Fecha Nacimiento</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_fecha_nacimiento, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_fecha_nacimiento');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th style="width:120px;">
+            <span>Fecha Afiliación</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_votantes_fecha_afiliacion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_fecha_afiliacion');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th style="width:130px;">
+              <span>Seccional</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_votantes, :seccional_id, Seccional.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_seccional_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+
+          <th style="width:130px;">
+              <span>Departamento</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_votantes, :departamento_id, Departamento.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-votantes', '#form_buscar_votantes_departamento_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th> 
+
+
+          <th style="width:150px;"></th>
+
+        </tr>
+
+        <% end %>
+
+      </thead> 
+
+    <tbody id="votantes-lista"></tbody>
+  
+  </table>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+  //---------------------------- RECUPERANDO DATOS ----------------------------//
+  $("#form-buscar-votantes").bind("submit", function () {
+    var valido = true;
+    if($("#form_buscar_votantes_nombre").val().length !== 0 ){
+      valido = false;
+      if(($("#form_buscar_votantes_nombre").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_votantes_apellido").val().replace(/\s/g,'')).length > 2){        
+        valido = true;
+      }else{
+        valido = false;
+        //swal("Para la búsqueda por Nombre y Apellido Ingrese minimo 3(tres) carácteres en cada caja de texto", "", "error");         
+        $(".nmb").html('*Ingrese minimo 3(tres) carácteres para cada caja de texto');
+        $(".nmb").attr({'style':'color: red;font-size: 8px;'});      
+      }      
+    }
+      
+    if(valido){
+    $(".nmb").html('');       
+    $("#votantes-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
+    }
+
+    
+
+  })
+ 
+  //---------------------------------------------------------------------------//
+  //---------------------------- BUSCAR PERSONAS-------- -------------------------//
+  $("#table-votantes input, #table-votantes select").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-votantes").submit();
+
+  })
+  //----------------------------------------------------------------------------//
+  //----------------------------INICIO -----------------------------------------//
+  aplicar_datepicker();
+  $("#form-buscar-votantes").submit();
+  <% if params[:agregar] %>
+    $("#link-to-agregar-votante").trigger('click');
+  <% end %>
+  //----------------------------------------------------------------------------//
+</script>
+
+<style>
+    /*INTRO.JS*/
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+
+    #start-tour{
+        cursor: pointer;
+    }
+
+    #form-buscar-votantes table th { background:#e6e6e6;}
+    #form-buscar-votantes table th span.limpiar { background:#fff;}
+
+</style>

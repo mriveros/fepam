@@ -1,0 +1,53 @@
+<% if votantes.present? %>
+
+  <% votantes.each do |vot| %>
+
+    <tr>
+
+      <td ><%= vot.id %></td>
+      <td ><%= vot.cedula%></td>
+      <td ><%= vot.nombres %></td>
+      <td ><%= vot.apellidos %></td>
+      <td ><%= vot.direccion %></td>
+      <td ><%= vot.partido %></td>
+      <td ><%= vot.fecha_nacimiento %></td>
+      <td ><%= vot.fecha_afiliacion %></td>
+      <td ><%= vot.seccional %></td>
+      <td ><%= vot.departamento %></td>
+      <td >
+        
+        <%= link_to_editar_votante(vot) %>
+
+        <%= link_to icon_eliminar, votantes_eliminar_path(id: vot.votante_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Votante', data: { confirm: "Está seguro de eliminar el Votante?"} %>
+         
+       </td>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+<tr id="tab-paginacion">
+
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate votantes, :params => params %></div></td>
+</tr>
+
+<tr>
+    <td colspan="12">
+      Cantidad de registros encontrados: <%= @total_encontrados %> 
+    </td>
+</tr>
+
+ 
+
+<% else %>
+
+  <tr>
+
+    <td colspan="12"><p class='none-result'>No se han encontrado resultados.</p></td>
+
+  </tr>
+
+
+<% end %>

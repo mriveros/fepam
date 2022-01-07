@@ -1,0 +1,15 @@
+$("#info-compras-lista").html("<%= escape_javascript(render partial: "lista", locals: { aux_compras: @aux_compras }) %>");
+
+function exportar_pdf_compras()
+  {
+   	if(<%=@aux_compras.size%> == 0)
+    {
+    	swal("No hay datos para exportar")
+    }
+	else{
+
+		window.open("<%= url_for(info_compras_exportar_pdf_path(@parametros))%>", '_blank')	
+
+	}
+    
+  }

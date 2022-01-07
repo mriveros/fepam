@@ -1,0 +1,69 @@
+<% if registros_votos.present? %>
+
+  <% registros_votos.each do |vot| %>
+
+    <tr>
+
+      <td ><%= vot.registro_voto_id %></td>
+      <td ><%= vot.eleccion %></td>
+      <td ><%= vot.fecha_registro.strftime('%d/%m/%Y')  %></td>
+      <td ><%= vot.cedula%></td>
+      <td ><%= vot.nombres %></td>
+      <td ><%= vot.apellidos %></td>
+      <td ><%= vot.partido %></td>
+      <td ><%= vot.seccional %></td>
+      <td ><%= vot.departamento %></td>
+      <td ><%= vot.usuario_insercion %></td>
+      <td >
+
+        <%if vot.voto_candidato == true%>
+          
+          <%= "Voto Candidato" %>
+
+        <%else%>
+
+          <%= "Otro Voto" %>
+
+        <%end%>
+          
+        </td>
+        
+      <td >
+        
+        <%= link_to icon_confirmar, registros_votos_marcar_voto_candidato_path(id: vot.registro_voto_id), remote: true, class: "btn btn-info btn-xs", title: 'Haga click para marcar este voto como Voto al Candidato.', data: { confirm: "Está seguro de marcar el Voto?"} %>
+
+        <%= link_to icon_desconfirmar_ap, registros_votos_desmarcar_voto_candidato_path(id: vot.registro_voto_id), remote: true, class: "btn btn-warning btn-xs", title: 'Haga click para desmarcar este voto como Voto al Candidato.', data: { confirm: "Está seguro de desmarcar el Voto?"} %>
+
+        <%= link_to icon_eliminar, registros_votos_eliminar_path(id: vot.registro_voto_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el registro del Voto', data: { confirm: "Está seguro de eliminar el Voto?"} %>
+         
+       </td>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+<tr id="tab-paginacion">
+
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate registros_votos, :params => params %></div></td>
+</tr>
+
+<tr>
+    <td colspan="12">
+      Cantidad de registros encontrados: <%= @total_encontrados %> 
+    </td>
+</tr>
+
+ 
+
+<% else %>
+
+  <tr>
+
+    <td colspan="12"><p class='none-result'>No se han encontrado resultados.</p></td>
+
+  </tr>
+
+
+<% end %>

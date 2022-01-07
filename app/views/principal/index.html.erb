@@ -1,0 +1,197 @@
+<%= notificaciones %>
+
+
+  <br />
+  <br />
+<%if current_usuario.present? and rol_administrador %>
+
+  <div class="row">
+
+    <div class="col-sm-6 mb-3 mb-md-0 " >
+      
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h5 class="panel-title">Votantes y Registros Votos</h5>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+           <a href="<%= url_for(votantes_index_path())%>"class="btn btn-primary btn-xs"  style="margin-left:10px;">Ir a Votantes</a>
+           <a href="<%= url_for(registros_votos_index_path())%>"class="btn btn-primary btn-xs" style="margin-left:10px;">Ir a Registro de Votos</a>
+           <a href="<%= url_for(documentos_votapp_index_path())%>"class="btn btn-primary btn-xs" style="margin-left:10px;">Ir a Adjuntos</a>
+            <br /><br />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h5 class="panel-title">Informaciones</h5>
+        </div>
+        <div class="col-sm-6 mb-3 mb-md-0 " >
+           <div class="card-body" >
+            <h5 class="card-title">Votos a Candidato</h5>
+            <p class="card-text">Cantidad: <%= @registro_votos_candidatos.count %> </p>  
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card-body">
+            <h5 class="card-title">Votos a Otros</h5>
+            <p class="card-text">Cantidad: <%= @registro_votos_otros.count%></p>
+          </div>
+        </div>  
+
+      </div>
+    </div>
+
+  </div>
+
+
+<div class="row">
+
+    <div class="col-sm-6 mb-3 mb-md-0 " >
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h5 class="panel-title">Voto Candidato por seccional</h5>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+
+                 <div class="panel-body">
+                <div class="row">
+                  
+                  <div class="container-fluid" style="width: 300px;">
+                  
+                    <%= bar_chart @data_bar %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="col-sm-6">
+        <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h5 class="panel-title">Votos a Candidato</h5>
+        </div>
+
+        <div class="panel-body">
+          <div class="row">
+            
+            <div class="container-fluid" style="width: 300px;">
+            
+              <%= pie_chart @data_pie, library: { pieSliceText: 'value' } %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-sm-6 mb-3 mb-md-0 " >
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h5 class="panel-title">Porcentaje Votos</h5>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+
+                 <div class="panel-body">
+                <div class="row">
+                  
+                  <div class="container-fluid" style="width: 300px;">
+                  
+                    
+                    <h5><%= sprintf('%.3f', @porcentaje_voto)%>%</h5>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+  <%end%>
+   
+
+  <%if current_usuario.present? and rol_operador %>
+
+  <div class="row">
+
+    <div class="col-sm-6 mb-3 mb-md-0 " >
+      
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h5 class="panel-title">Registrar Voto</h5>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+          <p></p>
+            <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> Registrar Voto".html_safe, "#", id: "link-to-agregar-registro-voto", class: "btn btn-primary btn-xs pull-left", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+            <%= modal_window( window_id: "modal-window-agregar-registro-voto", link_to_id: "#link-to-agregar-registro-voto", url: registros_votos_agregar_voto_operador_path( window_id: "modal-window-agregar-registro-voto") )%>
+          </div>
+
+          <div class="row">
+          <p></p>
+          <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> Adjuntar Archivo".html_safe, "#", id: "link-to-agregar-adjuntar-archivo", class: "btn btn-primary btn-xs pull-left", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+          <%= modal_window( window_id: "modal-window-agregar-adjuntar-archivo", link_to_id: "#link-to-agregar-adjuntar-archivo", url: documentos_votapp_agregar_archivo_operador_path( window_id: "modal-window-agregar-adjuntar-archivo") )%>
+    
+          </div>
+         
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+<%end%>
+
+<style>
+      .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+      }
+      #start-tour{
+        cursor: pointer;
+      }
+</style>
+
+<script> 
+    window.addEventListener('load', () => { 
+      registerSW(); 
+    }); 
+  
+    // Register the Service Worker 
+    async function registerSW() { 
+      if ('serviceWorker' in navigator) { 
+        try { 
+          await navigator 
+                .serviceWorker 
+                .register('serviceworker.js'); 
+        } 
+        catch (e) { 
+          console.log('SW registration failed'); 
+        } 
+      } 
+    } 
+ </script>
