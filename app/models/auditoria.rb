@@ -1,6 +1,6 @@
 class Auditoria < ActiveRecord::Base
 
-    self.table_name="auditorias_2021"
+    self.table_name="auditorias_2022"
 
     establish_connection :DB_AUDITORIAS
 
