@@ -11,9 +11,9 @@ default: &default
 
 development:
    <<: *default
-   database: votapp
+   database: fepam
    username: postgres
-   password: database#production#pg
+   password: dev.postgres
    host: 192.168.0.55
    port: 5432
 
@@ -21,9 +21,9 @@ development:
 
 DB_AUDITORIAS:
   <<: *default
-  database: votapp_auditoria
+  database: fepam_auditoria
   username: postgres
-  password: database#production#pg
+  password: dev.postgres
   host: 192.168.0.55
   port: 5432
 
@@ -34,8 +34,8 @@ DB_AUDITORIAS:
 
 production:
   <<: *default
-  database: votapp
+  database: fepam
   username: postgres
-  password: database#production#pg
+  password: dev.postgres
   host: 192.168.0.55
   port: 5432
