@@ -35,7 +35,16 @@ Rails.application.routes.draw do
 #CRONTAB
 get 'crontab_ultron/index'
 #--------------------------------------------------------------------------
-
+#TORNEOS
+  post 'torneos/lista'
+  get 'torneos/lista'
+  get 'torneos/agregar'
+  post 'torneos/guardar'
+  get 'torneos/eliminar'
+  get 'torneos/editar'
+  post 'torneos/actualizar'
+  get 'torneos/index'
+  
 
 #VOTANTES
   post 'votantes/lista'
@@ -89,6 +98,8 @@ get 'crontab_ultron/index'
   get 'cargos/editar'
   post 'cargos/actualizar'
   get 'cargos/index'
+
+  
 
   #HACIENDAS
   get 'haciendas/index'
