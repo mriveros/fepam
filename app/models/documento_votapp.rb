@@ -1,6 +1,6 @@
-class DocumentoVotapp < ActiveRecord::Base
+class DocumentoFepam < ActiveRecord::Base
 
-  self.table_name="documentos_votapp"
+  self.table_name="documentos_fepam"
   self.primary_key="id"
   
   

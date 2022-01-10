@@ -1,6 +1,6 @@
-<% if documentos_votapp.present? %>
+<% if documentos_fepam.present? %>
 
-  <% documentos_votapp.each do |doc| %>
+  <% documentos_fepam.each do |doc| %>
 
     <tr>
 
@@ -14,13 +14,13 @@
 
       <td style="width:120px;">
 
-        <%@documento_votapp = DocumentoVotapp.where("id =?", doc.documento_votapp_id).first%>
+        <%@documento_FEPAM = DocumentoFEPAM.where("id =?", doc.documento_FEPAM_id).first%>
         
-            <%if @documento_votapp.present?%> 
+            <%if @documento_FEPAM.present?%> 
                           
-                <%if @documento_votapp.habilitado == true || rol_administrador %>
+                <%if @documento_FEPAM.habilitado == true || rol_administrador %>
 
-                  <%=link_to "<i class='glyphicon glyphicon-download-alt'></i>".html_safe, (Rails.env == 'production' ? @documento_votapp.data.url : @documento_votapp.data.url), class: "btn btn-default btn-xs", target: '_blank',title: "Esta opción le permite descargar el archivo adjunto."%>
+                  <%=link_to "<i class='glyphicon glyphicon-download-alt'></i>".html_safe, (Rails.env == 'production' ? @documento_FEPAM.data.url : @documento_FEPAM.data.url), class: "btn btn-default btn-xs", target: '_blank',title: "Esta opción le permite descargar el archivo adjunto."%>
 
                 <%end%>
 
@@ -43,7 +43,7 @@
 
 <tr id="tab-paginacion">
 
-    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate documentos_votapp, :params => params %></div></td>
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate documentos_fepam, :params => params %></div></td>
 </tr>
 
 <tr>

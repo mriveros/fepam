@@ -1,4 +1,4 @@
-class DocumentosVotappController < ApplicationController
+class DocumentosFepamController < ApplicationController
 
   protect_from_forgery with: :null_session
   before_filter :require_usuario
@@ -11,45 +11,45 @@ class DocumentosVotappController < ApplicationController
     cond = []
     args = []
 
-    if params[:form_buscar_documentos_votapp_id].present?
+    if params[:form_buscar_documentos_fepam_id].present?
 
-      cond << "documento_votapp_id = ?"
-      args << params[:form_buscar_documentos_votapp_id]
+      cond << "documento_fepam_id = ?"
+      args << params[:form_buscar_documentos_fepam_id]
 
     end
 
-    if params[:form_buscar_documentos_votapp_numero].present?
+    if params[:form_buscar_documentos_fepam_numero].present?
 
       cond << "numero = ?"
-      args << params[:form_buscar_documentos_votapp_numero]
+      args << params[:form_buscar_documentos_fepam_numero]
 
     end
  
-    if params[:form_buscar_documentos_votapp_descripcion].present?
+    if params[:form_buscar_documentos_fepam_descripcion].present?
 
       cond << "descripcion ilike ?"
-      args << "%#{params[:form_buscar_documentos_votapp_descripcion]}%"
+      args << "%#{params[:form_buscar_documentos_fepam_descripcion]}%"
 
     end
 
-    if params[:form_buscar_documentos_votapp_fecha_emision].present?
+    if params[:form_buscar_documentos_fepam_fecha_emision].present?
 
       cond << "fecha_emision = ?"
-      args << params[:form_buscar_documentos_votapp_fecha_emision]
+      args << params[:form_buscar_documentos_fepam_fecha_emision]
 
     end
 
-    if params[:form_buscar_documentos_votapp][:tipo_resolucion_id].present?
+    if params[:form_buscar_documentos_fepam][:tipo_resolucion_id].present?
 
       cond << "tipo_resolucion_id = ?"
-      args << params[:form_buscar_documentos_votapp][:tipo_resolucion_id]
+      args << params[:form_buscar_documentos_fepam][:tipo_resolucion_id]
 
     end
 
-    if params[:form_buscar_documentos_votapp][:eleccion_id].present?
+    if params[:form_buscar_documentos_fepam][:eleccion_id].present?
 
       cond << "eleccion_id = ?"
-      args << params[:form_buscar_documentos_votapp][:eleccion_id]
+      args << params[:form_buscar_documentos_fepam][:eleccion_id]
 
     end
 
@@ -58,17 +58,17 @@ class DocumentosVotappController < ApplicationController
 
     if cond.size > 0
  
-      @documentos_votapp =  VDocumentoVotapp.orden_id.where(cond).paginate(per_page: 12, page: params[:page])
-      @total_encontrados = VDocumentoVotapp.where(cond).count
+      @documentos_fepam =  VDocumentoFEPAM.orden_id.where(cond).paginate(per_page: 12, page: params[:page])
+      @total_encontrados = VDocumentoFEPAM.where(cond).count
 
     else
 
-      @documentos_votapp = VDocumentoVotapp.orden_id.paginate(per_page: 12, page: params[:page])
-      @total_encontrados = VDocumentoVotapp.count
+      @documentos_fepam = VDocumentoFEPAM.orden_id.paginate(per_page: 12, page: params[:page])
+      @total_encontrados = VDocumentoFEPAM.count
 
     end
 
-    @total_registros = VDocumentoVotapp.count
+    @total_registros = VDocumentoFEPAM.count
 
     respond_to do |f|
 
@@ -80,9 +80,9 @@ class DocumentosVotappController < ApplicationController
 
   def agregar_archivo
 
-    @documento_votapp = DocumentoVotapp.new
+    @documento_FEPAM = DocumentoFEPAM.new
 
-    @ultimo_registro = DocumentoVotapp.last
+    @ultimo_registro = DocumentoFEPAM.last
 
     if @ultimo_registro.present?
 
@@ -110,19 +110,19 @@ class DocumentosVotappController < ApplicationController
 
     if @valido
 
-      DocumentoVotapp.transaction do 
+      DocumentoFEPAM.transaction do 
 
-        @documento_votapp = DocumentoVotapp.new
-        @documento_votapp.numero = params[:numero]
-        @documento_votapp.descripcion = params[:descripcion]
-        @documento_votapp.fecha_emision = params[:fecha_emision]
-        @documento_votapp.tipo_resolucion_id = PARAMETRO[:resolucion]
-        @documento_votapp.eleccion_id = params[:documento_votapp][:eleccion_id]
-        @documento_votapp.data = params[:data]
+        @documento_FEPAM = DocumentoFEPAM.new
+        @documento_FEPAM.numero = params[:numero]
+        @documento_FEPAM.descripcion = params[:descripcion]
+        @documento_FEPAM.fecha_emision = params[:fecha_emision]
+        @documento_FEPAM.tipo_resolucion_id = PARAMETRO[:resolucion]
+        @documento_FEPAM.eleccion_id = params[:documento_FEPAM][:eleccion_id]
+        @documento_FEPAM.data = params[:data]
 
-        if @documento_votapp.save
+        if @documento_FEPAM.save
 
-          auditoria_nueva("agregar documento nuevo en votapp", "documentos_votapp", @documento_votapp)
+          auditoria_nueva("agregar documento nuevo en FEPAM", "documentos_fepam", @documento_FEPAM)
           @guardado_ok = true
 
         end
@@ -152,9 +152,9 @@ class DocumentosVotappController < ApplicationController
 
   def agregar_archivo_operador
 
-    @documento_votapp = DocumentoVotapp.new
+    @documento_FEPAM = DocumentoFEPAM.new
 
-    @ultimo_registro = DocumentoVotapp.last
+    @ultimo_registro = DocumentoFEPAM.last
 
     if @ultimo_registro.present?
 
@@ -182,19 +182,19 @@ class DocumentosVotappController < ApplicationController
 
     if @valido
 
-      DocumentoVotapp.transaction do 
+      DocumentoFEPAM.transaction do 
 
-        @documento_votapp = DocumentoVotapp.new
-        @documento_votapp.numero = params[:numero]
-        @documento_votapp.descripcion = params[:descripcion]
-        @documento_votapp.fecha_emision = params[:fecha_emision]
-        @documento_votapp.tipo_resolucion_id = PARAMETRO[:resolucion]
-        @documento_votapp.eleccion_id = params[:documento_votapp][:eleccion_id]
-        @documento_votapp.data = params[:data]
+        @documento_FEPAM = DocumentoFEPAM.new
+        @documento_FEPAM.numero = params[:numero]
+        @documento_FEPAM.descripcion = params[:descripcion]
+        @documento_FEPAM.fecha_emision = params[:fecha_emision]
+        @documento_FEPAM.tipo_resolucion_id = PARAMETRO[:resolucion]
+        @documento_FEPAM.eleccion_id = params[:documento_FEPAM][:eleccion_id]
+        @documento_FEPAM.data = params[:data]
 
-        if @documento_votapp.save
+        if @documento_FEPAM.save
 
-          auditoria_nueva("agregar documento nuevo en votapp", "documentos_votapp", @documento_votapp)
+          auditoria_nueva("agregar documento nuevo en FEPAM", "documentos_fepam", @documento_FEPAM)
           @guardado_ok = true
 
         end
@@ -225,7 +225,7 @@ class DocumentosVotappController < ApplicationController
 
   def editar_archivo
 
-    @documentos_votapp = DocumentoVotapp.find(params[:id])
+    @documentos_fepam = DocumentoFEPAM.find(params[:id])
 
     respond_to do |f|
 
@@ -242,19 +242,19 @@ class DocumentosVotappController < ApplicationController
 
     if @valido
 
-      DocumentoVotapp.transaction do 
+      DocumentoFEPAM.transaction do 
 
-        @documento_votapp = DocumentoVotapp.new
-        @documento_votapp.numero = params[:numero]
-        @documento_votapp.descripcion = params[:descripcion]
-        @documento_votapp.fecha_emision = params[:fecha_emision]
-        @documento_votapp.tipo_resolucion_id = PARAMETRO[:resolucion]
-        @documento_votapp.eleccion_id = params[:documento_votapp][:eleccion_id]
-        @documento_votapp.data = params[:data]
+        @documento_FEPAM = DocumentoFEPAM.new
+        @documento_FEPAM.numero = params[:numero]
+        @documento_FEPAM.descripcion = params[:descripcion]
+        @documento_FEPAM.fecha_emision = params[:fecha_emision]
+        @documento_FEPAM.tipo_resolucion_id = PARAMETRO[:resolucion]
+        @documento_FEPAM.eleccion_id = params[:documento_FEPAM][:eleccion_id]
+        @documento_FEPAM.data = params[:data]
 
-        if @documento_votapp.save
+        if @documento_FEPAM.save
 
-          auditoria_nueva("agregar documento nuevo en votapp", "documentos_votapp", @documento_votapp)
+          auditoria_nueva("agregar documento nuevo en FEPAM", "documentos_fepam", @documento_FEPAM)
           @guardado_ok = true
 
         end
@@ -286,15 +286,15 @@ class DocumentosVotappController < ApplicationController
     valido = true
     @msg = ""
 
-    @documento_votapp = DocumentoVotapp.find(params[:id])
+    @documento_FEPAM = DocumentoFEPAM.find(params[:id])
 
-    @documento_votapp_elim = @documento_votapp
+    @documento_FEPAM_elim = @documento_FEPAM
 
     if valido
 
-      if @documento_votapp.destroy
+      if @documento_FEPAM.destroy
 
-        auditoria_nueva("eliminar documento votapp", "documentos_votapp", @documento_votapp_elim)
+        auditoria_nueva("eliminar documento FEPAM", "documentos_fepam", @documento_FEPAM_elim)
 
         @eliminado = true
 
@@ -318,12 +318,12 @@ class DocumentosVotappController < ApplicationController
 
   def buscar_estado_ganado
 
-     @documentos_votapp = DocumentoVotapp.where("descripcion ilike ?", "%#{params[:descripcion]}%")
+     @documentos_fepam = DocumentoFEPAM.where("descripcion ilike ?", "%#{params[:descripcion]}%")
 
     respond_to do |f|
 
       f.html
-      f.json { render :json => @documentos_votapp }
+      f.json { render :json => @documentos_fepam }
 
     end
 

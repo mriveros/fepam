@@ -14,7 +14,7 @@
   		<span class="fa fa-lg fa-bars"></span>
       </button>
 
-	   <%= link_to "VOTAPP", index_url, :title => "Ir al Inicio", :class => 'navbar-brand' %>
+	   <%= link_to "FEPAM", index_url, :title => "Ir al Inicio", :class => 'navbar-brand' %>
   </div>
 
   <div class="collapse navbar-collapse">
@@ -45,7 +45,7 @@
           
           <li><%= link_to "Votantes", votantes_index_path if acceso_permitido("votantes.index") %></li>
           <li><%= link_to "Registro de Votos", registros_votos_index_path if acceso_permitido("personas.index") %></li>
-          <li><%= link_to "Adjuntos", documentos_votapp_index_path if acceso_permitido("documentos_votapp.index") %></li>
+          <li><%= link_to "Adjuntos", documentos_FEPAM_index_path if acceso_permitido("documentos_FEPAM.index") %></li>
 
 			</ul>
 

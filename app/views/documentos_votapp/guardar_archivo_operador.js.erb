@@ -1,10 +1,10 @@
 <% if @guardado_ok %>
 
-  $("<div class='col-sm-12' id='msg-agregar-documentos-votapp' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Agregado Exitosamente.</div>").insertBefore("#form-agregar-documentos-votapp");
+  $("<div class='col-sm-12' id='msg-agregar-documentos-FEPAM' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Agregado Exitosamente.</div>").insertBefore("#form-agregar-documentos-fepam");
    swal("Guardado Exitosamente.")
   
   setTimeout(function(){ 
-    $("#msg-agregar-documentos-votapp").remove(); 
+    $("#msg-agregar-documentos-fepam").remove(); 
     $("#<%= params[:window_id]%>").modal('hide'); 
 
   }, 1500);
@@ -12,9 +12,9 @@
 
 <% else %>
 
-    $("<div class='col-sm-12' id='msg-agregar-documentos-votapp' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%= j(@msg) %></div>").insertBefore("#form-agregar-documentos-votapp");
+    $("<div class='col-sm-12' id='msg-agregar-documentos-FEPAM' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%= j(@msg) %></div>").insertBefore("#form-agregar-documentos-fepam");
     swal("<%=@msg%>")
     setTimeout(function(){ 
-      $("#msg-agregar-registro-voto").remove(); 
+      $("#msg-agregar-registro-fepam").remove(); 
     }, 2500);
 <% end %>

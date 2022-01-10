@@ -4,38 +4,38 @@
 <div>
 
   <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
-    <h3 style="float:left;margin-top:5px;">Documentos Votapp</h3>
-    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-documento-votapp", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
-    <%= modal_window( window_id: "modal-window-agregar-documento-votapp", link_to_id: "#link-to-agregar-documento-votapp", url: documentos_votapp_agregar_archivo_path( window_id: "modal-window-agregar-documento-votapp") )%>
+    <h3 style="float:left;margin-top:5px;">Documentos FEPAM</h3>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-documento-FEPAM", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= modal_window( window_id: "modal-window-agregar-documento-FEPAM", link_to_id: "#link-to-agregar-documento-FEPAM", url: documentos_fepam_agregar_archivo_path( window_id: "modal-window-agregar-documento-FEPAM") )%>
 
   </div>
 </div>
 
 <div style="clear:both;"></div>
 
-<div class="table-responsive" id="table-documentos-votapp">
+<div class="table-responsive" id="table-documentos-FEPAM">
 
   <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
 
     <thead>
 
-      <%= form_tag documentos_votapp_lista_path, remote: true, id: "form-buscar-documentos-votapp"  do  %>
+      <%= form_tag documentos_fepam_lista_path, remote: true, id: "form-buscar-documentos-fepam"  do  %>
 
         <tr>
 
           <th style="width:15%;">
             <span>ID</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_documentos_votapp_id, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-votapp', '#form_buscar_documentos_votapp_id');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_documentos_FEPAM_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-fepam', '#form_buscar_documentos_FEPAM_id');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
            <th style="width:120px;">
             <span>Número<br/> <em style="font-size: 7px;"></em></span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_documentos_votapp_numero, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-votapp', '#form_buscar_documentos_votapp_numero');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_documentos_FEPAM_numero, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-fepam', '#form_buscar_documentos_FEPAM_numero');"><i class="fa fa-times"></i></span>
             </div>
             
           </th>
@@ -43,8 +43,8 @@
            <th style="width:120px;">
             <span>Descripción<br/> <em style="font-size: 7px;"></em></span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_documentos_votapp_descripcion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-votapp', '#form_buscar_documentos_votapp_descripcion');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_documentos_fepam_descripcion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-fepam', '#form_buscar_documentos_fepam_descripcion');"><i class="fa fa-times"></i></span>
             </div>
             
           </th>
@@ -52,25 +52,25 @@
           <th>
             <div><%= label_tag nil, "Fecha Emisión".html_safe %></div>
               <div class='input-group date'>
-                <%= text_field_tag :form_buscar_documentos_votapp_fecha_emision, nil, class: 'form-control input-sm' %>
+                <%= text_field_tag :form_buscar_documentos_FEPAM_fecha_emision, nil, class: 'form-control input-sm' %>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-votapp', '#form_buscar_documentos_votapp_fecha_emision');"><i class="fa fa-times"></i></span>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-fepam', '#form_buscar_documentos_FEPAM_fecha_emision');"><i class="fa fa-times"></i></span>
               </div>
          </th>
 
          <th style="width:130px;">
               <span>Tipo Resolución</span>
             <div class="input-group input-group-sm">
-              <%= collection_select :form_buscar_documentos_votapp, :tipo_resolucion_id, TipoResolucionDocumento.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-votapp', '#form_buscar_documentos_votapp_tipo_resolucion_id');"><i class="fa fa-times"></i></span>
+              <%= collection_select :form_buscar_documentos_FEPAM, :tipo_resolucion_id, TipoResolucionDocumento.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-fepam', '#form_buscar_documentos_FEPAM_tipo_resolucion_id');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
           <th style="width:130px;">
               <span>Elección</span>
             <div class="input-group input-group-sm">
-              <%= collection_select :form_buscar_documentos_votapp, :eleccion_id, Eleccion.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-votapp', '#form_buscar_documentos_votapp_eleccion_id');"><i class="fa fa-times"></i></span>
+              <%= collection_select :form_buscar_documentos_FEPAM, :eleccion_id, Eleccion.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-documentos-fepam', '#form_buscar_documentos_FEPAM_eleccion_id');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
@@ -82,7 +82,7 @@
 
       </thead>
 
-    <tbody id="documentos-votapp-lista"></tbody>
+    <tbody id="documentos-FEPAM-lista"></tbody>
 
   </table>
 
@@ -94,11 +94,11 @@
 <script type="text/javascript">
 
   //---------------------------- RECUPERANDO DATOS ----------------------------//
-  $("#form-buscar-documentos-votapp").bind("submit", function () {
+  $("#form-buscar-documentos-fepam").bind("submit", function () {
     var valido = true;
-    if($("#form_buscar_documentos_votapp_descripcion").val().length !== 0 ){
+    if($("#form_buscar_documentos_fepam_descripcion").val().length !== 0 ){
       valido = false;
-      if(($("#form_buscar_documentos_votapp_descripcion").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_documentos_votapp_descripcion").val().replace(/\s/g,'')).length > 2){
+      if(($("#form_buscar_documentos_fepam_descripcion").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_documentos_fepam_descripcion").val().replace(/\s/g,'')).length > 2){
         valido = true;
       }else{
         valido = false;
@@ -110,7 +110,7 @@
 
     if(valido){
     $(".nmb").html('');
-    $("#documentos-votapp-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
+    $("#documentos-FEPAM-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")
     }
 
 
@@ -119,15 +119,15 @@
 
   //---------------------------------------------------------------------------//
   //---------------------------- BUSCAR PERSONAS-------- -------------------------//
-  $("#table-documentos-votapp input, #table-documentos-votapp select").bind('change', function () {
+  $("#table-documentos-FEPAM input, #table-documentos-FEPAM select").bind('change', function () {
       $.ajaxQ.abortAll();
-      $("#form-buscar-documentos-votapp").submit();
+      $("#form-buscar-documentos-fepam").submit();
 
   })
   //----------------------------------------------------------------------------//
   //----------------------------INICIO -----------------------------------------//
   aplicar_datepicker();
-  $("#form-buscar-documentos-votapp").submit();
+  $("#form-buscar-documentos-fepam").submit();
   <% if params[:agregar] %>
     $("#link-to-agregar-estado-ganado").trigger('click');
   <% end %>
@@ -146,7 +146,7 @@
         cursor: pointer;
     }
 
-    #form-buscar-documentos-votapp table th { background:#e6e6e6;}
-    #form-buscar-documentos-votapp table th span.limpiar { background:#fff;}
+    #form-buscar-documentos-fepam table th { background:#e6e6e6;}
+    #form-buscar-documentos-fepam table th span.limpiar { background:#fff;}
 
 </style>

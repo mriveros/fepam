@@ -9,7 +9,7 @@
     <p>
 
       <h2> Para poder utilizar su cuenta de ingrese al siguiente enlace:<br />
-        <%= link_to "Activar Mi Cuenta", "#{Rails.env == 'production' ? 'http://votapp.smarthub.com.py/' : 'http://localhost:3000/'}principal/activar_cuenta/?a=#{@usuario.token}" %>
+        <%= link_to "Activar Mi Cuenta", "#{Rails.env == 'production' ? 'http://fepam.smarthub.com.py/' : 'http://localhost:3000/'}principal/activar_cuenta/?a=#{@usuario.token}" %>
       </h2>
 
       <b> Una vez activada la cuenta, puede acceder al sistema con los siguientes datos: </b><br />
