@@ -61,16 +61,16 @@ get 'crontab_ultron/index'
   get 'registros_votos/desmarcar_voto_candidato'
 
   #DOCUMENTOS FEPAM
-  get 'documentos_FEPAM/index'
-  post 'documentos_FEPAM/lista'
-  get 'documentos_FEPAM/lista'
-  get 'documentos_FEPAM/agregar_archivo'
-  post 'documentos_FEPAM/guardar_archivo_adjunto'
-  get 'documentos_FEPAM/editar_archivo'
-  post 'documentos_FEPAM/actualizar_archivo_adjunto'
-  get 'documentos_FEPAM/eliminar_archivo'
-  get 'documentos_FEPAM/agregar_archivo_operador'
-  post 'documentos_FEPAM/guardar_archivo_operador'
+  get 'documentos_fepam/index'
+  post 'documentos_fepam/lista'
+  get 'documentos_fepam/lista'
+  get 'documentos_fepam/agregar_archivo'
+  post 'documentos_fepam/guardar_archivo_adjunto'
+  get 'documentos_fepam/editar_archivo'
+  post 'documentos_fepam/actualizar_archivo_adjunto'
+  get 'documentos_fepam/eliminar_archivo'
+  get 'documentos_fepam/agregar_archivo_operador'
+  post 'documentos_fepam/guardar_archivo_operador'
 
 
 #INFO COMPRAS
