@@ -48,7 +48,7 @@ class TorneosController < ApplicationController
 
 	    end
 
-	    @total_registros = torneo.count
+	    @total_registros = Torneo.count
 
 	    respond_to do |f|
 

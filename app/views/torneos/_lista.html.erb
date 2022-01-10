@@ -1,17 +1,17 @@
-<% if cargos.present? %>
+<% if torneos.present? %>
 
-  <% cargos.each do |dc| %>
+  <% torneos.each do |dc| %>
 
     <tr>
 
       <td ><%= dc.id %></td>
       <td ><%= dc.descripcion%></td>
-      <td ><%= dc.sueldo.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse %></td>
+      <td ><%= dc.cantidad_fechas%></td>
       <td >
         
-        <%= link_to_editar_cargo(dc) %>
+        <%= link_to_editar_torneo(dc) %>
 
-        <%= link_to icon_eliminar, cargos_eliminar_path(id: dc.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Cargo', data: { confirm: "Está seguro de eliminar el Cargo?"} %>
+        <%= link_to icon_eliminar, torneos_eliminar_path(id: dc.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Cargo', data: { confirm: "Está seguro de eliminar el Cargo?"} %>
          
        </td>
 
@@ -23,7 +23,7 @@
 
 <tr id="tab-paginacion">
 
-    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate cargos, :params => params %></div></td>
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate torneos, :params => params %></div></td>
 </tr>
 
 <tr>

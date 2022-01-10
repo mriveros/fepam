@@ -1,4 +1,4 @@
-class Torneos < ActiveRecord::Base
+class Torneo < ActiveRecord::Base
   
   self.table_name= "torneos"
   self.primary_key = "id"
