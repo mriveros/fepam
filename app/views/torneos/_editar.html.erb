@@ -6,11 +6,11 @@
     <div class="modal-header" style="background:#e6e6e6;">
           
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title" id="myModalLabel">Editar Cargo</h4>
+      <h4 class="modal-title" id="myModalLabel">Editar Campeonado</h4>
       
     </div>
 
-    <%= form_for @cargo, remote: true, url: cargos_actualizar_url, html: { id: "form-editar-cargo" }, method: 'POST' do |f| %>
+    <%= form_for @torneo, remote: true, url: torneos_actualizar_url, html: { id: "form-editar-torneo" }, method: 'POST' do |f| %>
 
       <%= f.hidden_field :id %>
       <%= hidden_field_tag :window_id, params[:window_id]%>
@@ -23,10 +23,19 @@
           <div class="col-sm-7"><%= f.text_field :descripcion, class: 'form-control input-sm',style:"text-transform:uppercase;" %></div>
           <div class="col-sm-1"></div><br />
 
-          <div class="col-sm-4"><%= label_tag :nil, "Sueldo #{attr_requerido}".html_safe %></div>
-            <div class="col-sm-7"><%= f.text_field :sueldo, :onkeyup=>' formatear_numero(this)' ,:onkeypress=> "return isNumberKey(event)", class: 'form-control input-sm',style:"text-transform:uppercase;", :maxlength=> 12 %></div>
+          <div class="col-sm-4"><%= label_tag :nil, "Cantidad Fechas #{attr_requerido}".html_safe %></div>
+            <div class="col-sm-7"><%= f.text_field :cantidad_fechas, :onkeyup=>' formatear_numero(this)' ,:onkeypress=> "return isNumberKey(event)", class: 'form-control input-sm',style:"text-transform:uppercase;", :maxlength=> 12 %></div>
+          
           <div class="col-sm-1"></div><br /><br />
-       
+          <div class="col-sm-4"><%= f.label :fecha_inicio, "Fecha de Inicio #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"> 
+            <div class='input-group date' style="width:150px;float:left;margin-top:5px;">
+              <%= f.text_field :fecha, class: 'form-control input-sm', style: "margin-top:0px;" %>
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </div>
+          <div class="col-sm-1"></div><br /><br />
+
       </div>
 
       <div class="modal-footer" style="background:#e6e6e6;">
@@ -41,9 +50,9 @@
 
 <style type="text/css">
 
-  #form-editar-cargo label, #form-editar-cargo input[type='text'], #form-editar-cargo select { float:left; margin-top:5px;}
-  #form-editar-cargo br {clear:both; }
-  #form-editar-cargo label { width:200px;font-size:12px;margin-top:10px;}
+  #form-editar-torneo label, #form-editar-torneo input[type='text'], #form-editar-torneo select { float:left; margin-top:5px;}
+  #form-editar-torneo br {clear:both; }
+  #form-editar-torneo label { width:200px;font-size:12px;margin-top:10px;}
 
 
 </style>

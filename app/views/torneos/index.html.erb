@@ -42,12 +42,18 @@
             </div>
             <em class="nmb"></em>
           </th>
-
+          <th style="width:120px;">
+            <span>Fecha Inicio</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_torneos_fecha, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_fecha');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
           <th style="width:120px;">
             <span>Cantidad Fechas</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_torneos_sueldo, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_sueldo');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_torneos_cantidad_fechas, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_cantidad_fechas');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
