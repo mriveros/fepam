@@ -80,7 +80,8 @@ class TorneosController < ApplicationController
 	    @torneo = Torneo.new()
 
 	    @torneo.descripcion = params[:torneo][:descripcion].upcase
-	    @torneo.sueldo = params[:torneo][:sueldo].to_s.gsub(/[$.]/,'').to_i
+	  	@torneo.cantidad_fechas = params[:torneo][:cantidad_fechas]
+	  	@torneo.fecha = params[:torneo][:fecha]
 	    
 	      if @torneo.save
 

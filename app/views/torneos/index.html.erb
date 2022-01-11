@@ -7,7 +7,7 @@
 -->
   <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
     <h3 style="float:left;margin-top:5px;">Campeonatos</h3>
-    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-cargo", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-torneo", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
     <%= modal_window( window_id: "modal-window-agregar-torneo", link_to_id: "#link-to-agregar-torneo", url: torneos_agregar_path( window_id: "modal-window-agregar-torneo") )%>
     
   </div>
@@ -107,7 +107,7 @@
   aplicar_datepicker();
   $("#form-buscar-torneos").submit();
   <% if params[:agregar] %>
-    $("#link-to-agregar-cargo").trigger('click');
+    $("#link-to-agregar-torneo").trigger('click');
   <% end %>
   //----------------------------------------------------------------------------//
 </script>
