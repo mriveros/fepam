@@ -43,10 +43,12 @@
             <em class="nmb"></em>
           </th>
           <th style="width:120px;">
-            <span>Fecha Inicio</span>
+            <span>Fecha de Inicio</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_torneos_fecha, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_fecha');"><i class="fa fa-times"></i></span>
+              <div class='input-group date' style="float:left;">
+                <%= text_field_tag :form_buscar_torneos_fecha, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
+                <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
             </div>
           </th>
           <th style="width:120px;">

@@ -10236,3 +10236,2922 @@ ApplicationController::require_usuario
   Rendered torneos/_lista.html.erb (16.2ms)
   Rendered torneos/lista.js.erb (18.3ms)
 Completed 200 OK in 74ms (Views: 18.6ms | ActiveRecord: 44.8ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:39:08 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.6ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (3.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:39:08.264326"], ["perishable_token", "kaeU1Bd52pp3aa8UbMJj"], ["updated_at", "2022-01-12 02:39:08.269045"]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (7.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (7.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (42.9ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (5.9ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.8ms)
+  Rendered torneos/_lista.html.erb (61.3ms)
+  Rendered torneos/lista.js.erb (65.5ms)
+Completed 200 OK in 115ms (Views: 30.8ms | ActiveRecord: 68.2ms)
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:40:12 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:40:12.507694"], ["perishable_token", "dXyg0md7iCQNbhL0531g"], ["updated_at", "2022-01-12 02:40:12.510633"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.3ms)
+  Rendered torneos/index.html.erb within layouts/application (60.3ms)
+  [1m[36mVAcceso Load (148.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (5.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (2.5ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (366.8ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (11.7ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (1.6ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (2.6ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (735.6ms)
+  Rendered layouts/_header.html.erb (738.7ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 2262ms (Views: 1633.1ms | ActiveRecord: 619.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:14 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:15 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:16 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:40:17 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:40:18 -0300
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:40:18 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:40:18 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:40:18.278447"], ["perishable_token", "wk5ADMsmpglau7wK7geb"], ["updated_at", "2022-01-12 02:40:18.280929"]]
+  [1m[36m (4.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (5.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.2ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (4.2ms)
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.7ms)
+  Rendered torneos/_lista.html.erb (20.2ms)
+  Rendered torneos/lista.js.erb (23.7ms)
+Completed 200 OK in 105ms (Views: 27.3ms | ActiveRecord: 20.3ms)
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:40:18 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:40:18 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:40:18 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:40:19 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:40:45 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:40:45.744434"], ["perishable_token", "nmZAdfOsGiSraPRnUoF"], ["updated_at", "2022-01-12 02:40:45.747907"]]
+  [1m[36m (6.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (17.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.4ms)
+  Rendered torneos/index.html.erb within layouts/application (69.4ms)
+  [1m[36mVAcceso Load (7.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (11.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (281.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.1ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (7.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (45.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (1.6ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (1.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (6.4ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (6.2ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (5.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (875.1ms)
+  Rendered layouts/_header.html.erb (877.8ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 2591ms (Views: 2159.2ms | ActiveRecord: 420.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:48 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:48 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:49 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:40:50 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (284.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (4.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.2ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:40:51.145042"], ["perishable_token", "Iv3WZGwaJdP8Ljj3hy5n"], ["updated_at", "2022-01-12 02:40:51.150864"]]
+  [1m[36m (13.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (7.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (12.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (32.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (4.3ms)
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (46.9ms)
+  Rendered torneos/_lista.html.erb (93.6ms)
+  Rendered torneos/lista.js.erb (98.0ms)
+Completed 200 OK in 448ms (Views: 71.1ms | ActiveRecord: 363.0ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:40:51 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:40:51 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:40:51 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:40:51 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:40:52 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:41:34 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:41:34.422371"], ["perishable_token", "wfvlGfc0s0G6U30NBmwe"], ["updated_at", "2022-01-12 02:41:34.425539"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (84.9ms)
+  [1m[36mVAcceso Load (207.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (5.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.9ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (2.6ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (2.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (2.5ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (1.6ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (2.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (283.2ms)
+  Rendered layouts/_header.html.erb (285.4ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 1430ms (Views: 1153.0ms | ActiveRecord: 264.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:35 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:36 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (5.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:41:37.766689"], ["perishable_token", "5yiJLxpzNa21VpD0phxk"], ["updated_at", "2022-01-12 02:41:37.773413"]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (8.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.3ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (6.3ms)
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.8ms)
+  Rendered torneos/_lista.html.erb (22.4ms)
+  Rendered torneos/lista.js.erb (27.5ms)
+Completed 200 OK in 72ms (Views: 32.1ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:41:37 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:41:38 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:41:38 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:41:38 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:41:38 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:41:39 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:42:35 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (23.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (76.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (21.0ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:42:35.215192"], ["perishable_token", "qejnGQ8axdGVX06tQUjV"], ["updated_at", "2022-01-12 02:42:35.293043"]]
+  [1m[36m (6.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (13.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (41.5ms)
+  [1m[36mVAcceso Load (3.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (13.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (13.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (12.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (13.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (1.5ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (4.6ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (5.1ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (5.4ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (278.4ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (386.8ms)
+  Rendered layouts/_header.html.erb (389.7ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 1313ms (Views: 798.6ms | ActiveRecord: 504.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:36 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:36 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:36 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:36 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:36 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:42:37 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:42:37.972371"], ["perishable_token", "qMPO3L0c3eYm5EiG2aj"], ["updated_at", "2022-01-12 02:42:37.974399"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (6.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (5.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.3ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (4.9ms)
+  Rendered helpers/_modal_window.html.erb (0.5ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.6ms)
+  Rendered torneos/_lista.html.erb (21.3ms)
+  Rendered torneos/lista.js.erb (25.2ms)
+Completed 200 OK in 62ms (Views: 29.7ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:42:38 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:42:38 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:42:38 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:42:38 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:42:39 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:43:03 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:43:03.756722"], ["perishable_token", "PSba06d9vaTpWBGYXY0"], ["updated_at", "2022-01-12 02:43:03.758927"]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (33.6ms)
+  [1m[36mVAcceso Load (281.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.7ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (3.5ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (5.1ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (5.5ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (1.7ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (2.9ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (376.0ms)
+  Rendered layouts/_header.html.erb (378.3ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 1174ms (Views: 828.9ms | ActiveRecord: 338.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:05 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_id"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.4ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:43:06.852841"], ["perishable_token", "ZR9Gg7OPkuD8e02uiqc"], ["updated_at", "2022-01-12 02:43:06.855550"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.5ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.0ms)
+  Rendered torneos/_lista.html.erb (8.9ms)
+  Rendered torneos/lista.js.erb (10.6ms)
+Completed 200 OK in 41ms (Views: 11.7ms | ActiveRecord: 18.3ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:43:06 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:43:07 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:43:07 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:43:07 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:43:08 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:45:13 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (19.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (10.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:45:13.334999"], ["perishable_token", "gR7nH5AXf96oHdgbDtxy"], ["updated_at", "2022-01-12 02:45:13.351887"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.7ms)
+  Rendered torneos/index.html.erb within layouts/application (145.5ms)
+  [1m[36mVAcceso Load (38.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (15.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (6.9ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (325.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (7.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (3.3ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (1.7ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (2.6ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (1.4ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (1.8ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (444.4ms)
+  Rendered layouts/_header.html.erb (446.7ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 1728ms (Views: 1210.9ms | ActiveRecord: 454.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:15 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (19.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (10.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:45:16.735561"], ["perishable_token", "vit2JaZzw72xkRknAaC"], ["updated_at", "2022-01-12 02:45:16.748508"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (8.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (2.2ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (18.9ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (11.3ms)
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (4.7ms)
+  Rendered torneos/_lista.html.erb (53.5ms)
+  Rendered torneos/lista.js.erb (58.2ms)
+Completed 200 OK in 139ms (Views: 47.3ms | ActiveRecord: 67.5ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:45:16 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:45:17 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:45:17 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:45:18 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:45:58 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (8.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:45:58.771317"], ["perishable_token", "Dew2zW0Fvsi70kgVti"], ["updated_at", "2022-01-12 02:45:58.773892"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (34.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (56.4ms)
+  [1m[36mVAcceso Load (7.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (5.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (279.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (5.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.9ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (4.6ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (4.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (2.5ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (5.1ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (1.9ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (349.2ms)
+  Rendered layouts/_header.html.erb (350.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 1177ms (Views: 787.0ms | ActiveRecord: 382.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:00 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (6.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:01.544375"], ["perishable_token", "l7ollwA7mXyUXGlGenx"], ["updated_at", "2022-01-12 02:46:01.551858"]]
+  [1m[36m (2.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (10.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (32.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.2ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.1ms)
+  Rendered torneos/_lista.html.erb (46.9ms)
+  Rendered torneos/lista.js.erb (49.4ms)
+Completed 200 OK in 95ms (Views: 22.4ms | ActiveRecord: 59.4ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:46:01 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:46:02 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:46:33 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (4.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:33.882139"], ["perishable_token", "DiS6WqGvwUhSdtrcA4E3"], ["updated_at", "2022-01-12 02:46:33.886925"]]
+  [1m[36m (3.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (22.9ms)
+  [1m[36mVAcceso Load (3.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (5.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.7ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (6.1ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (7.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (3.7ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (1.8ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (2.0ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (3.2ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (1.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (65.2ms)
+  Rendered layouts/_header.html.erb (66.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 486ms (Views: 405.7ms | ActiveRecord: 73.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:34 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (9.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (77.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.3ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:35.392327"], ["perishable_token", "3DdCl2EKXkFoPYosAAVy"], ["updated_at", "2022-01-12 02:46:35.470459"]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (284.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (11.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.6ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered torneos/_lista.html.erb (8.1ms)
+  Rendered torneos/lista.js.erb (10.0ms)
+Completed 200 OK in 413ms (Views: 12.8ms | ActiveRecord: 390.8ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:46:35 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:46:36 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:39 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (7.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.3ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:39.736269"], ["perishable_token", "ZZSE11hBblRwBAvLQD3"], ["updated_at", "2022-01-12 02:46:39.738468"]]
+  [1m[36m (4.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (5.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (25.9ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.9ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.0ms)
+  Rendered torneos/_lista.html.erb (7.5ms)
+  Rendered torneos/lista.js.erb (8.5ms)
+Completed 200 OK in 74ms (Views: 10.1ms | ActiveRecord: 53.2ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:39 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (6.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:39.848662"], ["perishable_token", "Dv2I6U0ZgFeqDMTI3FUI"], ["updated_at", "2022-01-12 02:46:39.851182"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (4.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered torneos/_lista.html.erb (7.5ms)
+  Rendered torneos/lista.js.erb (8.5ms)
+Completed 200 OK in 37ms (Views: 8.8ms | ActiveRecord: 21.1ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:39 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.6ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:39.889399"], ["perishable_token", "mtXi6tZPc0PcjoXFPpzi"], ["updated_at", "2022-01-12 02:46:39.891460"]]
+  [1m[36m (10.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (5.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered torneos/_lista.html.erb (8.7ms)
+  Rendered torneos/lista.js.erb (9.8ms)
+Completed 200 OK in 43ms (Views: 10.6ms | ActiveRecord: 25.5ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:42 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (21.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (14.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:42.784406"], ["perishable_token", "jpQR5rs2eARAbKi0ACok"], ["updated_at", "2022-01-12 02:46:42.786911"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (13.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (15.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (7.0ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.0ms)
+  Rendered torneos/_lista.html.erb (13.4ms)
+  Rendered torneos/lista.js.erb (14.5ms)
+Completed 200 OK in 99ms (Views: 10.8ms | ActiveRecord: 76.0ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:42 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (6.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:42.880496"], ["perishable_token", "DjRW7aEwE3IOQgKgNfT"], ["updated_at", "2022-01-12 02:46:42.884422"]]
+  [1m[36m (3.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (5.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (33.1ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.0ms)
+  Rendered torneos/_lista.html.erb (49.2ms)
+  Rendered torneos/lista.js.erb (50.5ms)
+Completed 200 OK in 84ms (Views: 19.5ms | ActiveRecord: 55.6ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:46:42 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (4.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:46:42.978752"], ["perishable_token", "7clVfUMB3wOONJUZYHFu"], ["updated_at", "2022-01-12 02:46:42.980667"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.3ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.1ms)
+  Rendered torneos/_lista.html.erb (8.5ms)
+  Rendered torneos/lista.js.erb (9.6ms)
+Completed 200 OK in 36ms (Views: 9.4ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:46:43 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:47:18 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.3ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:18.981699"], ["perishable_token", "PDEQpG63DfWnqpy0BXS9"], ["updated_at", "2022-01-12 02:47:18.983795"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (35.9ms)
+  [1m[36mVAcceso Load (4.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (8.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (11.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (1.3ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (1.5ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (2.7ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (1.3ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (11.2ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (121.3ms)
+  Rendered layouts/_header.html.erb (122.9ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 614ms (Views: 433.9ms | ActiveRecord: 142.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:19 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:19 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:19 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:19 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:19 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:19 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (3.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:20.687149"], ["perishable_token", "fvRCMwfIa5Xkz7Movm"], ["updated_at", "2022-01-12 02:47:20.690849"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (11.0ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.4ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered torneos/_lista.html.erb (21.7ms)
+  Rendered torneos/lista.js.erb (23.3ms)
+Completed 200 OK in 61ms (Views: 15.0ms | ActiveRecord: 33.1ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:47:20 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:47:21 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:47:21 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:47:22 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:24 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (4.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.1ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:24.655350"], ["perishable_token", "ITGrGxpSBnAudwL5pIW"], ["updated_at", "2022-01-12 02:47:24.657450"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (33.1ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.7ms)
+  Rendered torneos/lista.js.erb (4.2ms)
+Completed 200 OK in 65ms (Views: 5.5ms | ActiveRecord: 51.2ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:24 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.2ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:24.742448"], ["perishable_token", "wOJWTQc1eRsPqjBQvJx"], ["updated_at", "2022-01-12 02:47:24.744395"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (9.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (3.4ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.4ms)
+  Rendered torneos/lista.js.erb (3.3ms)
+Completed 200 OK in 39ms (Views: 3.6ms | ActiveRecord: 27.0ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:24 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.9ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:24.792687"], ["perishable_token", "nYCHkJ0yHtIq04lgd29"], ["updated_at", "2022-01-12 02:47:24.794780"]]
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (280.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (1.3ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (6.2ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (6.8ms)
+  Rendered torneos/lista.js.erb (7.9ms)
+Completed 200 OK in 322ms (Views: 3.7ms | ActiveRecord: 308.8ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:27 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (10.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (12.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:27.816410"], ["perishable_token", "b5xIzQkBoGWFB8pD0vWi"], ["updated_at", "2022-01-12 02:47:27.829748"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (3.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-09')[0m
+  [1m[35m (7.2ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-09')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.3ms)
+  Rendered torneos/lista.js.erb (3.2ms)
+Completed 200 OK in 63ms (Views: 3.5ms | ActiveRecord: 49.2ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:27 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (33.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (25.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:27.911955"], ["perishable_token", "4rGzzFKQWwvmnYBwr6MF"], ["updated_at", "2022-01-12 02:47:27.914434"]]
+  [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-09')[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (3.4ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-09')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (4.0ms)
+  Rendered torneos/lista.js.erb (4.9ms)
+Completed 200 OK in 88ms (Views: 3.5ms | ActiveRecord: 74.3ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:27 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (4.6ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:27.977834"], ["perishable_token", "VFN4K3lCOOQ7iRdSKGpr"], ["updated_at", "2022-01-12 02:47:27.980139"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (4.2ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-09')[0m
+  [1m[35m (2.4ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.0ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-09')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.6ms)
+  Rendered torneos/lista.js.erb (3.5ms)
+Completed 200 OK in 33ms (Views: 3.6ms | ActiveRecord: 21.8ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:47:28 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:47:32 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (7.6ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (3.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:47:32.751822"], ["perishable_token", "JgOhX1lctBEmC4Yn"], ["updated_at", "2022-01-12 02:47:32.755503"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (3.1ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.7ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.6ms)
+  Rendered torneos/_lista.html.erb (13.6ms)
+  Rendered torneos/lista.js.erb (14.9ms)
+Completed 200 OK in 44ms (Views: 14.2ms | ActiveRecord: 21.4ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:47:32 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:48:16 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (4.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.1ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:48:17.056226"], ["perishable_token", "TkRsCZHfPR2kVQJPcwwn"], ["updated_at", "2022-01-12 02:48:17.062049"]]
+  [1m[36m (6.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (30.4ms)
+  [1m[36mVAcceso Load (3.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (12.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (279.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (16.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (4.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (9.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (4.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (3.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)[0m
+  [1m[35mPerfil Load (13.8ms)[0m  SELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1  [["id", 43186]]
+  [1m[36mRol Load (2.3ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPerfil Load (311.4ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mRol Load (300.8ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mRol Load (92.8ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered layouts/_menu.html.erb (1159.3ms)
+  Rendered layouts/_header.html.erb (1160.1ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1641ms (Views: 395.3ms | ActiveRecord: 1195.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:18 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:19 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (8.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:48:20.368063"], ["perishable_token", "IkB6TAEfoJgi40Bwkvee"], ["updated_at", "2022-01-12 02:48:20.371598"]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (6.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (5.0ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.0ms)
+  Rendered torneos/_lista.html.erb (14.2ms)
+  Rendered torneos/lista.js.erb (15.6ms)
+Completed 200 OK in 75ms (Views: 13.1ms | ActiveRecord: 34.5ms)
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:48:20 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:48:22 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:48:22 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (6.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:48:22.267115"], ["perishable_token", "lx3KofooBRUvVmUeicj"], ["updated_at", "2022-01-12 02:48:22.269365"]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (2.1ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (1.3ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.5ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (3.0ms)
+  Rendered torneos/lista.js.erb (3.9ms)
+Completed 200 OK in 33ms (Views: 3.5ms | ActiveRecord: 20.7ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:48:22 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (4.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (5.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:48:22.307605"], ["perishable_token", "LcK6FmyxVweCQCCxIjgd"], ["updated_at", "2022-01-12 02:48:22.313368"]]
+  [1m[36m (3.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (7.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (6.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (2.1ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (4.3ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (5.0ms)
+  Rendered torneos/lista.js.erb (5.9ms)
+Completed 200 OK in 53ms (Views: 5.8ms | ActiveRecord: 37.4ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:48:22 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (34.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:48:22.396813"], ["perishable_token", "RAx4uOkEdL3lnAZFy2JO"], ["updated_at", "2022-01-12 02:48:22.399331"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (15.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (3.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (1.5ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.1ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.7ms)
+  Rendered torneos/lista.js.erb (3.6ms)
+Completed 200 OK in 76ms (Views: 3.5ms | ActiveRecord: 62.4ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:50 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-10", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:51.279468"], ["perishable_token", "3p7pYaPayW8Qs54T6da"], ["updated_at", "2022-01-12 02:51:51.283113"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (10.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (48.1ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-10')[0m
+  [1m[35m (2.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (2.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-10')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (3.3ms)
+  Rendered torneos/lista.js.erb (4.2ms)
+Completed 200 OK in 452ms (Views: 4.7ms | ActiveRecord: 411.6ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:51 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-10", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (12.3ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:51.414925"], ["perishable_token", "I1IoHwcjTKnaPF2qKSxB"], ["updated_at", "2022-01-12 02:51:51.417420"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-10')[0m
+  [1m[35m (1.8ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (18.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-10')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (19.3ms)
+  Rendered torneos/lista.js.erb (20.1ms)
+Completed 200 OK in 56ms (Views: 3.5ms | ActiveRecord: 43.0ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:51 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-10", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (5.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:51.472132"], ["perishable_token", "U2or2yphAaoiVh5pdp"], ["updated_at", "2022-01-12 02:51:51.478527"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (17.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (5.7ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-10')[0m
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-10')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.7ms)
+  Rendered torneos/lista.js.erb (3.8ms)
+Completed 200 OK in 55ms (Views: 4.0ms | ActiveRecord: 41.5ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:51:51 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:53 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:53.622868"], ["perishable_token", "AVkk6pk2mycV7WYwjAR"], ["updated_at", "2022-01-12 02:51:53.625636"]]
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-09')[0m
+  [1m[35m (3.8ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.8ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-09')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.4ms)
+  Rendered torneos/lista.js.erb (3.3ms)
+Completed 200 OK in 34ms (Views: 3.4ms | ActiveRecord: 21.3ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:53 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:53.668812"], ["perishable_token", "H0TCP7Fpz7RWzpM5hJo"], ["updated_at", "2022-01-12 02:51:53.670871"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (10.3ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-09')[0m
+  [1m[35m (2.2ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (13.4ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-09')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (14.7ms)
+  Rendered torneos/lista.js.erb (15.9ms)
+Completed 200 OK in 53ms (Views: 4.8ms | ActiveRecord: 41.0ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:53 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-09", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:53.731760"], ["perishable_token", "7mftICDFoN8cTRsWPSAq"], ["updated_at", "2022-01-12 02:51:53.733826"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-09')[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-09')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered torneos/_lista.html.erb (2.4ms)
+  Rendered torneos/lista.js.erb (3.2ms)
+Completed 200 OK in 29ms (Views: 3.6ms | ActiveRecord: 18.0ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:57 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (3.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:57.142660"], ["perishable_token", "GMqxl4xVGBiRXGU1PUYo"], ["updated_at", "2022-01-12 02:51:57.147209"]]
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (3.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (2.1ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (2.3ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (1.9ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.8ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered torneos/_lista.html.erb (15.2ms)
+  Rendered torneos/lista.js.erb (16.3ms)
+Completed 200 OK in 49ms (Views: 16.4ms | ActiveRecord: 25.2ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:57 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (8.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (301.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:57.198490"], ["perishable_token", "mjijAJqfKV2j8ptSrxwF"], ["updated_at", "2022-01-12 02:51:57.208192"]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (23.3ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (13.2ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (3.3ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.2ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered torneos/_lista.html.erb (11.2ms)
+  Rendered torneos/lista.js.erb (12.2ms)
+Completed 200 OK in 393ms (Views: 10.9ms | ActiveRecord: 359.5ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:51:57 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (14.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.6ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:51:57.604476"], ["perishable_token", "xJY9HoBFTjAA6VsTIDG"], ["updated_at", "2022-01-12 02:51:57.619535"]]
+  [1m[36m (17.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (10.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (3.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')[0m
+  [1m[35m (1.4ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (49.6ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.2ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.3ms)
+  Rendered torneos/_lista.html.erb (58.5ms)
+  Rendered torneos/lista.js.erb (59.6ms)
+Completed 200 OK in 127ms (Views: 12.1ms | ActiveRecord: 104.6ms)
+
+
+Started GET "/torneos/editar?id=4&amp;window_id=modal-window-editar-torneo&_=1641955699489" for 127.0.0.1 at 2022-01-11 23:52:01 -0300
+Processing by TorneosController#editar as JS
+  Parameters: {"id"=>"4", "amp"=>nil, "window_id"=>"modal-window-editar-torneo", "_"=>"1641955699489"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (4.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (10.4ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:52:01.365360"], ["perishable_token", "2wYedVanW50RhhduDyQh"], ["updated_at", "2022-01-12 02:52:01.370279"]]
+  [1m[36m (5.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (8.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'editar' and sistema_id = 1)
+  [1m[36mTorneo Load (3.4ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1[0m  [["id", 4]]
+PG::Error: ERROR:  cached plan must not change result type
+: SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1
+  [1m[35mTorneo Load (4.7ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered torneos/_editar.html.erb (2.3ms)
+  Rendered torneos/editar.js.erb (5.1ms)
+Completed 200 OK in 62ms (Views: 8.9ms | ActiveRecord: 39.4ms)
+
+
+Started POST "/torneos/actualizar" for 127.0.0.1 at 2022-01-11 23:52:36 -0300
+Processing by TorneosController#actualizar as JS
+  Parameters: {"utf8"=>"✓", "torneo"=>{"id"=>"4", "descripcion"=>"CAMPEONATO TAPAICUA", "cantidad_fechas"=>"3.0", "fecha"=>"06/02/2022"}, "window_id"=>"modal-window-editar-torneo", "commit"=>"Guardar"}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (3.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (3.5ms)[0m  BEGIN
+  [1m[36mSQL (2.4ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:36.744711"], ["perishable_token", "mczKJk8hlIyuPm7QKOR"], ["updated_at", "2022-01-12 02:52:36.748849"]]
+  [1m[35m (12.0ms)[0m  COMMIT
+  [1m[36mVAcceso Load (18.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'actualizar' and sistema_id = 1)[0m
+  [1m[35mTorneo Load (1.9ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.3ms)[0m  INSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_antes", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["accion", "actualizar torneo"], ["created_at", "2022-01-12 02:52:37.164216"], ["ip", "127.0.0.1"], ["pista_antes", "{\"id\":4,\"descripcion\":\"CAMPEONATO TAPAICUA\",\"cantidad_fechas\":\"3.0\",\"fecha\":\"2022-01-11\",\"created_at\":\"2022-01-11T02:21:44.565Z\",\"updated_at\":\"2022-01-12T02:37:28.916Z\"}"], ["sistema", "Ganatec"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:52:37.164216"], ["usuario", "4063149-ced-par"]]
+  [1m[36m (16.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (4.5ms)[0m  BEGIN
+  [1m[36mSQL (16.6ms)[0m  [1mUPDATE "torneos" SET "fecha" = $1, "updated_at" = $2 WHERE "torneos"."id" = 4[0m  [["fecha", "2022-02-06"], ["updated_at", "2022-01-12 02:52:37.235172"]]
+  [1m[35m (7.0ms)[0m  COMMIT
+  [1m[36mAuditoria Load (4.1ms)[0m  [1mSELECT  "auditorias_2022".* FROM "auditorias_2022"  WHERE "auditorias_2022"."id" = $1 LIMIT 1[0m  [["id", 289]]
+  [1m[35m (7.0ms)[0m  BEGIN
+  [1m[36mSQL (25.5ms)[0m  [1mUPDATE "auditorias_2022" SET "ip_update" = $1, "pista_despues" = $2, "updated_at" = $3, "usuario_update" = $4 WHERE "auditorias_2022"."id" = 289[0m  [["ip_update", "127.0.0.1"], ["pista_despues", "{\"id\":4,\"descripcion\":\"CAMPEONATO TAPAICUA\",\"cantidad_fechas\":\"3.0\",\"fecha\":\"2022-02-06\",\"created_at\":\"2022-01-11T02:21:44.565Z\",\"updated_at\":\"2022-01-12T02:52:37.235Z\"}"], ["updated_at", "2022-01-12 02:52:37.480405"], ["usuario_update", "4063149-ced-par"]]
+  [1m[35m (24.3ms)[0m  COMMIT
+  Rendered torneos/actualizar.js.erb (0.1ms)
+Completed 200 OK in 833ms (Views: 4.2ms | ActiveRecord: 369.8ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:39 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"4", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (9.8ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (13.0ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:39.129078"], ["perishable_token", "yd5vpCCtdHfxCz5naHIu"], ["updated_at", "2022-01-12 02:52:39.143529"]]
+  [1m[35m (14.0ms)[0m  COMMIT
+  [1m[36mVAcceso Load (8.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (4.7ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (id = '4')
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (21.6ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (id = '4')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.6ms)
+  Rendered torneos/_lista.html.erb (28.0ms)
+  Rendered torneos/lista.js.erb (29.6ms)
+Completed 200 OK in 98ms (Views: 11.1ms | ActiveRecord: 74.4ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:52:39 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:44 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"4", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (8.6ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (21.1ms)[0m  BEGIN
+  [1m[36mSQL (10.0ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:44.871922"], ["perishable_token", "fhq4cH62TlvIl8no8oS"], ["updated_at", "2022-01-12 02:52:44.893825"]]
+  [1m[35m (3.6ms)[0m  COMMIT
+  [1m[36mVAcceso Load (316.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (4.4ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (id = '4')
+  [1m[36m (8.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (2.1ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (id = '4')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.1ms)
+  Rendered torneos/_lista.html.erb (5.3ms)
+  Rendered torneos/lista.js.erb (6.4ms)
+Completed 200 OK in 391ms (Views: 7.9ms | ActiveRecord: 375.1ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:45 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"4", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (6.6ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (4.8ms)[0m  BEGIN
+  [1m[36mSQL (1.7ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:45.271538"], ["perishable_token", "SrvQUMKAtMEdeT8IDqf"], ["updated_at", "2022-01-12 02:52:45.277363"]]
+  [1m[35m (1.7ms)[0m  COMMIT
+  [1m[36mVAcceso Load (5.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (3.9ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (id = '4')
+  [1m[36m (1.8ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (4.0ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (id = '4')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.1ms)
+  Rendered torneos/_lista.html.erb (7.2ms)
+  Rendered torneos/lista.js.erb (8.0ms)
+Completed 200 OK in 45ms (Views: 5.9ms | ActiveRecord: 30.1ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:47 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"4", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (5.7ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  BEGIN
+  [1m[36mSQL (6.2ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:47.586582"], ["perishable_token", "7TyvCy4lo15yaGfwg"], ["updated_at", "2022-01-12 02:52:47.588690"]]
+  [1m[35m (2.0ms)[0m  COMMIT
+  [1m[36mVAcceso Load (5.7ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (id = '4')
+  [1m[36m (1.8ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (12.9ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (id = '4')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.0ms)
+  Rendered torneos/_lista.html.erb (18.2ms)
+  Rendered torneos/lista.js.erb (19.0ms)
+Completed 200 OK in 55ms (Views: 8.0ms | ActiveRecord: 37.3ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:48 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (8.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (2.3ms)[0m  BEGIN
+  [1m[36mSQL (2.0ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:49.171893"], ["perishable_token", "61imZF6Clo31VWwejuWf"], ["updated_at", "2022-01-12 02:52:49.174903"]]
+  [1m[35m (2.3ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.7ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (4.2ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.1ms)
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.0ms)
+  Rendered torneos/_lista.html.erb (9.4ms)
+  Rendered torneos/lista.js.erb (10.5ms)
+Completed 200 OK in 40ms (Views: 8.2ms | ActiveRecord: 24.1ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:55 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (308.5ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (2.4ms)[0m  BEGIN
+  [1m[36mSQL (1.3ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:56.033648"], ["perishable_token", "m4EMtRCmSfYivWTzlI5"], ["updated_at", "2022-01-12 02:52:56.036712"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.9ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')
+  [1m[36m (3.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (2.0ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered torneos/_lista.html.erb (5.5ms)
+  Rendered torneos/lista.js.erb (6.3ms)
+Completed 200 OK in 339ms (Views: 6.3ms | ActiveRecord: 324.2ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:56 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (34.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.1ms)[0m  BEGIN
+  [1m[36mSQL (1.4ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:56.106452"], ["perishable_token", "d8cGwITrWTyR7SR5OGww"], ["updated_at", "2022-01-12 02:52:56.108178"]]
+  [1m[35m (1.7ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.8ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (6.4ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')
+  [1m[36m (4.9ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (1.6ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered torneos/_lista.html.erb (5.2ms)
+  Rendered torneos/lista.js.erb (6.5ms)
+Completed 200 OK in 71ms (Views: 7.7ms | ActiveRecord: 55.4ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:52:56 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-01-11", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (20.8ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  BEGIN
+  [1m[36mSQL (1.8ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:52:56.175854"], ["perishable_token", "zY105QwCw6tl8EW16nCT"], ["updated_at", "2022-01-12 02:52:56.178051"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36mVAcceso Load (6.9ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (5.8ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-01-11')
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (1.8ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-01-11')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.1ms)
+  Rendered torneos/_lista.html.erb (4.8ms)
+  Rendered torneos/lista.js.erb (5.8ms)
+Completed 200 OK in 56ms (Views: 6.8ms | ActiveRecord: 41.5ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:53:01 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (3.2ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (6.7ms)[0m  BEGIN
+  [1m[36mSQL (4.7ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:53:01.444219"], ["perishable_token", "Ura2vvcoxflH6nNJLHSx"], ["updated_at", "2022-01-12 02:53:01.452339"]]
+  [1m[35m (2.1ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (10.9ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (3.2ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.2ms)
+  Rendered helpers/_modal_window.html.erb (0.0ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (0.9ms)
+  Rendered torneos/_lista.html.erb (8.3ms)
+  Rendered torneos/lista.js.erb (9.6ms)
+Completed 200 OK in 53ms (Views: 9.6ms | ActiveRecord: 34.1ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:53:08 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-02-06", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (17.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  BEGIN
+  [1m[36mSQL (2.1ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:53:09.248994"], ["perishable_token", "JuvzwC9H6WqrXnKDMoi"], ["updated_at", "2022-01-12 02:53:09.250791"]]
+  [1m[35m (7.0ms)[0m  COMMIT
+  [1m[36mVAcceso Load (7.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (7.1ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-02-06')
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (3.7ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-02-06')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered torneos/_lista.html.erb (7.8ms)
+  Rendered torneos/lista.js.erb (8.8ms)
+Completed 200 OK in 64ms (Views: 7.9ms | ActiveRecord: 46.9ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:53:09 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-02-06", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (2.8ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.6ms)[0m  BEGIN
+  [1m[36mSQL (1.9ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:53:09.306983"], ["perishable_token", "mw0LhGSXtHnSOSPf2Xu"], ["updated_at", "2022-01-12 02:53:09.309211"]]
+  [1m[35m (2.5ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.7ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.9ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-02-06')
+  [1m[36m (2.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (4.7ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-02-06')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered torneos/_lista.html.erb (8.8ms)
+  Rendered torneos/lista.js.erb (10.5ms)
+Completed 200 OK in 37ms (Views: 8.4ms | ActiveRecord: 21.2ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:53:09 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"2022-02-06", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (2.7ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  BEGIN
+  [1m[36mSQL (3.1ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:53:09.353729"], ["perishable_token", "VZ2TpC9HRwxXpcImNrfH"], ["updated_at", "2022-01-12 02:53:09.356101"]]
+  [1m[35m (2.6ms)[0m  COMMIT
+  [1m[36mVAcceso Load (12.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (3.5ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (fecha = '2022-02-06')
+  [1m[36m (15.8ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (4.9ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (fecha = '2022-02-06')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.3ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.1ms)
+  Rendered torneos/_lista.html.erb (9.5ms)
+  Rendered torneos/lista.js.erb (10.8ms)
+Completed 200 OK in 63ms (Views: 8.1ms | ActiveRecord: 46.7ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:53:13 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (3.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  BEGIN
+  [1m[36mSQL (1.6ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:53:13.300946"], ["perishable_token", "hxV2OuHmDEeZO35HsY9"], ["updated_at", "2022-01-12 02:53:13.302686"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.5ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.7ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (2.4ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered torneos/_lista.html.erb (8.8ms)
+  Rendered torneos/lista.js.erb (9.8ms)
+Completed 200 OK in 33ms (Views: 9.4ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/torneos/eliminar?id=1" for 127.0.0.1 at 2022-01-11 23:53:27 -0300
+Processing by TorneosController#eliminar as JS
+  Parameters: {"id"=>"1"}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (281.5ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (17.4ms)[0m  BEGIN
+  [1m[36mSQL (20.6ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:53:28.042255"], ["perishable_token", "asSGbpu3eq9DlA7OXQVR"], ["updated_at", "2022-01-12 02:53:28.060768"]]
+  [1m[35m (366.8ms)[0m  COMMIT
+  [1m[36mVAcceso Load (17.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'eliminar' and sistema_id = 1)[0m
+  [1m[35mTorneo Load (6.2ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (8.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.6ms)[0m  DELETE FROM "torneos" WHERE "torneos"."id" = $1  [["id", 1]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (209.9ms)[0m  BEGIN
+  [1m[36mSQL (17.5ms)[0m  [1mINSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_despues", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["accion", "eliminar torneo"], ["created_at", "2022-01-12 02:53:28.751726"], ["ip", "127.0.0.1"], ["pista_despues", "{\"id\":1,\"descripcion\":\"CAMPEONATO CENTRAL MX/VX\",\"cantidad_fechas\":\"6.0\",\"fecha\":\"2022-01-11\",\"created_at\":\"2022-01-11T23:51:44.489Z\",\"updated_at\":\"2022-01-12T02:37:06.191Z\"}"], ["sistema", "Ultron"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:53:28.751726"], ["usuario", "4063149-ced-par"]]
+  [1m[35m (10.2ms)[0m  COMMIT
+  Rendered torneos/eliminar.js.erb (2.6ms)
+Completed 500 Internal Server Error in 1099ms
+
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: <% if @eliminado %>
+    2: 
+    3:    $("<div class='col-sm-12' id='msg-eliminar-cargo' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Eliminado exitosamente.</div>").insertBefore("#table-cargos");
+    4:    $("#form_buscar_cargos_id").val('<%= @cargo_elim.id %>');
+    5:    $("#form_buscar_cargos_descripcion").val('');
+    6:    $("#form_buscar_cargos_sueldo").val('');
+    7: 
+  app/views/torneos/eliminar.js.erb:4:in `_app_views_torneos_eliminar_js_erb___1622485236418267438_70115390869440'
+  app/controllers/torneos_controller.rb:129:in `eliminar'
+
+
+  Rendered /Users/mriveros/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /Users/mriveros/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/mriveros/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (17.7ms)
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-11 23:54:47 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (4.6ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  BEGIN
+  [1m[36mSQL (1.5ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:54:47.416653"], ["perishable_token", "dSQqUTyGlKmYDdyUGj8"], ["updated_at", "2022-01-12 02:54:47.418773"]]
+  [1m[35m (2.6ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/index.html.erb within layouts/application (21.0ms)
+  [1m[35mVAcceso Load (4.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (5.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (7.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (8.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (3.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (14.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (6.6ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)
+  [1m[36mPerfil Load (2.0ms)[0m  [1mSELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1[0m  [["id", 43186]]
+  [1m[35mRol Load (2.0ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPerfil Load (8.4ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mRol Load (3.0ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mRol Load (1.5ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered layouts/_menu.html.erb (440.2ms)
+  Rendered layouts/_header.html.erb (441.2ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 832ms (Views: 419.0ms | ActiveRecord: 407.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:48 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (8.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  BEGIN
+  [1m[36mSQL (4.7ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:54:49.369062"], ["perishable_token", "06mqgSYGRq9BVpVyG6zy"], ["updated_at", "2022-01-12 02:54:49.373751"]]
+  [1m[35m (3.6ms)[0m  COMMIT
+  [1m[36mVAcceso Load (4.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (8.2ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (2.9ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.5ms)
+  Rendered torneos/_lista.html.erb (6.8ms)
+  Rendered torneos/lista.js.erb (8.0ms)
+Completed 200 OK in 55ms (Views: 7.2ms | ActiveRecord: 33.9ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-11 23:54:49 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-11 23:54:50 -0300
+
+
+Started GET "/torneos/eliminar?id=4" for 127.0.0.1 at 2022-01-11 23:54:53 -0300
+Processing by TorneosController#eliminar as JS
+  Parameters: {"id"=>"4"}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (8.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (2.5ms)[0m  BEGIN
+  [1m[36mSQL (3.0ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:54:53.858773"], ["perishable_token", "X7FegyV76qK1yP8w3deM"], ["updated_at", "2022-01-12 02:54:53.861994"]]
+  [1m[35m (2.5ms)[0m  COMMIT
+  [1m[36mVAcceso Load (4.1ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'eliminar' and sistema_id = 1)[0m
+  [1m[35mTorneo Load (2.8ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (17.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (278.7ms)[0m  DELETE FROM "torneos" WHERE "torneos"."id" = $1  [["id", 4]]
+  [1m[36m (11.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (7.7ms)[0m  BEGIN
+  [1m[36mSQL (3.4ms)[0m  [1mINSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_despues", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["accion", "eliminar torneo"], ["created_at", "2022-01-12 02:54:54.212085"], ["ip", "127.0.0.1"], ["pista_despues", "{\"id\":4,\"descripcion\":\"CAMPEONATO TAPAICUA\",\"cantidad_fechas\":\"3.0\",\"fecha\":\"2022-02-06\",\"created_at\":\"2022-01-11T02:21:44.565Z\",\"updated_at\":\"2022-01-12T02:52:37.235Z\"}"], ["sistema", "Ultron"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:54:54.212085"], ["usuario", "4063149-ced-par"]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  Rendered torneos/eliminar.js.erb (0.5ms)
+Completed 200 OK in 374ms (Views: 2.5ms | ActiveRecord: 343.3ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:54:55 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"4", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (312.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (25.8ms)[0m  BEGIN
+  [1m[36mSQL (5.8ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:54:56.088871"], ["perishable_token", "HVK9hJBpZGgMLqvero"], ["updated_at", "2022-01-12 02:54:56.115570"]]
+  [1m[35m (4.1ms)[0m  COMMIT
+  [1m[36mVAcceso Load (185.7ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (id = '4')
+  [1m[36m (2.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (2.8ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (id = '4')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered torneos/_lista.html.erb (3.4ms)
+  Rendered torneos/lista.js.erb (4.2ms)
+Completed 200 OK in 554ms (Views: 4.3ms | ActiveRecord: 540.5ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:54:57 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (2.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.2ms)[0m  BEGIN
+  [1m[36mSQL (1.5ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:54:57.454309"], ["perishable_token", "RZuBIykjPZ5LL86TOC"], ["updated_at", "2022-01-12 02:54:57.456141"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mVAcceso Load (15.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.4ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (1.7ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered torneos/_lista.html.erb (2.1ms)
+  Rendered torneos/lista.js.erb (3.1ms)
+Completed 200 OK in 34ms (Views: 3.8ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:54:57 -0300
+
+
+Started GET "/torneos/agregar?window_id=modal-window-agregar-torneo&_=1641956088874" for 127.0.0.1 at 2022-01-11 23:54:59 -0300
+Processing by TorneosController#agregar as JS
+  Parameters: {"window_id"=>"modal-window-agregar-torneo", "_"=>"1641956088874"}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (7.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.4ms)[0m  BEGIN
+  [1m[36mSQL (23.7ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:54:59.051098"], ["perishable_token", "v4dLS92kC7X05hHDn81"], ["updated_at", "2022-01-12 02:54:59.053301"]]
+  [1m[35m (5.3ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.4ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'agregar' and sistema_id = 1)[0m
+  Rendered torneos/_agregar.html.erb (2.2ms)
+  Rendered torneos/agregar.js.erb (5.0ms)
+Completed 200 OK in 56ms (Views: 7.8ms | ActiveRecord: 41.1ms)
+
+
+Started POST "/torneos/guardar" for 127.0.0.1 at 2022-01-11 23:55:16 -0300
+Processing by TorneosController#guardar as JS
+  Parameters: {"utf8"=>"✓", "window_id"=>"modal-window-agregar-torneo", "torneo"=>{"descripcion"=>"Torneo tapaicua", "cantidad_fechas"=>"3", "fecha"=>"16/01/2022"}, "commit"=>"Guardar"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.5ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:55:17.011494"], ["perishable_token", "1LPkpmBnP5Qfy4BeiWE"], ["updated_at", "2022-01-12 02:55:17.013769"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (7.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'guardar' and sistema_id = 1)
+  [1m[36m (1.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "torneos" ("cantidad_fechas", "created_at", "descripcion", "fecha", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["cantidad_fechas", "3.0"], ["created_at", "2022-01-12 02:55:17.028820"], ["descripcion", "TORNEO TAPAICUA"], ["fecha", "2022-01-16"], ["updated_at", "2022-01-12 02:55:17.028820"]]
+  [1m[36m (10.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (3.3ms)[0m  BEGIN
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_despues", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["accion", "registrar torneo"], ["created_at", "2022-01-12 02:55:17.055895"], ["ip", "127.0.0.1"], ["pista_despues", "{\"id\":5,\"descripcion\":\"TORNEO TAPAICUA\",\"cantidad_fechas\":\"3.0\",\"fecha\":\"2022-01-16\",\"created_at\":\"2022-01-12T02:55:17.028Z\",\"updated_at\":\"2022-01-12T02:55:17.028Z\"}"], ["sistema", "Ultron"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:55:17.055895"], ["usuario", "4063149-ced-par"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  Rendered torneos/guardar.js.erb (0.6ms)
+Completed 200 OK in 67ms (Views: 5.4ms | ActiveRecord: 41.9ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:55:18 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"5", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (27.1ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  BEGIN
+  [1m[36mSQL (1.9ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:55:18.652360"], ["perishable_token", "3Q3oNMyoQoq7WaXbpXjv"], ["updated_at", "2022-01-12 02:55:18.654334"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36mVAcceso Load (11.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (1.7ms)[0m  SELECT COUNT(*) FROM "torneos"  WHERE (id = '5')
+  [1m[36m (1.3ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (1.6ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE (id = '5')  ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.2ms)
+  Rendered torneos/_lista.html.erb (6.0ms)
+  Rendered torneos/lista.js.erb (6.9ms)
+Completed 200 OK in 64ms (Views: 7.6ms | ActiveRecord: 48.0ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:55:18 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:55:20 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (11.9ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (1.5ms)[0m  BEGIN
+  [1m[36mSQL (1.5ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:55:20.453457"], ["perishable_token", "ly5uNxRv76Bdp6D35ooq"], ["updated_at", "2022-01-12 02:55:20.455800"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36mVAcceso Load (3.3ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (5.3ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (1.6ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (1.6ms)
+  Rendered torneos/_lista.html.erb (5.8ms)
+  Rendered torneos/lista.js.erb (7.1ms)
+Completed 200 OK in 44ms (Views: 8.4ms | ActiveRecord: 26.7ms)

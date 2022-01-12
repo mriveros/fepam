@@ -32,6 +32,13 @@ class TorneosController < ApplicationController
 
 	    end
 
+	    if params[:form_buscar_torneos_fecha].present?
+
+	      cond << "fecha = ?"
+	      args << params[:form_buscar_torneos_fecha]
+
+	    end
+
 	    
 
 	    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
