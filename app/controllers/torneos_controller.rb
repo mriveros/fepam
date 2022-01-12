@@ -25,10 +25,10 @@ class TorneosController < ApplicationController
 
 	    end
 
-	    if params[:form_buscar_torneos_sueldo].present?
+	    if params[:form_buscar_torneos_cantidad_fechas].present?
 
-	      cond << "sueldo = ?"
-	      args << params[:form_buscar_torneos_sueldo]
+	      cond << "cantidad_fechas = ?"
+	      args << params[:form_buscar_torneos_cantidad_fechas]
 
 	    end
 
