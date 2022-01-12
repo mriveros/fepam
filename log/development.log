@@ -9956,3 +9956,283 @@ ApplicationController::require_usuario
   Rendered torneos/_editar.html.erb (17.3ms)
   Rendered torneos/editar.js.erb (20.8ms)
 Completed 200 OK in 70ms (Views: 24.2ms | ActiveRecord: 34.9ms)
+
+
+Started GET "/torneos/editar?id=1&amp;window_id=modal-window-editar-torneo&_=1641954444751" for 127.0.0.1 at 2022-01-11 23:35:14 -0300
+Processing by TorneosController#editar as JS
+  Parameters: {"id"=>"1", "amp"=>nil, "window_id"=>"modal-window-editar-torneo", "_"=>"1641954444751"}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (15.5ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (4.8ms)[0m  BEGIN
+  [1m[36mSQL (4.0ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:35:14.560676"], ["perishable_token", "EplbI4wjfeINN9Zeii"], ["updated_at", "2022-01-12 02:35:14.572192"]]
+  [1m[35m (9.1ms)[0m  COMMIT
+  [1m[36mVAcceso Load (40.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'editar' and sistema_id = 1)[0m
+  [1m[35mTorneo Load (2.8ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered torneos/_editar.html.erb (223.2ms)
+  Rendered torneos/editar.js.erb (230.6ms)
+Completed 200 OK in 411ms (Views: 249.3ms | ActiveRecord: 76.1ms)
+
+
+Started POST "/torneos/actualizar" for 127.0.0.1 at 2022-01-11 23:35:18 -0300
+Processing by TorneosController#actualizar as JS
+  Parameters: {"utf8"=>"✓", "torneo"=>{"id"=>"1", "descripcion"=>"CAMPEONATO CENTRAL MX/VX", "cantidad_fechas"=>"2", "fecha"=>"2022-01-09 23:11:07.596675"}, "window_id"=>"modal-window-editar-torneo", "commit"=>"Guardar"}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (66.7ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (7.9ms)[0m  BEGIN
+  [1m[36mSQL (5.0ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-12 02:35:18.704822"], ["perishable_token", "mo3BAT1DqFlJfLPOXCb"], ["updated_at", "2022-01-12 02:35:18.713547"]]
+  [1m[35m (5.1ms)[0m  COMMIT
+  [1m[36mVAcceso Load (30.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'actualizar' and sistema_id = 1)[0m
+  [1m[35mTorneo Load (6.8ms)[0m  SELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (1.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.4ms)[0m  INSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_antes", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["accion", "actualizar torneo"], ["created_at", "2022-01-12 02:35:19.590351"], ["ip", "127.0.0.1"], ["pista_antes", "{\"id\":1,\"descripcion\":\"CAMPEONATO CENTRAL MX/VX\",\"cantidad_fechas\":\"2022.0\",\"fecha\":\"2022-01-09T23:11:07.596Z\",\"created_at\":null,\"updated_at\":\"2022-01-11T02:41:21.684Z\"}"], ["sistema", "Ganatec"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:35:19.590351"], ["usuario", "4063149-ced-par"]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (5.6ms)[0m  BEGIN
+  [1m[36m (10.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mAuditoria Load (12.3ms)[0m  SELECT  "auditorias_2022".* FROM "auditorias_2022"  WHERE "auditorias_2022"."id" = $1 LIMIT 1  [["id", 286]]
+  [1m[36m (2.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (10.1ms)[0m  UPDATE "auditorias_2022" SET "ip_update" = $1, "pista_despues" = $2, "updated_at" = $3, "usuario_update" = $4 WHERE "auditorias_2022"."id" = 286  [["ip_update", "127.0.0.1"], ["pista_despues", "{\"id\":1,\"descripcion\":\"CAMPEONATO CENTRAL MX/VX\",\"cantidad_fechas\":\"2022.0\",\"fecha\":\"2022-01-09T23:11:07.596Z\",\"created_at\":null,\"updated_at\":\"2022-01-11T02:41:21.684Z\"}"], ["updated_at", "2022-01-12 02:35:19.658426"], ["usuario_update", "4063149-ced-par"]]
+  [1m[36m (5.1ms)[0m  [1mCOMMIT[0m
+  Rendered torneos/actualizar.js.erb (1.6ms)
+Completed 200 OK in 1053ms (Views: 7.3ms | ActiveRecord: 257.0ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:35:21 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"1", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (2.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:35:21.256782"], ["perishable_token", "LC23pegEMml1oyKv7RBq"], ["updated_at", "2022-01-12 02:35:21.260716"]]
+  [1m[36m (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (5.4ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (id = '1')[0m
+  [1m[35m (8.2ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (6.6ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (id = '1')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.4ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (5.0ms)
+  Rendered torneos/_lista.html.erb (17.8ms)
+  Rendered torneos/lista.js.erb (20.5ms)
+Completed 200 OK in 69ms (Views: 18.6ms | ActiveRecord: 34.7ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:35:21 -0300
+
+
+Started GET "/torneos/editar?id=1&amp;window_id=modal-window-editar-torneo&_=1641954444752" for 127.0.0.1 at 2022-01-11 23:35:24 -0300
+Processing by TorneosController#editar as JS
+  Parameters: {"id"=>"1", "amp"=>nil, "window_id"=>"modal-window-editar-torneo", "_"=>"1641954444752"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (5.8ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.3ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:35:24.266167"], ["perishable_token", "3dd1QO0ZXqyvRG3CJmbM"], ["updated_at", "2022-01-12 02:35:24.268743"]]
+  [1m[36m (12.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (5.5ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'editar' and sistema_id = 1)
+  [1m[36mTorneo Load (2.1ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered torneos/_editar.html.erb (2.4ms)
+  Rendered torneos/editar.js.erb (4.2ms)
+Completed 200 OK in 53ms (Views: 6.4ms | ActiveRecord: 39.3ms)
+
+
+Started POST "/torneos/actualizar" for 127.0.0.1 at 2022-01-11 23:37:03 -0300
+Processing by TorneosController#actualizar as JS
+  Parameters: {"utf8"=>"✓", "torneo"=>{"id"=>"1", "descripcion"=>"CAMPEONATO CENTRAL MX/VX", "cantidad_fechas"=>"6", "fecha"=>"2022-01-09 23:11:07.596675"}, "window_id"=>"modal-window-editar-torneo", "commit"=>"Guardar"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (56.6ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (3.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.7ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:05.479984"], ["perishable_token", "s898HlQ7EKICPKSQPoKn"], ["updated_at", "2022-01-12 02:37:05.484095"]]
+  [1m[36m (31.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (5.0ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'actualizar' and sistema_id = 1)
+  [1m[36mTorneo Load (2.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (6.9ms)[0m  BEGIN
+  [1m[36mSQL (7.2ms)[0m  [1mINSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_antes", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["accion", "actualizar torneo"], ["created_at", "2022-01-12 02:37:06.105266"], ["ip", "127.0.0.1"], ["pista_antes", "{\"id\":1,\"descripcion\":\"CAMPEONATO CENTRAL MX/VX\",\"cantidad_fechas\":\"2022.0\",\"fecha\":\"2022-01-09T23:11:07.596Z\",\"created_at\":null,\"updated_at\":\"2022-01-11T02:41:21.684Z\"}"], ["sistema", "Ganatec"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:37:06.105266"], ["usuario", "4063149-ced-par"]]
+  [1m[35m (3.8ms)[0m  COMMIT
+  [1m[36m (64.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.0ms)[0m  UPDATE "torneos" SET "cantidad_fechas" = $1, "updated_at" = $2 WHERE "torneos"."id" = 1  [["cantidad_fechas", "6.0"], ["updated_at", "2022-01-12 02:37:06.191684"]]
+  [1m[36m (2.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mAuditoria Load (8.6ms)[0m  SELECT  "auditorias_2022".* FROM "auditorias_2022"  WHERE "auditorias_2022"."id" = $1 LIMIT 1  [["id", 287]]
+  [1m[36m (2.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.5ms)[0m  UPDATE "auditorias_2022" SET "ip_update" = $1, "pista_despues" = $2, "updated_at" = $3, "usuario_update" = $4 WHERE "auditorias_2022"."id" = 287  [["ip_update", "127.0.0.1"], ["pista_despues", "{\"id\":1,\"descripcion\":\"CAMPEONATO CENTRAL MX/VX\",\"cantidad_fechas\":\"6.0\",\"fecha\":\"2022-01-09T23:11:07.596Z\",\"created_at\":null,\"updated_at\":\"2022-01-12T02:37:06.191Z\"}"], ["updated_at", "2022-01-12 02:37:06.234193"], ["usuario_update", "4063149-ced-par"]]
+  [1m[36m (3.3ms)[0m  [1mCOMMIT[0m
+  Rendered torneos/actualizar.js.erb (0.2ms)
+Completed 200 OK in 1122ms (Views: 4.9ms | ActiveRecord: 343.9ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:07 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"1", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (13.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (8.8ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:07.816485"], ["perishable_token", "Rqn1oZRTiSXyKSotwdda"], ["updated_at", "2022-01-12 02:37:07.826409"]]
+  [1m[36m (3.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (7.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (9.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (id = '1')[0m
+  [1m[35m (6.3ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (13.9ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (id = '1')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.6ms)
+  Rendered torneos/_lista.html.erb (22.8ms)
+  Rendered torneos/lista.js.erb (25.9ms)
+Completed 200 OK in 101ms (Views: 19.5ms | ActiveRecord: 66.7ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:10 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"1", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (4.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.5ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:10.716054"], ["perishable_token", "BEYgVioCE0gG6GljKghC"], ["updated_at", "2022-01-12 02:37:10.719780"]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (7.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (8.7ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (id = '1')[0m
+  [1m[35m (6.7ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (10.5ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (id = '1')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.5ms)
+  Rendered torneos/_lista.html.erb (18.8ms)
+  Rendered torneos/lista.js.erb (21.3ms)
+Completed 200 OK in 86ms (Views: 16.3ms | ActiveRecord: 54.7ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:22 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (16.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (8.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.1ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:22.918193"], ["perishable_token", "R0wbM5ANQK6JgmyU1fl7"], ["updated_at", "2022-01-12 02:37:22.927233"]]
+  [1m[36m (4.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (3.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (21.1ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.8ms)
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (5.9ms)
+  Rendered torneos/_lista.html.erb (42.8ms)
+  Rendered torneos/lista.js.erb (45.2ms)
+Completed 200 OK in 97ms (Views: 28.1ms | ActiveRecord: 59.9ms)
+
+
+Started GET "/torneos/editar?id=4&amp;window_id=modal-window-editar-torneo&_=1641954444753" for 127.0.0.1 at 2022-01-11 23:37:25 -0300
+Processing by TorneosController#editar as JS
+  Parameters: {"id"=>"4", "amp"=>nil, "window_id"=>"modal-window-editar-torneo", "_"=>"1641954444753"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (10.9ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (9.0ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:25.278933"], ["perishable_token", "f0JRVSL3kpxOzMRlVm"], ["updated_at", "2022-01-12 02:37:25.281834"]]
+  [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'editar' and sistema_id = 1)
+  [1m[36mTorneo Load (2.4ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered torneos/_editar.html.erb (3.7ms)
+  Rendered torneos/editar.js.erb (6.5ms)
+Completed 200 OK in 51ms (Views: 10.5ms | ActiveRecord: 30.5ms)
+
+
+Started POST "/torneos/actualizar" for 127.0.0.1 at 2022-01-11 23:37:28 -0300
+Processing by TorneosController#actualizar as JS
+  Parameters: {"utf8"=>"✓", "torneo"=>{"id"=>"4", "descripcion"=>"CAMPEONATO TAPAICUA", "cantidad_fechas"=>"3", "fecha"=>"2022-01-10 00:00:00"}, "window_id"=>"modal-window-editar-torneo", "commit"=>"Guardar"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (9.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (1.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:28.860030"], ["perishable_token", "wE2qSTpbAGZSFEazzkFa"], ["updated_at", "2022-01-12 02:37:28.862429"]]
+  [1m[36m (2.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (4.2ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'actualizar' and sistema_id = 1)
+  [1m[36mTorneo Load (2.3ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE "torneos"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35m (7.0ms)[0m  BEGIN
+  [1m[36mSQL (3.2ms)[0m  [1mINSERT INTO "auditorias_2022" ("accion", "created_at", "ip", "pista_antes", "sistema", "tabla", "updated_at", "usuario") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["accion", "actualizar torneo"], ["created_at", "2022-01-12 02:37:28.889086"], ["ip", "127.0.0.1"], ["pista_antes", "{\"id\":4,\"descripcion\":\"CAMPEONATO TAPAICUA\",\"cantidad_fechas\":\"2022.0\",\"fecha\":\"2022-01-10T00:00:00.000Z\",\"created_at\":\"2022-01-11T02:21:44.565Z\",\"updated_at\":\"2022-01-11T02:41:08.973Z\"}"], ["sistema", "Ganatec"], ["tabla", "torneos"], ["updated_at", "2022-01-12 02:37:28.889086"], ["usuario", "4063149-ced-par"]]
+  [1m[35m (9.2ms)[0m  COMMIT
+  [1m[36m (11.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  UPDATE "torneos" SET "cantidad_fechas" = $1, "updated_at" = $2 WHERE "torneos"."id" = 4  [["cantidad_fechas", "3.0"], ["updated_at", "2022-01-12 02:37:28.916219"]]
+  [1m[36m (6.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mAuditoria Load (2.5ms)[0m  SELECT  "auditorias_2022".* FROM "auditorias_2022"  WHERE "auditorias_2022"."id" = $1 LIMIT 1  [["id", 288]]
+  [1m[36m (1.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (7.0ms)[0m  UPDATE "auditorias_2022" SET "ip_update" = $1, "pista_despues" = $2, "updated_at" = $3, "usuario_update" = $4 WHERE "auditorias_2022"."id" = 288  [["ip_update", "127.0.0.1"], ["pista_despues", "{\"id\":4,\"descripcion\":\"CAMPEONATO TAPAICUA\",\"cantidad_fechas\":\"3.0\",\"fecha\":\"2022-01-10T00:00:00.000Z\",\"created_at\":\"2022-01-11T02:21:44.565Z\",\"updated_at\":\"2022-01-12T02:37:28.916Z\"}"], ["updated_at", "2022-01-12 02:37:28.947222"], ["usuario_update", "4063149-ced-par"]]
+  [1m[36m (4.8ms)[0m  [1mCOMMIT[0m
+  Rendered torneos/actualizar.js.erb (0.2ms)
+Completed 200 OK in 121ms (Views: 3.9ms | ActiveRecord: 77.3ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:30 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"4", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (7.1ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (3.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.3ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:30.562875"], ["perishable_token", "G3ZLklurRnLBfweU0gg6"], ["updated_at", "2022-01-12 02:37:30.567620"]]
+  [1m[36m (5.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (6.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (3.6ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (id = '4')[0m
+  [1m[35m (111.4ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (9.9ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (id = '4')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (3.3ms)
+  Rendered torneos/_lista.html.erb (18.3ms)
+  Rendered torneos/lista.js.erb (20.3ms)
+Completed 200 OK in 183ms (Views: 14.1ms | ActiveRecord: 158.6ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:34 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (15.4ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (2.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (9.1ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:34.539076"], ["perishable_token", "hX2lpk0PvHhn3e9tsHI"], ["updated_at", "2022-01-12 02:37:34.542234"]]
+  [1m[36m (13.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (9.3ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (2.9ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (6.5ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.1ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.5ms)
+  Rendered torneos/_lista.html.erb (16.5ms)
+  Rendered torneos/lista.js.erb (18.6ms)
+Completed 200 OK in 85ms (Views: 15.8ms | ActiveRecord: 58.9ms)
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:38 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>"3"}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (14.7ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (23.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.0ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:38.549508"], ["perishable_token", "sM4YoeoC8SEXruqgSx"], ["updated_at", "2022-01-12 02:37:38.573471"]]
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (345.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (120.5ms)[0m  [1mSELECT COUNT(*) FROM "torneos"  WHERE (cantidad_fechas = '3')[0m
+  [1m[35m (11.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (4.1ms)[0m  [1mSELECT  "torneos".* FROM "torneos"  WHERE (cantidad_fechas = '3')  ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.2ms)
+  Rendered torneos/_lista.html.erb (9.7ms)
+  Rendered torneos/lista.js.erb (11.6ms)
+Completed 200 OK in 561ms (Views: 11.0ms | ActiveRecord: 539.1ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-11 23:37:39 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-11 23:37:41 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[35mUsuario Load (3.2ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1
+  [1m[36m (5.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.1ms)[0m  UPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936  [["last_request_at", "2022-01-12 02:37:41.162889"], ["perishable_token", "YqytWYHmbfEF26zimOo"], ["updated_at", "2022-01-12 02:37:41.169584"]]
+  [1m[36m (5.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mVAcceso Load (11.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)
+  [1m[36m (12.1ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mTorneo Load (3.7ms)[0m  [1mSELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (4.1ms)
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.5ms)
+  Rendered torneos/_lista.html.erb (16.2ms)
+  Rendered torneos/lista.js.erb (18.3ms)
+Completed 200 OK in 74ms (Views: 18.6ms | ActiveRecord: 44.8ms)

@@ -152,7 +152,7 @@ class TorneosController < ApplicationController
 	      
 	    	@torneo.descripcion = params[:torneo][:descripcion].upcase
 	    	@torneo.cantidad_fechas = params[:torneo][:cantidad_fechas]
-	    	@torneo.cantidad_fechas = params[:torneo][:fecha]
+	    	@torneo.fecha = params[:torneo][:fecha]
 	      	
 	      	if @torneo.save
 
