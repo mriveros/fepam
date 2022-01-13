@@ -180,7 +180,7 @@ class TorneosController < ApplicationController
 
 	def torneo_detalle
 
-    @haciendas_detalles = VPotrero.where("hacienda_id = ?", params[:hacienda_id]).paginate(per_page: 10, page: params[:page])
+    @torneos_detalles = TorneoDetalle.where("torneo_id = ?", params[:torneo_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 
@@ -194,7 +194,7 @@ class TorneosController < ApplicationController
 
   def agregar_torneo_detalle
     
-    @torneo_detalle = Potrero.new
+    @torneo_detalle = TorneoDetalle.new
 
    respond_to do |f|
 

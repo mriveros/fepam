@@ -6,7 +6,7 @@
 
       <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
         <h3 style="float:left;margin-top:5px;">Fechas del Campeonato</h3>
-        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar potrero".html_safe, "#", id: "link-to-agregar-torneo-detalle", class: "btn btn-primary btn-xs", style: "float:right;" %>
+        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar fecha".html_safe, "#", id: "link-to-agregar-torneo-detalle", class: "btn btn-primary btn-xs", style: "float:right;" %>
       </div>
 
     </div> 
@@ -36,14 +36,14 @@
 
             <% if @torneos_detalles.present? %>
             
-              <% @torneos_detalles.each do |hd|%>
+              <% @torneos_detalles.each do |td|%>
 
                 <tr>
-                  <td><%= hd.id %></td>
-                  <td><%= hd.descripcion %></td>
+                  <td><%= td.id %></td>
+                  <td><%= td.descripcion %></td>
                   <td style="text-align:center;"><%= t.fecha.strftime("%d/%m/%Y") if t.fecha.present? %></td>
                   <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{hd.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-potrero", title: 'Haga click para eliminar el potrero de esta torneo'  %>
+                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{td.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-potrero", title: 'Haga click para eliminar el potrero de esta torneo'  %>
                   </td>
 
                 </tr>
