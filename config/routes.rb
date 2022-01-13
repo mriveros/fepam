@@ -44,6 +44,12 @@ get 'crontab_ultron/index'
   get 'torneos/editar'
   post 'torneos/actualizar'
   get 'torneos/index'
+  get 'torneos/torneo_detalle'
+  get 'torneos/agregar_torneo_detalle'
+  post 'torneos/guardar_torneo_detalle'
+  get 'torneos/editar_torneo_detalle'
+  post 'torneos/actualizar_torneo_detalle'
+  get 'torneos/eliminar_torneo_detalle'
   
 
 #VOTANTES

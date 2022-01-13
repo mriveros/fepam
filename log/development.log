@@ -13333,3 +13333,200 @@ Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 202
 
 
 Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-12 23:26:57 -0300
+
+
+Started GET "/torneos/index" for 127.0.0.1 at 2022-01-12 23:45:13 -0300
+Processing by TorneosController#index as HTML
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (19.4ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (20.3ms)[0m  BEGIN
+  [1m[36mSQL (5.8ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-13 02:45:14.074455"], ["perishable_token", "KswyJJtO9gBe5oITQWSk"], ["updated_at", "2022-01-13 02:45:14.096009"]]
+  [1m[35m (54.8ms)[0m  COMMIT
+  [1m[36mVAcceso Load (47.1ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'index' and sistema_id = 1)[0m
+  Rendered helpers/_modal_window.html.erb (0.2ms)
+  Rendered torneos/index.html.erb within layouts/application (32.6ms)
+  [1m[35mVAcceso Load (12.8ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'controladores.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (48.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'roles.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (53.9ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (45.2ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'usuarios.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (52.7ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'votantes.index' and sistema_id = 1)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'personas.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (48.4ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'documentos_fepam.index' and sistema_id = 1)
+  [1m[36mVAcceso Load (43.6ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'torneos.index' and sistema_id = 1)[0m
+  [1m[35mVAcceso Load (62.1ms)[0m  SELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and acceso = 'info_compras.index' and sistema_id = 1)
+  [1m[36mPerfil Load (59.9ms)[0m  [1mSELECT  "perfiles".* FROM "perfiles"  WHERE "perfiles"."id" = $1 LIMIT 1[0m  [["id", 43186]]
+  [1m[35mRol Load (65.5ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mPerfil Load (24.4ms)[0m  [1mSELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "perfiles".* FROM "perfiles"  WHERE (usuario_id = 28936 and id <> 43186 and exists (select * from roles where perfiles.rol_id = roles.id and roles.sistema_id = 1 ))
+  [1m[36mRol Load (35.3ms)[0m  [1mSELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mRol Load (34.7ms)[0m  SELECT  "roles".* FROM "roles"  WHERE "roles"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered layouts/_menu.html.erb (824.1ms)
+  Rendered layouts/_header.html.erb (825.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1937ms (Views: 517.0ms | ActiveRecord: 1368.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:15 -0300
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:15 -0300
+
+
+Started GET "/assets/pagination.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:15 -0300
+
+
+Started GET "/assets/rue.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:15 -0300
+
+
+Started GET "/assets/rue_plugins.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.core.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.theme.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.menu.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/datepicker.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/sweetalert.css?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.core.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.widget.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.position.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.menu.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/jquery.ui.autocomplete.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/underscore.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/index_view.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/firsttime.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/rue_plugins.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/master_detail.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:16 -0300
+
+
+Started GET "/assets/bootstrap-datepicker.es.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/Chart.bundle.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/sweetalert.min.js?body=1" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/fonts/deae260a.glyphicons-halflings-regular.woff" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/fonts/ed35e252.DaxlinePro-Medium.otf" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/fonts/64dae9bb.OpenSans-Regular-webfont.woff" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/fonts/92e68ff4.fontawesome-webfont.woff?v=4.2.0" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started POST "/torneos/lista" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+Processing by TorneosController#lista as JS
+  Parameters: {"utf8"=>"✓", "form_buscar_torneos_id"=>"", "form_buscar_torneos_descripcion"=>"", "form_buscar_torneos_fecha"=>"", "form_buscar_torneos_cantidad_fechas"=>""}
+ApplicationController::require_usuario
+  [1m[36mUsuario Load (46.3ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 28936 LIMIT 1[0m
+  [1m[35m (24.6ms)[0m  BEGIN
+  [1m[36mSQL (36.9ms)[0m  [1mUPDATE "usuarios" SET "last_request_at" = $1, "perishable_token" = $2, "updated_at" = $3 WHERE "usuarios"."id" = 28936[0m  [["last_request_at", "2022-01-13 02:45:17.394426"], ["perishable_token", "QjybLYISPY3fermZ5R1"], ["updated_at", "2022-01-13 02:45:17.419677"]]
+  [1m[35m (37.6ms)[0m  COMMIT
+  [1m[36mVAcceso Load (42.1ms)[0m  [1mSELECT "v_accesos".* FROM "v_accesos"  WHERE (usuario_id = 28936 and controlador = 'torneos' and accion = 'lista' and sistema_id = 1)[0m
+  [1m[35m (28.5ms)[0m  SELECT COUNT(*) FROM "torneos"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "torneos"[0m
+  [1m[35mTorneo Load (34.7ms)[0m  SELECT  "torneos".* FROM "torneos"   ORDER BY id LIMIT 10 OFFSET 0
+  Rendered helpers/_modal_window.html.erb (0.1ms)
+  Rendered torneos/_link_to_editar_torneo.html.erb (2.3ms)
+  Rendered torneos/_link_to_torneo_detalle.html.erb (82.3ms)
+  Rendered torneos/_lista.html.erb (127.9ms)
+  Rendered torneos/lista.js.erb (129.6ms)
+Completed 500 Internal Server Error in 413ms
+
+ActionView::Template::Error (undefined local variable or method `torneos_torneos_detalles_path' for #<#<Class:0x007fadc3fbbee0>:0x007fadc3fd0318>):
+    15:       $.ajax({
+    16: 
+    17:         type: 'GET',
+    18:         url: '<%= url_for(torneos_torneos_detalles_path) %>',  
+    19:         data: { torneo_id: <%= torneo_id %>},
+    20:         dataType: 'script'
+    21:         
+  app/views/torneos/_link_to_torneo_detalle.html.erb:18:in `_app_views_torneos__link_to_torneo_detalle_html_erb__2380558394383776977_70192191765520'
+  app/helpers/torneos_helper.rb:11:in `link_to_torneo_detalle'
+  app/views/torneos/_lista.html.erb:13:in `block in _app_views_torneos__lista_html_erb__235053407506693348_70192147078540'
+  app/views/torneos/_lista.html.erb:3:in `_app_views_torneos__lista_html_erb__235053407506693348_70192147078540'
+  app/views/torneos/lista.js.erb:1:in `_app_views_torneos_lista_js_erb___4065726779291090009_70192187133440'
+  app/controllers/torneos_controller.rb:60:in `lista'
+
+
+  Rendered /Users/mriveros/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.9ms)
+  Rendered /Users/mriveros/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.2ms)
+  Rendered /Users/mriveros/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.text.erb (20.0ms)
+
+
+Started GET "/assets/ajax-loader0.gif" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/favicon.ico" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/manifest.json" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/assets/serviceworker-rails/heart-152x152.png" for 127.0.0.1 at 2022-01-12 23:45:17 -0300
+
+
+Started GET "/serviceworker.js" for 127.0.0.1 at 2022-01-12 23:45:19 -0300

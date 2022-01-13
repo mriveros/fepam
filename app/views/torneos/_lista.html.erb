@@ -9,9 +9,8 @@
       <td style="text-align:center;"><%= t.fecha.strftime("%d/%m/%Y") if t.fecha.present? %></td>
       <td ><%= t.cantidad_fechas%></td>
       <td >
-        
         <%= link_to_editar_torneo(t) %>
-
+        <%= link_to_torneo_detalle(t.id) %>
         <%= link_to icon_eliminar, torneos_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el torneo', data: { confirm: "Está seguro de eliminar el Torneo?"} %>
          
        </td>

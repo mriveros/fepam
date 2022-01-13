@@ -6,5 +6,11 @@ module TorneosHelper
       
   end
 
+  def link_to_torneo_detalle(torneo_id)
+
+      render partial: 'link_to_torneo_detalle', locals: { torneo_id: torneo_id }
+      
+  end
+
   
 end
