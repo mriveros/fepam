@@ -146,7 +146,7 @@ class TorneosController < ApplicationController
 
 	  end
 
-	  def actualizar
+	def actualizar
 
 	    valido = true
 	    @msg = ""
@@ -176,7 +176,134 @@ class TorneosController < ApplicationController
 
 	    end
 
-	  end
+	end
+
+	def torneo_detalle
+
+    @haciendas_detalles = VPotrero.where("hacienda_id = ?", params[:hacienda_id]).paginate(per_page: 10, page: params[:page])
+   
+    respond_to do |f|
+
+      f.js
+
+    end
+    
+  end
+
+
+
+  def agregar_torneo_detalle
+    
+    @torneo_detalle = Potrero.new
+
+   respond_to do |f|
+
+      f.js
+
+    end
+  
+  end
+
+
+   def guardar_torneo_detalle
+    
+    @valido = true
+    @msg = ""
+    @guardado_ok = false
+
+    unless params[:potrero][:descripcion].present?
+
+      @valido = false
+      @msg += " Debe Completar el campo descripción. \n"
+
+    end
+
+    unless params[:potrero][:hectareas].present?
+
+      @valido = false
+      @msg += " Debe agregar una cantidad aproximada de hectareas. \n"
+
+    end
+
+    
+
+    if @valido
+      
+      @torneo_detalle = Potrero.new()
+      @torneo_detalle.descripcion = params[:potrero][:descripcion].upcase
+      @torneo_detalle.hectareas = params[:potrero][:hectareas]
+      @torneo_detalle.hacienda_id = params[:hacienda_id]
+      @torneo_detalle.observacion = params[:observacion]
+
+        if @torneo_detalle.save
+
+          auditoria_nueva("registrar potrero asignado a hacienda", "potreros", @torneo_detalle)
+          @guardado_ok = true
+         
+        end 
+
+    end
+  
+    rescue Exception => exc  
+    # dispone el mensaje de error 
+    #puts "Aqui si muestra el error ".concat(exc.message)
+      if exc.present?        
+        @excep = exc.message.split(':')    
+        @msg = @excep
+      
+      end                
+
+    respond_to do |f|
+
+      f.js
+
+    end
+  
+  end
+
+  def eliminar_torneo_detalle
+
+    @valido = true
+    @msg = ""
+
+    @torneo_detalle = Potrero.find(params[:potrero_id])
+
+    if @valido
+
+      if @torneo_detalle.destroy
+
+        auditoria_nueva("eliminar potrero de la hacienda", "potreros", @torneo_detalle)
+
+        @eliminado = true
+
+      else
+
+        @msg = "ERROR: No se ha podido eliminar el Potrero de la Hacienda. Intente más tarde."
+
+      end
+
+    end
+
+        rescue Exception => exc  
+        # dispone el mensaje de error 
+        #puts "Aqui si muestra el error ".concat(exc.message)
+        if exc.present?        
+          
+          @excep = exc.message.split(':')    
+          @msg = @excep
+          @eliminado = false
+        
+        end
+        
+    respond_to do |f|
+
+      f.js
+
+    end
+  
+  end
+
+
 	    
 
 end
