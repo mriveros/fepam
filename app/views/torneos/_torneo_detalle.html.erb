@@ -24,11 +24,8 @@
             <tr role="row">
               
               <th>ID</th>
-              <th>Potrero</th>
-              <th>Hectareas</th>
-              <th>torneo</th>
-              <th>Departamento</th>
-              <th>Distrito</th>
+              <th>Descripción</th>
+              <th>Fecha</th>
               <th style='text-align:right;'></th>
               
             </tr>
@@ -42,14 +39,11 @@
               <% @torneos_detalles.each do |hd|%>
 
                 <tr>
-                  <td><%= hd.potrero_id %></td>
-                  <td><%= hd.potrero %></td>
-                  <td><%= hd.hectareas %></td>
-                  <td><%= hd.torneo %></td>
-                  <td><%= hd.departamento %></td>
-                  <td><%= hd.jurisdiccion %></td>
+                  <td><%= hd.id %></td>
+                  <td><%= hd.descripcion %></td>
+                  <td style="text-align:center;"><%= t.fecha.strftime("%d/%m/%Y") if t.fecha.present? %></td>
                   <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{hd.potrero_id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-potrero", title: 'Haga click para eliminar el potrero de esta torneo'  %>
+                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{hd.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-potrero", title: 'Haga click para eliminar el potrero de esta torneo'  %>
                   </td>
 
                 </tr>
@@ -88,7 +82,7 @@
 
         swal({
           title: "Confirmar",
-          text: "Al confirmar el Potrero será eliminado de la torneo.",
+          text: "Al confirmar la Fecha será eliminada del Campeonato.",
           type: "warning",
           showCancelButton: true,
           confirmButtonClass: "btn-confirm",
