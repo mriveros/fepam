@@ -41,7 +41,7 @@
                 <tr>
                   <td><%= td.id %></td>
                   <td><%= td.descripcion %></td>
-                  <td style="text-align:center;"><%= t.fecha.strftime("%d/%m/%Y") if t.fecha.present? %></td>
+                  <td style="text-align:center;"><%= td.fecha.strftime("%d/%m/%Y") if td.fecha.present? %></td>
                   <td style="width: 50px;text-align:right;">
                     <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{td.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-potrero", title: 'Haga click para eliminar el potrero de esta torneo'  %>
                   </td>

@@ -211,14 +211,14 @@ class TorneosController < ApplicationController
     @msg = ""
     @guardado_ok = false
 
-    unless params[:torneo][:descripcion].present?
+    unless params[:torneo_detalle][:descripcion].present?
 
       @valido = false
       @msg += " Debe Completar el campo descripción. \n"
 
     end
 
-    unless params[:torneo][:fecha].present?
+    unless params[:torneo_detalle][:fecha].present?
 
       @valido = false
       @msg += " Debe agregar una fecha. \n"
@@ -229,10 +229,10 @@ class TorneosController < ApplicationController
 
     if @valido
       
-      @torneo_detalle = Torneo.new()
+      @torneo_detalle = TorneoDetalle.new()
       @torneo_detalle.descripcion = params[:torneo_detalle][:descripcion].upcase
       @torneo_detalle.fecha = params[:torneo_detalle][:fecha]
-      @torneo_detalle.torneo_id = params[:torneo_detalle_torneo_id]
+      @torneo_detalle.torneo_id = params[:torneo_id]
 
         if @torneo_detalle.save
 
@@ -265,7 +265,7 @@ class TorneosController < ApplicationController
     @valido = true
     @msg = ""
 
-    @torneo_detalle = Torneo.find(params[:torneo_id])
+    @torneo_detalle = TorneoDetalle.find(params[:torneo_id])
 
     if @valido
 

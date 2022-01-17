@@ -4,9 +4,9 @@
 setTimeout( function(){ 
   
     $("#<%= params[:window_id]%>").modal('hide');
-    $("#link-to-torneo-detalle-<%= params[:torneo_detalle_torneo_id]%>").trigger('click');
-    $("#link-to-torneo-detalle-<%= params[:torneo_detalle_torneo_id]%>").trigger('click');
-    swal("El Potrero se agregó a la Hacienda exitosamente!");
+    $("#link-to-torneo-detalle-<%= params[:torneo_id]%>").trigger('click');
+    $("#link-to-torneo-detalle-<%= params[:torneo_id]%>").trigger('click');
+    swal("La fecha se agregó al campeonato exitosamente!");
 
     }, 1000);
  
