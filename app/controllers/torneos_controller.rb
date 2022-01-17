@@ -211,17 +211,17 @@ class TorneosController < ApplicationController
     @msg = ""
     @guardado_ok = false
 
-    unless params[:potrero][:descripcion].present?
+    unless params[:torneo][:descripcion].present?
 
       @valido = false
       @msg += " Debe Completar el campo descripción. \n"
 
     end
 
-    unless params[:potrero][:hectareas].present?
+    unless params[:torneo][:fecha].present?
 
       @valido = false
-      @msg += " Debe agregar una cantidad aproximada de hectareas. \n"
+      @msg += " Debe agregar una fecha. \n"
 
     end
 
@@ -229,15 +229,14 @@ class TorneosController < ApplicationController
 
     if @valido
       
-      @torneo_detalle = Potrero.new()
-      @torneo_detalle.descripcion = params[:potrero][:descripcion].upcase
-      @torneo_detalle.hectareas = params[:potrero][:hectareas]
-      @torneo_detalle.hacienda_id = params[:hacienda_id]
-      @torneo_detalle.observacion = params[:observacion]
+      @torneo_detalle = Torneo.new()
+      @torneo_detalle.descripcion = params[:torneo_detalle][:descripcion].upcase
+      @torneo_detalle.fecha = params[:torneo_detalle][:fecha]
+      @torneo_detalle.torneo_id = params[:torneo_detalle_torneo_id]
 
         if @torneo_detalle.save
 
-          auditoria_nueva("registrar potrero asignado a hacienda", "potreros", @torneo_detalle)
+          auditoria_nueva("registrar torneo asignado a hacienda", "torneos", @torneo_detalle)
           @guardado_ok = true
          
         end 
@@ -266,19 +265,19 @@ class TorneosController < ApplicationController
     @valido = true
     @msg = ""
 
-    @torneo_detalle = Potrero.find(params[:potrero_id])
+    @torneo_detalle = Torneo.find(params[:torneo_id])
 
     if @valido
 
       if @torneo_detalle.destroy
 
-        auditoria_nueva("eliminar potrero de la hacienda", "potreros", @torneo_detalle)
+        auditoria_nueva("eliminar fecha del campeonato", "torneos", @torneo_detalle)
 
         @eliminado = true
 
       else
 
-        @msg = "ERROR: No se ha podido eliminar el Potrero de la Hacienda. Intente más tarde."
+        @msg = "ERROR: No se ha podido eliminar el torneo del campeonato porque ya cuenta con registros"
 
       end
 
