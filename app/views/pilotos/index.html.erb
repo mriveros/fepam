@@ -6,46 +6,63 @@
   <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
 -->
   <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
-    <h3 style="float:left;margin-top:5px;">Clientes</h3>
-    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-cliente", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
-    <%= modal_window( window_id: "modal-window-agregar-cliente", link_to_id: "#link-to-agregar-cliente", url: clientes_agregar_path( window_id: "modal-window-agregar-cliente") )%>
+    <h3 style="float:left;margin-top:5px;">Pilotos</h3>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-piloto", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= modal_window( window_id: "modal-window-agregar-piloto", link_to_id: "#link-to-agregar-piloto", url: pilotos_agregar_path( window_id: "modal-window-agregar-piloto") )%>
     
   </div>
 </div>
 
 <div style="clear:both;"></div>
  
-<div class="table-responsive" id="table-clientes">
+<div class="table-responsive" id="table-pilotos">
 
   <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
    
     <thead>
 
-      <%= form_tag clientes_lista_path, remote: true, id: "form-buscar-clientes"  do  %>
+      <%= form_tag pilotos_lista_path, remote: true, id: "form-buscar-pilotos"  do  %>
 
         <tr>
 
           <th style="width:50px;">
             <span>ID</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_clientes_id, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-clientes', '#form_buscar_clientes_id');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_pilotos_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_id');"><i class="fa fa-times"></i></span>
             </div>
           </th>
           
            <th style="width:130px;">
-            <span>Nombre o Razón Social</span>
+            <span>Nombre</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_clientes_razon_social, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-clientes', '#form_buscar_clientes_razon_social');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_pilotos_nombre, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_nombre');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th style="width:130px;">
+            <span>Apellido</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_pilotos_apellido, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_apellido');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
           <th style="width:10%;">
-            <span>RUC O CI</span>
+            <span>CI</span>
             <div class="input-group input-group-sm">
-                <%= text_field_tag :form_buscar_clientes_ruc, nil, :class => 'form-control', :placeholder => "" %>
-                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-clientes', '#form_buscar_clientes_ruc');"><i class="fa fa-times"></i></span>
+                <%= text_field_tag :form_buscar_pilotos_ruc, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_ruc');"><i class="fa fa-times"></i></span>
+            </div>
+            <em class="nmb"></em>
+          </th>
+
+          <th style="width:10%;">
+            <span>Grupo Sanguineo</span>
+            <div class="input-group input-group-sm">
+                <%= text_field_tag :form_buscar_pilotos_grupo_sanguineo, nil, :class => 'form-control', :placeholder => "" %>
+                <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_grupo_sanguineo');"><i class="fa fa-times"></i></span>
             </div>
             <em class="nmb"></em>
           </th>
@@ -53,24 +70,24 @@
           <th style="width:130px;">
             <span>Dirección</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_clientes_direccion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-clientes', '#form_buscar_clientes_direccion');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_pilotos_direccion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_direccion');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
           <th style="width:18%;">
             <span>Teléfono<br/>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_clientes_telefono, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-clientes', '#form_buscar_clientes_telefono');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_pilotos_telefono, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_telefono');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
           <th style="width:18%;">
             <span>Observación<br/>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_clientes_observacion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-clientes', '#form_buscar_clientes_observacion');"><i class="fa fa-times"></i></span>
+              <%= text_field_tag :form_buscar_pilotos_observacion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_observacion');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
@@ -83,7 +100,7 @@
 
       </thead> 
 
-    <tbody id="clientes-lista"></tbody>
+    <tbody id="pilotos-lista"></tbody>
   
   </table>
 
@@ -95,11 +112,11 @@
 <script type="text/javascript">
 
   //---------------------------- RECUPERANDO DATOS ----------------------------//
-  $("#form-buscar-clientes").bind("submit", function () {
+  $("#form-buscar-pilotos").bind("submit", function () {
     var valido = true;
-    if($("#form_buscar_clientes_razon_social").val().length !== 0 ){
+    if($("#form_buscar_pilotos_razon_social").val().length !== 0 ){
       valido = false;
-      if(($("#form_buscar_clientes_razon_social").val().replace(/\s/g,'')).length > 2){        
+      if(($("#form_buscar_pilotos_razon_social").val().replace(/\s/g,'')).length > 2){        
         valido = true;
       }else{
         valido = false;
@@ -111,7 +128,7 @@
       
     if(valido){
     $(".nmb").html('');       
-    $("#clientes-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
+    $("#pilotos-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
     }
 
     
@@ -120,17 +137,17 @@
  
   //---------------------------------------------------------------------------//
   //---------------------------- BUSCAR PERSONAS-------- -------------------------//
-  $("#table-clientes input, #table-clientes select").bind('change', function () {
+  $("#table-pilotos input, #table-pilotos select").bind('change', function () {
       $.ajaxQ.abortAll();
-      $("#form-buscar-clientes").submit();
+      $("#form-buscar-pilotos").submit();
 
   })
   //----------------------------------------------------------------------------//
   //----------------------------INICIO -----------------------------------------//
   aplicar_datepicker();
-  $("#form-buscar-clientes").submit();
+  $("#form-buscar-pilotos").submit();
   <% if params[:agregar] %>
-    $("#link-to-agregar-cliente").trigger('click');
+    $("#link-to-agregar-piloto").trigger('click');
   <% end %>
   //----------------------------------------------------------------------------//
   
@@ -148,7 +165,7 @@
         cursor: pointer;
     }
 
-    #form-buscar-clientes table th { background:#e6e6e6;}
-    #form-buscar-clientes table th span.limpiar { background:#fff;}
+    #form-buscar-pilotos table th { background:#e6e6e6;}
+    #form-buscar-pilotos table th span.limpiar { background:#fff;}
 
 </style>
