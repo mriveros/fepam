@@ -1,4 +1,4 @@
-class ClientesController < ApplicationController
+class PilotosController < ApplicationController
 
 before_filter :require_usuario
 skip_before_action :verify_authenticity_token
@@ -13,45 +13,52 @@ skip_before_action :verify_authenticity_token
     cond = []
     args = []
 
-    if params[:form_buscar_clientes_id].present?
+    if params[:form_buscar_pilotos_id].present?
 
-      cond << "clientes.id = ?"
-      args << params[:form_buscar_clientes_id]
-
-    end
-
-    if params[:form_buscar_clientes_ruc].present?
-
-      cond << "clientes.ruc_ci = ?"
-      args << params[:form_buscar_clientes_ruc]
+      cond << "pilotos.id = ?"
+      args << params[:form_buscar_pilotos_id]
 
     end
 
-     if params[:form_buscar_clientes_razon_social].present?
+    if params[:form_buscar_pilotos_ruc].present?
 
-      cond << "clientes.nombre_razon_social ilike ?"
-      args << "%#{params[:form_buscar_clientes_razon_social]}%"
-
-    end
-
-    if params[:form_buscar_clientes_direccion].present?
-
-      cond << "clientes.direccion ilike ?"
-      args << "%#{params[:form_buscar_clientes_direccion]}%"
+      cond << "pilotos.ruc_ci = ?"
+      args << params[:form_buscar_pilotos_ruc]
 
     end
 
-    if params[:form_buscar_clientes_telefono].present?
+    if params[:form_buscar_pilotos_nombre].present?
 
-      cond << "clientes.telefono ilike ?"
-      args << "%#{params[:form_buscar_clientes_telefono]}%"
+      cond << "pilotos.nombres ilike ?"
+      args << "%#{params[:form_buscar_pilotos_nombre]}%"
 
     end
 
-    if params[:form_buscar_clientes_observacion].present?
+    if params[:form_buscar_pilotos_apellido].present?
 
-      cond << "clientes.observacion ilike ?"
-      args << "%#{params[:form_buscar_clientes_observacion]}%"
+      cond << "pilotos.apellidos ilike ?"
+      args << "%#{params[:form_buscar_pilotos_apellido]}%"
+
+    end
+
+    if params[:form_buscar_pilotos_direccion].present?
+
+      cond << "pilotos.direccion ilike ?"
+      args << "%#{params[:form_buscar_pilotos_direccion]}%"
+
+    end
+
+    if params[:form_buscar_pilotos_telefono].present?
+
+      cond << "pilotos.telefono ilike ?"
+      args << "%#{params[:form_buscar_pilotos_telefono]}%"
+
+    end
+
+    if params[:form_buscar_pilotos_observacion].present?
+
+      cond << "pilotos.observacion ilike ?"
+      args << "%#{params[:form_buscar_pilotos_observacion]}%"
 
     end
 
@@ -59,17 +66,17 @@ skip_before_action :verify_authenticity_token
 
     if cond.size > 0
 
-      @clientes =  Cliente.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
-      @total_encontrados = Cliente.where(cond).count
+      @pilotos =  piloto.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
+      @total_encontrados = piloto.where(cond).count
       
     else
 
-      @clientes = Cliente.orden_01.paginate(per_page: 10, page: params[:page])
-      @total_encontrados = Cliente.count
+      @pilotos = piloto.orden_01.paginate(per_page: 10, page: params[:page])
+      @total_encontrados = piloto.count
 
     end
 
-    @total_registros = Cliente.count
+    @total_registros = piloto.count
 
   	respond_to do |f|
 	    
@@ -81,7 +88,7 @@ skip_before_action :verify_authenticity_token
 
   def agregar
 
-    @cliente = Cliente.new
+    @piloto = piloto.new
 
     respond_to do |f|
 	    
@@ -97,14 +104,14 @@ skip_before_action :verify_authenticity_token
     @msg = ""
     @guardado_ok = false
 
-    unless params[:cliente][:nombre_razon_social].present?
+    unless params[:piloto][:nombre_razon_social].present?
 
       @valido = false
       @msg += " Debe Completar el campo Nombre o Razón Social. \n"
 
     end
 
-    unless params[:cliente][:ruc_ci].present?
+    unless params[:piloto][:ruc_ci].present?
 
       @valido = false
       @msg += "Debe Completar el campo con el RUC o CI. \n"
@@ -115,16 +122,16 @@ skip_before_action :verify_authenticity_token
 
     if @valido
       
-      @cliente = Cliente.new()
-      @cliente.nombre_razon_social = params[:cliente][:nombre_razon_social].upcase
-      @cliente.ruc_ci = params[:cliente][:ruc_ci]
-      @cliente.direccion = params[:cliente][:direccion].upcase
-      @cliente.telefono = params[:cliente][:telefono]
-      @cliente.observacion = params[:cliente][:observacion]
+      @piloto = piloto.new()
+      @piloto.nombre_razon_social = params[:piloto][:nombre_razon_social].upcase
+      @piloto.ruc_ci = params[:piloto][:ruc_ci]
+      @piloto.direccion = params[:piloto][:direccion].upcase
+      @piloto.telefono = params[:piloto][:telefono]
+      @piloto.observacion = params[:piloto][:observacion]
 
-        if @cliente.save
+        if @piloto.save
 
-          auditoria_nueva("registrar cliente", "clientes", @cliente)
+          auditoria_nueva("registrar piloto", "pilotos", @piloto)
          
           @guardado_ok = true
          
@@ -151,7 +158,7 @@ skip_before_action :verify_authenticity_token
 
   def editar
     
-    @cliente = Cliente.find(params[:id])
+    @piloto = piloto.find(params[:id])
 
   	respond_to do |f|
 	    
@@ -166,36 +173,36 @@ skip_before_action :verify_authenticity_token
     valido = true
     @msg = ""
 
-    unless params[:cliente][:nombre_razon_social].present?
+    unless params[:piloto][:nombre_razon_social].present?
 
       @valido = false
       @msg += " Debe Completar el campo Nombre o Razón Social. \n"
 
     end
 
-    unless params[:cliente][:ruc_ci].present?
+    unless params[:piloto][:ruc_ci].present?
 
       @valido = false
       @msg += "Debe Completar el campo con el RUC o CI. \n"
 
     end
 
-    @cliente = Cliente.find(params[:cliente_id])
+    @piloto = piloto.find(params[:piloto_id])
 
-    auditoria_id = auditoria_antes("actualizar cliente", "clientes", @cliente)
+    auditoria_id = auditoria_antes("actualizar piloto", "pilotos", @piloto)
 
     if valido
 
-      @cliente.nombre_razon_social = params[:cliente][:nombre_razon_social].upcase
-      @cliente.ruc_ci = params[:cliente][:ruc_ci]
-      @cliente.direccion = params[:cliente][:direccion].upcase
-      @cliente.telefono = params[:cliente][:telefono]
-      @cliente.observacion = params[:cliente][:observacion]
+      @piloto.nombre_razon_social = params[:piloto][:nombre_razon_social].upcase
+      @piloto.ruc_ci = params[:piloto][:ruc_ci]
+      @piloto.direccion = params[:piloto][:direccion].upcase
+      @piloto.telefono = params[:piloto][:telefono]
+      @piloto.observacion = params[:piloto][:observacion]
 
-      if @cliente.save
+      if @piloto.save
 
-        auditoria_despues(@cliente, auditoria_id)
-        @cliente_ok = true
+        auditoria_despues(@piloto, auditoria_id)
+        @piloto_ok = true
 
       end
 
@@ -216,9 +223,9 @@ skip_before_action :verify_authenticity_token
 
   end
 
-  def buscar_cliente
+  def buscar_piloto
     
-    @personas = Cliente.where("cliente_nombre ilike ?", "%#{params[:cliente_produccion]}%")
+    @personas = piloto.where("piloto_nombre ilike ?", "%#{params[:piloto_produccion]}%")
 
     respond_to do |f|
       
@@ -234,21 +241,21 @@ skip_before_action :verify_authenticity_token
     valido = true
     @msg = ""
 
-    @cliente = Cliente.find(params[:id])
+    @piloto = piloto.find(params[:id])
 
-    @cliente_elim = @cliente  
+    @piloto_elim = @piloto  
 
     if valido
 
-      if @cliente.destroy
+      if @piloto.destroy
 
-        auditoria_nueva("eliminar cliente", "clientes", @cliente_elim)
+        auditoria_nueva("eliminar piloto", "pilotos", @piloto_elim)
 
         @eliminado = true
 
       else
 
-        @msg = "ERROR: No se ha podido eliminar el Cliente."
+        @msg = "ERROR: No se ha podido eliminar el piloto."
 
       end
 
