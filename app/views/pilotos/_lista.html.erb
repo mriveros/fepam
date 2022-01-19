@@ -1,26 +1,25 @@
-<% if cliente.present? %>
+<% if @pilotos.present? %>
 
-  <% cliente.each do |cl| %>
+  <% @pilotos.each do |p| %>
 
     <tr>
 
-      <td style="width:50px;"><%= cl.id %></td>
-      <td><%= cl.nombre_razon_social%></td>
-      <td><%= cl.ruc_ci%></td>
-      <td><%= cl.direccion %></td>
-      <td><%= cl.telefono%></td>
-      <td><%= cl.observacion%></td>
+      <td style="width:50px;"><%= p.id %></td>
+      <td><%= p.nombres%></td>
+      <td><%= p.apellidos%></td>
+      <td><%= p.ci %></td>
+      <td><%= p.grupo_sanguineo%></td>
+      <td><%= p.fecha_nacimiento%></td>
+      <td><%= p.direccion%></td>
+      <td><%= p.telefono%></td>
       
       <td style="width:120px;">
         
-        <%= link_to_editar_cliente(cl) %>
+        <%= link_to_editar_piloto(p) %>
         
-        <%= link_to icon_eliminar, clientes_eliminar_path(id: cl.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Cliente', data: { confirm: "Está seguro de eliminar el Cliente ?"} %>
+        <%= link_to icon_eliminar, pilotos_eliminar_path(id: cl.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Piloto', data: { confirm: "Está seguro de eliminar el Piloto?"} %>
       
-       </td>
-
-     
-     
+       </td> 
 
       </td>
 
