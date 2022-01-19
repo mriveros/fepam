@@ -20,13 +20,6 @@ skip_before_action :verify_authenticity_token
 
     end
 
-    if params[:form_buscar_pilotos_ruc].present?
-
-      cond << "pilotos.ruc_ci = ?"
-      args << params[:form_buscar_pilotos_ruc]
-
-    end
-
     if params[:form_buscar_pilotos_nombre].present?
 
       cond << "pilotos.nombres ilike ?"
@@ -38,6 +31,27 @@ skip_before_action :verify_authenticity_token
 
       cond << "pilotos.apellidos ilike ?"
       args << "%#{params[:form_buscar_pilotos_apellido]}%"
+
+    end
+
+    if params[:form_buscar_pilotos_ci].present?
+
+      cond << "pilotos.ci = ?"
+      args << "%#{params[:form_buscar_pilotos_ci]}%"
+
+    end
+
+    if params[:form_buscar_pilotos_fecha_nacimiento].present?
+
+      cond << "pilotos.ci = ?"
+      args << params[:form_buscar_pilotos_fecha_nacimiento]
+
+    end
+
+    if params[:form_buscar_pilotos_grupo_sanguineo].present?
+
+      cond << "pilotos.grupo_sanguineo ilike ?"
+      args << "%#{params[:form_buscar_pilotos_grupo_sanguineo]}%"
 
     end
 
@@ -55,28 +69,21 @@ skip_before_action :verify_authenticity_token
 
     end
 
-    if params[:form_buscar_pilotos_observacion].present?
-
-      cond << "pilotos.observacion ilike ?"
-      args << "%#{params[:form_buscar_pilotos_observacion]}%"
-
-    end
-
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
     if cond.size > 0
 
-      @pilotos =  piloto.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
-      @total_encontrados = piloto.where(cond).count
+      @pilotos =  Piloto.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
+      @total_encontrados = Piloto.where(cond).count
       
     else
 
-      @pilotos = piloto.orden_01.paginate(per_page: 10, page: params[:page])
-      @total_encontrados = piloto.count
+      @pilotos = Piloto.orden_01.paginate(per_page: 10, page: params[:page])
+      @total_encontrados = Piloto.count
 
     end
 
-    @total_registros = piloto.count
+    @total_registros = Piloto.count
 
   	respond_to do |f|
 	    
@@ -88,7 +95,7 @@ skip_before_action :verify_authenticity_token
 
   def agregar
 
-    @piloto = piloto.new
+    @piloto = Piloto.new
 
     respond_to do |f|
 	    
@@ -122,12 +129,15 @@ skip_before_action :verify_authenticity_token
 
     if @valido
       
-      @piloto = piloto.new()
-      @piloto.nombre_razon_social = params[:piloto][:nombre_razon_social].upcase
-      @piloto.ruc_ci = params[:piloto][:ruc_ci]
+      @piloto = Piloto.new()
+      @piloto.nombres = params[:piloto][:nombres].upcase
+      @piloto.apellidos = params[:piloto][:apellidos].upcase
+      @piloto.ci = params[:piloto][:ci]
+      @piloto.grupo_sanguineo = params[:piloto][:grupo_sanguineo].upcase
+      @piloto.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
       @piloto.direccion = params[:piloto][:direccion].upcase
       @piloto.telefono = params[:piloto][:telefono]
-      @piloto.observacion = params[:piloto][:observacion]
+      
 
         if @piloto.save
 
@@ -158,7 +168,7 @@ skip_before_action :verify_authenticity_token
 
   def editar
     
-    @piloto = piloto.find(params[:id])
+    @piloto = Piloto.find(params[:id])
 
   	respond_to do |f|
 	    
@@ -187,17 +197,19 @@ skip_before_action :verify_authenticity_token
 
     end
 
-    @piloto = piloto.find(params[:piloto_id])
+    @piloto = Piloto.find(params[:piloto_id])
 
     auditoria_id = auditoria_antes("actualizar piloto", "pilotos", @piloto)
 
     if valido
 
-      @piloto.nombre_razon_social = params[:piloto][:nombre_razon_social].upcase
-      @piloto.ruc_ci = params[:piloto][:ruc_ci]
+      @piloto.nombres = params[:piloto][:nombres].upcase
+      @piloto.apellidos = params[:piloto][:apellidos].upcase
+      @piloto.ci = params[:piloto][:ci]
+      @piloto.grupo_sanguineo = params[:piloto][:grupo_sanguineo].upcase
+      @piloto.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
       @piloto.direccion = params[:piloto][:direccion].upcase
       @piloto.telefono = params[:piloto][:telefono]
-      @piloto.observacion = params[:piloto][:observacion]
 
       if @piloto.save
 
@@ -225,7 +237,7 @@ skip_before_action :verify_authenticity_token
 
   def buscar_piloto
     
-    @personas = piloto.where("piloto_nombre ilike ?", "%#{params[:piloto_produccion]}%")
+    @pilotos = Piloto.where("nombre ilike ?", "%#{params[:piloto]}%")
 
     respond_to do |f|
       
@@ -241,7 +253,7 @@ skip_before_action :verify_authenticity_token
     valido = true
     @msg = ""
 
-    @piloto = piloto.find(params[:id])
+    @piloto = Piloto.find(params[:id])
 
     @piloto_elim = @piloto  
 
