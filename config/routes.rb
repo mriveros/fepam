@@ -50,6 +50,17 @@ get 'crontab_ultron/index'
   get 'torneos/editar_torneo_detalle'
   post 'torneos/actualizar_torneo_detalle'
   get 'torneos/eliminar_torneo_detalle'
+
+  #CLIENTES
+  post 'pilotos/lista'
+  get 'pilotos/lista'
+  get 'pilotos/agregar'
+  post 'pilotos/guardar'
+  get 'pilotos/eliminar'
+  get 'pilotos/editar'
+  post 'pilotos/actualizar'
+  get 'pilotos/index'
+  get 'pilotos/buscar_piloto'
   
 
 #VOTANTES
@@ -87,68 +98,6 @@ get 'crontab_ultron/index'
   get 'documentos_fepam/agregar_archivo_operador'
   post 'documentos_fepam/guardar_archivo_operador'
 
-
-#INFO COMPRAS
-  get 'info_compras/index'
-  post 'info_compras/lista'
-  get 'info_compras/lista'
-  get 'info_compras/exportar_pdf'
-  post 'info_compras/exportar_pdf'
-
-#CARGOS
-  post 'cargos/lista'
-  get 'cargos/lista'
-  get 'cargos/agregar'
-  post 'cargos/guardar'
-  get 'cargos/eliminar'
-  get 'cargos/editar'
-  post 'cargos/actualizar'
-  get 'cargos/index'
-
-  
-
-  #HACIENDAS
-  get 'haciendas/index'
-  post 'haciendas/lista'
-  get 'haciendas/lista'
-  get 'haciendas/agregar'
-  post 'haciendas/guardar'
-  get 'haciendas/editar'
-  post 'haciendas/actualizar'
-  get 'haciendas/eliminar'
-  get 'haciendas/buscar_jurisdiccion'
-  get 'haciendas/haciendas_detalles'
-  get 'haciendas/agregar_hacienda_detalle'
-  post 'haciendas/guardar_hacienda_detalle'
-  get 'haciendas/eliminar_hacienda_detalle'
-  get 'haciendas/obtener_potreros'
-
-  #POTREROS
-  get 'potreros/index'
-  post 'potreros/lista'
-  get 'potreros/lista'
-  get 'potreros/agregar'
-  post 'potreros/guardar'
-  get 'potreros/editar'
-  post 'potreros/actualizar'
-  get 'potreros/eliminar'
-  get 'potreros/potrero_detalle'
-  get 'potreros/agregar_potrero_detalle'
-  post 'potreros/guardar_potrero_detalle'
-  get 'potreros/eliminar_potrero_detalle'
-
-
-  #ESTADOS GANADOS
-  get 'estados_ganados/index'
-  post 'estados_ganados/lista'
-  get 'estados_ganados/lista'
-  get 'estados_ganados/agregar'
-  post 'estados_ganados/guardar'
-  get 'estados_ganados/editar'
-  post 'estados_ganados/actualizar'
-  get 'estados_ganados/eliminar'
-  get 'estados_ganados/buscar_estado_ganado'
-
   #EMPRESAS TRANSPORTES
   get 'empresas_transportes/index'
   post 'empresas_transportes/lista'
@@ -167,58 +116,9 @@ get 'crontab_ultron/index'
 #----------------------------INICIO EJEMPLOS----------------------------
 
 
-   #INFORMACIONES
-  get 'informaciones/index'
-  get 'informaciones/lista'
-  post 'informaciones/lista'
-  get 'informaciones/perfiles'
-  get 'informaciones/enlaces'
-  get 'informaciones/agregar'
-  post 'informaciones/guardar'
-  get 'informaciones/agregar_enlace'
-  get 'informaciones/guardar_enlace'
-  post 'informaciones/guardar_enlace'
-  get 'informaciones/agregar_perfil'
-  get 'informaciones/guardar_perfil'
-  get 'informaciones/eliminar'
-  get 'informaciones/editar'
-  post 'informaciones/actualizar'
-  get 'informaciones/editar_enlace'
-  post 'informaciones/actualizar_enlace'
-  get 'informaciones/eliminar_enlace'
-  get 'informaciones/eliminar_rol'
+  
 
-  #DETALLES DEBITOS
-  post 'detalles_debitos/lista'
-  get 'detalles_debitos/lista'
-  get 'detalles_debitos/agregar'
-  post 'detalles_debitos/guardar'
-  get 'detalles_debitos/eliminar'
-  get 'detalles_debitos/editar'
-  post 'detalles_debitos/actualizar'
-  get 'detalles_debitos/index'
-
-  #DETALLES CREDITOS
-  post 'detalles_creditos/lista'
-  get 'detalles_creditos/lista'
-  get 'detalles_creditos/agregar'
-  post 'detalles_creditos/guardar'
-  get 'detalles_creditos/eliminar'
-  get 'detalles_creditos/editar'
-  post 'detalles_creditos/actualizar'
-  get 'detalles_creditos/index'
-
-
-  #CLIENTES
-  post 'clientes/lista'
-  get 'clientes/lista'
-  get 'clientes/agregar'
-  post 'clientes/guardar'
-  get 'clientes/eliminar'
-  get 'clientes/editar'
-  post 'clientes/actualizar'
-  get 'clientes/index'
-  get 'clientes/buscar_cliente'
+  
 
   #JURISDICCIONES
   get 'jurisdicciones/index'
