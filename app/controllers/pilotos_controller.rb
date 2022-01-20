@@ -250,9 +250,9 @@ skip_before_action :verify_authenticity_token
 
   def buscar_persona
     
-    if params[:tipo_documento_id].present? && params[:nacionalidad_id] && params[:ci].present?
+    if params[:tipo_documento_id].present? && params[:nacionalidad_id] && params[:documento].present?
 
-      @persona = Persona.where("tipo_documento_id = ? and nacionalidad_id = ? and documento_persona = ?", params[:tipo_documento_id], params[:nacionalidad_id], params[:ci])  
+      @persona = Persona.where("tipo_documento_id = ? and nacionalidad_id = ? and documento_persona = ?", params[:tipo_documento_id], params[:nacionalidad_id], params[:documento])  
 
     end
 
