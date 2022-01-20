@@ -61,6 +61,7 @@ get 'crontab_ultron/index'
   post 'pilotos/actualizar'
   get 'pilotos/index'
   get 'pilotos/buscar_piloto'
+  get 'pilotos/buscar_persona'
   
 
 #VOTANTES

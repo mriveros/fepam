@@ -248,6 +248,20 @@ skip_before_action :verify_authenticity_token
     
   end
 
+  def buscar_persona
+    
+    if params[:tipo_documento_id].present? && params[:nacionalidad_id] && params[:ci].present?
+
+      @persona = Persona.where("tipo_documento_id = ? and nacionalidad_id = ? and documento_persona = ?", params[:tipo_documento_id], params[:nacionalidad_id], params[:ci])  
+
+    end
+
+    respond_to do |f|
+      f.json { render :json => @persona.first}
+    end
+
+  end
+
   def eliminar
 
     valido = true

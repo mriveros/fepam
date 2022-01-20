@@ -331,7 +331,7 @@ function alerta_formulario(elemento, estado){
 
 }
 //--------------------------------------------------------------//
-function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta, ruta_agregar_persona){
+function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta){
 
   $("#msg-documento-persona").remove();
   $('#buscar_perso').html('');
@@ -343,18 +343,18 @@ function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta, 
       
       if(data != null){
           
-        $("#persona_documento").next();
+        $("#ci").next();
         
-        $("#persona_nombre").val(data.nombre_persona); 
-        $("#persona_apellido").val(data.apellido_persona);
+        $("#nombres").val(data.nombre_persona); 
+        $("#apellidos").val(data.apellido_persona);
         //$("#usuario_password").val(data.documento_persona);
         //$("#usuario_password_confirmation").val(data.documento_persona);
         //$("#usuario_email").focus();
           
       }else{
        
-        $("#persona_nombre").val('');
-        $("#persona_apellido").val('');
+        $("#nombres").val('');
+        $("#apellidos").val('');
           
       }
     },
