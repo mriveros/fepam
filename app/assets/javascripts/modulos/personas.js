@@ -347,14 +347,15 @@ function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta){
         
         $("#nombres").val(data.nombre_persona); 
         $("#apellidos").val(data.apellido_persona);
-        //$("#usuario_password").val(data.documento_persona);
-        //$("#usuario_password_confirmation").val(data.documento_persona);
-        //$("#usuario_email").focus();
           
       }else{
-       
+
+        $("#nombres").focus();
         $("#nombres").val('');
         $("#apellidos").val('');
+        document.getElementById("nombres").readOnly = false;
+        document.getElementById("apellidos").readOnly = false;
+       
           
       }
     },
