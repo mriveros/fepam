@@ -347,14 +347,26 @@ function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta){
         
         $("#nombres").val(data.nombre_persona); 
         $("#apellidos").val(data.apellido_persona);
+        $("#piloto_fecha_nacimiento").val(data.fecha_nacimiento);
+        $("#direccion").val(data.direccion);
+        $("#telefono").val(data.telefono);
+
           
       }else{
 
         $("#nombres").focus();
         $("#nombres").val('');
         $("#apellidos").val('');
+        $("#piloto_grupo_sanguineo").val('');
+        $("#piloto_fecha_nacimiento").val('');
+        $("#direccion").val('');
+        $("#telefono").val('');
         document.getElementById("nombres").readOnly = false;
         document.getElementById("apellidos").readOnly = false;
+        document.getElementById("fecha_nacimiento").readOnly = false;
+        document.getElementById("direccion").readOnly = false;
+        document.getElementById("telefono").readOnly = false;
+        
        
           
       }
