@@ -110,33 +110,18 @@ skip_before_action :verify_authenticity_token
     @valido = true
     @msg = ""
     @guardado_ok = false
-
-    unless params[:piloto][:nombre_razon_social].present?
-
-      @valido = false
-      @msg += " Debe Completar el campo Nombre o Razón Social. \n"
-
-    end
-
-    unless params[:piloto][:ruc_ci].present?
-
-      @valido = false
-      @msg += "Debe Completar el campo con el RUC o CI. \n"
-
-    end
-
     
 
     if @valido
       
       @piloto = Piloto.new()
-      @piloto.nombres = params[:piloto][:nombres].upcase
-      @piloto.apellidos = params[:piloto][:apellidos].upcase
-      @piloto.ci = params[:piloto][:ci]
-      @piloto.grupo_sanguineo = params[:piloto][:grupo_sanguineo].upcase
-      @piloto.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
-      @piloto.direccion = params[:piloto][:direccion].upcase
-      @piloto.telefono = params[:piloto][:telefono]
+      @piloto.nombres = params[:nombres].upcase
+      @piloto.apellidos = params[:apellidos].upcase
+      @piloto.ci = params[[:ci]
+      @piloto.grupo_sanguineo = params[:piloto][:grupo_sanguineo_id].upcase
+      @piloto.fecha_nacimiento = params[:fecha_nacimiento]
+      @piloto.direccion = params[:direccion].upcase
+      @piloto.telefono = params[:telefono]
       
 
         if @piloto.save
