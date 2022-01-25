@@ -40,8 +40,8 @@
           <div class="col-sm-7"><%= text_field_tag :apellidos, nil, class: 'form-control input-sm', readonly: true %></div>
           <div class="col-sm-1"></div><br />
 
-          <div class="col-sm-4"><%= f.label :email, "Grupo Sanguineo #{attr_requerido}".html_safe, id: "lbl-grupo-sanguineo" %></div>
-          <div class="col-sm-7"><%= f.text_field :grupo_sanguineo, class: 'form-control input-sm' %></div>
+          <div class="col-sm-4"><%= label_tag nil, "Grupo Sanguineo #{attr_requerido}".html_safe, id: "lbl-nacionalidad" %></div>
+          <div class="col-sm-7"><%= collection_select :piloto, :grupo_sanguineo_id, GrupoSanguineo.orden_id, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= f.label :fecha_nacimiento, "Fecha de Nacimiento #{attr_requerido}".html_safe %></div>
