@@ -117,7 +117,7 @@ skip_before_action :verify_authenticity_token
       @piloto = Piloto.new()
       @piloto.nombres = params[:nombres].upcase
       @piloto.apellidos = params[:apellidos].upcase
-      @piloto.ci = params[[:ci]
+      @piloto.ci = params[:ci]
       @piloto.grupo_sanguineo_id = params[:piloto][:grupo_sanguineo_id]
       @piloto.fecha_nacimiento = params[:fecha_nacimiento]
       @piloto.direccion = params[:direccion].upcase
