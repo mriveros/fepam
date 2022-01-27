@@ -73,17 +73,17 @@ skip_before_action :verify_authenticity_token
 
     if cond.size > 0
 
-      @pilotos =  Piloto.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
-      @total_encontrados = Piloto.where(cond).count
+      @pilotos =  VPiloto.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
+      @total_encontrados = VPiloto.where(cond).count
       
     else
 
-      @pilotos = Piloto.orden_01.paginate(per_page: 10, page: params[:page])
-      @total_encontrados = Piloto.count
+      @pilotos = VPiloto.orden_01.paginate(per_page: 10, page: params[:page])
+      @total_encontrados = VPiloto.count
 
     end
 
-    @total_registros = Piloto.count
+    @total_registros = VPiloto.count
 
   	respond_to do |f|
 	    
@@ -118,7 +118,7 @@ skip_before_action :verify_authenticity_token
       @piloto.nombres = params[:nombres].upcase
       @piloto.apellidos = params[:apellidos].upcase
       @piloto.ci = params[[:ci]
-      @piloto.grupo_sanguineo = params[:piloto][:grupo_sanguineo_id].upcase
+      @piloto.grupo_sanguineo_id = params[:piloto][:grupo_sanguineo_id]
       @piloto.fecha_nacimiento = params[:fecha_nacimiento]
       @piloto.direccion = params[:direccion].upcase
       @piloto.telefono = params[:telefono]
