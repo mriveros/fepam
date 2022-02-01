@@ -131,7 +131,7 @@ skip_before_action :verify_authenticity_token
           @guardado_ok = true
          
         end 
-
+ 
     end
   
     rescue Exception => exc  
