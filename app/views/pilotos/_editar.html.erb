@@ -1,4 +1,5 @@
 
+
 <div class="modal-dialog" style="text-align:left;">
       
   <div class="modal-content">
@@ -32,11 +33,11 @@
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= label_tag nil, "Nombre #{attr_requerido}".html_safe, id: "lbl-nombre" %></div>
-          <div class="col-sm-7"><%= f.text_field :nombres, class: 'form-control input-sm', readonly: true %></div>
+          <div class="col-sm-7"><%= f.text_field :nombres, class: 'form-control input-sm'%></div>
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= label_tag nil, "Apellido #{attr_requerido}".html_safe, id: "lbl-apellido" %></div>
-          <div class="col-sm-7"><%= f.text_field :apellidos, class: 'form-control input-sm', readonly: true %></div>
+          <div class="col-sm-7"><%= f.text_field :apellidos, class: 'form-control input-sm'%></div>
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= label_tag nil, "Grupo Sanguineo #{attr_requerido}".html_safe, id: "lbl-nacionalidad" %></div>
@@ -52,11 +53,11 @@
           </div>
 
           <div class="col-sm-4"><%= label_tag nil, "Dirección #{attr_requerido}".html_safe, id: "lbl-direccion" %></div>
-          <div class="col-sm-7"><%= f.text_field :direccion, class: 'form-control input-sm', readonly: true %></div>
+          <div class="col-sm-7"><%= f.text_field :direccion, class: 'form-control input-sm'%></div>
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= label_tag nil, "Telefono".html_safe, id: "lbl-telefono" %></div>
-          <div class="col-sm-7"><%= f.text_field :telefono, class: 'form-control input-sm', readonly: true %></div>
+          <div class="col-sm-7"><%= f.text_field :telefono, class: 'form-control input-sm'%></div>
           <div class="col-sm-1"></div><br />
       
        
@@ -85,4 +86,14 @@
 
 <script type="text/javascript">
   aplicar_datepicker2();
+
+  setTimeout(function(){ 
+    $("#persona_documento").focus();
+    $("#persona_tipo_documento_id").val(1);
+    $("#persona_nacionalidad_id").val(1);
+  }, 1000);
+
+
+
+
 </script>
