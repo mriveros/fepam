@@ -39,6 +39,7 @@
               <%= text_field_tag :form_buscar_pilotos_nombre, nil, :class => 'form-control', :placeholder => "" %>
               <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_nombre');"><i class="fa fa-times"></i></span>
             </div>
+             <em class="nmb"></em>
           </th>
 
           <th>
@@ -47,6 +48,7 @@
               <%= text_field_tag :form_buscar_pilotos_apellido, nil, :class => 'form-control', :placeholder => "" %>
               <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_apellido');"><i class="fa fa-times"></i></span>
             </div>
+            <em class="nmb"></em>
           </th>
 
           <th>
@@ -55,16 +57,16 @@
                 <%= text_field_tag :form_buscar_pilotos_ci, nil, :class => 'form-control', :placeholder => "" %>
                 <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_ci');"><i class="fa fa-times"></i></span>
             </div>
-            <em class="nmb"></em>
+           
           </th>
 
           <th>
             <span>Grupo Sanguineo</span>
             <div class="input-group input-group-sm">
-                <%= text_field_tag :form_buscar_pilotos_grupo_sanguineo, nil, :class => 'form-control', :placeholder => "" %>
+                <div class="col-sm-7"><%= collection_select :form_buscar_pilotos, :grupo_sanguineo_id, GrupoSanguineo.orden_id, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
                 <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-pilotos', '#form_buscar_pilotos_grupo_sanguineo');"><i class="fa fa-times"></i></span>
             </div>
-            <em class="nmb"></em>
+            
           </th>
           <th >
             <span>Fecha Nacimiento</span>

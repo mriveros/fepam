@@ -4,12 +4,12 @@
 
     <tr>
 
-      <td style="width:50px;"><%= p.id %></td>
+      <td style="width:50px;"><%= p.piloto_id %></td>
       <td><%= p.nombres%></td>
       <td><%= p.apellidos%></td>
       <td><%= p.ci %></td>
       <td><%= p.grupo_sanguineo%></td>
-      <td><%= p.fecha_nacimiento%></td>
+      <td><%= p.fecha_nacimiento.strftime("%d/%m/%Y") if p.fecha_nacimiento.present?%></td>
       <td><%= p.direccion%></td>
       <td><%= p.telefono%></td>
       
@@ -17,7 +17,7 @@
         
         <%#= link_to_editar_piloto(p) %>
         
-        <%= link_to icon_eliminar, pilotos_eliminar_path(id: p.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Piloto', data: { confirm: "Está seguro de eliminar el Piloto?"} %>
+        <%= link_to icon_eliminar, pilotos_eliminar_path(piloto_id: p.piloto_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el Piloto', data: { confirm: "Está seguro de eliminar el Piloto?"} %>
       
        </td> 
 

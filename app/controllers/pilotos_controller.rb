@@ -15,56 +15,56 @@ skip_before_action :verify_authenticity_token
 
     if params[:form_buscar_pilotos_id].present?
 
-      cond << "pilotos.id = ?"
+      cond << "piloto_id = ?"
       args << params[:form_buscar_pilotos_id]
 
     end
 
     if params[:form_buscar_pilotos_nombre].present?
 
-      cond << "pilotos.nombres ilike ?"
+      cond << "nombres ilike ?"
       args << "%#{params[:form_buscar_pilotos_nombre]}%"
 
     end
 
     if params[:form_buscar_pilotos_apellido].present?
 
-      cond << "pilotos.apellidos ilike ?"
+      cond << "apellidos ilike ?"
       args << "%#{params[:form_buscar_pilotos_apellido]}%"
 
     end
 
     if params[:form_buscar_pilotos_ci].present?
 
-      cond << "pilotos.ci = ?"
-      args << "%#{params[:form_buscar_pilotos_ci]}%"
+      cond << "ci = ?"
+      args << params[:form_buscar_pilotos_ci]
 
     end
 
     if params[:form_buscar_pilotos_fecha_nacimiento].present?
 
-      cond << "pilotos.ci = ?"
+      cond << "fecha_nacimiento = ?"
       args << params[:form_buscar_pilotos_fecha_nacimiento]
 
     end
 
-    if params[:form_buscar_pilotos_grupo_sanguineo].present?
+    if params[:form_buscar_pilotos][:grupo_sanguineo_id].present?
 
-      cond << "pilotos.grupo_sanguineo ilike ?"
-      args << "%#{params[:form_buscar_pilotos_grupo_sanguineo]}%"
+      cond << "grupo_sanguineo_id = ?"
+      args << params[:form_buscar_pilotos][:grupo_sanguineo_id]
 
     end
 
     if params[:form_buscar_pilotos_direccion].present?
 
-      cond << "pilotos.direccion ilike ?"
+      cond << "direccion ilike ?"
       args << "%#{params[:form_buscar_pilotos_direccion]}%"
 
     end
 
     if params[:form_buscar_pilotos_telefono].present?
 
-      cond << "pilotos.telefono ilike ?"
+      cond << "telefono ilike ?"
       args << "%#{params[:form_buscar_pilotos_telefono]}%"
 
     end
