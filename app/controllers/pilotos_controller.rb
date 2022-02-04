@@ -147,13 +147,13 @@ skip_before_action :verify_authenticity_token
 	    
 	      f.js
 	    
-	end
+	   end
 
   end
 
   def editar
-    
-    @piloto = Piloto.find(params[:id])
+
+    @piloto = Piloto.find(params[:piloto_id])
 
   	respond_to do |f|
 	    
