@@ -127,8 +127,30 @@ skip_before_action :verify_authenticity_token
         if @piloto.save
 
           auditoria_nueva("registrar piloto", "pilotos", @piloto)
-         
           @guardado_ok = true
+          @persona = Persona.where('documento_persona = ?', params[:ci]).first
+          
+          unless @persona.present?
+
+            @persona = Persona.new
+            @persona.nombre_persona = params[:nombres].upcase
+            @persona.apellido_persona = params[:apellidos].upcase
+            @persona.documento_persona = params[:ci]
+            @persona.tipo_documento_id = params[:persona][:tipo_documento_id]
+            @persona.nacionalidad_id = params[:persona][:nacionalidad_id]
+            @persona.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
+            @persona.direccion = params[:direccion].upcase
+            @persona.telefono = params[:telefono]
+            @persona.celular = params[:telefono]
+            @persona.grupo_sanguineo_id = params[:piloto][:grupo_sanguineo_id]
+            #sexo por defecto no especificado
+            @persona.genero_id = 3 
+            if @persona.save
+              @guardado_ok = true
+               auditoria_nueva("registrar persona", "personas", @persona)
+            end
+
+          end
          
         end 
  
