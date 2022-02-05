@@ -260,7 +260,7 @@ skip_before_action :verify_authenticity_token
     valido = true
     @msg = ""
 
-    @piloto = Piloto.find(params[:id])
+    @piloto = Piloto.find(params[:piloto_id])
 
     @piloto_elim = @piloto  
 
@@ -284,7 +284,6 @@ skip_before_action :verify_authenticity_token
         #puts "Aqui si muestra el error ".concat(exc.message)
         if exc.present?        
         @excep = exc.message.split(':')    
-        @msg = @excep[3].concat(" "+@excep[4])
         @eliminado = false
         end
         
