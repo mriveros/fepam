@@ -7,17 +7,13 @@
   $("#form_buscar_pilotos_apellidos").val('');
   $("#form_buscar_pilotos_direccion").val('');
   $("#form_buscar_pilotos_telefono").val('');
-  $("#form-buscar-pilotos").submit();
   
+  $("#<%= params[:window_id]%>").modal('hide'); 
   setTimeout(function(){ 
-  	
-  	swal("Piloto actualizado Exitosamente.");
-  	$("#<%= params[:window_id]%>").modal('hide'); 
-    
-  	$("#form-buscar-clientes").submit(); 
-  
+  	swal("Piloto actualizado Exitosamente.");	
   }, 1000);
-
+  
+  $("#form-buscar-pilotos").submit();
 
 <% else %>
 
