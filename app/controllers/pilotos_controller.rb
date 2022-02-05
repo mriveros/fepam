@@ -174,13 +174,13 @@ skip_before_action :verify_authenticity_token
 
     if valido
 
-      @piloto.nombres = params[:nombres].upcase
-      @piloto.apellidos = params[:apellidos].upcase
-      @piloto.ci = params[:ci]
+      @piloto.nombres = params[:piloto][:nombres].upcase
+      @piloto.apellidos = params[:piloto][:apellidos].upcase
+      @piloto.ci = params[:piloto][:ci]
       @piloto.grupo_sanguineo_id = params[:piloto][:grupo_sanguineo_id]
       @piloto.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
-      @piloto.direccion = params[:direccion].upcase
-      @piloto.telefono = params[:telefono]
+      @piloto.direccion = params[:piloto][:direccion].upcase
+      @piloto.telefono = params[:piloto][:telefono]
 
       if @piloto.save
 
