@@ -11,24 +11,24 @@ class CategoriasController < ApplicationController
 	    cond = []
 	    args = []
 
-	    if params[:form_buscar_cargos_id].present?
+	    if params[:form_buscar_categorias_id].present?
 
 	      cond << "id = ?"
-	      args << params[:form_buscar_cargos_id]
+	      args << params[:form_buscar_categorias_id]
 
 	    end
 
-	    if params[:form_buscar_cargos_descripcion].present?
+	    if params[:form_buscar_categorias_descripcion].present?
 
 	      cond << "descripcion ilike ?"
-	      args << "%#{params[:form_buscar_cargos_descripcion]}%"
+	      args << "%#{params[:form_buscar_categorias_descripcion]}%"
 
 	    end
 
-	    if params[:form_buscar_cargos_sueldo].present?
+	    if params[:form_buscar_categorias_sueldo].present?
 
 	      cond << "sueldo = ?"
-	      args << params[:form_buscar_cargos_sueldo]
+	      args << params[:form_buscar_categorias_sueldo]
 
 	    end
 
@@ -38,12 +38,12 @@ class CategoriasController < ApplicationController
 
 	    if cond.size > 0
 
-	      @cargos =  Cargo.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
+	      @categorias =  Cargo.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
 	      @total_encontrados = Cargo.where(cond).count
 
 	    else
 
-	      @cargos = Cargo.orden_01.paginate(per_page: 10, page: params[:page])
+	      @categorias = Cargo.orden_01.paginate(per_page: 10, page: params[:page])
 	      @total_encontrados = Cargo.count
 
 	    end
@@ -84,7 +84,7 @@ class CategoriasController < ApplicationController
 	    
 	      if @cargo.save
 
-	        auditoria_nueva("registrar cargo", "cargos", @cargo)
+	        auditoria_nueva("registrar cargo", "categorias", @cargo)
 	       
 	        @cargo_ok = true
 	       
@@ -112,7 +112,7 @@ class CategoriasController < ApplicationController
 
 	      	if @cargo.destroy
 
-		        auditoria_nueva("eliminar cargo", "cargos", @cargo)
+		        auditoria_nueva("eliminar cargo", "categorias", @cargo)
 		        @eliminado = true
 
 	    	end
@@ -144,7 +144,7 @@ class CategoriasController < ApplicationController
 	    @msg = ""
 
 	    @cargo = Cargo.find(params[:cargo][:id])
-	    auditoria_id = auditoria_antes("actualizar cargo", "cargos", @cargo)
+	    auditoria_id = auditoria_antes("actualizar cargo", "categorias", @cargo)
 
 	    if valido
 
