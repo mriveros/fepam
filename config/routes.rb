@@ -51,7 +51,7 @@ get 'crontab_ultron/index'
   post 'torneos/actualizar_torneo_detalle'
   get 'torneos/eliminar_torneo_detalle'
 
-  #CLIENTES
+  #PILOTOS
   post 'pilotos/lista'
   get 'pilotos/lista'
   get 'pilotos/agregar'
@@ -62,6 +62,18 @@ get 'crontab_ultron/index'
   get 'pilotos/index'
   get 'pilotos/buscar_piloto'
   get 'pilotos/buscar_persona'
+
+   #CATEGORIAS
+  post 'categorias/lista'
+  get 'categorias/lista'
+  get 'categorias/agregar'
+  post 'categorias/guardar'
+  get 'categorias/eliminar'
+  get 'categorias/editar'
+  post 'categorias/actualizar'
+  get 'categorias/index'
+  get 'categorias/buscar_piloto'
+  get 'categorias/buscar_persona'
   
 
 #VOTANTES
