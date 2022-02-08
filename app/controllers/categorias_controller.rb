@@ -38,17 +38,17 @@ class CategoriasController < ApplicationController
 
 	    if cond.size > 0
 
-	      @categorias =  Cargo.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = Cargo.where(cond).count
+	      @categorias =  Categoria.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = Categoria.where(cond).count
 
 	    else
 
-	      @categorias = Cargo.orden_01.paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = Cargo.count
+	      @categorias = Categoria.orden_01.paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = Categoria.count
 
 	    end
 
-	    @total_registros = Cargo.count
+	    @total_registros = Categoria.count
 
 	    respond_to do |f|
 
@@ -61,7 +61,7 @@ class CategoriasController < ApplicationController
 
 	  def agregar
 
-	    @cargo = Cargo.new
+	    @Categoria = Categoria.new
 
 	    respond_to do |f|
 
@@ -77,16 +77,16 @@ class CategoriasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @cargo = Cargo.new()
+	    @Categoria = Categoria.new()
 
-	    @cargo.descripcion = params[:cargo][:descripcion].upcase
-	    @cargo.sueldo = params[:cargo][:sueldo].to_s.gsub(/[$.]/,'').to_i
+	    @Categoria.descripcion = params[:Categoria][:descripcion].upcase
+	    @Categoria.sueldo = params[:Categoria][:sueldo].to_s.gsub(/[$.]/,'').to_i
 	    
-	      if @cargo.save
+	      if @Categoria.save
 
-	        auditoria_nueva("registrar cargo", "categorias", @cargo)
+	        auditoria_nueva("registrar Categoria", "categorias", @Categoria)
 	       
-	        @cargo_ok = true
+	        @Categoria_ok = true
 	       
 
 	      end              
@@ -105,14 +105,14 @@ class CategoriasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @cargo = Cargo.find(params[:id])
-		@cargo_elim = @cargo
+	    @Categoria = Categoria.find(params[:id])
+		@Categoria_elim = @Categoria
 
 	    if valido
 
-	      	if @cargo.destroy
+	      	if @Categoria.destroy
 
-		        auditoria_nueva("eliminar cargo", "categorias", @cargo)
+		        auditoria_nueva("eliminar Categoria", "categorias", @Categoria)
 		        @eliminado = true
 
 	    	end
@@ -128,7 +128,7 @@ class CategoriasController < ApplicationController
 
 	  def editar
 
-	    @cargo = Cargo.find(params[:id])
+	    @Categoria = Categoria.find(params[:id])
 
 	    respond_to do |f|
 
@@ -143,19 +143,19 @@ class CategoriasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @cargo = Cargo.find(params[:cargo][:id])
-	    auditoria_id = auditoria_antes("actualizar cargo", "categorias", @cargo)
+	    @Categoria = Categoria.find(params[:Categoria][:id])
+	    auditoria_id = auditoria_antes("actualizar Categoria", "categorias", @Categoria)
 
 	    if valido
 
 	      
-	    	@cargo.descripcion = params[:cargo][:descripcion].upcase
-	    	@cargo.sueldo = params[:cargo][:sueldo].to_s.gsub(/[$.]/,'').to_i
+	    	@Categoria.descripcion = params[:Categoria][:descripcion].upcase
+	    	@Categoria.sueldo = params[:Categoria][:sueldo].to_s.gsub(/[$.]/,'').to_i
 	      	
-	      	if @cargo.save
+	      	if @Categoria.save
 
-	      		auditoria_despues(@cargo, auditoria_id)
-	        	@cargo_ok = true
+	      		auditoria_despues(@Categoria, auditoria_id)
+	        	@Categoria_ok = true
 
 	      end
 
