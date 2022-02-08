@@ -1,8 +1,8 @@
 module CategoriasHelper
 
-  def link_to_editar_cargo(cargo)
+  def link_to_editar_categoria(categoria)
 
-      render partial: 'link_to_editar_cargo', locals: { cargo: cargo }
+      render partial: 'link_to_editar_categoria', locals: { categoria: categoria }
       
   end
 
