@@ -4,7 +4,7 @@ class CategoriasController < ApplicationController
 
 	  def index
 
-	  end
+	  end 
 
 	  def lista
 
@@ -24,15 +24,7 @@ class CategoriasController < ApplicationController
 	      args << "%#{params[:form_buscar_categorias_descripcion]}%"
 
 	    end
-
-	    if params[:form_buscar_categorias_sueldo].present?
-
-	      cond << "sueldo = ?"
-	      args << params[:form_buscar_categorias_sueldo]
-
-	    end
-
-	    
+   
 
 	    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
