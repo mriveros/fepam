@@ -120,7 +120,7 @@ class CategoriasController < ApplicationController
 
 	  def editar
 
-	    @Categoria = Categoria.find(params[:id])
+	    @categoria = Categoria.find(params[:id])
 
 	    respond_to do |f|
 
@@ -135,19 +135,17 @@ class CategoriasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @Categoria = Categoria.find(params[:Categoria][:id])
-	    auditoria_id = auditoria_antes("actualizar Categoria", "categorias", @Categoria)
+	    @categoria = Categoria.find(params[:categoria][:id])
+	    auditoria_id = auditoria_antes("actualizar Categoria", "categorias", @categoria)
 
 	    if valido
 
-	      
-	    	@Categoria.descripcion = params[:Categoria][:descripcion].upcase
-	    	@Categoria.sueldo = params[:Categoria][:sueldo].to_s.gsub(/[$.]/,'').to_i
+	    	@categoria.descripcion = params[:categoria][:descripcion].upcase
 	      	
-	      	if @Categoria.save
+	      	if @categoria.save
 
-	      		auditoria_despues(@Categoria, auditoria_id)
-	        	@Categoria_ok = true
+	      		auditoria_despues(@categoria, auditoria_id)
+	        	@categoria_ok = true
 
 	      end
 
