@@ -53,7 +53,7 @@ class CategoriasController < ApplicationController
 
 	  def agregar
 
-	    @Categoria = Categoria.new
+	    @categoria = Categoria.new
 
 	    respond_to do |f|
 
@@ -69,16 +69,16 @@ class CategoriasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @Categoria = Categoria.new()
+	    @categoria = Categoria.new()
 
-	    @Categoria.descripcion = params[:Categoria][:descripcion].upcase
-	    @Categoria.sueldo = params[:Categoria][:sueldo].to_s.gsub(/[$.]/,'').to_i
+	    @categoria.descripcion = params[:categoria][:descripcion].upcase
 	    
-	      if @Categoria.save
+	    
+	      if @categoria.save
 
-	        auditoria_nueva("registrar Categoria", "categorias", @Categoria)
+	        auditoria_nueva("registrar Categoria", "categorias", @categoria)
 	       
-	        @Categoria_ok = true
+	        @categoria_ok = true
 	       
 
 	      end              

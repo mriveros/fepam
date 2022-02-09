@@ -1,0 +1,5 @@
+<%= link_to icon_editar, "#", id: "link-to-editar-categoria-#{categoria.id}", class: 'btn btn-warning btn-xs', title: 'Haga click para editar el categoría.', onclick: "$('.modal').html('');return false;" %>
+
+
+<%= modal_window( window_id: "modal-window-editar-categoria", link_to_id: "#link-to-editar-categoria-#{categoria.id}", url: categorias_editar_path( window_id: "modal-window-editar-categoria", id: categoria.id) )%>
+
