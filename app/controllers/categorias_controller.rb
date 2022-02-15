@@ -97,14 +97,14 @@ class CategoriasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @Categoria = Categoria.find(params[:id])
-		@Categoria_elim = @Categoria
+	    @categoria = Categoria.find(params[:id])
+		@categoria_elim = @categoria
 
 	    if valido
 
-	      	if @Categoria.destroy
+	      	if @categoria.destroy
 
-		        auditoria_nueva("eliminar Categoria", "categorias", @Categoria)
+		        auditoria_nueva("eliminar Categoria", "categorias", @categoria)
 		        @eliminado = true
 
 	    	end
