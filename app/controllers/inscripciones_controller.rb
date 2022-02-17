@@ -68,7 +68,7 @@ class InscripcionesController < ApplicationController
 
 	  def agregar
 
-	    @torneo = Torneo.new
+	    @inscripcion = Inscripcion.new
 
 	    respond_to do |f|
 
@@ -84,17 +84,17 @@ class InscripcionesController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @torneo = Torneo.new()
+	    @inscripcion = Inscripcion.new()
 
-	    @torneo.descripcion = params[:torneo][:descripcion].upcase
-	  	@torneo.cantidad_fechas = params[:torneo][:cantidad_fechas]
-	  	@torneo.fecha = params[:torneo][:fecha]
+	    @inscripcion.descripcion = params[:inscripcion][:descripcion].upcase
+	  	@inscripcion.cantidad_fechas = params[:inscripcion][:cantidad_fechas]
+	  	@inscripcion.fecha = params[:inscripcion][:fecha]
 	    
-	      if @torneo.save
+	      if @inscripcion.save
 
-	        auditoria_nueva("registrar torneo", "inscripciones", @torneo)
+	        auditoria_nueva("registrar inscripcion", "inscripciones", @inscripcion)
 	       
-	        @torneo_ok = true
+	        @inscripcion_ok = true
 	       
 
 	      end              
@@ -113,14 +113,14 @@ class InscripcionesController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @torneo = Torneo.find(params[:id])
-		@torneo_elim = @torneo
+	    @inscripcion = Inscripcion.find(params[:id])
+		@inscripcion_elim = @inscripcion
 
 	    if valido
 
-	      	if @torneo.destroy
+	      	if @inscripcion.destroy
 
-		        auditoria_nueva("eliminar torneo", "inscripciones", @torneo)
+		        auditoria_nueva("eliminar inscripcion", "inscripciones", @inscripcion)
 		        @eliminado = true
 
 	    	end
@@ -136,7 +136,7 @@ class InscripcionesController < ApplicationController
 
 	  def editar
 
-	    @torneo = Torneo.find(params[:id])
+	    @inscripcion = Inscripcion.find(params[:id])
 
 	    respond_to do |f|
 
@@ -151,20 +151,20 @@ class InscripcionesController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @torneo = Torneo.find(params[:torneo][:id])
-	    auditoria_id = auditoria_antes("actualizar torneo", "inscripciones", @torneo)
+	    @inscripcion = Inscripcion.find(params[:inscripcion][:id])
+	    auditoria_id = auditoria_antes("actualizar inscripcion", "inscripciones", @inscripcion)
 
 	    if valido
 
 	      
-	    	@torneo.descripcion = params[:torneo][:descripcion].upcase
-	    	@torneo.cantidad_fechas = params[:torneo][:cantidad_fechas]
-	    	@torneo.fecha = params[:torneo][:fecha]
+	    	@inscripcion.descripcion = params[:inscripcion][:descripcion].upcase
+	    	@inscripcion.cantidad_fechas = params[:inscripcion][:cantidad_fechas]
+	    	@inscripcion.fecha = params[:inscripcion][:fecha]
 	      	
-	      	if @torneo.save
+	      	if @inscripcion.save
 
-	      		auditoria_despues(@torneo, auditoria_id)
-	        	@torneo_ok = true
+	      		auditoria_despues(@inscripcion, auditoria_id)
+	        	@inscripcion_ok = true
 
 	      end
 
@@ -178,9 +178,9 @@ class InscripcionesController < ApplicationController
 
 	end
 
-	def torneo_detalle
+	def inscripcion_detalle
 
-    @inscripciones_detalles = TorneoDetalle.where("torneo_id = ?", params[:torneo_id]).paginate(per_page: 10, page: params[:page])
+    @inscripciones_detalles = InscripcionDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 
@@ -192,9 +192,9 @@ class InscripcionesController < ApplicationController
 
 
 
-  def agregar_torneo_detalle
+  def agregar_inscripcion_detalle
     
-    @torneo_detalle = TorneoDetalle.new
+    @inscripcion_detalle = InscripcionDetalle.new
 
    respond_to do |f|
 
@@ -205,20 +205,20 @@ class InscripcionesController < ApplicationController
   end
 
 
-   def guardar_torneo_detalle
+   def guardar_inscripcion_detalle
     
     @valido = true
     @msg = ""
     @guardado_ok = false
 
-    unless params[:torneo_detalle][:descripcion].present?
+    unless params[:inscripcion_detalle][:descripcion].present?
 
       @valido = false
       @msg += " Debe Completar el campo descripción. \n"
 
     end
 
-    unless params[:torneo_detalle][:fecha].present?
+    unless params[:inscripcion_detalle][:fecha].present?
 
       @valido = false
       @msg += " Debe agregar una fecha. \n"
@@ -229,14 +229,14 @@ class InscripcionesController < ApplicationController
 
     if @valido
       
-      @torneo_detalle = TorneoDetalle.new()
-      @torneo_detalle.descripcion = params[:torneo_detalle][:descripcion].upcase
-      @torneo_detalle.fecha = params[:torneo_detalle][:fecha]
-      @torneo_detalle.torneo_id = params[:torneo_id]
+      @inscripcion_detalle = InscripcionDetalle.new()
+      @inscripcion_detalle.descripcion = params[:inscripcion_detalle][:descripcion].upcase
+      @inscripcion_detalle.fecha = params[:inscripcion_detalle][:fecha]
+      @inscripcion_detalle.inscripcion_id = params[:inscripcion_id]
 
-        if @torneo_detalle.save
+        if @inscripcion_detalle.save
 
-          auditoria_nueva("registrar torneo asignado a hacienda", "inscripciones", @torneo_detalle)
+          auditoria_nueva("registrar inscripcion asignado a hacienda", "inscripciones", @inscripcion_detalle)
           @guardado_ok = true
          
         end 
@@ -260,24 +260,24 @@ class InscripcionesController < ApplicationController
   
   end
 
-  def eliminar_torneo_detalle
+  def eliminar_inscripcion_detalle
 
     @valido = true
     @msg = ""
 
-    @torneo_detalle = TorneoDetalle.find(params[:torneo_id])
+    @inscripcion_detalle = InscripcionDetalle.find(params[:inscripcion_id])
 
     if @valido
 
-      if @torneo_detalle.destroy
+      if @inscripcion_detalle.destroy
 
-        auditoria_nueva("eliminar fecha del campeonato", "inscripciones", @torneo_detalle)
+        auditoria_nueva("eliminar fecha del campeonato", "inscripciones", @inscripcion_detalle)
 
         @eliminado = true
 
       else
 
-        @msg = "ERROR: No se ha podido eliminar el torneo del campeonato porque ya cuenta con registros"
+        @msg = "ERROR: No se ha podido eliminar el inscripcion del campeonato porque ya cuenta con registros"
 
       end
 
