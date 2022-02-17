@@ -35,6 +35,22 @@ Rails.application.routes.draw do
 #CRONTAB
 get 'crontab_ultron/index'
 #--------------------------------------------------------------------------
+#INSCRIPCIONES
+  post 'inscripciones/lista'
+  get 'inscripciones/lista'
+  get 'inscripciones/agregar'
+  post 'inscripciones/guardar'
+  get 'inscripciones/eliminar'
+  get 'inscripciones/editar'
+  post 'inscripciones/actualizar'
+  get 'inscripciones/index'
+  get 'inscripciones/torneo_detalle'
+  get 'inscripciones/agregar_inscripcion_detalle'
+  post 'inscripciones/guardar_inscripcion_detalle'
+  get 'inscripciones/editar_inscripcion_detalle'
+  post 'inscripciones/actualizar_inscripcion_detalle'
+  get 'inscripciones/eliminar_inscripcion_detalle'
+  
 #TORNEOS
   post 'torneos/lista'
   get 'torneos/lista'
