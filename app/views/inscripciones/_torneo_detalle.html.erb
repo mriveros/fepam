@@ -1,0 +1,114 @@
+<td colspan="12">
+
+  <div style="background: #e6e6e6; margin:15px;padding:15px;border-radius:10px;">
+
+    <div>
+
+      <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
+        <h3 style="float:left;margin-top:5px;">Fechas del Campeonato</h3>
+        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar fecha".html_safe, "#", id: "link-to-agregar-torneo-detalle", class: "btn btn-primary btn-xs", style: "float:right;" %>
+      </div>
+
+    </div> 
+
+    <div style="clear:both;"></div>
+   
+    <div class="panel-body">
+      
+      <div class="table-responsive" id="table-tutor-detalle">
+          
+        <table class="table table-bordered table-hover table-striped display dataTable" aria-describedby="example_info">
+            
+          <thead>
+              
+            <tr role="row">
+              
+              <th>ID</th>
+              <th>Descripción</th>
+              <th>Fecha</th>
+              <th style='text-align:right;'></th>
+              
+            </tr>
+            
+          </thead>
+       
+          <tbody id="torneo-detalle-lista">
+
+            <% if @torneos_detalles.present? %>
+            
+              <% @torneos_detalles.each do |td|%>
+
+                <tr>
+                  <td><%= td.id %></td>
+                  <td><%= td.descripcion %></td>
+                  <td style="text-align:center;"><%= td.fecha.strftime("%d/%m/%Y") if td.fecha.present? %></td>
+                  <td style="width: 50px;text-align:right;">
+                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{td.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-potrero", title: 'Haga click para eliminar el potrero de esta torneo'  %>
+                  </td>
+
+                </tr>
+
+              <% end %>
+
+              <tr id="tab-paginacion">
+
+                  <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate @torneos_detalles, :params => params %></div></td>
+              </tr>
+
+            <% else %>
+
+              <tr><td colspan=3>No se han encontrado datos.</td></tr>
+
+            <% end %>
+                
+          </tbody>
+              
+        </table>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <%= modal_window( window_id: "modal-window-agregar-torneo-detalle", link_to_id: "#link-to-agregar-torneo-detalle", url: torneos_agregar_torneo_detalle_path( window_id: "modal-window-agregar-torneo-detalle", torneo_id: params[:torneo_id]) )%>
+
+</td>
+
+
+  <script type="text/javascript">
+
+    function eliminar_registro(potrero_id) {
+
+        swal({
+          title: "Confirmar",
+          text: "Al confirmar la Fecha será eliminada del Campeonato.",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "btn-confirm",
+          confirmButtonText: "Confirmar",
+          cancelButtonText: "Cancelar",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm) {
+          if (isConfirm) {
+
+              $.ajax({
+                url: "<%= url_for(torneos_eliminar_torneo_detalle_path) %>", 
+                data: {potrero_id: potrero_id},
+                dataType: 'script'
+              });
+            
+          } else{
+
+            return false;
+
+          }
+
+        });
+
+    
+    }
+
+  </script>

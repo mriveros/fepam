@@ -1,0 +1,138 @@
+
+<%= javascript_include_tag "sweetalert.min" %>
+<%= stylesheet_link_tag "sweetalert" %>
+<div>
+<!--
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+-->
+  <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
+    <h3 style="float:left;margin-top:5px;">Campeonatos</h3>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-torneo", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= modal_window( window_id: "modal-window-agregar-torneo", link_to_id: "#link-to-agregar-torneo", url: torneos_agregar_path( window_id: "modal-window-agregar-torneo") )%>
+    
+  </div>
+</div>
+
+<div style="clear:both;"></div>
+ 
+<div class="table-responsive" id="table-torneos">
+
+  <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
+   
+    <thead>
+
+      <%= form_tag torneos_lista_path, remote: true, id: "form-buscar-torneos"  do  %>
+
+        <tr>
+
+          <th style="width:20px;">
+            <span>ID</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_torneos_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+          
+
+          <th style="width:120px;">
+            <span>Descripción<br/> <em style="font-size: 7px;"> Ej: Campeonato Central Mx/Vx</em></span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_torneos_descripcion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_descripcion');"><i class="fa fa-times"></i></span>
+            </div>
+            <em class="nmb"></em>
+          </th>
+          <th style="width:120px;">
+            <span>Fecha de Inicio</span>
+            <div class="input-group input-group-sm">
+              <div class='input-group date' style="float:left;">
+                <%= text_field_tag :form_buscar_torneos_fecha, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
+                <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </th>
+          <th style="width:120px;">
+            <span>Cantidad Fechas</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_torneos_cantidad_fechas, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-torneos', '#form_buscar_torneos_cantidad_fechas');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+
+          <th style="width:150px;"></th>
+
+        </tr>
+
+        <% end %>
+
+      </thead> 
+
+    <tbody id="torneos-lista"></tbody>
+  
+  </table>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+  //---------------------------- RECUPERANDO DATOS ----------------------------//
+  $("#form-buscar-torneos").bind("submit", function () {
+    var valido = true;
+    if($("#form_buscar_torneos_descripcion").val().length !== 0 ){
+      valido = false;
+      if(($("#form_buscar_torneos_descripcion").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_torneos_descripcion").val().replace(/\s/g,'')).length > 2){        
+        valido = true;
+      }else{
+        valido = false;
+        //swal("Para la búsqueda por Nombre y Apellido Ingrese minimo 3(tres) carácteres en cada caja de texto", "", "error");         
+        $(".nmb").html('*Ingrese minimo 3(tres) carácteres para cada caja de texto');
+        $(".nmb").attr({'style':'color: red;font-size: 8px;'});      
+      }      
+    }
+      
+    if(valido){
+    $(".nmb").html('');       
+    $("#torneos-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
+    }
+
+    
+
+  })
+ 
+  //---------------------------------------------------------------------------//
+  //---------------------------- BUSCAR PERSONAS-------- -------------------------//
+  $("#table-torneos input, #table-torneos select").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-torneos").submit();
+
+  })
+  //----------------------------------------------------------------------------//
+  //----------------------------INICIO -----------------------------------------//
+  aplicar_datepicker();
+  $("#form-buscar-torneos").submit();
+  <% if params[:agregar] %>
+    $("#link-to-agregar-torneo").trigger('click');
+  <% end %>
+  //----------------------------------------------------------------------------//
+</script>
+
+<style>
+    /*INTRO.JS*/
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+
+    #start-tour{
+        cursor: pointer;
+    }
+
+    #form-buscar-torneos table th { background:#e6e6e6;}
+    #form-buscar-torneos table th span.limpiar { background:#fff;}
+
+</style>

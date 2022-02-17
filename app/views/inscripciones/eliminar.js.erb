@@ -1,0 +1,21 @@
+<% if @eliminado %>
+
+   $("<div class='col-sm-12' id='msg-eliminar-torneo' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Eliminado exitosamente.</div>").insertBefore("#table-torneos");
+   $("#form_buscar_torneos_id").val('<%= @torneo_elim.id %>');
+   $("#form_buscar_torneos_descripcion").val('');
+   $("#form_buscar_torneos_cantidad_fechas").val('');
+   $("#form_buscar_torneos_fecha").val('');
+
+    setTimeout(function(){ 
+
+    	$("#msg-eliminar-torneo").remove(); 
+    	$("#form-buscar-torneos").submit(); 
+    }, 1500);
+   
+    	swal("Eliminado Exitosamente.")
+
+<% else %>
+
+  $("<div class='col-sm-12' id='msg-eliminar-torneo' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'>Error al eliminar el torneo. Intente más tarde.</div>").insertBefore("#table-torneos");
+  
+<% end %>
