@@ -1,4 +1,4 @@
-class TorneosController < ApplicationController
+class InscripcionesController < ApplicationController
 
 	before_filter :require_usuario
 
@@ -11,31 +11,31 @@ class TorneosController < ApplicationController
 	    cond = []
 	    args = []
 
-	    if params[:form_buscar_torneos_id].present?
+	    if params[:form_buscar_inscripciones_id].present?
 
 	      cond << "id = ?"
-	      args << params[:form_buscar_torneos_id]
+	      args << params[:form_buscar_inscripciones_id]
 
 	    end
 
-	    if params[:form_buscar_torneos_descripcion].present?
+	    if params[:form_buscar_inscripciones_descripcion].present?
 
 	      cond << "descripcion ilike ?"
-	      args << "%#{params[:form_buscar_torneos_descripcion]}%"
+	      args << "%#{params[:form_buscar_inscripciones_descripcion]}%"
 
 	    end
 
-	    if params[:form_buscar_torneos_cantidad_fechas].present?
+	    if params[:form_buscar_inscripciones_cantidad_fechas].present?
 
 	      cond << "cantidad_fechas = ?"
-	      args << params[:form_buscar_torneos_cantidad_fechas]
+	      args << params[:form_buscar_inscripciones_cantidad_fechas]
 
 	    end
 
-	    if params[:form_buscar_torneos_fecha].present?
+	    if params[:form_buscar_inscripciones_fecha].present?
 
 	      cond << "fecha = ?"
-	      args << params[:form_buscar_torneos_fecha]
+	      args << params[:form_buscar_inscripciones_fecha]
 
 	    end
 
@@ -45,17 +45,17 @@ class TorneosController < ApplicationController
 
 	    if cond.size > 0
 
-	      @torneos =  Torneo.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = Torneo.where(cond).count
+	      @inscripciones =  Inscripcion.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = Inscripcion.where(cond).count
 
 	    else
 
-	      @torneos = Torneo.orden_01.paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = Torneo.count
+	      @inscripciones = Inscripcion.orden_01.paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = Inscripcion.count
 
 	    end
 
-	    @total_registros = Torneo.count
+	    @total_registros = Inscripcion.count
 
 	    respond_to do |f|
 
@@ -92,7 +92,7 @@ class TorneosController < ApplicationController
 	    
 	      if @torneo.save
 
-	        auditoria_nueva("registrar torneo", "torneos", @torneo)
+	        auditoria_nueva("registrar torneo", "inscripciones", @torneo)
 	       
 	        @torneo_ok = true
 	       
@@ -120,7 +120,7 @@ class TorneosController < ApplicationController
 
 	      	if @torneo.destroy
 
-		        auditoria_nueva("eliminar torneo", "torneos", @torneo)
+		        auditoria_nueva("eliminar torneo", "inscripciones", @torneo)
 		        @eliminado = true
 
 	    	end
@@ -152,7 +152,7 @@ class TorneosController < ApplicationController
 	    @msg = ""
 
 	    @torneo = Torneo.find(params[:torneo][:id])
-	    auditoria_id = auditoria_antes("actualizar torneo", "torneos", @torneo)
+	    auditoria_id = auditoria_antes("actualizar torneo", "inscripciones", @torneo)
 
 	    if valido
 
@@ -180,7 +180,7 @@ class TorneosController < ApplicationController
 
 	def torneo_detalle
 
-    @torneos_detalles = TorneoDetalle.where("torneo_id = ?", params[:torneo_id]).paginate(per_page: 10, page: params[:page])
+    @inscripciones_detalles = TorneoDetalle.where("torneo_id = ?", params[:torneo_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 
@@ -236,7 +236,7 @@ class TorneosController < ApplicationController
 
         if @torneo_detalle.save
 
-          auditoria_nueva("registrar torneo asignado a hacienda", "torneos", @torneo_detalle)
+          auditoria_nueva("registrar torneo asignado a hacienda", "inscripciones", @torneo_detalle)
           @guardado_ok = true
          
         end 
@@ -271,7 +271,7 @@ class TorneosController < ApplicationController
 
       if @torneo_detalle.destroy
 
-        auditoria_nueva("eliminar fecha del campeonato", "torneos", @torneo_detalle)
+        auditoria_nueva("eliminar fecha del campeonato", "inscripciones", @torneo_detalle)
 
         @eliminado = true
 
@@ -300,6 +300,9 @@ class TorneosController < ApplicationController
 
     end
   
-  end    
+  end
+
+
+	    
 
 end
