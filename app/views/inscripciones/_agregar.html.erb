@@ -18,17 +18,21 @@
         <div class="panel-body">
 
       <div class="col-sm-4"><%= label_tag nil, "Fecha #{attr_requerido}".html_safe, id: "lbl-fecha" %></div>
-          <div class="col-sm-7"><%= collection_select :inscripcion, :categoria_id,  TorneoDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
-          <div class="col-sm-1"></div><br />
+      <div class="col-sm-7"><%= collection_select :inscripcion, :categoria_id,  TorneoDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
+      <div class="col-sm-1"></div><br />
 
 
       <div class="col-sm-4"><%= label_tag nil, "Categoría #{attr_requerido}".html_safe, id: "lbl-categoria" %></div>
-          <div class="col-sm-7"><%= collection_select :inscripcion, :categoria_id,  Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
-          <div class="col-sm-1"></div><br />
+      <div class="col-sm-7"><%= collection_select :inscripcion, :categoria_id,  Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
+      <div class="col-sm-1"></div><br />
+
+      <div class="col-sm-4"><%= label_tag nil, "Estado Inscripción #{attr_requerido}".html_safe, id: "lbl-categoria" %></div>
+      <div class="col-sm-7"><%= collection_select :inscripcion, :estado_inscripcion_id,  EstadoInscripcion.orden_descripcion, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+      <div class="col-sm-1"></div><br />
 
       <div class="modal-footer" style="background:#e6e6e6;">
         <%= link_to "<span class='glyphicon glyphicon-remove'></span> Cerrar".html_safe, "#", class: "btn btn-default", onclick: "$('##{params[:window_id]}').modal('hide');" %> 
-        <%= f.submit "Guardar".html_safe, class: "btn btn-primary", id: "btn-guardar-cargo" %>          
+        <%= f.submit "Guardar".html_safe, class: "btn btn-primary", id: "btn-guardar-inscripcion" %>          
       </div>
 
     <% end %>

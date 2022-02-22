@@ -33,31 +33,27 @@
             </div>
           </th>
           
+           <div class="col-sm-4"><%= label_tag nil, "Campeonato/Torneo #{attr_requerido}".html_safe, id: "lbl-torneo" %></div><br />
+          <div class="col-sm-7"><%= collection_select :inscripcion, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div><br />
 
-          <th style="width:120px;">
-            <span>Descripción<br/> <em style="font-size: 7px;"> Ej: Campeonato Central Mx/Vx</em></span>
+           <%= linked_combo "torneo_detalle_id", 
+          :linked =>"inscripcion_torneo_id" ,
+          :url => url_for( torneos_buscar_torneo_path(format: :json)), 
+          :param => "inscripcion_torneo_id",
+          :clase => "jurisdiccion" %>
+
+          <div class="col-sm-4"><%= label_tag nil, "Fecha #{attr_requerido}".html_safe,  id: "lbl-torneo-detalle"%></div><br />
+          <div class="col-sm-7"><%= collection_select :inscripcion, :torneo_detalle_id, (@torneo_detalle.id ? TorneoDetalle.where("torneo_id = ?", @torneo_detalle.id ) : {}), :id, :descripcion, { include_blank: true, selected: (@torneo_detalle.id ? @torneo_detalle.id : nil)}, { class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div><br />
+
+          <th style="width:130px;">
+              <span>Categoría</span>
             <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_inscripciones_descripcion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_descripcion');"><i class="fa fa-times"></i></span>
+              <%= collection_select :form_buscar_inscripciones, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_categoria_id');"><i class="fa fa-times"></i></span>
             </div>
-            <em class="nmb"></em>
-          </th>
-          <th style="width:120px;">
-            <span>Fecha de Inicio</span>
-            <div class="input-group input-group-sm">
-              <div class='input-group date' style="float:left;">
-                <%= text_field_tag :form_buscar_inscripciones_fecha, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
-                <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
-              </div>
-            </div>
-          </th>
-          <th style="width:120px;">
-            <span>Cantidad Fechas</span>
-            <div class="input-group input-group-sm">
-              <%= text_field_tag :form_buscar_inscripciones_cantidad_fechas, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_cantidad_fechas');"><i class="fa fa-times"></i></span>
-            </div>
-          </th>
+          </th> 
 
 
           <th style="width:150px;"></th>
