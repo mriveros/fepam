@@ -7,5 +7,6 @@ class TorneoDetalle < ActiveRecord::Base
  
   scope :orden_01, -> { order("id")}
   scope :orden_fecha, -> { order("fecha")}
+  scope :orden_descripcion, -> { order("descripcion")}
 
 end

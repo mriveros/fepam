@@ -1,6 +1,6 @@
-<% if torneos.present? %>
+<% if inscripciones.present? %>
 
-  <% torneos.each do |t| %>
+  <% inscripciones.each do |t| %>
 
     <tr>
 
@@ -11,7 +11,7 @@
       <td >
         <%= link_to_editar_torneo(t) %>
         <%= link_to_torneo_detalle(t.id) %>
-        <%= link_to icon_eliminar, torneos_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el torneo', data: { confirm: "Está seguro de eliminar el Torneo?"} %>
+        <%= link_to icon_eliminar, inscripciones_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el torneo', data: { confirm: "Está seguro de eliminar el Torneo?"} %>
          
        </td>
 
@@ -23,7 +23,7 @@
 
 <tr id="tab-paginacion">
 
-    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate torneos, :params => params %></div></td>
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate inscripciones, :params => params %></div></td>
 </tr>
 
 <tr>
