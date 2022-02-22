@@ -306,7 +306,7 @@ class TorneosController < ApplicationController
 
     if params[:inscripcion_torneo_id].present?
       
-       @torneo_detalle = TorneoDetalle.where("id = ? and estado_torneo_detalle_id = ?", params[:inscripcion_torneo_id], PARAMETRO[:estado_torneo_detalle_activo])
+       @torneo_detalle = TorneoDetalle.where("torneo_id = ? and estado_torneo_detalle_id = ?", params[:inscripcion_torneo_id], PARAMETRO[:estado_torneo_detalle_activo])
     
     end
 
