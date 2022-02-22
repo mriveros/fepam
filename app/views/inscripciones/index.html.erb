@@ -33,19 +33,23 @@
             </div>
           </th>
           
-           <div class="col-sm-4"><%= label_tag nil, "Campeonato/Torneo #{attr_requerido}".html_safe, id: "lbl-torneo" %></div><br />
-          <div class="col-sm-7"><%= collection_select :inscripcion, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
-          <div class="col-sm-1"></div><br />
+          <th style="width:20px;">
+          <span>Campeonato</span>
+          <div class="input-group input-group-sm"><%= collection_select :inscripcion, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div>
+          </th>
 
-           <%= linked_combo "torneo_detalle_id", 
+           <%= linked_combo "inscripcion_torneo_detalle_id", 
           :linked =>"inscripcion_torneo_id" ,
-          :url => url_for( torneos_buscar_torneo_path(format: :json)), 
+          :url => url_for( torneos_buscar_torneo_detalle_path(format: :json)), 
           :param => "inscripcion_torneo_id",
-          :clase => "jurisdiccion" %>
+          :clase => "torneo_detalle" %>
 
-          <div class="col-sm-4"><%= label_tag nil, "Fecha #{attr_requerido}".html_safe,  id: "lbl-torneo-detalle"%></div><br />
-          <div class="col-sm-7"><%= collection_select :inscripcion, :torneo_detalle_id, (@torneo_detalle.id ? TorneoDetalle.where("torneo_id = ?", @torneo_detalle.id ) : {}), :id, :descripcion, { include_blank: true, selected: (@torneo_detalle.id ? @torneo_detalle.id : nil)}, { class: 'form-control input-sm'} %></div>
-          <div class="col-sm-1"></div><br />
+          <th style="width:20px;">
+         <span>Fecha</span>
+         <div class="input-group input-group-sm"><%= collection_select :inscripcion, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div>
+          </th>
 
           <th style="width:130px;">
               <span>Categoría</span>
@@ -78,9 +82,9 @@
   //---------------------------- RECUPERANDO DATOS ----------------------------//
   $("#form-buscar-inscripciones").bind("submit", function () {
     var valido = true;
-    if($("#form_buscar_inscripciones_descripcion").val().length !== 0 ){
+    if($("#inscripcion_torneo_id").val().length !== 0 ){
       valido = false;
-      if(($("#form_buscar_inscripciones_descripcion").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_inscripciones_descripcion").val().replace(/\s/g,'')).length > 2){        
+      if(($("#inscripcion_torneo_id").val().replace(/\s/g,'')).length > 2 && ($("#inscripcion_torneo_id").val().replace(/\s/g,'')).length > 2){        
         valido = true;
       }else{
         valido = false;

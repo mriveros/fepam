@@ -66,6 +66,7 @@ get 'crontab_ultron/index'
   get 'torneos/editar_torneo_detalle'
   post 'torneos/actualizar_torneo_detalle'
   get 'torneos/eliminar_torneo_detalle'
+  get 'torneos/buscar_torneo_detalle'
 
   #PILOTOS
   post 'pilotos/lista'

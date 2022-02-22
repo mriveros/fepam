@@ -304,15 +304,15 @@ class TorneosController < ApplicationController
 
   def buscar_torneo_detalle
 
-    if params[:inscripcion_torneo_id]
+    if params[:inscripcion_torneo_id].present?
       
-      @torneo_detalle = Jurisdiccion.where("departamento_id = ? and estado = true", params[:hacienda_departamento_id])
+       @torneo_detalle = TorneoDetalle.where("id = ? and estado_torneo_detalle_id = ?", params[:inscripcion_torneo_id], PARAMETRO[:estado_torneo_detalle_activo])
     
     end
 
     respond_to do |f|
       
-      f.json { render :json => @jurisdicciones }
+      f.json { render :json => @torneo_detalle }
     
     end
   
