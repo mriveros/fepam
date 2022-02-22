@@ -300,6 +300,22 @@ class TorneosController < ApplicationController
 
     end
   
-  end    
+  end  
+
+  def buscar_torneo_detalle
+
+    if params[:inscripcion_torneo_id]
+      
+      @torneo_detalle = Jurisdiccion.where("departamento_id = ? and estado = true", params[:hacienda_departamento_id])
+    
+    end
+
+    respond_to do |f|
+      
+      f.json { render :json => @jurisdicciones }
+    
+    end
+  
+  end  
 
 end
