@@ -45,8 +45,8 @@ development:
 #ESTADO TORNEO DETALLE
   estado_torneo_detalle_activo: 1
 
-#ESTADO INSCRIPCIONES
-  estado_inscripcion_activo: 1  
+#ESTADO TORNEOS
+  estado_torneo_id: 1  
   
 
 production:
@@ -96,7 +96,7 @@ production:
   #ESTADO TORNEO DETALLE
   estado_torneo_detalle_activo: 1
 
-  #ESTADO INSCRIPCIONES
-  estado_inscripcion_activo: 1
+  #ESTADO TORNEOS
+  estado_torneo_id: 1
 
  
