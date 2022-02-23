@@ -33,7 +33,7 @@
             </div>
           </th>
           
-          <th style="width:20px;">
+          <th>
           <span>Campeonato</span>
           <div class="input-group input-group-sm"><%= collection_select :form_buscar_inscripciones, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_torneo_id');"><i class="fa fa-times"></i></span>
@@ -46,20 +46,30 @@
           :param => "form_buscar_inscripciones_torneo_id",
           :clase => "torneo_detalle" %>
 
-          <th style="width:20px;">
+          <th>
          <span>Fecha</span>
          <div class="input-group input-group-sm"><%= collection_select :form_buscar_inscripciones, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %>
           <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_torneo_detalle_id');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
-          <th style="width:130px;">
+          <th >
               <span>Categoría</span>
             <div class="input-group input-group-sm">
               <%= collection_select :form_buscar_inscripciones, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
               <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_categoria_id');"><i class="fa fa-times"></i></span>
             </div>
           </th> 
+
+          <th>
+            <span>Fecha Inicio Inscripción</span>
+            <div class="input-group input-group-sm">
+              <div class='input-group date' style="width:120px;float:left;">
+                <%= text_field_tag :form_buscar_inscripciones_fecha_inicio_inscripcion, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
+                <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </th>
 
           <th style="width:150px;"></th>
 

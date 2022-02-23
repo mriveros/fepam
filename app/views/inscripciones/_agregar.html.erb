@@ -26,7 +26,7 @@
           :param => "form_buscar_inscripciones_torneo_id",
           :clase => "torneo_detalle" %>
 
-      <div class="col-sm-4"><%= label_tag nil, "Fecha #{attr_requerido}".html_safe, id: "lbl-fecha" %></div>
+      <div class="col-sm-4"><%= label_tag nil, "Fecha#{attr_requerido}".html_safe, id: "lbl-fecha" %></div>
       <div class="col-sm-7"><%= collection_select :inscripcion, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %></div>
       <div class="col-sm-1"></div><br />
 

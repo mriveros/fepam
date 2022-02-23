@@ -4,14 +4,15 @@
 
     <tr>
 
-      <td ><%= t.id %></td>
-      <td ><%= t.descripcion%></td>
-      <td style="text-align:center;"><%= t.fecha.strftime("%d/%m/%Y") if t.fecha.present? %></td>
-      <td ><%= t.cantidad_fechas%></td>
+      <td ><%= t.inscripcion_id %></td>
+      <td ><%= t.torneo%></td>
+      <td ><%= t.fecha_campeonato%></td>
+      <td ><%= t.categoria%></td>
+      <td style="text-align:center;"><%= t.fecha_inicio_inscripcion.strftime("%d/%m/%Y") if t.fecha_inicio_inscripcion.present? %></td>
       <td >
-        <%= link_to_editar_torneo(t) %>
-        <%= link_to_torneo_detalle(t.id) %>
-        <%= link_to icon_eliminar, inscripciones_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el torneo', data: { confirm: "Está seguro de eliminar el Torneo?"} %>
+        <%#= link_to_editar_torneo(t) %>
+        <%#= link_to_torneo_detalle(t.id) %>
+        <%#= link_to icon_eliminar, inscripciones_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el torneo', data: { confirm: "Está seguro de eliminar el Torneo?"} %>
          
        </td>
 
