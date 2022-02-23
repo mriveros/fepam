@@ -35,20 +35,22 @@
           
           <th style="width:20px;">
           <span>Campeonato</span>
-          <div class="input-group input-group-sm"><%= collection_select :inscripcion, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
-          <div class="col-sm-1"></div>
+          <div class="input-group input-group-sm"><%= collection_select :form_buscar_inscripciones, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_torneo_id');"><i class="fa fa-times"></i></span>
+            </div>
           </th>
 
-           <%= linked_combo "inscripcion_torneo_detalle_id", 
-          :linked =>"inscripcion_torneo_id" ,
+           <%= linked_combo "form_buscar_inscripciones_torneo_detalle_id", 
+          :linked =>"form_buscar_inscripciones_torneo_id" ,
           :url => url_for( torneos_buscar_torneo_detalle_path(format: :json)), 
-          :param => "inscripcion_torneo_id",
+          :param => "form_buscar_inscripciones_torneo_id",
           :clase => "torneo_detalle" %>
 
           <th style="width:20px;">
          <span>Fecha</span>
-         <div class="input-group input-group-sm"><%= collection_select :inscripcion, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %></div>
-          <div class="col-sm-1"></div>
+         <div class="input-group input-group-sm"><%= collection_select :form_buscar_inscripciones, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_torneo_detalle_id');"><i class="fa fa-times"></i></span>
+            </div>
           </th>
 
           <th style="width:130px;">
@@ -58,7 +60,6 @@
               <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_categoria_id');"><i class="fa fa-times"></i></span>
             </div>
           </th> 
-
 
           <th style="width:150px;"></th>
 
@@ -82,9 +83,9 @@
   //---------------------------- RECUPERANDO DATOS ----------------------------//
   $("#form-buscar-inscripciones").bind("submit", function () {
     var valido = true;
-    if($("#inscripcion_torneo_id").val().length !== 0 ){
+    if($("#form_buscar_inscripciones_torneo_id").val().length !== 0 ){
       valido = false;
-      if(($("#inscripcion_torneo_id").val().replace(/\s/g,'')).length > 2 && ($("#inscripcion_torneo_id").val().replace(/\s/g,'')).length > 2){        
+      if(($("#form_buscar_inscripciones_torneo_id").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_inscripciones_torneo_id").val().replace(/\s/g,'')).length > 2){        
         valido = true;
       }else{
         valido = false;
