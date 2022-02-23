@@ -45,17 +45,17 @@ class InscripcionesController < ApplicationController
 
 	    if cond.size > 0
 
-	      @inscripciones =  Inscripcion.orden_01.where(cond).paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = Inscripcion.where(cond).count
+	      @inscripciones =  VInscripcion.orden_fecha.where(cond).paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = VInscripcion.where(cond).count
 
 	    else
 
-	      @inscripciones = Inscripcion.orden_01.paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = Inscripcion.count
+	      @inscripciones = VInscripcion.orden_fecha.paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = VInscripcion.count
 
 	    end
 
-	    @total_registros = Inscripcion.count
+	    @total_registros = VInscripcion.count
 
 	    respond_to do |f|
 
