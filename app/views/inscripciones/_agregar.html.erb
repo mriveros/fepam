@@ -15,7 +15,10 @@
 
       <div class="modal-body">
 
-        <div class="panel-body">
+      <div class="panel-body">
+      <div class="col-sm-4"><%= label_tag nil, "Campeonato #{attr_requerido}".html_safe, id: "lbl-campeonato" %></div>
+      <div class="col-sm-7"><%= collection_select :inscripcion, :torneo_id,  Torneo.orden_descripcion.where(''), :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
+      <div class="col-sm-1"></div><br />
 
       <div class="col-sm-4"><%= label_tag nil, "Fecha #{attr_requerido}".html_safe, id: "lbl-fecha" %></div>
       <div class="col-sm-7"><%= collection_select :inscripcion, :categoria_id,  TorneoDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
