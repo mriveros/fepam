@@ -13,29 +13,36 @@ class InscripcionesController < ApplicationController
 
 	    if params[:form_buscar_inscripciones_id].present?
 
-	      cond << "id = ?"
+	      cond << "inscripcion_id = ?"
 	      args << params[:form_buscar_inscripciones_id]
 
 	    end
 
-	    if params[:form_buscar_inscripciones_descripcion].present?
+	    if params[:form_buscar_inscripciones][:torneo_id].present?
 
-	      cond << "descripcion ilike ?"
-	      args << "%#{params[:form_buscar_inscripciones_descripcion]}%"
-
-	    end
-
-	    if params[:form_buscar_inscripciones_cantidad_fechas].present?
-
-	      cond << "cantidad_fechas = ?"
-	      args << params[:form_buscar_inscripciones_cantidad_fechas]
+	      cond << "torneo_id = ?"
+	      args << params[:form_buscar_inscripciones][:torneo_id]
 
 	    end
 
-	    if params[:form_buscar_inscripciones_fecha].present?
+	    if params[:form_buscar_inscripciones][:torneo_detalle_id].present?
 
-	      cond << "fecha = ?"
-	      args << params[:form_buscar_inscripciones_fecha]
+	      cond << "torneo_detalle_id = ?"
+	      args << params[:form_buscar_inscripciones][:torneo_detalle_id]
+
+	    end
+
+	    if params[:form_buscar_inscripciones][:categoria_id].present?
+
+	      cond << "categoria_id = ?"
+	      args << params[:form_buscar_inscripciones][:categoria_id]
+
+	    end
+
+	    if params[:form_buscar_inscripciones_fecha_inicio_inscripcion].present?
+
+	      cond << "fecha_inicio_inscripcion = ?"
+	      args << params[:form_buscar_inscripciones_fecha_inicio_inscripcion]
 
 	    end
 
