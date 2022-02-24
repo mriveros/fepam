@@ -9,6 +9,7 @@
       <td ><%= t.fecha_campeonato%></td>
       <td ><%= t.categoria%></td>
       <td style="text-align:center;"><%= t.fecha_inicio_inscripcion.strftime("%d/%m/%Y") if t.fecha_inicio_inscripcion.present? %></td>
+      <td ><%= t.estado_inscripcion%></td>
       <td >
         <%#= link_to_editar_torneo(t) %>
         <%#= link_to_torneo_detalle(t.id) %>

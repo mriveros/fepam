@@ -46,6 +46,13 @@ class InscripcionesController < ApplicationController
 
 	    end
 
+	    if params[:form_buscar_inscripciones][:estado_inscripcion_id].present?
+
+	      cond << "estado_inscripcion_id = ?"
+	      args << params[:form_buscar_inscripciones][:estado_inscripcion_id]
+
+	    end
+
 	    
 
 	    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
