@@ -133,7 +133,7 @@ class InscripcionesController < ApplicationController
 		@inscripcion_elim = @inscripcion
 
 	    if valido
-
+ 
 	      	if @inscripcion.destroy
 
 		        auditoria_nueva("eliminar inscripcion", "inscripciones", @inscripcion)
