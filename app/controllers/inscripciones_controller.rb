@@ -196,7 +196,7 @@ class InscripcionesController < ApplicationController
 
 	def inscripcion_detalle
 
-    @inscripciones_detalles = InscripcionDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
+    @inscripciones_detalles = VInscripcionDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 
