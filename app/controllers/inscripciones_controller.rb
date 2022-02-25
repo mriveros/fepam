@@ -281,19 +281,19 @@ class InscripcionesController < ApplicationController
     @valido = true
     @msg = ""
 
-    @inscripcion_detalle = InscripcionDetalle.find(params[:inscripcion_id])
+    @inscripcion_detalle = InscripcionDetalle.find(params[:inscripcion_detalle_id])
 
     if @valido
 
       if @inscripcion_detalle.destroy
 
-        auditoria_nueva("eliminar fecha del campeonato", "inscripciones", @inscripcion_detalle)
+        auditoria_nueva("eliminar inscripcion detalle", "inscripciones_detalles", @inscripcion_detalle)
 
         @eliminado = true
 
       else
 
-        @msg = "ERROR: No se ha podido eliminar el inscripcion del campeonato porque ya cuenta con registros"
+        @msg = "ERROR: No se ha podido eliminar el Piloto de esta Inscripción"
 
       end
 

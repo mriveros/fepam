@@ -24,8 +24,11 @@
             <tr role="row">
               
               <th>ID</th>
-              <th>Descripción</th>
-              <th>Fecha</th>
+              <th>Datos Piloto</th>
+              <th>CI Piloto</th>
+              <th>Fecha Inscripción</th>
+              <th>Monto Inscripción</th>
+              <th>Estado Inscripción</th>
               <th style='text-align:right;'></th>
               
             </tr>
@@ -36,14 +39,17 @@
 
             <% if @inscripciones_detalles.present? %>
             
-              <% @inscripciones_detalles.each do |td|%>
+              <% @inscripciones_detalles.each do |id|%>
 
                 <tr>
-                  <td><%= td.id %></td>
-                  <td><%= td.descripcion %></td>
-                  <td style="text-align:center;"><%= td.fecha.strftime("%d/%m/%Y") if td.fecha.present? %></td>
+                  <td><%= id.inscripcion_detalle_id%></td>
+                  <td><%= id.nombre_piloto %></td>
+                  <td><%= id.ci %></td>
+                  <td style="text-align:center;"><%= id.fecha_inscripcion.strftime("%d/%m/%Y") if id.fecha_inscripcion.present? %></td>
+                  <td><%= id.monto_inscripcion.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse  %></td>
+                  <td><%= id.estado_inscripcion_detalle %></td>
                   <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{td.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-inscripcion", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{td.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-inscripcion-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
                   </td>
 
                 </tr>
@@ -82,7 +88,7 @@
 
         swal({
           title: "Confirmar",
-          text: "Al confirmar la Fecha será eliminada del Campeonato.",
+          text: "Al confirmar el Piloto será eliminado de esta Inscripción.",
           type: "warning",
           showCancelButton: true,
           confirmButtonClass: "btn-confirm",
