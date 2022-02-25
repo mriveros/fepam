@@ -12,8 +12,8 @@
       <td ><%= t.estado_inscripcion%></td>
       <td>
 
-        <%= link_to_inscripcion_detalle(t.id) %>
-        <%= link_to icon_eliminar, inscripciones_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de inscripciones', data: { confirm: "Está seguro de eliminar la habilitación de inscripciónes?"} %>
+        <%= link_to_inscripcion_detalle(t.inscripcion_id) %>
+        <%= link_to icon_eliminar, inscripciones_eliminar_path(id: t.inscripcion_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de inscripciones', data: { confirm: "Está seguro de eliminar la habilitación de inscripciónes?"} %>
          
        </td>
 
