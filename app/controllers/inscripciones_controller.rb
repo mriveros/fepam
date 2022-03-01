@@ -225,23 +225,7 @@ class InscripcionesController < ApplicationController
     
     @valido = true
     @msg = ""
-    @guardado_ok = false
-
-    unless params[:inscripcion_detalle][:descripcion].present?
-
-      @valido = false
-      @msg += " Debe Completar el campo descripción. \n"
-
-    end
-
-    unless params[:inscripcion_detalle][:fecha].present?
-
-      @valido = false
-      @msg += " Debe agregar una fecha. \n"
-
-    end
-
-    
+    @guardado_ok = false 
 
     if @valido
       
