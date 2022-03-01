@@ -44,9 +44,9 @@ function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta){
 }
 
 function buscar_piloto(documento, ruta){
-
+  alert('debug');
   $("#msg-documento-persona").remove();
-  $('#buscar_perso').html('');
+  $('#buscar_piloto').html('');
   $.ajax({
     type: 'GET',
     url: ruta,
@@ -57,8 +57,8 @@ function buscar_piloto(documento, ruta){
           
         $("#ci").next();
         
-        $("#nombres").val(data.nombre_persona); 
-        $("#apellidos").val(data.apellido_persona);
+        $("#nombres").val(data.nombres); 
+        $("#apellidos").val(data.apellidos);
     
           
       }else{

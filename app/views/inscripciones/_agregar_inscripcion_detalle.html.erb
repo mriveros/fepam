@@ -1,4 +1,4 @@
-
+<%= javascript_include_tag "modulos/pilotos.js" %>
 <div class="modal-dialog">
       
   <div class="modal-content">
@@ -127,8 +127,9 @@
     $("#ci").bind("keydown", function(e){
       
     if(e.keyCode == 13 || e.keyCode == 9){
-      alert('debug');
+
     buscar_piloto( $("#ci").val(),"<%= url_for(pilotos_buscar_piloto_documento_path ) %>");
+
       return false;
     }
   })
