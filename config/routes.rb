@@ -50,6 +50,7 @@ get 'crontab_ultron/index'
   get 'inscripciones/editar_inscripcion_detalle'
   post 'inscripciones/actualizar_inscripcion_detalle'
   get 'inscripciones/eliminar_inscripcion_detalle'
+
   
 #TORNEOS
   post 'torneos/lista'
@@ -79,6 +80,7 @@ get 'crontab_ultron/index'
   get 'pilotos/index'
   get 'pilotos/buscar_piloto'
   get 'pilotos/buscar_persona'
+  get 'pilotos/buscar_piloto_documento'
 
    #CATEGORIAS
   post 'categorias/lista'
