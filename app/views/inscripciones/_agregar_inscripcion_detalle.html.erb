@@ -10,7 +10,7 @@
       
     </div>
 
-    <%= form_for @inscripcion_detalle, remote: true, url: inscripciones_detalles_guardar_inscripcion_detalle_url, html: { id: "form-agregar-inscripcion-detalle" } do |f| %>
+    <%= form_for @inscripcion_detalle, remote: true, url: inscripciones_guardar_inscripcion_detalle_url, html: { id: "form-agregar-inscripcion-detalle" } do |f| %>
 
       <%= hidden_field_tag :window_id, params[:window_id]%>
 
@@ -23,7 +23,7 @@
            <div class="col-sm-4"><%= f.label :fecha, "Fecha Inscripción#{attr_requerido}".html_safe %></div>
           <div class="col-sm-7"> 
             <div class='input-group date' style="width:150px;float:left;margin-top:5px;">
-              <%= f.text_field :fecha, class: 'form-control input-sm', style: "margin-top:0px;" %>
+              <%= f.text_field :fecha_inscripcion, class: 'form-control input-sm', style: "margin-top:0px;" %>
               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
             </div>
           </div>
