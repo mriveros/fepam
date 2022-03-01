@@ -295,4 +295,18 @@ skip_before_action :verify_authenticity_token
 
   end
 
+  def buscar_piloto_documento
+    
+    if params[:documento].present?
+
+      @piloto = Piloto.where("ci = ?", params[:documento])  
+
+    end
+
+    respond_to do |f|
+      f.json { render :json => @piloto.first}
+    end
+
+  end
+
 end

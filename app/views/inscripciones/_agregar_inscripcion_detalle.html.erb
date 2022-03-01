@@ -31,7 +31,7 @@
           <div class="col-sm-4"><%= label_tag nil, "Apellido #{attr_requerido}".html_safe, id: "lbl-apellido" %></div>
           <div class="col-sm-7"><%= text_field_tag :apellidos, nil, class: 'form-control input-sm', readonly: true %></div>
           <div class="col-sm-1"></div><br />
-          
+
            <div class="col-sm-4"><%= f.label :fecha, "Fecha Inscripción#{attr_requerido}".html_safe %></div>
           <div class="col-sm-7"> 
             <div class='input-group date' style="width:150px;float:left;margin-top:5px;">
@@ -79,8 +79,6 @@
      return true;
   }
 
-
-
   $("#btn-guardar-inscripcion-detalle").bind('click', function () {
 
       valido = true
@@ -125,5 +123,14 @@
     
     })
 
+  //agregar piloto por numero de CI
+    $("#ci").bind("keydown", function(e){
+      
+    if(e.keyCode == 13 || e.keyCode == 9){
+
+    buscar_piloto( $("#ci").val(),"<%= url_for(pilotos_buscar_piloto_documento_path ) %>");
+      return false;
+    }
+  })
 
 </script>
