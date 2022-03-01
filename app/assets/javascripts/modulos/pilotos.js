@@ -42,3 +42,31 @@ function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta){
     typeData: 'json'     
   })
 }
+
+function buscar_piloto(documento, ruta){
+
+  $("#msg-documento-persona").remove();
+  $('#buscar_perso').html('');
+  $.ajax({
+    type: 'GET',
+    url: ruta,
+    data: {documento:documento},
+    success: function(data){
+      
+      if(data != null){
+          
+        $("#ci").next();
+        
+        $("#nombres").val(data.nombre_persona); 
+        $("#apellidos").val(data.apellido_persona);
+    
+          
+      }else{
+
+        $("#nombres").focus();
+            
+      }
+    },
+    typeData: 'json'     
+  })
+}
