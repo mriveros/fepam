@@ -24,6 +24,7 @@
 
           <div class="col-sm-4"><%= label_tag nil, "N° Documento #{attr_requerido}".html_safe, id: "lbl-documento" %></div>
           <div class="col-sm-7"><%= text_field_tag :ci, nil, class: 'form-control input-sm' %></div>
+          <em class="msg"></em>
           <div class="col-sm-1"></div><br />
 
           <%= hidden_field_tag :piloto_id%>
@@ -36,13 +37,19 @@
           <div class="col-sm-7"><%= text_field_tag :apellidos, nil, class: 'form-control input-sm', readonly: true %></div>
           <div class="col-sm-1"></div><br />
 
-           <div class="col-sm-4"><%= f.label :fecha, "Fecha Inscripción#{attr_requerido}".html_safe %></div>
+          <div class="col-sm-4"><%= f.label :categoria, "Categoría #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"><%= collection_select :hacienda, :departamento_id,  Categoria.orden_descripcion, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div><br />
+
+          <div class="col-sm-1"></div><br />
+          <div class="col-sm-4"><%= f.label :fecha, "Fecha Inscripción#{attr_requerido}".html_safe %></div>
           <div class="col-sm-7"> 
             <div class='input-group date' style="width:150px;float:left;margin-top:5px;">
               <%= text_field_tag :fecha_inscripcion, Date.today.strftime('%m/%d/%Y') , class: 'form-control input-sm', style: "margin-top:0px;"%>
               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
             </div>
           </div>
+
        <div class="col-sm-1"></div><br />
       </div>
       

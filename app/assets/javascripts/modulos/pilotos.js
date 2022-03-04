@@ -44,7 +44,7 @@ function buscar_persona_v2(tipo_documento_id, nacionalidad_id, documento, ruta){
 }
 
 function buscar_piloto(documento, ruta){
-  alert('debug');
+  
   $("#msg-documento-persona").remove();
   $('#buscar_piloto').html('');
   $.ajax({
@@ -59,11 +59,13 @@ function buscar_piloto(documento, ruta){
         
         $("#nombres").val(data.nombres); 
         $("#apellidos").val(data.apellidos);
+        $("#piloto_id").val(data.id);
     
           
       }else{
 
-        $("#nombres").focus();
+        //$("#msg").val('El Piloto no existe');
+        swal('El Piloto no existe');
             
       }
     },
