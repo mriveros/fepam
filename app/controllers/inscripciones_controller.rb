@@ -230,13 +230,17 @@ class InscripcionesController < ApplicationController
     if @valido
       
       @inscripcion_detalle = InscripcionDetalle.new()
-      @inscripcion_detalle.descripcion = params[:inscripcion_detalle][:descripcion].upcase
-      @inscripcion_detalle.fecha = params[:inscripcion_detalle][:fecha]
       @inscripcion_detalle.inscripcion_id = params[:inscripcion_id]
+      @inscripcion_detalle.piloto_id = params[:piloto_id]
+      @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
+      @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
+      @inscripcion_detalle.categoria_id = params[:inscripcion][:categoria_id]
+      @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
+      
 
         if @inscripcion_detalle.save
 
-          auditoria_nueva("registrar inscripcion asignado a hacienda", "inscripciones", @inscripcion_detalle)
+          auditoria_nueva("registrar piloto en inscripcion", "inscripciones_detalles", @inscripcion_detalle)
           @guardado_ok = true
          
         end 

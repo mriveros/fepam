@@ -56,7 +56,7 @@
        <div class="col-sm-1"></div><br />
 
        <div class="col-sm-4"><%= f.label :precio, "Estado Inscripción #{attr_requerido}".html_safe %></div>
-          <div class="col-sm-7"><%= collection_select :inscripcion, :estado_inscripcion_detalle_id,  Precio.orden_01, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-7"><%= collection_select :inscripcion, :estado_inscripcion_detalle_id,  EstadoInscripcionDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
           <div class="col-sm-1"></div><br />
 
 
@@ -106,9 +106,30 @@
       valido = true
       msg = ""
 
-      if($("#inscripcion_detalle_fecha").val().length == 0){
+      if($("#piloto_id").val().length == 0){
 
-        msg +="Debe ingresar una fecha. \n"
+        msg +="Debe agregar un piloto. \n"
+        valido = false
+      
+      }
+
+      if($("#inscripcion_categoria_id").val().length == 0){
+
+        msg +="Debe seleccionar una categoría. \n"
+        valido = false
+      
+      }
+
+      if($("#inscripcion_precio_id").val().length == 0){
+
+        msg +="Debe seleccionar un monto de costo de inscripción. \n"
+        valido = false
+      
+      }
+
+       if($("#inscripcion_estado_inscripcion_detalle_id").val().length == 0){
+
+        msg +="Debe seleccionar el estado de la inscripción. \n"
         valido = false
       
       }
@@ -116,7 +137,7 @@
       if (valido){
 
         swal({
-          title: "Confirmar Fecha",
+          title: "Confirmar Inscripción",
           text: "Al confirmar el piloto estará inscripto en la categoría seleccionada.",
           type: "warning",
           showCancelButton: true,
