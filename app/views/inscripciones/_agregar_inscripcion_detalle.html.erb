@@ -38,10 +38,13 @@
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= f.label :categoria, "Categoría #{attr_requerido}".html_safe %></div>
-          <div class="col-sm-7"><%= collection_select :hacienda, :departamento_id,  Categoria.orden_descripcion, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-7"><%= collection_select :inscripcion, :categoria_id,  Categoria.orden_descripcion, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
           <div class="col-sm-1"></div><br />
 
+          <div class="col-sm-4"><%= f.label :precio, "Monto Inscripción #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"><%= collection_select :inscripcion, :precio_id,  Precio.orden_01, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
           <div class="col-sm-1"></div><br />
+
           <div class="col-sm-4"><%= f.label :fecha, "Fecha Inscripción#{attr_requerido}".html_safe %></div>
           <div class="col-sm-7"> 
             <div class='input-group date' style="width:150px;float:left;margin-top:5px;">
@@ -51,6 +54,12 @@
           </div>
 
        <div class="col-sm-1"></div><br />
+
+       <div class="col-sm-4"><%= f.label :precio, "Estado Inscripción #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"><%= collection_select :inscripcion, :estado_inscripcion_detalle_id,  Precio.orden_01, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-1"></div><br />
+
+
       </div>
       
     </div>        
