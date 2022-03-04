@@ -4,14 +4,14 @@
 setTimeout( function(){ 
   
     $("#<%= params[:window_id]%>").modal('hide');
-    $("#link-to-torneo-detalle-<%= params[:torneo_id]%>").trigger('click');
-    $("#link-to-torneo-detalle-<%= params[:torneo_id]%>").trigger('click');
-    swal("La fecha se agregó exitosamente al campeonato!");
+    $("#link-to-inscripcion-detalle-<%= params[:inscripcion_id]%>").trigger('click');
+    $("#link-to-inscripcion-detalle-<%= params[:inscripcion_id]%>").trigger('click');
+    swal("El Piloto ha sido inscripto exitosamente!");
 
     }, 1000);
  
 <% else %>
 
-  swal('No se pudo guardar la Fecha del campeonato. Intente más tarde.');
+  swal('No se pudo guardar la Inscripción. Intente más tarde.');
 
 <% end %>

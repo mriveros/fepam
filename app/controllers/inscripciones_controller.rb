@@ -235,6 +235,7 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
       @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
       @inscripcion_detalle.categoria_id = params[:inscripcion][:categoria_id]
+
       @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
       
 
