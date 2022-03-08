@@ -49,7 +49,7 @@
                   <td><%= id.monto_inscripcion.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse  %></td>
                   <td><%= id.estado_inscripcion_detalle %></td>
                   <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{td.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-inscripcion-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{id.inscripcion_detalle_id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-inscripcion-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
                   </td>
 
                 </tr>
