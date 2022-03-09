@@ -6,7 +6,7 @@ class InscripcionesController < ApplicationController
 
 	  end 
 
-	  def lista
+	  def lista 
 
 	    cond = []
 	    args = []
@@ -115,12 +115,13 @@ class InscripcionesController < ApplicationController
 		  	@inscripcion.categoria_id = params[:inscripcion][:categoria_id]
 		  	@inscripcion.estado_inscripcion_id = params[:inscripcion][:estado_inscripcion_id]
 		    
-		      if @inscripcion.save
 
-		        auditoria_nueva("registrar inscripcion", "inscripciones", @inscripcion)
+		    if @inscripcion.save
+
+		    	auditoria_nueva("registrar inscripcion", "inscripciones", @inscripcion)
 		        @inscripcion_ok = true
 		       
-		      end
+		    end
 
 		end              
 	               
@@ -252,6 +253,7 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
       @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
       @inscripcion_detalle.categoria_id = params[:inscripcion][:categoria_id]
+      @inscripcion_detalle.categoria_id = params[:numero]
 
       @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
       
