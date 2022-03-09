@@ -1,0 +1,22 @@
+<% if @eliminado %>
+
+  $("<div class='col-sm-12' id='msg-eliminar-inscripcion' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Eliminado exitosamente.</div>").insertBefore("#table-inscripciones");
+  $("#form_buscar_inscripciones_id").val('<%= @inscripcion_elim.id %>');
+  $("#form_buscar_inscripciones_inscripcion_id").val('');
+  $("#form_buscar_inscripciones_inscripcion_detalle_id").val('');
+  $("#form_buscar_inscripcions_categoria_id").val('');
+  $("#form_buscar_inscripciones_fecha_inicio_inscripcion").val('');
+
+    setTimeout(function(){ 
+
+    	$("#msg-eliminar-inscripcion").remove(); 
+    	$("#form-buscar-inscripciones").submit(); 
+    }, 1500);
+   
+    	swal("Eliminado Exitosamente.")
+
+<% else %>
+
+  $("<div class='col-sm-12' id='msg-eliminar-inscripcion' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'>Error al eliminar la Inscripción. Intente más tarde.</div>").insertBefore("#table-inscripciones");
+  
+<% end %>

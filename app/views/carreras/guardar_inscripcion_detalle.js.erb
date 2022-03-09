@@ -1,0 +1,17 @@
+<% if @guardado_ok %>
+
+ 
+setTimeout( function(){ 
+  
+    $("#<%= params[:window_id]%>").modal('hide');
+    $("#link-to-inscripcion-detalle-<%= params[:inscripcion_id]%>").trigger('click');
+    $("#link-to-inscripcion-detalle-<%= params[:inscripcion_id]%>").trigger('click');
+    swal("El Piloto ha sido inscripto exitosamente!");
+
+    }, 1000);
+ 
+<% else %>
+
+  swal("<%=@msg%>");
+
+<% end %>

@@ -1,0 +1,48 @@
+<% if inscripciones.present? %>
+
+  <% inscripciones.each do |t| %>
+
+    <tr>
+
+      <td ><%= t.inscripcion_id %></td>
+      <td ><%= t.torneo%></td>
+      <td ><%= t.fecha_campeonato%></td>
+      <td ><%= t.categoria%></td>
+      <td style="text-align:center;"><%= t.fecha_inicio_inscripcion.strftime("%d/%m/%Y") if t.fecha_inicio_inscripcion.present? %></td>
+      <td ><%= t.estado_inscripcion%></td>
+      <td>
+
+        <%= link_to_inscripcion_detalle(t.inscripcion_id) %>
+        <%= link_to icon_eliminar, inscripciones_eliminar_path(id: t.inscripcion_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de inscripciones', data: { confirm: "Está seguro de eliminar la habilitación de inscripciónes?"} %>
+         
+       </td>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+<tr id="tab-paginacion">
+
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate inscripciones, :params => params %></div></td>
+</tr>
+
+<tr>
+    <td colspan="12">
+      Cantidad de registros encontrados: <%= @total_encontrados %> 
+    </td>
+</tr>
+
+ 
+
+<% else %>
+
+  <tr>
+
+    <td colspan="12"><p class='none-result'>No se han encontrado resultados.</p></td>
+
+  </tr>
+
+
+<% end %>

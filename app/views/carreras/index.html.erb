@@ -1,0 +1,157 @@
+
+<%= javascript_include_tag "sweetalert.min" %>
+<%= stylesheet_link_tag "sweetalert" %>
+<div>
+<!--
+  <div class="pull-right btn-lg hidden-xs" id="start-tour"><a title="Ir a la ayuda"><i class="icon-py-ayuda"></i> Ayuda</a></div>
+-->
+  <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
+    <h3 style="float:left;margin-top:5px;">Inscripciones</h3>
+    <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar".html_safe, "#", id: "link-to-agregar-inscripcion", class: "btn btn-primary pull-right", style: "float:right;margin-left:10px;", onclick: "$('.modal').html('');return false;" %>
+    <%= modal_window( window_id: "modal-window-agregar-inscripcion", link_to_id: "#link-to-agregar-inscripcion", url: inscripciones_agregar_path( window_id: "modal-window-agregar-inscripcion") )%>
+    
+  </div>
+</div>
+
+<div style="clear:both;"></div>
+ 
+<div class="table-responsive" id="table-inscripciones">
+
+  <table class="table table-small-font table-bordered table-striped" style="font-size:11px;">
+   
+    <thead>
+
+      <%= form_tag inscripciones_lista_path, remote: true, id: "form-buscar-inscripciones"  do  %>
+
+        <tr>
+
+          <th style="width:20px;">
+            <span>ID</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_inscripciones_id, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+          
+          <th>
+          <span>Campeonato</span>
+          <div class="input-group input-group-sm"><%= collection_select :form_buscar_inscripciones, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_torneo_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+           <%= linked_combo "form_buscar_inscripciones_torneo_detalle_id", 
+          :linked =>"form_buscar_inscripciones_torneo_id" ,
+          :url => url_for( torneos_buscar_torneo_detalle_path(format: :json)), 
+          :param => "form_buscar_inscripciones_torneo_id",
+          :clase => "torneo_detalle" %>
+
+          <th>
+         <span>Fecha</span>
+         <div class="input-group input-group-sm"><%= collection_select :form_buscar_inscripciones, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_torneo_detalle_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
+          <th >
+              <span>Categoría</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_inscripciones, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_categoria_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th> 
+
+          <th>
+            <span>Fecha Inicio Inscripción</span>
+            <div class="input-group input-group-sm">
+              <div class='input-group date' style="width:120px;float:left;">
+                <%= text_field_tag :form_buscar_inscripciones_fecha_inicio_inscripcion, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
+                <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </th>
+
+          <th >
+              <span>Estado Inscripción</span>
+            <div class="input-group input-group-sm">
+              <%= collection_select :form_buscar_inscripciones, :estado_inscripcion_id, EstadoInscripcion.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_estado_inscripcion_id');"><i class="fa fa-times"></i></span>
+            </div>
+          </th> 
+
+          <th style="width:150px;"></th>
+
+        </tr>
+
+        <% end %>
+
+      </thead> 
+
+    <tbody id="inscripciones-lista"></tbody>
+  
+  </table>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+  //---------------------------- RECUPERANDO DATOS ----------------------------//
+  $("#form-buscar-inscripciones").bind("submit", function () {
+    var valido = true;
+    if($("#form_buscar_inscripciones_torneo_id").val().length !== 0 ){
+      valido = false;
+      if(($("#form_buscar_inscripciones_torneo_id").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_inscripciones_torneo_id").val().replace(/\s/g,'')).length > 2){        
+        valido = true;
+      }else{
+        valido = false;
+        //swal("Para la búsqueda por Nombre y Apellido Ingrese minimo 3(tres) carácteres en cada caja de texto", "", "error");         
+        $(".nmb").html('*Ingrese minimo 3(tres) carácteres para cada caja de texto');
+        $(".nmb").attr({'style':'color: red;font-size: 8px;'});      
+      }      
+    }
+      
+    if(valido){
+    $(".nmb").html('');       
+    $("#inscripciones-lista").html("<%= escape_javascript("<tr><td colspan='9' style='text-align:center;'>#{image_tag('ajax-loader0.gif')}</td></tr>").html_safe %>")      
+    }
+
+    
+
+  })
+ 
+  //---------------------------------------------------------------------------//
+  //---------------------------- BUSCAR PERSONAS-------- -------------------------//
+  $("#table-inscripciones input, #table-inscripciones select").bind('change', function () {
+      $.ajaxQ.abortAll();
+      $("#form-buscar-inscripciones").submit();
+
+  })
+  //----------------------------------------------------------------------------//
+  //----------------------------INICIO -----------------------------------------//
+  aplicar_datepicker();
+  $("#form-buscar-inscripciones").submit();
+  <% if params[:agregar] %>
+    $("#link-to-agregar-inscripcion").trigger('click');
+  <% end %>
+  //----------------------------------------------------------------------------//
+</script>
+
+<style>
+    /*INTRO.JS*/
+    .introjs-helperNumberLayer{
+        width: 23px;
+        height: 23px;
+        padding: 0px;
+    }
+
+    #start-tour{
+        cursor: pointer;
+    }
+
+    #form-buscar-inscripciones table th { background:#e6e6e6;}
+    #form-buscar-inscripciones table th span.limpiar { background:#fff;}
+
+</style>
