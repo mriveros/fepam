@@ -11,45 +11,45 @@ class CarrerasController < ApplicationController
 	    cond = []
 	    args = []
 
-	    if params[:form_buscar_inscripciones_id].present?
+	    if params[:form_buscar_carreras_id].present?
 
 	      cond << "inscripcion_id = ?"
-	      args << params[:form_buscar_inscripciones_id]
+	      args << params[:form_buscar_carreras_id]
 
 	    end
 
-	    if params[:form_buscar_inscripciones][:torneo_id].present?
+	    if params[:form_buscar_carreras][:torneo_id].present?
 
 	      cond << "torneo_id = ?"
-	      args << params[:form_buscar_inscripciones][:torneo_id]
+	      args << params[:form_buscar_carreras][:torneo_id]
 
 	    end
 
-	    if params[:form_buscar_inscripciones][:torneo_detalle_id].present?
+	    if params[:form_buscar_carreras][:torneo_detalle_id].present?
 
 	      cond << "torneo_detalle_id = ?"
-	      args << params[:form_buscar_inscripciones][:torneo_detalle_id]
+	      args << params[:form_buscar_carreras][:torneo_detalle_id]
 
 	    end
 
-	    if params[:form_buscar_inscripciones][:categoria_id].present?
+	    if params[:form_buscar_carreras][:categoria_id].present?
 
 	      cond << "categoria_id = ?"
-	      args << params[:form_buscar_inscripciones][:categoria_id]
+	      args << params[:form_buscar_carreras][:categoria_id]
 
 	    end
 
-	    if params[:form_buscar_inscripciones_fecha_inicio_inscripcion].present?
+	    if params[:form_buscar_carreras_fecha_inicio_inscripcion].present?
 
 	      cond << "fecha_inicio_inscripcion = ?"
-	      args << params[:form_buscar_inscripciones_fecha_inicio_inscripcion]
+	      args << params[:form_buscar_carreras_fecha_inicio_inscripcion]
 
 	    end
 
-	    if params[:form_buscar_inscripciones][:estado_inscripcion_id].present?
+	    if params[:form_buscar_carreras][:estado_inscripcion_id].present?
 
 	      cond << "estado_inscripcion_id = ?"
-	      args << params[:form_buscar_inscripciones][:estado_inscripcion_id]
+	      args << params[:form_buscar_carreras][:estado_inscripcion_id]
 
 	    end
 
@@ -59,12 +59,12 @@ class CarrerasController < ApplicationController
 
 	    if cond.size > 0
 
-	      @inscripciones =  VInscripcion.orden_fecha.where(cond).paginate(per_page: 10, page: params[:page])
+	      @carreras =  VInscripcion.orden_fecha.where(cond).paginate(per_page: 10, page: params[:page])
 	      @total_encontrados = VInscripcion.where(cond).count
 
 	    else
 
-	      @inscripciones = VInscripcion.orden_fecha.paginate(per_page: 10, page: params[:page])
+	      @carreras = VInscripcion.orden_fecha.paginate(per_page: 10, page: params[:page])
 	      @total_encontrados = VInscripcion.count
 
 	    end
@@ -99,7 +99,7 @@ class CarrerasController < ApplicationController
 	    @msg = ""
 
 	    #verificar inscripcion
-	    @inscripcion = Inscripcion.where('torneo_id = ? and torneo_detalle_id = ? and categoria_id = ?', params[:form_buscar_inscripciones][:torneo_id],params[:inscripcion][:torneo_detalle_id],params[:inscripcion][:categoria_id]).first
+	    @inscripcion = Inscripcion.where('torneo_id = ? and torneo_detalle_id = ? and categoria_id = ?', params[:form_buscar_carreras][:torneo_id],params[:inscripcion][:torneo_detalle_id],params[:inscripcion][:categoria_id]).first
 	    if @inscripcion.present?
 
 	    	valido = false
@@ -109,7 +109,7 @@ class CarrerasController < ApplicationController
 	   	if valido
 
 		    @inscripcion = Inscripcion.new()
-		    @inscripcion.torneo_id = params[:form_buscar_inscripciones][:torneo_id]
+		    @inscripcion.torneo_id = params[:form_buscar_carreras][:torneo_id]
 		  	@inscripcion.torneo_detalle_id = params[:inscripcion][:torneo_detalle_id]
 		  	@inscripcion.fecha = Date.today
 		  	@inscripcion.categoria_id = params[:inscripcion][:categoria_id]
@@ -117,7 +117,7 @@ class CarrerasController < ApplicationController
 		    
 		      if @inscripcion.save
 
-		        auditoria_nueva("registrar inscripcion", "inscripciones", @inscripcion)
+		        auditoria_nueva("registrar inscripcion", "carreras", @inscripcion)
 		        @inscripcion_ok = true
 		       
 		      end
@@ -145,7 +145,7 @@ class CarrerasController < ApplicationController
  
 	      	if @inscripcion.destroy
 
-		        auditoria_nueva("eliminar inscripcion", "inscripciones", @inscripcion)
+		        auditoria_nueva("eliminar inscripcion", "carreras", @inscripcion)
 		        @eliminado = true
 
 	    	end
@@ -177,7 +177,7 @@ class CarrerasController < ApplicationController
 	    @msg = ""
 
 	    @inscripcion = Inscripcion.find(params[:inscripcion][:id])
-	    auditoria_id = auditoria_antes("actualizar inscripcion", "inscripciones", @inscripcion)
+	    auditoria_id = auditoria_antes("actualizar inscripcion", "carreras", @inscripcion)
 
 	    if valido
 
@@ -205,7 +205,7 @@ class CarrerasController < ApplicationController
 
 	def inscripcion_detalle
 
-    @inscripciones_detalles = VInscripcionDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
+    @carreras_detalles = VInscripcionDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 
@@ -258,7 +258,7 @@ class CarrerasController < ApplicationController
 
         if @inscripcion_detalle.save
 
-          auditoria_nueva("registrar piloto en inscripcion", "inscripciones_detalles", @inscripcion_detalle)
+          auditoria_nueva("registrar piloto en inscripcion", "carreras_detalles", @inscripcion_detalle)
           @guardado_ok = true
          
         end 
@@ -293,7 +293,7 @@ class CarrerasController < ApplicationController
 
       if @inscripcion_detalle.destroy
 
-        auditoria_nueva("eliminar inscripcion detalle", "inscripciones_detalles", @inscripcion_detalle)
+        auditoria_nueva("eliminar inscripcion detalle", "carreras_detalles", @inscripcion_detalle)
 
         @eliminado = true
 
