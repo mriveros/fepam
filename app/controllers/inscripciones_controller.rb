@@ -99,7 +99,7 @@ class InscripcionesController < ApplicationController
 	    @msg = ""
 
 	    #verificar inscripcion
-	    @inscripcion = Inscripcion.where('torneo_id = ? and torneo_detalle_id = ? and categoria_id = ?', params[:form_buscar_inscripciones][:torneo_id],params[:inscripcion][:torneo_detalle_id],params[:inscripcion][:categoria_id]).first
+	    @inscripcion = Inscripcion.where('torneo_id = ? and torneo_detalle_id = ? and categoria_id = ?', params[:form_buscar_inscripciones][:torneo_id],params[:inscripcion][:torneo_detalle_id], params[:inscripcion][:categoria_id]).first
 	    if @inscripcion.present?
 
 	    	valido = false
@@ -114,7 +114,6 @@ class InscripcionesController < ApplicationController
 		  	@inscripcion.fecha = Date.today
 		  	@inscripcion.categoria_id = params[:inscripcion][:categoria_id]
 		  	@inscripcion.estado_inscripcion_id = params[:inscripcion][:estado_inscripcion_id]
-		    
 
 		    if @inscripcion.save
 
@@ -237,7 +236,8 @@ class InscripcionesController < ApplicationController
     @msg = ""
     @guardado_ok = false 
 
-    @inscripcion_detalle = InscripcionDetalle.where('piloto_id=? and inscripcion_id=? and categoria_id =?', params[:piloto_id],params[:inscripcion_id],params[:inscripcion][:categoria_id]).first
+    @inscripcion = Inscripcion.where('id =?',params[:inscripcion_id]).first
+    @inscripcion_detalle = InscripcionDetalle.where('piloto_id=? and inscripcion_id=? and categoria_id =?', params[:piloto_id],params[:inscripcion_id],@inscripcion.categoria_id).first
     if @inscripcion_detalle.present?
     	puts'########DEBUG'
     	@valido = false
@@ -252,9 +252,8 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle.piloto_id = params[:piloto_id]
       @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
       @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
-      @inscripcion_detalle.categoria_id = params[:inscripcion][:categoria_id]
-      @inscripcion_detalle.categoria_id = params[:numero]
-
+      @inscripcion_detalle.categoria_id = @inscripcion.categoria_id
+      @inscripcion_detalle.numero = params[:inscripcion_detalle][:numero]
       @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
       
 

@@ -1,13 +1,13 @@
 <% if @eliminado %>
 
-   $("<div class='col-sm-12' id='msg-eliminar-hacienda-detalle' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Eliminado exitosamente.</div>").insertBefore("#table-hacienda-detalle");
+   $("<div class='col-sm-12' id='msg-eliminar-inscripcion-detalle' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Eliminado exitosamente.</div>").insertBefore("#table-inscripcion-detalle");
    
     setTimeout(
 
-      function(){ $("#msg-eliminar-hacienda-detalle").remove(); 
+      function(){ $("#msg-eliminar-inscripcion-detalle").remove(); 
      
-      $("#link-to-hacienda-detalle-<%= @hacienda_detalle.hacienda_id%>").trigger('click');
-      $("#link-to-hacienda-detalle-<%= @hacienda_detalle.hacienda_id%>").trigger('click');
+      $("#link-to-incripcion-detalle-<%= @inscripcion_detalle.inscripcion_id%>").trigger('click');
+      $("#link-to-incripcion-detalle-<%=  @inscripcion_detalle.inscripcion_id%>").trigger('click');
       
        swal("Potrero eliminado exitosamente.");
 
@@ -16,12 +16,12 @@
     
 <% else %>
 
-  $("<div class='col-sm-12' id='msg-eliminar-hacienda-detalle' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%= j(@msg).html_safe %></div>").insertBefore("#table-hacienda-detalle");
+  $("<div class='col-sm-12' id='msg-eliminar-inscripcion-detalle' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%= j(@msg).html_safe %></div>").insertBefore("#table-inscripcion-detalle");
   setTimeout(function(){ 
     
-    $("#msg-eliminar-hacienda-detalle").remove();
+    $("#msg-eliminar-inscripcion-detalle").remove();
 
-    swal("No se pudo eliminar el Potrero. Intente más tarde.")
+    swal("No se pudo eliminar la inscripción. Intente más tarde.")
 
      }, 2000);
     
