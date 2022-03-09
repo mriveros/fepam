@@ -13,15 +13,15 @@ class CarrerasController < ApplicationController
 
 	    if params[:form_buscar_carreras_id].present?
 
-	      cond << "inscripcion_id = ?"
+	      cond << "carrera_id = ?"
 	      args << params[:form_buscar_carreras_id]
 
 	    end
 
-	    if params[:form_buscar_carreras][:torneo_id].present?
+	    if params[:form_buscar_carreras][:inscripcion_id].present?
 
-	      cond << "torneo_id = ?"
-	      args << params[:form_buscar_carreras][:torneo_id]
+	      cond << "inscripcion_id = ?"
+	      args << params[:form_buscar_carreras][:inscripcion_id]
 
 	    end
 
@@ -59,17 +59,17 @@ class CarrerasController < ApplicationController
 
 	    if cond.size > 0
 
-	      @carreras =  VInscripcion.orden_fecha.where(cond).paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = VInscripcion.where(cond).count
+	      @carreras =  VCarrera.orden_fecha.where(cond).paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = VCarrera.where(cond).count
 
 	    else
 
-	      @carreras = VInscripcion.orden_fecha.paginate(per_page: 10, page: params[:page])
-	      @total_encontrados = VInscripcion.count
+	      @carreras = VCarrera.orden_fecha.paginate(per_page: 10, page: params[:page])
+	      @total_encontrados = VCarrera.count
 
 	    end
 
-	    @total_registros = VInscripcion.count
+	    @total_registros = VCarrera.count
 
 	    respond_to do |f|
 
@@ -82,7 +82,7 @@ class CarrerasController < ApplicationController
 
 	  def agregar
 
-	    @inscripcion = Inscripcion.new
+	    @inscripcion = Carrera.new
 
 	    respond_to do |f|
 
@@ -138,7 +138,7 @@ class CarrerasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @inscripcion = Inscripcion.find(params[:id])
+	    @inscripcion = Carrera.find(params[:id])
 		@inscripcion_elim = @inscripcion
 
 	    if valido
@@ -161,7 +161,7 @@ class CarrerasController < ApplicationController
 
 	  def editar
 
-	    @inscripcion = Inscripcion.find(params[:id])
+	    @inscripcion = Carrera.find(params[:id])
 
 	    respond_to do |f|
 
@@ -176,7 +176,7 @@ class CarrerasController < ApplicationController
 	    valido = true
 	    @msg = ""
 
-	    @inscripcion = Inscripcion.find(params[:inscripcion][:id])
+	    @inscripcion = Carrera.find(params[:inscripcion][:id])
 	    auditoria_id = auditoria_antes("actualizar inscripcion", "carreras", @inscripcion)
 
 	    if valido
@@ -205,7 +205,7 @@ class CarrerasController < ApplicationController
 
 	def inscripcion_detalle
 
-    @carreras_detalles = VInscripcionDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
+    @carreras_detalles = VCarreraDetalle.where("inscripcion_id = ?", params[:inscripcion_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 
@@ -219,7 +219,7 @@ class CarrerasController < ApplicationController
 
   def agregar_inscripcion_detalle
     
-    @inscripcion_detalle = InscripcionDetalle.new
+    @inscripcion_detalle = CarreraDetalle.new
 
    respond_to do |f|
 
@@ -236,7 +236,7 @@ class CarrerasController < ApplicationController
     @msg = ""
     @guardado_ok = false 
 
-    @inscripcion_detalle = InscripcionDetalle.where('piloto_id=? and inscripcion_id=? and categoria_id =?', params[:piloto_id],params[:inscripcion_id],params[:inscripcion][:categoria_id]).first
+    @inscripcion_detalle = CarreraDetalle.where('piloto_id=? and inscripcion_id=? and categoria_id =?', params[:piloto_id],params[:inscripcion_id],params[:inscripcion][:categoria_id]).first
     if @inscripcion_detalle.present?
     	puts'########DEBUG'
     	@valido = false
@@ -246,7 +246,7 @@ class CarrerasController < ApplicationController
 
     if @valido
       
-      @inscripcion_detalle = InscripcionDetalle.new()
+      @inscripcion_detalle = CarreraDetalle.new()
       @inscripcion_detalle.inscripcion_id = params[:inscripcion_id]
       @inscripcion_detalle.piloto_id = params[:piloto_id]
       @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
@@ -287,7 +287,7 @@ class CarrerasController < ApplicationController
     @valido = true
     @msg = ""
 
-    @inscripcion_detalle = InscripcionDetalle.find(params[:inscripcion_detalle_id])
+    @inscripcion_detalle = CarreraDetalle.find(params[:inscripcion_detalle_id])
 
     if @valido
 

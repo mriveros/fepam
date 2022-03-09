@@ -51,6 +51,19 @@ get 'crontab_ultron/index'
   post 'inscripciones/actualizar_inscripcion_detalle'
   get 'inscripciones/eliminar_inscripcion_detalle'
 
+#CARRERAS
+  post 'carreras/lista'
+  get 'carreras/lista'
+  get 'carreras/agregar'
+  post 'carreras/guardar'
+  get 'carreras/eliminar'
+  get 'carreras/editar'
+  post 'carreras/actualizar'
+  get 'carreras/index'
+  get 'carreras/carrera_detalle'
+  post 'carreras/puntuar_piloto'
+  post 'carreras/castigar_piloto'
+  
   
 #TORNEOS
   post 'torneos/lista'
