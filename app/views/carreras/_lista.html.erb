@@ -1,6 +1,6 @@
-<% if inscripciones.present? %>
+<% if carreras.present? %>
 
-  <% inscripciones.each do |t| %>
+  <% carreras.each do |t| %>
 
     <tr>
 
@@ -13,7 +13,7 @@
       <td>
 
         <%= link_to_inscripcion_detalle(t.inscripcion_id) %>
-        <%= link_to icon_eliminar, inscripciones_eliminar_path(id: t.inscripcion_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de inscripciones', data: { confirm: "Está seguro de eliminar la habilitación de inscripciónes?"} %>
+        <%= link_to icon_eliminar, carreras_eliminar_path(id: t.inscripcion_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de carreras', data: { confirm: "Está seguro de eliminar la habilitación de inscripciónes?"} %>
          
        </td>
 
@@ -25,7 +25,7 @@
 
 <tr id="tab-paginacion">
 
-    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate inscripciones, :params => params %></div></td>
+    <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate carreras, :params => params %></div></td>
 </tr>
 
 <tr>
