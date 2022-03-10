@@ -237,9 +237,9 @@ class InscripcionesController < ApplicationController
     @guardado_ok = false 
 
     @inscripcion = Inscripcion.where('id =?',params[:inscripcion_id]).first
-    @inscripcion_detalle = InscripcionDetalle.where('piloto_id=? and inscripcion_id=? and categoria_id =?', params[:piloto_id],params[:inscripcion_id],@inscripcion.categoria_id).first
+    @inscripcion_detalle = InscripcionDetalle.where('piloto_id=? and inscripcion_id=? ', params[:piloto_id],params[:inscripcion_id]).first
     if @inscripcion_detalle.present?
-    	puts'########DEBUG'
+    	
     	@valido = false
     	@msg = "El piloto ya se ha inscripto en esta Categoría."
 
@@ -252,7 +252,6 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle.piloto_id = params[:piloto_id]
       @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
       @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
-      @inscripcion_detalle.categoria_id = @inscripcion.categoria_id
       @inscripcion_detalle.numero = params[:inscripcion_detalle][:numero]
       @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
       
