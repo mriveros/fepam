@@ -322,9 +322,20 @@ class InscripcionesController < ApplicationController
 
     end
   
-  end
+end
 
+def buscar_inscripcion
+    
+    @pilotos = VInscripcion.Select('inscripcion_id, fecha_campeonato || ' ' || categoria as inscripcion').where("nombre ilike ?", "%#{params[:inscripcion]}%")
 
+    respond_to do |f|
+      
+      f.html
+      f.json { render :json => @personas }
+    
+    end
+    
+end
 	    
 
 end

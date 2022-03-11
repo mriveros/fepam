@@ -64,6 +64,7 @@ get 'crontab_ultron/index'
   get 'inscripciones/editar_inscripcion_detalle'
   post 'inscripciones/actualizar_inscripcion_detalle'
   get 'inscripciones/eliminar_inscripcion_detalle'
+  get 'inscripciones/buscar_inscripcion'
   
   
 #TORNEOS
