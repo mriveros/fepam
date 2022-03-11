@@ -101,13 +101,12 @@
   //---------------------------- RECUPERANDO DATOS ----------------------------//
   $("#form-buscar-carreras").bind("submit", function () {
     var valido = true;
-    if($("#form_buscar_carreras_torneo_id").val().length !== 0 ){
+    if($("#form_buscar_carreras_inscripcion").val().length !== 0 ){
       valido = false;
-      if(($("#form_buscar_carreras_torneo_id").val().replace(/\s/g,'')).length > 2 && ($("#form_buscar_carreras_torneo_id").val().replace(/\s/g,'')).length > 2){        
+      if(($("#form_buscar_carreras_inscripcion").val().replace(/\s/g,'')).length > 2){        
         valido = true;
       }else{
-        valido = false;
-        //swal("Para la búsqueda por Nombre y Apellido Ingrese minimo 3(tres) carácteres en cada caja de texto", "", "error");         
+        valido = false;        
         $(".nmb").html('*Ingrese minimo 3(tres) carácteres para cada caja de texto');
         $(".nmb").attr({'style':'color: red;font-size: 8px;'});      
       }      

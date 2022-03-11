@@ -82,7 +82,7 @@ class CarrerasController < ApplicationController
 
 	  def agregar
 
-	    @inscripcion = Carrera.new
+	    @carrera = Carrera.new
 
 	    respond_to do |f|
 
@@ -97,15 +97,7 @@ class CarrerasController < ApplicationController
 
 	    valido = true
 	    @msg = ""
-
-	    #verificar inscripcion
-	    @inscripcion = Inscripcion.where('torneo_id = ? and torneo_detalle_id = ? and categoria_id = ?', params[:form_buscar_carreras][:torneo_id],params[:inscripcion][:torneo_detalle_id],params[:inscripcion][:categoria_id]).first
-	    if @inscripcion.present?
-
-	    	valido = false
-	    	@msg = "La inscripcion ya ha sido habilitada para esta categoría."
-
-	   	end
+	   
 	   	if valido
 
 		    @inscripcion = Inscripcion.new()
