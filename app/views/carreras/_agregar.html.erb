@@ -52,7 +52,7 @@
   #form-agregar-carrera br {clear:both; }
   #form-agregar-carrera label { width:200px;font-size:12px;margin-top:10px;}
   #form-agregar-carrera #descripcion { width:50%;}
-  
+  .ui-autocomplete{z-index: 1000000; font-size: 10px;}
 
 </style>
 
@@ -67,7 +67,7 @@
     $("#inscripcion").val('');
     $("#inscripcion_id").val('');
 
-    $.getJSON("<%= url_for(inscripciones_buscar_inscripcion_path) %>", { inscripcion: $(this).val(), function(j){
+    $.getJSON("<%= url_for(inscripciones_buscar_inscripcion_path) %>", { inscripcion: $(this).val()}, function(j){
         
       var inscripcion = "";
       var options = "<option value=''> -- Seleccione una Inscripción -- </option>"
@@ -75,10 +75,10 @@
         
         if(j[i].inscripcion != inscripcion ){
           
-          inscripciones.push( {value: j[i].inscripcion_id +" - "+ j[i].inscripcion});
-          inscripcion =j[i].inscripcion_id +" - "+ j[i].inscripcion;
+          inscripciones.push( {value: j[i].inscripcion_id +" - "+ j[i].fecha_campeonato});
+          inscripcion =j[i].inscripcion_id +" - "+ j[i].fecha_campeonato;
 
-          options += "<option value="+ j[i].inscripcion_id +" - "+ j[i].inscripcion + "</option>"
+          options += "<option value="+ j[i].inscripcion_id +" - "+ j[i].fecha_campeonato + "</option>"
 
         }
 
@@ -108,5 +108,6 @@
       }
 
     })
+  });
 
 </script>
