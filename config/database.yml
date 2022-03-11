@@ -9,23 +9,39 @@ default: &default
   pool: 5
   timeout: 5000
 
+#development:
+#   <<: *default
+#   database: fepam
+#   username: postgres
+#   password: dev.postgres
+#   host: srv.smarthub.com.py
+#   port: 54321
+
 development:
    <<: *default
    database: fepam
-   username: postgres
-   password: dev.postgres
-   host: srv.smarthub.com.py
-   port: 54321
+   username: mriveros
+   password: mriveros
+   host: localhost
+   port: 5432
 
 #---------------------------------------
+
+#DB_AUDITORIAS:
+#  <<: *default
+#  database: fepam_auditoria
+#  username: postgres
+#  password: dev.postgres
+#  host: srv.smarthub.com.py
+#  port: 54321
 
 DB_AUDITORIAS:
   <<: *default
   database: fepam_auditoria
-  username: postgres
-  password: dev.postgres
-  host: srv.smarthub.com.py
-  port: 54321
+  username: mriveros
+  password: mriveros
+  host: localhost
+  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

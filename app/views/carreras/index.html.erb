@@ -31,51 +31,53 @@
             </div>
           </th>
           
-          <th>
-          <span>Campeonato</span>
-          <div class="input-group input-group-sm"><%= collection_select :form_buscar_carreras, :torneo_id,  Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %>
-          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_torneo_id');"><i class="fa fa-times"></i></span>
+          <th style="width:20px;">
+            <span>Inscripción</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_carreras_inscripcion, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_id');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
-           <%= linked_combo "form_buscar_carreras_torneo_detalle_id", 
+           <%#= linked_combo "form_buscar_carreras_torneo_detalle_id", 
           :linked =>"form_buscar_carreras_torneo_id" ,
           :url => url_for( torneos_buscar_torneo_detalle_path(format: :json)), 
           :param => "form_buscar_carreras_torneo_id",
           :clase => "torneo_detalle" %>
 
-          <th>
-         <span>Fecha</span>
-         <div class="input-group input-group-sm"><%= collection_select :form_buscar_carreras, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %>
-          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_torneo_detalle_id');"><i class="fa fa-times"></i></span>
-            </div>
-          </th>
-
-          <th >
-              <span>Categoría</span>
-            <div class="input-group input-group-sm">
-              <%= collection_select :form_buscar_carreras, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_categoria_id');"><i class="fa fa-times"></i></span>
-            </div>
-          </th> 
-
-          <th>
-            <span>Fecha Inicio Inscripción</span>
+        <th>
+            <span>Fecha Carrera</span>
             <div class="input-group input-group-sm">
               <div class='input-group date' style="width:120px;float:left;">
                 <%= text_field_tag :form_buscar_carreras_fecha_inicio_inscripcion, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
                 <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
               </div>
             </div>
-          </th>
+        </th>
 
-          <th >
-              <span>Estado Inscripción</span>
-            <div class="input-group input-group-sm">
-              <%= collection_select :form_buscar_carreras, :estado_inscripcion_id, EstadoInscripcion.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_estado_inscripcion_id');"><i class="fa fa-times"></i></span>
-            </div>
-          </th> 
+      <th style="width:20px;">
+          <span>Torneo</span>
+          <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_carreras_torneo, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_torneo');"><i class="fa fa-times"></i></span>
+          </div>
+      </th>
+
+      <th >
+        <span>Categoría</span>
+        <div class="input-group input-group-sm">
+        <%= collection_select :form_buscar_carreras, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_categoria_id');"><i class="fa fa-times"></i></span>
+        </div>
+    </th> 
+
+    <th >
+      <span>Estado Carrera</span>
+      <div class="input-group input-group-sm">
+      <%= collection_select :form_buscar_carreras, :estado_carrera_id, EstadoCarrera.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
+      <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_estado_carrera_id');"><i class="fa fa-times"></i></span>
+       </div>
+    </th> 
 
           <th style="width:150px;"></th>
 
