@@ -28,25 +28,15 @@ development:
   resolucion: 2
   otros: 3
 
-  #ESTADOS GANADOS
-  estado_ganado_activo: 1
-  estado_ganado_inactivo: 2
-  estado_ganado_en_celo: 3
-  estado_ganado_en_reproduccion: 4
-  estado_ganado_prenhado: 5
-  estado_ganado_en_proceso_venta: 6
-  estado_ganado_vendido: 7
-  estado_ganado_enfermo: 8
-  estado_ganado_muerto: 9
-  estado_ganado_faena: 10
-  estados_ganados_predeterminados: [1,2,3,4,5,6,7,8,9,10]
-
 
 #ESTADO TORNEO DETALLE
   estado_torneo_detalle_activo: 1
 
 #ESTADO TORNEOS
   estado_torneo_id: 1  
+
+#ESTADO INSCRIPCIONES
+  estado_inscripcion_activo: 1
   
 
 production:
@@ -79,24 +69,13 @@ production:
   resolucion: 2
   otros: 3
 
-  
-  #ESTADOS GANADOS
-  estado_ganado_activo: 1
-  estado_ganado_inactivo: 2
-  estado_ganado_en_celo: 3
-  estado_ganado_en_reproduccion: 4
-  estado_ganado_prenhado: 5
-  estado_ganado_en_proceso_venta: 6
-  estado_ganado_vendido: 7
-  estado_ganado_enfermo: 8
-  estado_ganado_muerto: 9
-  estado_ganado_faena: 10
-  estados_ganados_predeterminados: [1,2,3,4,5,6,7,8,9,10]
-
   #ESTADO TORNEO DETALLE
   estado_torneo_detalle_activo: 1
 
   #ESTADO TORNEOS
   estado_torneo_id: 1
+
+  #ESTADO INSCRIPCIONES
+  estado_inscripcion_activo: 1
 
  

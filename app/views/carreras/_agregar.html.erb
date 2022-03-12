@@ -72,10 +72,10 @@
         
         if(j[i].inscripcion != inscripcion ){
           
-          inscripciones.push( {value: j[i].inscripcion_id +" - "+ j[i].fecha_campeonato});
-          inscripcion =j[i].inscripcion_id +" - "+ j[i].fecha_campeonato;
+          inscripciones.push( {value: j[i].inscripcion_id +" - "+ j[i].fecha_campeonato +" - "+ j[i].categoria});
+          inscripcion =j[i].inscripcion_id +" - "+ j[i].fecha_campeonato +" - "+ j[i].categoria;
 
-          options += "<option value="+ j[i].inscripcion_id +" - "+ j[i].fecha_campeonato + "</option>"
+          options += "<option value="+ j[i].inscripcion_id +" - "+ j[i].fecha_campeonato +" - "+ j[i].categoria + "</option>"
 
         }
 

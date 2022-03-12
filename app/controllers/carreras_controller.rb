@@ -99,17 +99,15 @@ class CarrerasController < ApplicationController
 	    @msg = ""
 	   
 	   	if valido
-
-		    @inscripcion = Inscripcion.new()
-		    @inscripcion.torneo_id = params[:form_buscar_carreras][:torneo_id]
-		  	@inscripcion.torneo_detalle_id = params[:inscripcion][:torneo_detalle_id]
-		  	@inscripcion.fecha = Date.today
-		  	@inscripcion.categoria_id = params[:inscripcion][:categoria_id]
-		  	@inscripcion.estado_inscripcion_id = params[:inscripcion][:estado_inscripcion_id]
+ 
+		    @carrera = carrera.new()
+		    @carrera.inscripcion_id = params[:inscripcion_id]
+		  	@carrera.fecha = params[:fecha_carrera]
+		  	@carrera.estado_carrera_id = params[:carrera][:estado_carrera_id]
 		    
-		      if @inscripcion.save
+		      if @carrera.save
 
-		        auditoria_nueva("registrar inscripcion", "carreras", @inscripcion)
+		        auditoria_nueva("registrar carrera", "carreras", @carrera)
 		        @inscripcion_ok = true
 		       
 		      end
