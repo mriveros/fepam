@@ -42,14 +42,14 @@
               <% @carreras_detalles.each do |id|%>
 
                 <tr>
-                  <td><%= id.carrera_detalle_id%></td>
-                  <td><%= id.nombre_piloto %></td>
-                  <td><%= id.ci %></td>
+                  <td><%= id.id%></td>
+                  <td><%= id.carrera_id %></td>
+                  <td><%= id.carrera_id %></td>
                   <td style="text-align:center;"></td>
                   <td></td>
                   <td></td>
                   <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{id.carrera_detalle_id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                    <%= link_to icon_eliminar,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
                   </td>
 
                 </tr>
@@ -84,7 +84,7 @@
 
   <script type="text/javascript">
 
-    function eliminar_registro(carrera_detalle_id) {
+    function castigar_piloto(carrera_detalle_id) {
 
         swal({
           title: "Confirmar",
@@ -101,7 +101,7 @@
           if (isConfirm) {
 
               $.ajax({
-                url: "<%= url_for(carreras_eliminar_carrera_detalle_path) %>", 
+                url: "<%= url_for(carreras_castigar_piloto_path) %>", 
                 data: {carrera_detalle_id: carrera_detalle_id},
                 dataType: 'script'
               });
