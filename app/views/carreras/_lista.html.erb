@@ -4,16 +4,16 @@
 
     <tr>
 
-      <td ><%= t.inscripcion_id %></td>
+      <td ><%= t.carrera_id %></td>
+      <td ><%= t.inscripcion%></td>
+      <td style="text-align:center;"><%= t.fecha_carrera.strftime("%d/%m/%Y") if t.fecha_carrera.present? %></td>
       <td ><%= t.torneo%></td>
-      <td ><%= t.fecha_campeonato%></td>
       <td ><%= t.categoria%></td>
-      <td style="text-align:center;"><%= t.fecha_inicio_inscripcion.strftime("%d/%m/%Y") if t.fecha_inicio_inscripcion.present? %></td>
-      <td ><%= t.estado_inscripcion%></td>
+      <td ><%= t.estado_carrera%></td>
       <td>
 
-        <%= link_to_inscripcion_detalle(t.inscripcion_id) %>
-        <%= link_to icon_eliminar, carreras_eliminar_path(id: t.inscripcion_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de carreras', data: { confirm: "Está seguro de eliminar la habilitación de inscripciónes?"} %>
+        <%#= link_to_inscripcion_detalle(t.carrera_id) %>
+        <%= link_to icon_eliminar, carreras_eliminar_path(id: t.carrera_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de carreras', data: { confirm: "Está seguro de eliminar la carrera?"} %>
          
        </td>
 

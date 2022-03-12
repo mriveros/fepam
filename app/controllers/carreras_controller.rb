@@ -80,7 +80,7 @@ class CarrerasController < ApplicationController
 	  end
 
 
-	  def agregar
+	def agregar
 
 	    @carrera = Carrera.new
 
@@ -93,27 +93,38 @@ class CarrerasController < ApplicationController
 	  end
 
 
-	  def guardar
+	def guardar
 
 	    valido = true
 	    @msg = ""
 	   
 	   	if valido
  
-		    @carrera = carrera.new()
+		    @carrera = Carrera.new()
 		    @carrera.inscripcion_id = params[:inscripcion_id]
 		  	@carrera.fecha = params[:fecha_carrera]
 		  	@carrera.estado_carrera_id = params[:carrera][:estado_carrera_id]
 		    
-		      if @carrera.save
+		    if @carrera.save
 
 		        auditoria_nueva("registrar carrera", "carreras", @carrera)
 
 		        #cargar pilotos
-		        @inscripciones_detalles = InscripcionDetalle.where('inscripcion_id = ? and estado_inscripcion_detalle_id = ?', params[:inscripcion_id], PARAMETRO[:])
-		        @inscripcion_ok = true
+		        inscripcion_detalle = InscripcionDetalle.where('inscripcion_id = ? and estado_inscripcion_detalle_id = ?', params[:inscripcion_id], PARAMETRO[:estado_inscripcion_detalle_pagado])
+		        inscripcion_detalle.each do |id|
+
+			        carrera_detalle = CarreraDetalle.new()
+			        carrera_detalle.piloto_id = id.piloto_id
+			        carrera_detalle.carrera_id = @carrera.id
+			        if carrera_detalle.save
+
+			        	@carrera_ok = true
+
+			       	end
+
+		       	end
 		       
-		      end
+		    end
 
 		end              
 	               
@@ -123,26 +134,34 @@ class CarrerasController < ApplicationController
 
 	    end
 
-	  end
+	end
 
 
-	  def eliminar
+	def eliminar
 
 	    valido = true
 	    @msg = ""
 
-	    @inscripcion = Carrera.find(params[:id])
-		@inscripcion_elim = @inscripcion
+	    @carrera = Carrera.find(params[:id])
+		@carrera_elim = @carrera
 
 	    if valido
  
-	      	if @inscripcion.destroy
+	      	if @carrera.destroy
 
-		        auditoria_nueva("eliminar inscripcion", "carreras", @inscripcion)
+		        auditoria_nueva("eliminar carrera", "carreras", @carrera_elim)
 		        @eliminado = true
 
 	    	end
 		end
+
+		rescue Exception => exc  
+    
+	      if exc.present?        
+	        @excep = exc.message.split(':')    
+	        @msg = 'La Carrera ya cuenta con inscriptos'
+	      
+	      end       
 
 	    respond_to do |f|
 
@@ -245,9 +264,10 @@ class CarrerasController < ApplicationController
       @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
       @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
       @inscripcion_detalle.categoria_id = params[:inscripcion][:categoria_id]
+      inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
+     
 
-      @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
-      
+      end
 
         if @inscripcion_detalle.save
 
@@ -275,7 +295,7 @@ class CarrerasController < ApplicationController
   
   end
 
-  def eliminar_inscripcion_detalle
+def eliminar_inscripcion_detalle
 
     @valido = true
     @msg = ""
@@ -315,9 +335,5 @@ class CarrerasController < ApplicationController
 
     end
   
-  end
-
-
-	    
-
 end
+	    
