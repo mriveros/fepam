@@ -326,7 +326,7 @@ end
 
 def buscar_inscripcion
     
-    @inscripciones = VInscripcion.where("fecha_campeonato ilike ? and estado_inscripcion_id = ?", "%#{params[:inscripcion]}%")
+    @inscripciones = VInscripcion.where("fecha_campeonato ilike ? and estado_inscripcion_id = ?", "%#{params[:inscripcion]}%", PARAMETRO[:estado_inscripcion_activo])
 
     respond_to do |f|
       

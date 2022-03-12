@@ -108,6 +108,9 @@ class CarrerasController < ApplicationController
 		      if @carrera.save
 
 		        auditoria_nueva("registrar carrera", "carreras", @carrera)
+
+		        #cargar pilotos
+		        @inscripciones_detalles = InscripcionDetalle.where('inscripcion_id = ? and estado_inscripcion_detalle_id = ?', params[:inscripcion_id], PARAMETRO[:])
 		        @inscripcion_ok = true
 		       
 		      end

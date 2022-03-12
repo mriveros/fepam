@@ -29,14 +29,17 @@ development:
   otros: 3
 
 
-#ESTADO TORNEO DETALLE
+  #ESTADO TORNEO DETALLE
   estado_torneo_detalle_activo: 1
 
-#ESTADO TORNEOS
+  #ESTADO TORNEOS
   estado_torneo_id: 1  
 
-#ESTADO INSCRIPCIONES
+  #ESTADO INSCRIPCIONES
   estado_inscripcion_activo: 1
+
+  #ESTADO INSCRIPCIONES DETALLES
+  estado_inscripcion_detalle_pagado: 1
   
 
 production:
@@ -77,5 +80,8 @@ production:
 
   #ESTADO INSCRIPCIONES
   estado_inscripcion_activo: 1
+
+  #ESTADO INSCRIPCIONES DETALLES
+  estado_inscripcion_detalle_pagado: 1
 
  
