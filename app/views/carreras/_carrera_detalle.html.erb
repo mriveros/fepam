@@ -5,8 +5,8 @@
     <div>
 
       <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
-        <h3 style="float:left;margin-top:5px;">Pilotos Inscriptos</h3>
-        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar Piloto".html_safe, "#", id: "link-to-agregar-inscripcion-detalle", class: "btn btn-primary btn-xs", style: "float:right;" %>
+        <h3 style="float:left;margin-top:5px;">Pilotos</h3>
+        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar Piloto".html_safe, "#", id: "link-to-agregar-carrera-detalle", class: "btn btn-primary btn-xs", style: "float:right;" %>
       </div>
 
     </div> 
@@ -15,7 +15,7 @@
    
     <div class="panel-body">
       
-      <div class="table-responsive" id="table-inscripcion-detalle">
+      <div class="table-responsive" id="table-carrera-detalle">
           
         <table class="table table-bordered table-hover table-striped display dataTable" aria-describedby="example_info">
             
@@ -26,30 +26,30 @@
               <th>ID</th>
               <th>Datos Piloto</th>
               <th>CI Piloto</th>
-              <th>Fecha Inscripción</th>
-              <th>Monto Inscripción</th>
-              <th>Estado Inscripción</th>
+              <th>Marcar Tiempo</th>
+              <th>Faltas</th>
+              <th>Estado</th>
               <th style='text-align:right;'></th>
               
             </tr>
             
           </thead>
        
-          <tbody id="inscripcion-detalle-lista">
+          <tbody id="carrera-detalle-lista">
 
-            <% if @inscripciones_detalles.present? %>
+            <% if @carreras_detalles.present? %>
             
-              <% @inscripciones_detalles.each do |id|%>
+              <% @carreras_detalles.each do |id|%>
 
                 <tr>
-                  <td><%= id.inscripcion_detalle_id%></td>
+                  <td><%= id.carrera_detalle_id%></td>
                   <td><%= id.nombre_piloto %></td>
                   <td><%= id.ci %></td>
-                  <td style="text-align:center;"><%= id.fecha_inscripcion.strftime("%d/%m/%Y") if id.fecha_inscripcion.present? %></td>
-                  <td><%= id.monto_inscripcion.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse  %></td>
-                  <td><%= id.estado_inscripcion_detalle %></td>
+                  <td style="text-align:center;"></td>
+                  <td></td>
+                  <td></td>
                   <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{id.inscripcion_detalle_id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-inscripcion-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                    <%= link_to icon_eliminar,"#", onclick: "eliminar_registro(#{id.carrera_detalle_id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
                   </td>
 
                 </tr>
@@ -58,7 +58,7 @@
 
               <tr id="tab-paginacion">
 
-                  <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate @inscripciones_detalles, :params => params %></div></td>
+                  <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate @carreras_detalles, :params => params %></div></td>
               </tr>
 
             <% else %>
@@ -77,14 +77,14 @@
     
   </div>
 
-  <%= modal_window( window_id: "modal-window-agregar-inscripcion-detalle", link_to_id: "#link-to-agregar-inscripcion-detalle", url: inscripciones_agregar_inscripcion_detalle_path( window_id: "modal-window-agregar-inscripcion-detalle", inscripcion_id: params[:inscripcion_id]) )%>
+  <%#= modal_window( window_id: "modal-window-agregar-carrera-detalle", link_to_id: "#link-to-agregar-carrera-detalle", url: carreras_agregar_carrera_detalle_path( window_id: "modal-window-agregar-carrera-detalle", carrera_id: params[:carrera_id]) )%>
 
 </td>
 
 
   <script type="text/javascript">
 
-    function eliminar_registro(inscripcion_detalle_id) {
+    function eliminar_registro(carrera_detalle_id) {
 
         swal({
           title: "Confirmar",
@@ -101,8 +101,8 @@
           if (isConfirm) {
 
               $.ajax({
-                url: "<%= url_for(inscripciones_eliminar_inscripcion_detalle_path) %>", 
-                data: {inscripcion_detalle_id: inscripcion_detalle_id},
+                url: "<%= url_for(carreras_eliminar_carrera_detalle_path) %>", 
+                data: {carrera_detalle_id: carrera_detalle_id},
                 dataType: 'script'
               });
             

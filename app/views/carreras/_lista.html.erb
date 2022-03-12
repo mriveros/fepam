@@ -12,7 +12,7 @@
       <td ><%= t.estado_carrera%></td>
       <td>
 
-        <%#= link_to_inscripcion_detalle(t.carrera_id) %>
+        <%= link_to_carrera_detalle(t.carrera_id) %>
         <%= link_to icon_eliminar, carreras_eliminar_path(id: t.carrera_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de carreras', data: { confirm: "Está seguro de eliminar la carrera?"} %>
          
        </td>
