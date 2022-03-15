@@ -217,7 +217,7 @@ class CarrerasController < ApplicationController
 
 	def carrera_detalle
 
-    @carreras_detalles = CarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 10, page: params[:page])
+    @carreras_detalles = VCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 10, page: params[:page])
    
     respond_to do |f|
 

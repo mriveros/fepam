@@ -25,11 +25,10 @@
               
               <th>ID</th>
               <th>Datos Piloto</th>
-              <th>CI Piloto</th>
+              <th>Número Moto</th>
               <th>Posicion</th>
               <th>Marcar Tiempo</th>
               <th>Faltas</th>
-              <th>Estado</th>
               <th style='text-align:right;'></th>
               
             </tr>
@@ -44,15 +43,16 @@
 
                 <tr>
                   <td><%= id.id%></td>
-                  <td><%= id.carrera_id %></td>
+                  <td><%= id.datos_piloto %></td>
+                  <td><%= id.numero_piloto %></td>
                   <td><%= id.posicion %></td>
-                  <td><%= id.posicion %></td>
-                  <td style="text-align:center;"></td>
+                  <td style="text-align:center;"><td style="width: 50px;text-align:right;">
+                    <%= link_to icon_confirmar,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                  </td><td style="width: 50px;text-align:right;">
+                    <%= link_to icon_minus_sign,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                  </td></td>
                   <td></td>
-                  <td></td>
-                  <td style="width: 50px;text-align:right;">
-                    <%= link_to icon_eliminar,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
-                  </td>
+                  
 
                 </tr>
 
