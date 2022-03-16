@@ -29,7 +29,7 @@
               <th>Posicion</th>
               <th>Marcar Tiempo</th>
               <th>Faltas</th>
-              <th style='text-align:right;'></th>
+              
               
             </tr>
             
@@ -46,12 +46,13 @@
                   <td><%= id.datos_piloto %></td>
                   <td><%= id.numero_piloto %></td>
                   <td><%= id.posicion %></td>
-                  <td style="text-align:center;"><td style="width: 50px;text-align:right;">
-                    <%= link_to icon_confirmar,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
-                  </td><td style="width: 50px;text-align:right;">
+                  <td>
+                    <%= link_to icon_confirmar,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-success btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
+                  </td>
+                  <td>
                     <%= link_to icon_minus_sign,"#", onclick: "castigar_piloto(#{id.id});return false;", class: "btn btn-danger btn-xs", id: "btn-eliminar-carrera-detalle", title: 'Haga click para eliminar al Piloto de esta Inscripción'  %>
-                  </td></td>
-                  <td></td>
+                  
+                  </td>
                   
 
                 </tr>
