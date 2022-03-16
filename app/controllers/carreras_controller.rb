@@ -217,123 +217,53 @@ class CarrerasController < ApplicationController
 
 	def carrera_detalle
 
-    @carreras_detalles = VCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 10, page: params[:page])
+    	@carreras_detalles = VCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 10, page: params[:page])
    
-    respond_to do |f|
+	    respond_to do |f|
 
-      f.js
+	      f.js
 
-    end
+	    end
     
-  end
+  	end
 
+	def marcar_tiempo
 
+	    @valido = true
+	    @msg = ""
 
-  def agregar_inscripcion_detalle
-    
-    @inscripcion_detalle = CarreraDetalle.new
+	    @carrera_detalle = CarreraDetalle.find(params[:carrera_detalle_id])
 
-   respond_to do |f|
+	    @carrera_tiempo = CarreraTiempo.new()
+	    @carrera_tiempo.carrera_detalle_id = params[:carrera_detalle_id]
+	    @carrera_tiempo.piloto_id = params[:piloto_id]
+	    @carrera_tiempo.cantidad_vueltas = carrera_tiempo.cantidad_vueltas.to_i + 1
+	    @carrera_tiempo.tiempo = Time.hour
+	    @carrera_tiempo.posicion = 1
+	    if @carrera_tiempo.save
 
-      f.js
+	    	@tiempo_marcado_ok = true
 
-    end
-  
-  end
+	   	end
+	    
+	    rescue Exception => exc  
+	        # dispone el mensaje de error 
+	        #puts "Aqui si muestra el error ".concat(exc.message)
+	        if exc.present?        
+	          
+	          @excep = exc.message.split(':')    
+	          @msg = @excep
+	          @eliminado = false
+	        
+	        end
+	        
+	    respond_to do |f|
 
+	      f.js
 
-   def guardar_inscripcion_detalle
-    
-    @valido = true
-    @msg = ""
-    @guardado_ok = false 
+	    end
 
-    @inscripcion_detalle = CarreraDetalle.where('piloto_id=? and inscripcion_id=? and categoria_id =?', params[:piloto_id],params[:inscripcion_id],params[:inscripcion][:categoria_id]).first
-    if @inscripcion_detalle.present?
-    	puts'########DEBUG'
-    	@valido = false
-    	@msg = "El piloto ya se ha inscripto en esta Categoría."
-
-   	end 
-
-    if @valido
-      
-      @inscripcion_detalle = CarreraDetalle.new()
-      @inscripcion_detalle.inscripcion_id = params[:inscripcion_id]
-      @inscripcion_detalle.piloto_id = params[:piloto_id]
-      @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
-      @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
-      @inscripcion_detalle.categoria_id = params[:inscripcion][:categoria_id]
-      inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
-     
-
-      end
-
-        if @inscripcion_detalle.save
-
-          auditoria_nueva("registrar piloto en inscripcion", "carreras_detalles", @inscripcion_detalle)
-          @guardado_ok = true
-         
-        end 
-
-    end
-  
-    rescue Exception => exc  
-    # dispone el mensaje de error 
-    #puts "Aqui si muestra el error ".concat(exc.message)
-      if exc.present?        
-        @excep = exc.message.split(':')    
-        @msg = @excep
-      
-      end                
-
-    respond_to do |f|
-
-      f.js
-
-    end
-  
-  end
-
-def eliminar_inscripcion_detalle
-
-    @valido = true
-    @msg = ""
-
-    @inscripcion_detalle = CarreraDetalle.find(params[:inscripcion_detalle_id])
-
-    if @valido
-
-      if @inscripcion_detalle.destroy
-
-        auditoria_nueva("eliminar inscripcion detalle", "carreras_detalles", @inscripcion_detalle)
-
-        @eliminado = true
-
-      else
-
-        @msg = "ERROR: No se ha podido eliminar el Piloto de esta Inscripción"
-
-      end
-
-    end
-
-        rescue Exception => exc  
-        # dispone el mensaje de error 
-        #puts "Aqui si muestra el error ".concat(exc.message)
-        if exc.present?        
-          
-          @excep = exc.message.split(':')    
-          @msg = @excep
-          @eliminado = false
-        
-        end
-        
-    respond_to do |f|
-
-      f.js
-
-    end
+	end
   
 end
 	    

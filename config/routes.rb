@@ -46,8 +46,8 @@ get 'crontab_ultron/index'
   post 'carreras/actualizar'
   get 'carreras/index'
   get 'carreras/carrera_detalle'
-  post 'carreras/marcar_tiempo'
-  post 'carreras/castigar_piloto'
+  get 'carreras/marcar_tiempo'
+  get 'carreras/penalizar_piloto'
 
 #INSCRIPCIONES
   post 'inscripciones/lista'

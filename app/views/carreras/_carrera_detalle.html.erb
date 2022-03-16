@@ -25,7 +25,7 @@
               
               <th>ID</th>
               <th>Datos Piloto</th>
-              <th>Número Moto</th>
+              <th>Número Piloto</th>
               <th>Posicion</th>
               <th>Marcar Tiempo</th>
               <th>Faltas</th>
@@ -105,7 +105,7 @@
 
               $.ajax({
                 url: "<%= url_for(carreras_marcar_tiempo_path) %>", 
-                data: {carrera_detalle_id: carrera_detalle_id},
+                data: {carrera_detalle_id: carrera_detalle_id, piloto_id: piloto_id},
                 dataType: 'script'
               });
             
@@ -137,7 +137,7 @@
           if (isConfirm) {
 
               $.ajax({
-                url: "<%= url_for(carreras_castigar_piloto_path) %>", 
+                url: "<%= url_for(carreras_penalizar_piloto_path) %>", 
                 data: {carrera_detalle_id: carrera_detalle_id},
                 dataType: 'script'
               });
