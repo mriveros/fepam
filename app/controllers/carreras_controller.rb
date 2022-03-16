@@ -233,12 +233,13 @@ class CarrerasController < ApplicationController
 	    @msg = ""
 
 	    @carrera_detalle = CarreraDetalle.find(params[:carrera_detalle_id])
-
+	    time = Time.new
 	    @carrera_tiempo = CarreraTiempo.new()
 	    @carrera_tiempo.carrera_detalle_id = params[:carrera_detalle_id]
 	    @carrera_tiempo.piloto_id = params[:piloto_id]
-	    @carrera_tiempo.cantidad_vueltas = carrera_tiempo.cantidad_vueltas.to_i + 1
-	    @carrera_tiempo.tiempo = Time.hour
+	    @carrera_tiempo.cantidad_vueltas = @carrera_tiempo.cantidad_vueltas.to_i + 1
+	    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
+	    puts "DEBUG!"
 	    @carrera_tiempo.posicion = 1
 	    if @carrera_tiempo.save
 
