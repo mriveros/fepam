@@ -200,11 +200,9 @@ class CarrerasController < ApplicationController
 	    @carrera_tiempo.cantidad_vueltas = cdt + 1
 	    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
 	    #calcular posicion
-	    posicion_piloto = CarreraTiempo.select(:tiempo,:piloto_id).where('carrera_id =?', @carrera_detalle.carrera_id).group_by(&:piloto_id).sum(:tiempo)
+	    posicion_piloto = VCarreraTiempo.orden_tiempo.where('carrera_id = ?', @carrera_detalle.carrera_id)
 	    puts '###DEBUG!!!'
-	    posicion_piloto.each do |a|
-	    	puts a
-	    end
+	    puts posicion_piloto.index(params[:piloto_id])
 	    puts 'END#######'
 	    
 
