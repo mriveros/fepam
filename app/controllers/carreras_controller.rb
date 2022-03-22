@@ -217,7 +217,7 @@ class CarrerasController < ApplicationController
 
 	def carrera_detalle
 
-    	@carreras_detalles = VCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 10, page: params[:page])
+    	@carreras_detalles = VCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
    
 	    respond_to do |f|
 
@@ -237,9 +237,13 @@ class CarrerasController < ApplicationController
 	    @carrera_tiempo = CarreraTiempo.new()
 	    @carrera_tiempo.carrera_detalle_id = params[:carrera_detalle_id]
 	    @carrera_tiempo.piloto_id = params[:piloto_id]
-	    @carrera_tiempo.cantidad_vueltas +=  1
+	    #calcular cantidad vueltas
+	    cdt = CarreraTiempo.where('carrera_detalle_id = ? and piloto_id = ?', params[:carrera_detalle_id],params[:piloto_id]).count
+	    @carrera_tiempo.cantidad_vueltas = cdt + 1
 	    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
+	    #calcular posicion
 	    @carrera_tiempo.posicion = 1
+
 	    if @carrera_tiempo.save
 
 	    	@tiempo_marcado_ok = true
