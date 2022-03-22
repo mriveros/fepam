@@ -7,6 +7,6 @@ class VCarreraTiempo < ActiveRecord::Base
  
   scope :orden_piloto, -> { order("piloto_id desc")}
   scope :orden_tiempo, -> { order("tiempos desc")}
-  scope :orden_vuelta_tiempo, -> { order("max desc, tiempos asc")}
+  scope :orden_vuelta_tiempo, -> { order("max desc, tiempos desc")}
 
 end

@@ -174,7 +174,7 @@ class CarrerasController < ApplicationController
 
 	def carrera_detalle
 
-    	@carreras_detalles = VCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
+    	@carreras_detalles = VCarreraDetalle.orden_posicion.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
    
 	    respond_to do |f|
 
@@ -199,19 +199,19 @@ class CarrerasController < ApplicationController
 	    cdt = CarreraTiempo.where('carrera_detalle_id = ? and piloto_id = ?', params[:carrera_detalle_id],params[:piloto_id]).count
 	    @carrera_tiempo.cantidad_vueltas = cdt + 1
 	    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
-	    #calcular posicion
-	    posicion_piloto = VCarreraTiempo.orden_tiempo.where('carrera_id = ?', @carrera_detalle.carrera_id)
-	    puts '###DEBUG!!!'
-	    puts posicion_piloto.index(params[:piloto_id])
-	    puts 'END#######'
-	    
+	   	@carrera_tiempo.save
+	   	#calcular posicion
+	   	posicion_piloto = VCarreraTiempo.orden_tiempo.where('carrera_id = ?', @carrera_detalle.carrera_id)
+		if posicion_piloto.find(params[:piloto_id]).present?	
+			@carrera_tiempo.posicion = posicion_piloto.find(params[:piloto_id]).posicion   
+	    end
 
 	    if @carrera_tiempo.save
 
 	    	@tiempo_marcado_ok = true
 
-	   	end
-	    
+	    end
+
 	    rescue Exception => exc  
 	        # dispone el mensaje de error 
 	        #puts "Aqui si muestra el error ".concat(exc.message)
