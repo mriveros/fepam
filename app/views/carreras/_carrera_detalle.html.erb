@@ -89,6 +89,13 @@
 
     function marcar_tiempo(carrera_detalle_id, piloto_id) {
 
+
+        $.ajax({
+                url: "<%= url_for(carreras_marcar_tiempo_path) %>", 
+                data: {carrera_detalle_id: carrera_detalle_id, piloto_id: piloto_id},
+                dataType: 'script'
+              });
+        /*
         swal({
           title: "Confirmar",
           text: "Confirmar Tiempo.",
@@ -103,11 +110,7 @@
         function(isConfirm) {
           if (isConfirm) {
 
-              $.ajax({
-                url: "<%= url_for(carreras_marcar_tiempo_path) %>", 
-                data: {carrera_detalle_id: carrera_detalle_id, piloto_id: piloto_id},
-                dataType: 'script'
-              });
+              
             
           } else{
 
@@ -116,12 +119,19 @@
           }
 
         });
-
+        */
     
     }
 
     function penalizar_piloto(carrera_detalle_id, piloto_id) {
 
+
+       $.ajax({
+                url: "<%= url_for(carreras_penalizar_piloto_path) %>", 
+                data: {carrera_detalle_id: carrera_detalle_id},
+                dataType: 'script'
+              });
+       /*
         swal({
           title: "Confirmar",
           text: "Confirmar Penlalización.",
@@ -136,11 +146,7 @@
         function(isConfirm) {
           if (isConfirm) {
 
-              $.ajax({
-                url: "<%= url_for(carreras_penalizar_piloto_path) %>", 
-                data: {carrera_detalle_id: carrera_detalle_id},
-                dataType: 'script'
-              });
+             
             
           } else{
 
@@ -148,7 +154,7 @@
 
           }
 
-        });
+        });*/
 
     
     }

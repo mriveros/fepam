@@ -9,9 +9,8 @@
       $("#link-to-carrera-detalle-<%= @carrera_detalle.carrera_id%>").trigger('click');
       $("#link-to-carrera-detalle-<%= @carrera_detalle.carrera_id%>").trigger('click');
       
-       swal("Tiempo marcado exitosamente");
 
-    }, 1000);
+    }, 500);
    
     
 <% else %>
@@ -21,8 +20,6 @@
     
     $("#msg-marcar-tiempo").remove();
 
-    swal("No es posible marcar el tiempo.")
-
-     }, 2000);
+     }, 500);
     
 <% end %>
