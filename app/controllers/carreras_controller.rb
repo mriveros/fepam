@@ -236,13 +236,26 @@ class CarrerasController < ApplicationController
 	    time = Time.new
 	    @carrera_tiempo = CarreraTiempo.new()
 	    @carrera_tiempo.carrera_detalle_id = params[:carrera_detalle_id]
+	    @carrera_tiempo.carrera_id = @carrera_detalle.carrera_id
 	    @carrera_tiempo.piloto_id = params[:piloto_id]
 	    #calcular cantidad vueltas
 	    cdt = CarreraTiempo.where('carrera_detalle_id = ? and piloto_id = ?', params[:carrera_detalle_id],params[:piloto_id]).count
 	    @carrera_tiempo.cantidad_vueltas = cdt + 1
 	    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
 	    #calcular posicion
-	    @carrera_tiempo.posicion = 1
+	    pos = CarreraTiempo.where('carrera_id = ?', @carrera_detalle.carrera_id).order('cantidad_vueltas,tiempo desc')
+	    
+	    if pos.present?
+	    	puts '#####DEBUG####'
+	    	puts pos.find_index(params[:piloto_id])
+	    	puts '##############'
+	    	@carrera_tiempo.posicion = pos.find_index(params[:piloto_id])
+
+	    else
+
+	    	@carrera_tiempo.posicion = 0
+
+		end
 
 	    if @carrera_tiempo.save
 
