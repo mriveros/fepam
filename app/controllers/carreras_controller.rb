@@ -169,51 +169,8 @@ class CarrerasController < ApplicationController
 
 	    end
 
-	  end
-
-	  def editar
-
-	    @inscripcion = Carrera.find(params[:id])
-
-	    respond_to do |f|
-
-	      f.js
-
-	    end
-
-	  end
-
-	def actualizar
-
-	    valido = true
-	    @msg = ""
-
-	    @inscripcion = Carrera.find(params[:inscripcion][:id])
-	    auditoria_id = auditoria_antes("actualizar inscripcion", "carreras", @inscripcion)
-
-	    if valido
-
-	      
-	    	@inscripcion.descripcion = params[:inscripcion][:descripcion].upcase
-	    	@inscripcion.cantidad_fechas = params[:inscripcion][:cantidad_fechas]
-	    	@inscripcion.fecha = params[:inscripcion][:fecha]
-	      	
-	      	if @inscripcion.save
-
-	      		auditoria_despues(@inscripcion, auditoria_id)
-	        	@inscripcion_ok = true
-
-	      end
-
-	    end           
-	        
-	    respond_to do |f|
-
-	      f.js
-
-	    end
-
 	end
+
 
 	def carrera_detalle
 
@@ -243,19 +200,13 @@ class CarrerasController < ApplicationController
 	    @carrera_tiempo.cantidad_vueltas = cdt + 1
 	    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
 	    #calcular posicion
-	    pos = CarreraTiempo.where('carrera_id = ?', @carrera_detalle.carrera_id).order('cantidad_vueltas,tiempo desc')
+	    posicion_piloto = CarreraTiempo.select(:tiempo,:piloto_id).where('carrera_id =?', @carrera_detalle.carrera_id).group_by(&:piloto_id).sum(:tiempo)
+	    puts '###DEBUG!!!'
+	    posicion_piloto.each do |a|
+	    	puts a
+	    end
+	    puts 'END#######'
 	    
-	    if pos.present?
-	    	puts '#####DEBUG####'
-	    	puts pos.find_index(params[:piloto_id])
-	    	puts '##############'
-	    	@carrera_tiempo.posicion = pos.find_index(params[:piloto_id])
-
-	    else
-
-	    	@carrera_tiempo.posicion = 0
-
-		end
 
 	    if @carrera_tiempo.save
 
