@@ -6,7 +6,6 @@
 
       <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
         <h3 style="float:left;margin-top:5px;">Pilotos</h3>
-        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> agregar Piloto".html_safe, "#", id: "link-to-agregar-carrera-detalle", class: "btn btn-primary btn-xs", style: "float:right;" %>
       </div>
  
     </div> 
@@ -100,31 +99,7 @@
                 data: {carrera_detalle_id: carrera_detalle_id, piloto_id: piloto_id},
                 dataType: 'script'
               });
-        /*
-        swal({
-          title: "Confirmar",
-          text: "Confirmar Tiempo.",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonClass: "btn-confirm",
-          confirmButtonText: "Confirmar",
-          cancelButtonText: "Cancelar",
-          closeOnConfirm: true,
-          closeOnCancel: true
-        },
-        function(isConfirm) {
-          if (isConfirm) {
-
-              
-            
-          } else{
-
-            return false;
-
-          }
-
-        });
-        */
+        
     
     }
 
@@ -136,30 +111,6 @@
                 data: {carrera_detalle_id: carrera_detalle_id},
                 dataType: 'script'
               });
-       /*
-        swal({
-          title: "Confirmar",
-          text: "Confirmar Penlalización.",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonClass: "btn-confirm",
-          confirmButtonText: "Confirmar",
-          cancelButtonText: "Cancelar",
-          closeOnConfirm: true,
-          closeOnCancel: true
-        },
-        function(isConfirm) {
-          if (isConfirm) {
-
-             
-            
-          } else{
-
-            return false;
-
-          }
-
-        });*/
 
     
     }
