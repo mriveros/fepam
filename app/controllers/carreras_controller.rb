@@ -230,6 +230,43 @@ class CarrerasController < ApplicationController
 	    end
 
 	end
+
+	def penalizar_piloto
+
+	    @valido = true
+	    @msg = ""
+
+	    @carrera_detalle = CarreraDetalle.find(params[:carrera_detalle_id])
+	    time = Time.new
+	    @carrera_penalizar = CarreraPenalizar.new()
+	    @carrera_penalizar.carrera_detalle_id = params[:carrera_detalle_id]
+	    @carrera_penalizar.carrera_id = @carrera_detalle.carrera_id
+	    @carrera_penalizar.piloto_id = params[:piloto_id]
+	    @carrera_penalizar.cantidad_puntos = PARAMETRO[:penalizar_piloto_1_punto]
+	    if @carrera_penalizar.save
+
+	    	@piloto_penalizado_ok = true
+
+	    end
+
+	    rescue Exception => exc  
+	        # dispone el mensaje de error 
+	        #puts "Aqui si muestra el error ".concat(exc.message)
+	        if exc.present?        
+	          
+	          @excep = exc.message.split(':')    
+	          @msg = @excep
+	          @eliminado = false
+	        
+	        end
+	        
+	    respond_to do |f|
+
+	      f.js
+
+	    end
+
+	end
   
 end
 	    

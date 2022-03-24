@@ -40,7 +40,9 @@ development:
 
   #ESTADO INSCRIPCIONES DETALLES
   estado_inscripcion_detalle_pagado: 1
-  
+
+  #PENALIZACION DE PILOTOS
+  penalizar_piloto_1_punto: 1  
 
 production:
 
@@ -83,5 +85,8 @@ production:
 
   #ESTADO INSCRIPCIONES DETALLES
   estado_inscripcion_detalle_pagado: 1
+
+  #PENALIZACION DE PILOTOS
+  penalizar_piloto_1_punto: 1
 
  
