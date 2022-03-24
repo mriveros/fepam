@@ -14,6 +14,9 @@
 
         <%= link_to_carrera_detalle(t.carrera_id) %>
         <%= link_to icon_eliminar, carreras_eliminar_path(id: t.carrera_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de carreras', data: { confirm: "Está seguro de eliminar la carrera?"} %>
+
+        <%= link_to icon_confirmar, carreras_eliminar_path(id: t.carrera_id), remote: true, class: "btn btn-success btn-xs", title: 'Haga click para finalizar esta carrera y obtener los puntajes.', data: { confirm: "Está seguro de finalizar la carrera?"} %>
+
          
        </td>
 
