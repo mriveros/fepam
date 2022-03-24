@@ -84,7 +84,6 @@
     
   </div>
 
-  <%#= modal_window( window_id: "modal-window-agregar-carrera-detalle", link_to_id: "#link-to-agregar-carrera-detalle", url: carreras_agregar_carrera_detalle_path( window_id: "modal-window-agregar-carrera-detalle", carrera_id: params[:carrera_id]) )%>
 
 </td>
 
@@ -108,7 +107,7 @@
 
        $.ajax({
                 url: "<%= url_for(carreras_penalizar_piloto_path) %>", 
-                data: {carrera_detalle_id: carrera_detalle_id},
+                data: {carrera_detalle_id: carrera_detalle_id, piloto_id: piloto_id},
                 dataType: 'script'
               });
 
