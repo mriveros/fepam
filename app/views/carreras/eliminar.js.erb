@@ -19,5 +19,7 @@
 <% else %>
 
   $("<div class='col-sm-12' id='msg-eliminar-carrera' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%=@msg%></div>").insertBefore("#table-carreras");
-  
+  setTimeout(function(){ 
+      $("#msg-eliminar-carrera").remove(); 
+    }, 2500);
 <% end %>
