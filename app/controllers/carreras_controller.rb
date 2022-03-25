@@ -281,14 +281,10 @@ class CarrerasController < ApplicationController
 		@carrera_detalle.each do |cd|
 
 			carrera_tiempo_posicion_max = VCarreraTiempo.where('piloto_id = ?', cd.piloto_id).first
-			puts 'DEBUG##########'
-			puts carrera_tiempo_posicion_max.posicion
-			puts 'END DEBUG##########'
-
 			cd.posicion = carrera_tiempo_posicion_max.posicion
 			cd.save
 			#CALCULAR PUNTAJES
-
+			
 		end
 
 	    if valido
@@ -299,7 +295,7 @@ class CarrerasController < ApplicationController
  				@finalizar_carrera_ok = true
 
 			end
-				      	
+
 		end
 
 		rescue Exception => exc
