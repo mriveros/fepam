@@ -1,0 +1,25 @@
+<% if @finalizar_carrera_ok %>
+
+  $("<div class='col-sm-12' id='msg-finalizar-carrera' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Finalizado exitosamente.</div>").insertBefore("#table-carreras");
+  $("#form_buscar_carreras_id").val('<%= @carrera.id %>');
+  $("#form_buscar_carreras_carrera").val('');
+  $("#form_buscar_carreras_fecha_inicio_carrera").val('');
+  $("#form_buscar_carreras_torneo").val('');
+  $("#form_buscar_carreras_categoria_id").val('');
+  $("#form_buscar_carreras_estado_carrera_id").val('');
+
+    setTimeout(function(){ 
+
+    	$("#msg-finalizar-carrera").remove(); 
+    	$("#form-buscar-carreras").submit(); 
+    }, 1500);
+   
+    	swal("Carrera finalizada Exitosamente.")
+
+<% else %>
+
+  $("<div class='col-sm-12' id='msg-finalizar-carrera' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%=@msg%></div>").insertBefore("#table-carreras");
+  setTimeout(function(){ 
+      $("#msg-finalizar-carrera").remove(); 
+    }, 2500);
+<% end %>

@@ -44,6 +44,10 @@ development:
   #PENALIZACION DE PILOTOS
   penalizar_piloto_1_punto: 1  
 
+  #ESTADO CARRERAS
+  estado_carrera_en_proceso: 1
+  estado_carrera_finalizada: 2
+
 production:
 
   #ROLES 
@@ -88,5 +92,9 @@ production:
 
   #PENALIZACION DE PILOTOS
   penalizar_piloto_1_punto: 1
+
+  #ESTADO CARRERAS
+  estado_carrera_en_proceso: 1
+  estado_carrera_finalizada: 2
 
  

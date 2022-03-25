@@ -273,21 +273,40 @@ class CarrerasController < ApplicationController
 
 	    valido = true
 	    @msg = ""
+	    @finalizar_carrera_ok
 
 	    @carrera = Carrera.find(params[:carrera_id])
 
 		@carrera_detalle = CarreraDetalle.where('carrera_id = ?', params[:carrera_id])
-		
+		@carrera_detalle.each do |cd|
 
-	    if valido
- 
-	      	
+			carrera_tiempo_posicion_max = VCarreraTiempo.where('piloto_id = ?', cd.piloto_id).first
+			puts 'DEBUG##########'
+			puts carrera_tiempo_posicion_max.posicion
+			puts 'END DEBUG##########'
+
+			cd.posicion = carrera_tiempo_posicion_max.posicion
+			cd.save
+			#CALCULAR PUNTAJES
+
 		end
 
-		rescue Exception => exc  
+	    if valido
+ 			
+ 			@carrera.estado_carrera_id = PARAMETRO[:estado_carrera_finalizada]
+ 			if @carrera.save
+
+ 				@finalizar_carrera_ok = true
+
+			end
+				      	
+		end
+
+		rescue Exception => exc
     
-	      if exc.present?        
-	        @excep = exc.message.split(':')    
+	      if exc.present?
+
+	        @excep = exc.message.split(':')
 	        @msg = 'La Carrera ya cuenta con inscriptos'
 	      
 	      end       
