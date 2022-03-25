@@ -285,6 +285,7 @@ class CarrerasController < ApplicationController
 			cd.save
 			#CALCULAR PUNTAJES
 			
+
 		end
 
 	    if valido
