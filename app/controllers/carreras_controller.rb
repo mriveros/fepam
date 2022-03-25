@@ -268,6 +268,37 @@ class CarrerasController < ApplicationController
 	    end
 
 	end
+
+	def finalizar_carrera
+
+	    valido = true
+	    @msg = ""
+
+	    @carrera = Carrera.find(params[:carrera_id])
+
+		@carrera_detalle = CarreraDetalle.where('carrera_id = ?', params[:carrera_id])
+		
+
+	    if valido
+ 
+	      	
+		end
+
+		rescue Exception => exc  
+    
+	      if exc.present?        
+	        @excep = exc.message.split(':')    
+	        @msg = 'La Carrera ya cuenta con inscriptos'
+	      
+	      end       
+
+	    respond_to do |f|
+
+	      f.js
+
+	    end
+
+	end
   
 end
 	    
