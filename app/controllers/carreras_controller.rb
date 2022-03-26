@@ -277,6 +277,25 @@ class CarrerasController < ApplicationController
 
 	    @carrera = Carrera.find(params[:carrera_id])
 
+		#CREAR PUNTAJE
+		puntaje_carrera = PuntajeCarrera.where('carrera_id = ?', params[:carrera_id]).first
+		unless puntaje_carrera.present?
+
+			puntaje_carrera = PuntajeCarrera.new
+			puntaje_carrera.carrera_id = params[:carrera_id]
+			puntaje_carrera.fecha = Date.today
+			if puntaje_carrera.save
+
+				@finalizar_carrera_ok = true
+			
+			else
+
+				@finalizar_carrera_ok = false
+
+			end
+
+		end
+
 		@carrera_detalle = CarreraDetalle.where('carrera_id = ?', params[:carrera_id])
 		#CALCULAR POSICIONES FINALES
 		@carrera_detalle.each do |cd|
@@ -284,33 +303,19 @@ class CarrerasController < ApplicationController
 			carrera_tiempo_posicion_max = VCarreraTiempo.where('piloto_id = ?', cd.piloto_id).first
 			cd.posicion = carrera_tiempo_posicion_max.posicion
 			cd.save
-			
-		end
-		#CREAR PUNTAJE
-		puntaje_carrera = PuntajeCarrera.new
-		puntaje_carrera.carrera_id = params[:carrera_id]
-		puntaje_carrera.fecha = Date.today
-		if puntaje_carrera.save
 
-			@finalizar_carrera_ok = true
-		
-		else
-
-			@finalizar_carrera_ok = false
-
-		end
-
-		#CREAR PUNTAJE DETALLE
-		@carrera_detalle.each do |cd|
-
+			#CREAR PUNTAJE DETALLE
 			puntaje_carrera_detalle = PuntajeCarreraDetalle.new
 			puntaje_carrera_detalle.puntaje_carrera_id = puntaje_carrera.id
+			
 			puntaje_carrera_detalle.piloto_id = cd.piloto_id
+
 			#obtener puntaje a favor
-			puntaje_favor = PosicionPuntaje.where('posicion = ?', cd.posicion).first
+			puntaje_favor = PosicionPuntaje.where('posicion = ?', cd.posicion.to_i).first
+			
 			if puntaje_favor.present?
 
-				puntaje_carrera_detalle.puntaje_favor = puntaje_favor.puntaje
+				puntaje_carrera_detalle.puntaje_favor = puntaje_favor.puntaje.to_i
 
 			else
 
@@ -318,6 +323,7 @@ class CarrerasController < ApplicationController
 
 			end
 			#objetener puntaje en contra
+			puts '##########DEBUG!!!!!!###########'
 			puntaje_contra = CarreraPenalizacion.where('carrera_id = ? and piloto_id = ?',params[:carrera_id], cd.piloto_id)
 			if puntaje_contra.present?
 
@@ -341,7 +347,7 @@ class CarrerasController < ApplicationController
 				@finalizar_carrera_ok = false
 
 			end
-
+			
 		end
 
 	    if valido
