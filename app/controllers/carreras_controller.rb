@@ -323,8 +323,8 @@ class CarrerasController < ApplicationController
 
 			end
 			#objetener puntaje en contra
-			puts '##########DEBUG!!!!!!###########'
-			puntaje_contra = CarreraPenalizacion.where('carrera_id = ? and piloto_id = ?',params[:carrera_id], cd.piloto_id)
+			puntaje_contra = CarreraPenalizar.where('carrera_id = ? and piloto_id = ?',params[:carrera_id], cd.piloto_id)
+			
 			if puntaje_contra.present?
 
 				puntaje_carrera_detalle.puntaje_contra = 2
