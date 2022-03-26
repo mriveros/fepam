@@ -278,13 +278,25 @@ class CarrerasController < ApplicationController
 	    @carrera = Carrera.find(params[:carrera_id])
 
 		@carrera_detalle = CarreraDetalle.where('carrera_id = ?', params[:carrera_id])
+		#CALCULAR POSICIONES FINALES
 		@carrera_detalle.each do |cd|
 
 			carrera_tiempo_posicion_max = VCarreraTiempo.where('piloto_id = ?', cd.piloto_id).first
 			cd.posicion = carrera_tiempo_posicion_max.posicion
 			cd.save
-			#CALCULAR PUNTAJES
 			
+		end
+		#CREAR PUNTAJE
+		puntaje_carrera = PuntajeCarrera.new
+		puntaje_carrera.carrera_id = params[:carrera_id]
+		puntaje_carrera.fecha = Date.today
+		if puntaje_carrera.save
+
+			@finalizar_carrera_ok = true
+		
+		else
+
+			@finalizar_carrera_ok = false
 
 		end
 
