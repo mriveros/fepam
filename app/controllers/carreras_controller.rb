@@ -300,6 +300,50 @@ class CarrerasController < ApplicationController
 
 		end
 
+		#CREAR PUNTAJE DETALLE
+		@carrera_detalle.each do |cd|
+
+			puntaje_carrera_detalle = PuntajeCarreraDetalle.new
+			puntaje_carrera_detalle.puntaje_carrera_id = puntaje_carrera.id
+			puntaje_carrera_detalle.piloto_id = cd.piloto_id
+			#obtener puntaje a favor
+			puntaje_favor = PosicionPuntaje.where('posicion = ?', cd.posicion).first
+			if puntaje_favor.present?
+
+				puntaje_carrera_detalle.puntaje_favor = puntaje_favor.puntaje
+
+			else
+
+				puntaje_carrera_detalle.puntaje_favor = 1
+
+			end
+			#objetener puntaje en contra
+			puntaje_contra = CarreraPenalizacion.where('carrera_id = ? and piloto_id = ?',params[:carrera_id], cd.piloto_id)
+			if puntaje_contra.present?
+
+				puntaje_carrera_detalle.puntaje_contra = 2
+			
+			else
+
+				puntaje_carrera_detalle.puntaje_contra = 0
+
+			end
+
+			puntaje_carrera_detalle.puntaje_total = puntaje_favor.puntaje - 2
+
+			if puntaje_carrera_detalle.save
+
+
+				@finalizar_carrera_ok = true
+		
+			else
+
+				@finalizar_carrera_ok = false
+
+			end
+
+		end
+
 	    if valido
  			
  			@carrera.estado_carrera_id = PARAMETRO[:estado_carrera_finalizada]
@@ -316,7 +360,7 @@ class CarrerasController < ApplicationController
 	      if exc.present?
 
 	        @excep = exc.message.split(':')
-	        @msg = 'La Carrera ya cuenta con inscriptos'
+	        @msg = 'No se pudo calcular la carrera.'
 	      
 	      end       
 
