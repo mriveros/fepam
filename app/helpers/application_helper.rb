@@ -117,7 +117,7 @@ module ApplicationHelper
   end
 
   def icon_produccion
-      "<span class='glyphicon glyphicon-ok'>alta producción</span>".html_safe
+      "<span class='glyphicon glyphicon-ok'></span>".html_safe
   end
 
   def icon_voto_candidato

@@ -380,7 +380,7 @@ class CarrerasController < ApplicationController
 
 	def puntaje_carrera
 
-    	@puntajes_carrera = PuntajeCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
+    	@puntajes_carrera = VPuntajeCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
    
 	    respond_to do |f|
 

@@ -1,4 +1,4 @@
-<%= link_to icon_detalles, "#", id: "link-to-puntaje-carrera-#{carrera_id}", class: 'btn btn-success btn-torneo-detalle btn-xs', title: 'Haga click aquí para ver los puntajes de los Pilotos.', onclick: "$('.modal').html('');return false;" %>
+<%= link_to icon_ok_sign, "#", id: "link-to-puntaje-carrera-#{carrera_id}", class: 'btn btn-success btn-puntaje-carrera btn-xs', title: 'Haga click aquí para ver los puntajes de los Pilotos.', onclick: "$('.modal').html('');return false;" %>
 
 <script type="text/javascript">
 
@@ -6,7 +6,7 @@
 
     var contenido = $.trim($("#puntaje-carrera-<%= carrera_id %>").html());
 
-    $(".carrera-detalle").html('');
+    $(".puntaje-carrera").html('');
 
     if(contenido.length == 0){
 
