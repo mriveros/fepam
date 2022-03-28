@@ -21,7 +21,7 @@
       
       <%end%>
 
-      <%if t.estado_carrera_id = PARAMETRO[:estado_carrera_finalizada]%>
+      <%if t.estado_carrera_id == PARAMETRO[:estado_carrera_finalizada]%>
         
         <%= link_to_puntaje_carrera(t.carrera_id) %>
       

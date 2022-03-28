@@ -181,7 +181,6 @@ class InscripcionesController < ApplicationController
 
 	    if valido
 
-	      
 	    	@inscripcion.descripcion = params[:inscripcion][:descripcion].upcase
 	    	@inscripcion.cantidad_fechas = params[:inscripcion][:cantidad_fechas]
 	    	@inscripcion.fecha = params[:inscripcion][:fecha]
@@ -250,10 +249,12 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle = InscripcionDetalle.new()
       @inscripcion_detalle.inscripcion_id = params[:inscripcion_id]
       @inscripcion_detalle.piloto_id = params[:piloto_id]
-      @inscripcion_detalle.fecha_inscripcion = params[:fecha_inscripcion]
-      @inscripcion_detalle.precio_id = params[:inscripcion][:precio_id]
+      #verificar este issue
+      @inscripcion_detalle.fecha_inscripcion = Date.today
+ 	puts '##########DEBUG!'
+      @inscripcion_detalle.precio_id = params[:inscripcion_detalle][:precio_id]
       @inscripcion_detalle.numero = params[:inscripcion_detalle][:numero]
-      @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion][:estado_inscripcion_detalle_id]
+      @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion_detalle][:estado_inscripcion_detalle_id]
       
 
         if @inscripcion_detalle.save

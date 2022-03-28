@@ -44,11 +44,11 @@
                   <td><%= cd.carrera_detalle_id%></td>
                   <td><%= cd.datos_piloto %></td>
                   <td><%= cd.numero_piloto %></td>
-                  <% posicion_piloto = VCarreraTiempo.where('piloto_id = ?', cd.piloto_id).first%>
+                  <% posicion_piloto = VCarreraTiempo.where('piloto_id = ? and carrera_id = ?', cd.piloto_id, cd.carrera_id).first%>
                   <%if posicion_piloto.present?%>
-                    <td><%= posicion_piloto.posicion %></td>
+                    <td><%= posicion_piloto.posicion.to_i %></td>
                   <%else%>
-                    <td><%= cd.posicion %></td>
+                    <td><%= cd.posicion.to_i %></td>
                   <%end%>
                   <td>
                     <%= link_to icon_confirmar,"#", onclick: "marcar_tiempo(#{cd.carrera_detalle_id},#{cd.piloto_id});return false;", class: "btn btn-success btn-xs", id: "btn-marcar-tiempo", title: 'Haga click para marcar tiempo del Piloto'  %>

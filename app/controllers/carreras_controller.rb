@@ -102,7 +102,7 @@ class CarrerasController < ApplicationController
  
 		    @carrera = Carrera.new()
 		    @carrera.inscripcion_id = params[:inscripcion_id]
-		  	@carrera.fecha = params[:fecha_carrera]
+		  	@carrera.fecha = Date.today
 		  	@carrera.estado_carrera_id = params[:carrera][:estado_carrera_id]
 		    
 		    if @carrera.save
@@ -300,7 +300,7 @@ class CarrerasController < ApplicationController
 		#CALCULAR POSICIONES FINALES
 		@carrera_detalle.each do |cd|
 
-			carrera_tiempo_posicion_max = VCarreraTiempo.where('piloto_id = ?', cd.piloto_id).first
+			carrera_tiempo_posicion_max = VCarreraTiempo.where('piloto_id = ? and carrera_id = ?', cd.piloto_id, cd.carrera_id).first
 			cd.posicion = carrera_tiempo_posicion_max.posicion
 			cd.save
 
@@ -380,7 +380,7 @@ class CarrerasController < ApplicationController
 
 	def puntaje_carrera
 
-    	@puntajes_carrera = VPuntajeCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
+    	@puntajes_carrera = VPuntajeCarreraDetalle.orden_posicion.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
    
 	    respond_to do |f|
 

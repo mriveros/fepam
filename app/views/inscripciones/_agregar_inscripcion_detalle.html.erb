@@ -42,7 +42,7 @@
           <div class="col-sm-1"></div><br />  
 
           <div class="col-sm-4"><%= f.label :precio, "Monto Inscripción #{attr_requerido}".html_safe %></div>
-          <div class="col-sm-7"><%= collection_select :inscripcion, :precio_id,  Precio.orden_01, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
+          <div class="col-sm-7"><%= collection_select :inscripcion_detalle, :precio_id,  Precio.orden_01, :id, :descripcion, { include_blank: false}, {class: 'form-control input-sm'} %></div>
           <div class="col-sm-1"></div><br />
 
           <div class="col-sm-4"><%= f.label :fecha, "Fecha Inscripción#{attr_requerido}".html_safe %></div>
@@ -55,8 +55,8 @@
 
        <div class="col-sm-1"></div><br />
 
-       <div class="col-sm-4"><%= f.label :precio, "Estado Inscripción #{attr_requerido}".html_safe %></div>
-          <div class="col-sm-7"><%= collection_select :inscripcion, :estado_inscripcion_detalle_id,  EstadoInscripcionDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
+       <div class="col-sm-4"><%= f.label :estado_inscripcion_detalle, "Estado Inscripción #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"><%= collection_select :inscripcion_detalle, :estado_inscripcion_detalle_id,  EstadoInscripcionDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {class: 'form-control input-sm'} %></div>
           <div class="col-sm-1"></div><br />
 
 
@@ -113,16 +113,23 @@
       
       }
 
-      if($("#inscripcion_precio_id").val().length == 0){
+      if($("#inscripcion_detalle_precio_id").val().length == 0){
 
         msg +="Debe seleccionar un monto de costo de inscripción. \n"
         valido = false
       
       }
 
-       if($("#inscripcion_estado_inscripcion_detalle_id").val().length == 0){
+       if($("#inscripcion_detalle_estado_inscripcion_detalle_id").val().length == 0){
 
         msg +="Debe seleccionar el estado de la inscripción. \n"
+        valido = false
+      
+      }
+
+      if($("#inscripcion_detalle_numero").val().length == 0){
+
+        msg +="El Piloto debe contar con un Número. \n"
         valido = false
       
       }
