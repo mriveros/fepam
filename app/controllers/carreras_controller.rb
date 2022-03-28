@@ -377,6 +377,18 @@ class CarrerasController < ApplicationController
 	    end
 
 	end
+
+	def puntaje_carrera
+
+    	@puntajes_carrera = PuntajeCarreraDetalle.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
+   
+	    respond_to do |f|
+
+	      f.js
+
+	    end
+    
+  	end
   
 end
 	    
