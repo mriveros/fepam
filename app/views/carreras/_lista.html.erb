@@ -15,9 +15,18 @@
         <%= link_to_carrera_detalle(t.carrera_id) %>
 
         <%= link_to icon_eliminar, carreras_eliminar_path(id: t.carrera_id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar la habilitación de carreras', data: { confirm: "Está seguro de eliminar la carrera?"} %>
-
+      <%if t.estado_carrera_id == PARAMETRO[:estado_carrera_en_proceso]%>
+        
         <%= link_to icon_confirmar,"#", onclick: "finalizar_carrera(#{t.carrera_id});return false;", class: "btn btn-success btn-xs", id: "btn-finalizar-carrera-#{t.carrera_id}", title: 'Haga click para finalizar esta carrera y obtener los puntajes.'  %>
-         
+      
+      <%end%>
+
+      <%if t.estado_carrera_id = PARAMETRO[:estado_carrera_finalizada]%>
+        
+        <%= link_to_carrera_detalle(t.carrera_id) %>
+      
+      <%end%>
+
        </td>
 
       </td>

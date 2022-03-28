@@ -12,5 +12,11 @@ module CarrerasHelper
       
   end
 
+  def link_to_puntaje_carrera(carrera_id)
+
+      render partial: 'link_to_puntaje_carrera', locals: { carrera_id: carrera_id }
+      
+  end
+
   
 end
