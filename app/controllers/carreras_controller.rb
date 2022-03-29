@@ -18,17 +18,24 @@ class CarrerasController < ApplicationController
 
 	    end
 
-	    if params[:form_buscar_carreras][:inscripcion_id].present?
+	    if params[:form_buscar_carreras_torneo].present?
 
-	      cond << "inscripcion_id = ?"
-	      args << params[:form_buscar_carreras][:inscripcion_id]
+	      cond << "torneo ilike ?"
+	      args << "%#{params[:form_buscar_carreras_torneo]}%"
 
 	    end
 
-	    if params[:form_buscar_carreras][:torneo_detalle_id].present?
+	    if params[:form_buscar_carreras_inscripcion].present?
 
-	      cond << "torneo_detalle_id = ?"
-	      args << params[:form_buscar_carreras][:torneo_detalle_id]
+	      cond << "inscripcion ilike ?"
+	      args << "%#{params[:form_buscar_carreras_inscripcion]}%"
+
+	    end
+
+	    if params[:form_buscar_carreras_fecha_carrera].present?
+
+	      cond << "fecha_carrera = ?"
+	      args << params[:form_buscar_carreras_fecha_carrera]
 
 	    end
 
@@ -39,17 +46,12 @@ class CarrerasController < ApplicationController
 
 	    end
 
-	    if params[:form_buscar_carreras_fecha_inicio_inscripcion].present?
+	    
 
-	      cond << "fecha_inicio_inscripcion = ?"
-	      args << params[:form_buscar_carreras_fecha_inicio_inscripcion]
+	    if params[:form_buscar_carreras][:estado_carrera_id].present?
 
-	    end
-
-	    if params[:form_buscar_carreras][:estado_inscripcion_id].present?
-
-	      cond << "estado_inscripcion_id = ?"
-	      args << params[:form_buscar_carreras][:estado_inscripcion_id]
+	      cond << "estado_carrera_id = ?"
+	      args << params[:form_buscar_carreras][:estado_carrera_id]
 
 	    end
 
@@ -99,7 +101,7 @@ class CarrerasController < ApplicationController
 	    @msg = ""
 	   
 	   	if valido
- 
+  
 		    @carrera = Carrera.new()
 		    @carrera.inscripcion_id = params[:inscripcion_id]
 		  	@carrera.fecha = Date.today

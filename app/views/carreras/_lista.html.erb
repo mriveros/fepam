@@ -5,9 +5,9 @@
     <tr>
 
       <td ><%= t.carrera_id %></td>
+      <td ><%= t.torneo%></td>
       <td ><%= t.inscripcion%></td>
       <td style="text-align:center;"><%= t.fecha_carrera.strftime("%d/%m/%Y") if t.fecha_carrera.present? %></td>
-      <td ><%= t.torneo%></td>
       <td ><%= t.categoria%></td>
       <td ><%= t.estado_carrera%></td>
       <td>

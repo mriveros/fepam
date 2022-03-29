@@ -32,10 +32,18 @@
           </th>
           
           <th >
+          <span>Torneo</span>
+          <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_carreras_torneo, nil, :class => 'form-control', :placeholder => "" %>
+          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_torneo');"><i class="fa fa-times"></i></span>
+          </div>
+          </th>
+
+          <th >
             <span>Inscripción</span>
             <div class="input-group input-group-sm">
               <%= text_field_tag :form_buscar_carreras_inscripcion, nil, :class => 'form-control', :placeholder => "" %>
-              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_id');"><i class="fa fa-times"></i></span>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_inscripcion');"><i class="fa fa-times"></i></span>
             </div>
           </th>
 
@@ -49,19 +57,11 @@
             <span>Fecha Carrera</span>
             <div class="input-group input-group-sm">
               <div class='input-group date' style="width:120px;float:left;">
-                <%= text_field_tag :form_buscar_carreras_fecha_inicio_inscripcion, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
+                <%= text_field_tag :form_buscar_carreras_fecha_carrera, nil, class: 'form-control input-sm', style: "margin-top: 0;" %>
                 <span class="input-group-addon" style='height:20px;'><i class="glyphicon glyphicon-calendar"></i></span>
               </div>
             </div>
         </th>
-
-      <th >
-          <span>Torneo</span>
-          <div class="input-group input-group-sm">
-          <%= text_field_tag :form_buscar_carreras_torneo, nil, :class => 'form-control', :placeholder => "" %>
-          <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_torneo');"><i class="fa fa-times"></i></span>
-          </div>
-      </th>
 
       <th >
         <span>Categoría</span>
