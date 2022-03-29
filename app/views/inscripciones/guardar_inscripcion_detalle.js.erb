@@ -1,7 +1,8 @@
 <% if @guardado_ok %>
 
- 
-setTimeout( function(){ 
+ $("<div class='col-sm-12' id='msg-agregar-inscripcion-detalle' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Registrado Exitosamente.</div>").insertBefore("#form-agregar-inscripcion-detalle");
+	
+	setTimeout( function(){ 
   
     $("#<%= params[:window_id]%>").modal('hide');
     $("#link-to-inscripcion-detalle-<%= params[:inscripcion_id]%>").trigger('click');

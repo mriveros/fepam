@@ -7,7 +7,7 @@ class Precio < ActiveRecord::Base
  
   scope :orden_01, -> { order("id")}
 
-  scope :monto_descripcion, -> { select("descripcion || ' ' || 'Gs.' || monto as descripcion")}
+  scope :monto_descripcion, -> { select("id, descripcion || ' ' || 'Gs.' || monto as descripcion")}
 
   
 end

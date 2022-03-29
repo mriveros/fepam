@@ -6,13 +6,13 @@
 
       function(){ $("#msg-eliminar-inscripcion-detalle").remove(); 
      
-      $("#link-to-incripcion-detalle-<%= @inscripcion_detalle.inscripcion_id%>").trigger('click');
-      $("#link-to-incripcion-detalle-<%=  @inscripcion_detalle.inscripcion_id%>").trigger('click');
+      $("#link-to-inscripcion-detalle-<%= @inscripcion_detalle.inscripcion_id%>").trigger('click');
+      $("#link-to-inscripcion-detalle-<%=  @inscripcion_detalle.inscripcion_id%>").trigger('click');
       
-       swal("Inscripción eliminada exitosamente.");
+       
 
     }, 1000);
-   
+   swal("Inscripción eliminada exitosamente.");
     
 <% else %>
 
