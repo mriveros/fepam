@@ -51,11 +51,21 @@
                     <td><%= cd.posicion.to_i %></td>
                   <%end%>
                   <td>
-                    <%= link_to icon_confirmar,"#", onclick: "marcar_tiempo(#{cd.carrera_detalle_id},#{cd.piloto_id});return false;", class: "btn btn-success btn-xs", id: "btn-marcar-tiempo", title: 'Haga click para marcar tiempo del Piloto'  %>
+                     
+                    <%if @carrera.estado_carrera_id == PARAMETRO[:estado_carrera_en_proceso]%>
+
+                      <%= link_to icon_confirmar,"#", onclick: "marcar_tiempo(#{cd.carrera_detalle_id},#{cd.piloto_id});return false;", class: "btn btn-success btn-xs", id: "btn-marcar-tiempo", title: 'Haga click para marcar tiempo del Piloto'  %>
+                    
+                    <%end%>
+
                   </td>
+
                   <td> 
-                    <%= link_to icon_minus_sign,"#", onclick: "penalizar_piloto(#{cd.carrera_detalle_id},#{cd.piloto_id});return false;", class: "btn btn-danger btn-xs", id: "btn-penalizar-piloto", title: 'Haga click para penalizar al Piloto'  %>
-                  
+
+                    <%if @carrera.estado_carrera_id == PARAMETRO[:estado_carrera_en_proceso]%>
+                      <%= link_to icon_minus_sign,"#", onclick: "penalizar_piloto(#{cd.carrera_detalle_id},#{cd.piloto_id});return false;", class: "btn btn-danger btn-xs", id: "btn-penalizar-piloto", title: 'Haga click para penalizar al Piloto'  %>
+                    <%end%>
+
                   </td>
                   
 

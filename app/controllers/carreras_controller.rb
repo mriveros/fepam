@@ -174,6 +174,7 @@ class CarrerasController < ApplicationController
 
 	def carrera_detalle
 
+		@carrera = Carrera.find(params[:carrera_id])
     	@carreras_detalles = VCarreraDetalle.orden_posicion.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
    
 	    respond_to do |f|
