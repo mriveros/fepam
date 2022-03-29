@@ -37,6 +37,7 @@ development:
 
   #ESTADO INSCRIPCIONES
   estado_inscripcion_activo: 1
+  estado_inscripcion_finalizado: 2
 
   #ESTADO INSCRIPCIONES DETALLES
   estado_inscripcion_detalle_pagado: 1
@@ -86,6 +87,7 @@ production:
 
   #ESTADO INSCRIPCIONES
   estado_inscripcion_activo: 1
+  estado_inscripcion_finalizado: 2
 
   #ESTADO INSCRIPCIONES DETALLES
   estado_inscripcion_detalle_pagado: 1

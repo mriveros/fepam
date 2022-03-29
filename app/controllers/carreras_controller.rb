@@ -359,6 +359,10 @@ class CarrerasController < ApplicationController
  			if @carrera.save
 
  				@finalizar_carrera_ok = true
+ 				#finalizamos la inscripcion
+ 				inscripcion = Inscripcion.where('id = ?',@carrera.inscripcion_id).first
+			    inscripcion.estado_inscripcion_id = PARAMETRO[:estado_inscripcion_finalizado]
+			    inscripcion.save
 
 			end
 
