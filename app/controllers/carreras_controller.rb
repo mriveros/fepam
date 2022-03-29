@@ -323,11 +323,11 @@ class CarrerasController < ApplicationController
 
 			end
 			#objetener puntaje en contra
-			puntaje_contra = CarreraPenalizar.where('carrera_id = ? and piloto_id = ?',params[:carrera_id], cd.piloto_id)
+			puntaje_contra = CarreraPenalizar.where('carrera_id = ? and piloto_id = ?',params[:carrera_id], cd.piloto_id).sum(:cantidad_puntos)
 			
 			if puntaje_contra.present?
 
-				puntaje_carrera_detalle.puntaje_contra = 2
+				puntaje_carrera_detalle.puntaje_contra = puntaje_contra
 			
 			else
 
@@ -335,7 +335,7 @@ class CarrerasController < ApplicationController
 
 			end
 
-			puntaje_carrera_detalle.puntaje_total = puntaje_favor.puntaje - 2
+			puntaje_carrera_detalle.puntaje_total = puntaje_favor.puntaje - puntaje_contra
 
 			if puntaje_carrera_detalle.save
 
@@ -381,7 +381,7 @@ class CarrerasController < ApplicationController
 	def puntaje_carrera
 
     	@puntajes_carrera = VPuntajeCarreraDetalle.orden_posicion.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
-   
+
 	    respond_to do |f|
 
 	      f.js
