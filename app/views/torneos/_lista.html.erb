@@ -12,7 +12,8 @@
         <%= link_to_editar_torneo(t) %>
         <%= link_to_torneo_detalle(t.id) %>
         <%= link_to icon_eliminar, torneos_eliminar_path(id: t.id), remote: true, class: "btn btn-danger btn-xs", title: 'Haga click para eliminar el torneo', data: { confirm: "Está seguro de eliminar el Torneo?"} %>
-         
+        <%= link_to icon_confirmar,"#", onclick: "finalizar_campeonato(#{t.id});return false;", class: "btn btn-success btn-xs", id: "btn-finalizar-campeonato-#{t.id}", title: 'Haga click para finalizar el campeonato y obtener resultados de las distintas Categorias Habilitadas.'  %>
+
        </td>
 
       </td>
@@ -44,3 +45,40 @@
 
 
 <% end %>
+
+<script type="text/javascript">
+
+   function finalizar_campeonato(torneo_id) {
+
+        swal({
+          title: "Finalizar Campeonato",
+          text: "Al finalizar se generarán los puntajes de las distintas Categorías.",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "btn-confirm",
+          confirmButtonText: "Confirmar",
+          cancelButtonText: "Cancelar",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm) {
+          if (isConfirm) {
+
+              $.ajax({
+                url: "<%= url_for(torneos_finalizar_campeonato_path) %>", 
+                data: {torneo_id: torneo_id},
+                dataType: 'script'
+              });
+            
+          } else{
+
+            return false;
+
+          }
+
+        });
+
+    
+    }
+
+</script>
