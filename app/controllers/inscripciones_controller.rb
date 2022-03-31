@@ -111,7 +111,7 @@ class InscripcionesController < ApplicationController
 		    @inscripcion = Inscripcion.new()
 		    @inscripcion.torneo_id = params[:form_buscar_inscripciones][:torneo_id]
 		  	@inscripcion.torneo_detalle_id = params[:inscripcion][:torneo_detalle_id]
-		  	@inscripcion.fecha = params[:fecha_inscripcion]
+		  	@inscripcion.fecha = Date.today
 		  	@inscripcion.categoria_id = params[:inscripcion][:categoria_id]
 		  	@inscripcion.estado_inscripcion_id = params[:inscripcion][:estado_inscripcion_id]
 
