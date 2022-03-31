@@ -116,6 +116,14 @@ class TorneosController < ApplicationController
 	    @torneo = Torneo.find(params[:id])
 		@torneo_elim = @torneo
 
+		torneo_detalle = TorneoDetalle.where('torneo_id = ?', params[:id])
+		if torneo_detalle.present?
+
+			valido = false
+			@msg = 'El Campeonato ya cuenta con fechas.'
+
+		end
+
 	    if valido
 
 	      	if @torneo.destroy
@@ -125,6 +133,13 @@ class TorneosController < ApplicationController
 
 	    	end
 		end
+
+		rescue Exception => exc  
+	    # dispone el mensaje de error 
+	    #puts "Aqui si muestra el error ".concat(exc.message)
+	      if exc.present?        
+	        @excep = exc.message.split(':')
+	      end 
 
 	    respond_to do |f|
 
