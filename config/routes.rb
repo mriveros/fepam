@@ -87,6 +87,7 @@ get 'crontab_ultron/index'
   get 'torneos/eliminar_torneo_detalle'
   get 'torneos/buscar_torneo_detalle'
   get 'torneos/finalizar_campeonato'
+  get 'torneos/resumen_campeonato'
 
   #PILOTOS
   post 'pilotos/lista'

@@ -5,7 +5,7 @@ class VResumenTorneo < ActiveRecord::Base
   
   attr_accessible :torneo_id, :torneo,:piloto_id, :nombres , :apellidos , :categoria_id, :categoria, :puntaje_sumatoria 
  
-  scope :orden_01, -> { order("torneo_id")}
+  scope :orden_puntaje_sumatoria, -> { order("puntaje_sumatoria")}
 
   
 end
