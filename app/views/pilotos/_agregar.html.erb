@@ -59,7 +59,12 @@
           <div class="col-sm-4"><%= label_tag nil, "Telefono".html_safe, id: "lbl-telefono" %></div>
           <div class="col-sm-7"><%= text_field_tag :telefono, nil, class: 'form-control input-sm', readonly: true %></div>
           <div class="col-sm-1"></div><br />
-      
+
+          <div class="col-sm-4"><%= label_tag nil, "Avatar".html_safe, id: "lbl-avatar" %></div>
+          <div class="col-sm-7"><%= image_tag :gravatar_url %></div>
+          <div class="col-sm-1"></div><br />
+          
+          
        
       </div>
 
