@@ -2,11 +2,21 @@ class Piloto < ActiveRecord::Base
 
   self.table_name="pilotos"
   self.primary_key="id"
-  include Gravtastic
-  gravtastic
-  attr_accessible :id, :nombres, :apellidos, :ci, :grupo_sanguineo_id, :direccion, :telefono, :fecha_nacimiento, :avatar_url
+  extend Dragonfly::Model
+  include Avatarable
+
+  dragonfly_accessor :photo
+
+  attr_accessible :id, :nombres, :apellidos, :ci, :grupo_sanguineo_id, :direccion, :telefono, :fecha_nacimiento, :avatar_url, :photo
   
   scope :orden_01, -> { order("id")}
   scope :orden_descripcion, -> { order("nombres, apellidos")}
-  
+  def full_name
+    [nombres, apellidos].join(' ')
+  end
+
+  # required for avatarable
+  def avatar_text
+    nombres.chr
+  end
 end
