@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
     end
   end
+
+
   
   #WEB SERVICES 
   namespace :api, defaults: { format: "json" } do
@@ -30,6 +32,10 @@ Rails.application.routes.draw do
   
   end
 
+# Avatar routes
+get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
+  app.generate(:initial_avatar, URI.unescape(params[:text]), { size: params[:size], background_color: params[:background] })
+}, as: :avatar
 
 #-------------------------BLOQUE TAREAS AUTOMATICAS------------------------
 #CRONTAB
