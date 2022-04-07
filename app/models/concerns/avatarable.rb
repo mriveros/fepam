@@ -26,7 +26,7 @@ module Avatarable
   end
 
   def avatar_text
-    raise NotImplementedError, "must implement avatar_text"
+    "P"#raise NotImplementedError, "must implement avatar_text"
   end
 
   def avatar_color

@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
   dragonfly_accessor :image
-
+  attr_accessor :image_uid
   validates :image, presence: true
   validates_size_of :image, maximum: 500.kilobytes,
                     message: "should be no more than 500 KB", if: :image_changed?

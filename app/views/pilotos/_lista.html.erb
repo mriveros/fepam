@@ -12,7 +12,7 @@
       <td><%= p.fecha_nacimiento.strftime("%d/%m/%Y") if p.fecha_nacimiento.present?%></td>
       <td><%= p.direccion%></td>
       <td><%= p.telefono%></td>
-      <td><%= piloto_avatar(piloto, class: 'media-object img-circle', style: 'width:64px;height:64px;') %></td>
+      <td><%= piloto_avatar(p, class: 'media-object img-circle', style: 'width:64px;height:64px;') %></td>
       
       <td style="width:120px;">
         
