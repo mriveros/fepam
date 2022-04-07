@@ -14,7 +14,9 @@ module Avatarable
   end
 
   def avatar_url
+   
     url_helpers.send(:avatar_path, avatar_size, avatar_color, avatar_text)
+
   end
 
   def avatar_size
@@ -26,7 +28,7 @@ module Avatarable
   end
 
   def avatar_text
-    "P"#raise NotImplementedError, "must implement avatar_text"
+    'J'
   end
 
   def avatar_color
