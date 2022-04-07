@@ -19,4 +19,5 @@ class Piloto < ActiveRecord::Base
   def avatar_text
     nombres.chr
   end
+  
 end

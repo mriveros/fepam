@@ -11,6 +11,15 @@ class VPiloto < ActiveRecord::Base
 
   attr_accessible :piloto_id, :nombres, :apellidos, :ci, :grupo_sanguineo_id ,:grupo_sanguineo,:direccion, :telefono, :fecha_nacimiento
   
+  def full_name
+    [nombres, apellidos].join(' ')
+  end
+
+  # required for avatarable
+  def avatar_text
+    nombres.chr
+  end
+  
   scope :orden_01, -> { order("piloto_id")}
   scope :orden_descripcion, -> { order("nombres, apellidos")}
   
