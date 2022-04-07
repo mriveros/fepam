@@ -1,3 +1,5 @@
+# app/models/concerns/avatarable.rb
+
 module Avatarable
   extend ActiveSupport::Concern
 

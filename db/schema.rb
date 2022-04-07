@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220406034614) do
+ActiveRecord::Schema.define(version: 20220407021812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -402,8 +402,7 @@ ActiveRecord::Schema.define(version: 20220406034614) do
     t.timestamp "updated_at",                     precision: 0
     t.string    "direccion",          limit: 510
     t.string    "telefono",           limit: 12
-    t.string    "avatar_url",         limit: 300
-    t.string    "photo",              limit: nil
+    t.string    "image_url",          limit: nil
   end
 
   create_table "posiciones_puntajes", force: true do |t|

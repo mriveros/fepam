@@ -7,11 +7,11 @@ module PilotosHelper
 	end
 
 	def piloto_avatar(piloto, options = {})
-	    if piloto.photo.nil?
-	      image_tag piloto.avatar_url, options
-	    else
-	      image_tag piloto.photo.thumb('150x150#').url, options
-	    end
-	end
+    if piloto.photo.nil?
+      image_tag piloto.avatar_url, options
+    else
+      image_tag piloto.photo.thumb('150x150#').url, options
+    end
+  end
   
 end
