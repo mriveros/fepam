@@ -42,17 +42,15 @@
       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Módulos <b class="caret"></b></a>
          
 
-				<ul class="dropdown-menu">
+		<ul class="dropdown-menu">
           
-          <li><%= link_to "Votantes", votantes_index_path if acceso_permitido("votantes.index") %></li>
-          <li><%= link_to "Registro de Votos", registros_votos_index_path if acceso_permitido("personas.index") %></li>
           <li><%= link_to "Adjuntos", documentos_fepam_index_path if acceso_permitido("documentos_fepam.index") %></li>
           <li><%= link_to "Campeonatos", torneos_index_path if acceso_permitido("torneos.index") %></li>
           <li><%= link_to "Pilotos", pilotos_index_path if acceso_permitido("pilotos.index") %></li>
           <li><%= link_to "Inscripciones", inscripciones_index_path if acceso_permitido("inscripciones.index") %></li>
-           <li><%= link_to "Carreras", carreras_index_path if acceso_permitido("carreras.index") %></li>
+          <li><%= link_to "Carreras", carreras_index_path if acceso_permitido("carreras.index") %></li>
 
-			</ul>
+		</ul>
 
 		</li>
 

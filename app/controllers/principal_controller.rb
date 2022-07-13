@@ -8,8 +8,8 @@ class PrincipalController < ApplicationController
     anho_actual = Time.now.year
 
     #MOSTRAR CANTIDAD TOTAL DE VOTANTES
-    @registro_votos_candidatos = RegistroVoto.where('voto_candidato = ?', true)
-    @registro_votos_otros = RegistroVoto.where('voto_candidato = ?', false)
+    @cantidad_pilotos = Piloto.where('voto_candidato = ?', true)
+    @cantidad_inscripciones = Inscripcion.where('voto_candidato = ?', false)
     
     #datos para pie
     cant_voto_candidato = RegistroVoto.where('voto_candidato = ?', true)
@@ -17,6 +17,7 @@ class PrincipalController < ApplicationController
     
     @data_pie = [['Otro Candidato',      cant_voto_otro_candidato.count],
           ['Voto Candidato',     cant_voto_candidato.count]]
+    
     #datos para barra
     voto_candidato = VRegistroVoto.where('voto_candidato = ?', true)
     @data_bar = voto_candidato.group(:seccional).sum(1)
