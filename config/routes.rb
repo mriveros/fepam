@@ -42,6 +42,11 @@ get "avatar/:size/:background/:text" => Dragonfly.app.endpoint { |params, app|
 get 'crontab_ultron/index'
 #--------------------------------------------------------------------------
 
+#INFORMES
+get "informes/index"
+get "informes/indexa"
+get "informes/generar_pdf"
+
 #CARRERAS
   post 'carreras/lista'
   get 'carreras/lista'
