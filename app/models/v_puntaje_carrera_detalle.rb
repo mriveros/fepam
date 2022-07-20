@@ -8,6 +8,7 @@ class VPuntajeCarreraDetalle < ActiveRecord::Base
   scope :orden_01, -> { order("id")}
   scope :orden_carrera, -> { order("carrera_id desc")}
   scope :orden_posicion, -> { order("posicion asc")}
+  scope :orden_puntaje, -> { order("puntaje_total desc")}
 
   
 end

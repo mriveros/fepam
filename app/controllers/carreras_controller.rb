@@ -389,7 +389,7 @@ class CarrerasController < ApplicationController
 
     	@puntajes_carrera = VPuntajeCarreraDetalle.orden_posicion.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
     	@carrera = Carrera.where('id = ?', params[:carrera_id]).first
-    	
+
 	    respond_to do |f|
 
 	      f.js
@@ -400,7 +400,27 @@ class CarrerasController < ApplicationController
 
   	def generar_resumen_puntaje
 
-  		
+  		posicion = 1
+  		generado_ok = false
+  		@puntajes_carrera = VPuntajeCarreraDetalle.orden_puntaje.where("carrera_id = ?", params[:carrera_id])
+		@puntajes_carrera.each do |pc|
+			
+			
+			@resumen_puntaje = ResumenPuntajeCarrera.new
+			@resumen_puntaje.carrera_id = params[:carrera_id]
+			@resumen_puntaje.piloto_id = pc.piloto_id
+			@resumen_puntaje.posicion = posicion
+			@resumen_puntaje.puntaje = pc.puntaje_total
+			posicion = posicion + 1
+
+			if @resumen_puntaje.save
+
+				@generado_ok = true
+
+			end
+
+
+		end  		
 
   		respond_to do |f|
 

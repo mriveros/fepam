@@ -1,0 +1,25 @@
+<% if @generado_ok %>
+
+   $("<div class='col-sm-12' id='msg-puntaje-generado' style='color:#000;padding-top:5px;font-size:10px;background:#d6ffd6;border-radius:5px;text-align:center;'>Resumen Puntaje Generado.</div>").insertBefore("#table-carrera-detalle");
+   
+    setTimeout(
+
+      function(){ $("#msg-puntaje-generado").remove(); 
+     
+      $("#link-to-puntaje-carrera-<%= params[:carrera_id]%>").trigger('click');
+      $("#link-to-puntaje-carrera-<%= params[:carrera_id]%>").trigger('click');
+      
+
+    }, 500);
+   swal("Resumen de puntajes generado Exitosamente.")
+    
+<% else %>
+
+  $("<div class='col-sm-12' id='msg-puntaje-generado' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'>Error al generar el Resumen</div>").insertBefore("#table-carrera-detalle");
+  setTimeout(function(){ 
+    
+    $("#msg-puntaje-generado").remove();
+
+     }, 500);
+    
+<% end %>
