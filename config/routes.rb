@@ -61,6 +61,7 @@ get "informes/generar_pdf"
   get 'carreras/penalizar_piloto'
   get 'carreras/finalizar_carrera'
   get 'carreras/puntaje_carrera'
+  get 'carreras/generar_resumen_puntaje'
 
 
 #INSCRIPCIONES

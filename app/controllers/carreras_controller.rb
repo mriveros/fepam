@@ -388,13 +388,26 @@ class CarrerasController < ApplicationController
 	def puntaje_carrera
 
     	@puntajes_carrera = VPuntajeCarreraDetalle.orden_posicion.where("carrera_id = ?", params[:carrera_id]).paginate(per_page: 50, page: params[:page])
-
+    	@carrera = Carrera.where('id = ?', params[:carrera_id]).first
+    	
 	    respond_to do |f|
 
 	      f.js
 
 	    end
     
+  	end
+
+  	def generar_resumen_puntaje
+
+  		
+
+  		respond_to do |f|
+
+	      f.js
+
+	    end
+
   	end
   
 end

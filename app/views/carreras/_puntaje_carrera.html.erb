@@ -6,6 +6,8 @@
 
       <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
         <h3 style="float:left;margin-top:5px;">Puntajes</h3>
+        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> Generar resumen puntajes".html_safe, "#", id: "link-to-generar-resumen-puntaje", class: "btn btn-primary btn-xs", style: "float:right;", onclick: "generar_resumen_puntaje(#{@carrera.id})" %>
+
       </div>
  
     </div> 
@@ -82,5 +84,38 @@
 
   <script type="text/javascript">
     
+
+    function generar_resumen_puntaje(carrera_id) {
+
+        swal({
+          title: "Generar Puntaje Carrera",
+          text: "Al confirmar se generará el resumen y posicion oficial de la carrera.",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonClass: "btn-confirm",
+          confirmButtonText: "Confirmar",
+          cancelButtonText: "Cancelar",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm) {
+          if (isConfirm) {
+
+              $.ajax({
+                url: "<%= url_for(carreras_generar_resumen_puntaje_path) %>", 
+                data: {carrera_id: carrera_id},
+                dataType: 'script'
+              });
+            
+          } else{
+
+            return false;
+
+          }
+
+        });
+
+    
+    }
 
   </script>
