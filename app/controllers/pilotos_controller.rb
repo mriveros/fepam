@@ -230,12 +230,12 @@ skip_before_action :verify_authenticity_token
 
   def buscar_piloto
     
-    @pilotos = Piloto.where("nombre ilike ?", "%#{params[:piloto]}%")
+    @pilotos = Piloto.where("nombres ilike ?", "%#{params[:piloto]}%")
 
     respond_to do |f|
       
       f.html
-      f.json { render :json => @personas }
+      f.json { render :json => @pilotos }
     
     end
     

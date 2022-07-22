@@ -2,6 +2,7 @@ class Piloto < ActiveRecord::Base
 
   self.table_name="pilotos"
   self.primary_key="id"
+  
   extend Dragonfly::Model
   include Avatarable
 
