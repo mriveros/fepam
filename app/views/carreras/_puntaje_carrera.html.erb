@@ -79,6 +79,82 @@
   </div>
 
 
+
+
+  <%if @resumen_puntaje.present?%>
+
+  <div style="background: #e6e6e6; margin:15px;padding:15px;border-radius:10px;">
+
+    <div>
+
+      <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
+        <h3 style="float:left;margin-top:5px;">Resumen Puntajes</h3>
+      </div>
+ 
+    </div> 
+
+    <div style="clear:both;"></div>
+   
+    <div class="panel-body">
+      
+      <div class="table-responsive" id="table-puntaje-carrera">
+          
+        <table class="table table-bordered table-hover table-striped display dataTable" aria-describedby="example_info">
+            
+          <thead> 
+              
+            <tr role="row">
+              
+              <th>ID</th>
+              <th>Datos Piloto</th>
+              <th>Posicion</th>
+              <th>Puntaje Total</th>
+              
+            </tr>
+            
+          </thead>
+       
+          <tbody id="carrera-detalle-lista">
+
+            <% if @resumen_puntaje.present? %>
+            
+              <% @resumen_puntaje.each do |cd|%>
+
+                <tr>
+
+                  <td><%= cd.resumen_puntaje_id%></td>
+                  <td><%= cd.datos_piloto %></td>
+                  <td><%= cd.posicion %></td>
+                  <td><%= cd.puntaje.to_i %></td>
+
+                </tr> 
+
+              <% end %>
+
+              <tr id="tab-paginacion">
+
+                  <td colspan="12" style="text-align:center;"><div class="flickr_pagination"><%= ajax_will_paginate @puntajes_carrera, :params => params %></div></td>
+              </tr>
+
+            <% else %>
+
+              <tr><td colspan=3>No se han encontrado datos.</td></tr>
+
+            <% end %>
+                
+          </tbody>
+              
+        </table>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+  <%end%>
+
 </td>
 
 
