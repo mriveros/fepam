@@ -6,8 +6,9 @@
 
       <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
         <h3 style="float:left;margin-top:5px;">Puntajes</h3>
-        <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> Generar resumen puntajes".html_safe, "#", id: "link-to-generar-resumen-puntaje", class: "btn btn-primary btn-xs", style: "float:right;", onclick: "generar_resumen_puntaje(#{@carrera.id})" %>
-
+          <%unless @resumen_puntaje.present?%>
+            <%= link_to "<i class='glyphicon glyphicon-plus-sign'></i> Generar resumen puntajes".html_safe, "#", id: "link-to-generar-resumen-puntaje", class: "btn btn-primary btn-xs", style: "float:right;", onclick: "generar_resumen_puntaje(#{@carrera.id})" %>
+          <%end%>
       </div>
  
     </div> 
@@ -88,7 +89,7 @@
     <div>
 
       <div class="col-sm-12" style="border-bottom: 2px dashed #b6b6b6;margin-bottom:5px;padding:0px;">
-        <h3 style="float:left;margin-top:5px;">Resumen Puntajes</h3>
+        <h3 style="float:left;margin-top:5px;">Resumen Posición-Puntajes</h3>
       </div>
  
     </div> 
