@@ -1,4 +1,4 @@
-<%if @produccion.present?%>
+<%if @resumen_carreras_detalles.present?%>
 
  	swal("Datos Procesados!", "", "success");
  	window.open("<%= url_for(informes_generar_pdf_path(@parametros))%>", '_blank')

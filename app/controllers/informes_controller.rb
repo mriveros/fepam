@@ -3,80 +3,20 @@ class InformesController < ApplicationController
 	before_filter :require_usuario
 
   def indexa
+
   	cond = []
     args = []
 
   	@informe = "informes"
   	@msg = "" 
     
-    if params[:flota_id].present?
+    if params[:piloto_id].present?
 
-      cond << "flota_id = ?"
-      args << params[:flota_id]
-
-    end
-
-    if params[:chofer_id].present?
-
-      cond << "chofer_id = ?"
-      args << params[:chofer_id]
+      cond << "piloto_id = ?"
+      args << params[:piloto_id]
 
     end
 
-    if params[:cliente_id].present?
-
-      cond << "cliente_id = ?"
-      args << params[:cliente_id]
-
-    end
-
-    if params[:fecha_desde].present? && params[:fecha_hasta].present? 
-
-      cond << "fecha_produccion >= '#{params[:fecha_desde]}' and fecha_produccion <= '#{params[:fecha_hasta]}'" 
-
-    elsif params[:fecha_desde].present?
-      
-      cond << "fecha_produccion >= ?"
-      args << params[:fecha_desde]
-
-    elsif params[:fecha_hasta].present?
-      
-      cond << "fecha_produccion <= ?"
-      args << params[:fecha_hasta]
-
-    end
-
-    if params[:general].present?
-
-      puts "se generará informe general"
-
-    else
-
-      if params[:cobrado].present?
-
-        cond << "cobrado = ?"
-        args << true
-
-      else
-
-        cond << "cobrado = ?"
-        args << false
-
-      end
-
-      if params[:pertenece].present?
-
-        cond << "pertenece = ?"
-        args << true
-
-      else
-
-        cond << "pertenece = ?"
-        args << false
-      
-      end
-
-    end
 
     if params[:form_buscar_produccion][:estado_produccion_id].present?
 
@@ -90,15 +30,15 @@ class InformesController < ApplicationController
 
     if cond.size > 0
      
-      @produccion =  VProduccion.where(cond).orden_01.paginate(per_page: 10, page: params[:page])
+      @resumen_carreras_detalles =  VResumenPuntajeCarrera.where(cond).orden_01.paginate(per_page: 10, page: params[:page])
 
     else
 
-      @produccion = VProduccion.orden_01.paginate(per_page: 10, page: params[:page])
+      @resumen_carreras_detalles = VResumenPuntajeCarrera.orden_01.paginate(per_page: 10, page: params[:page])
      
     end
 
-    @parametros = { format: :pdf, produccion_id: @produccion.map(&:produccion_id), flota_id: params[:flota_id], chofer_id: params[:chofer_id], cliente_id: params[:cliente_id], fecha_desde: params[:fecha_desde], fecha_hasta: params[:fecha_hasta], pertenece: params[:pertenece], cobrado: params[:cobrado], estado_produccion_id: params[:form_buscar_produccion][:estado_produccion_id] }
+    @parametros = { format: :pdf, carrera_id: @resumen_carreras_detalles.map(&:carrera_id), piloto_id: params[:piloto_id], campeonato_id: params[:campeonato_id], fecha_id: params[:fecha_id], fecha_desde: params[:fecha_desde], fecha_hasta: params[:fecha_hasta] }
 
     respond_to do |f|
 
@@ -111,18 +51,18 @@ class InformesController < ApplicationController
   def generar_pdf
     
     
-   @produccion =  VProduccion.where("produccion_id in (?)", params[:produccion_id]).orden_01.paginate(per_page: 10, page: params[:page])
+   @resumen_carreras_detalles =  VResumenPuntajeCarrera.where("produccion_id in (?)", params[:produccion_id]).orden_01.paginate(per_page: 10, page: params[:page])
     
 
     respond_to do |f|
      
       f.pdf do
 
-          render  :pdf => "planilla_resumen_produccion_#{Time.now.strftime("%Y_%m_%d__%H_%M")}",
-                  :template => 'informes/planilla_resumen_produccion.pdf.erb',
+          render  :pdf => "planilla_resumen_carrera_#{Time.now.strftime("%Y_%m_%d__%H_%M")}",
+                  :template => 'informes/planilla_resumen_carreras.pdf.erb',
                   :layout => 'pdf.html',
-                  :header => {:html => { :template => "informes/cabecera_planilla_resumen_produccion.pdf.erb" ,
-                  :locals   => { :produccion => @produccion }}},
+                  :header => {:html => { :template => "informes/cabecera_planilla_resumen_carreras.pdf.erb" ,
+                  :locals   => { :resumen_carreras => @resumen_carreras_detalles }}},
                   :margin => {:top => 65,                         # default 10 (mm)
                   :bottom => 11,
                   :left => 3,
