@@ -230,7 +230,7 @@ skip_before_action :verify_authenticity_token
 
   def buscar_piloto
     
-    @pilotos = Piloto.where("nombres ilike ?", "%#{params[:piloto]}%")
+    @pilotos = VPiloto.where("nombres ilike ? or apellidos ilike ? or ci ilike ?", "%#{params[:piloto]}%", "%#{params[:piloto]}%", "%#{params[:piloto]}%")
 
     respond_to do |f|
       

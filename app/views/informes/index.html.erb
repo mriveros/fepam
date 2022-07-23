@@ -1,6 +1,6 @@
-
 <%= javascript_include_tag "sweetalert.min" %>
 <%= stylesheet_link_tag "sweetalert" %>
+
 <div>
 
   <div class="col-sm-12" style="border-bottom: 2px solid #b6b6b6;margin-bottom:5px;padding:0px;">
@@ -12,7 +12,7 @@
 <div style="clear:both;"></div>
  
 
-<%= form_for "informes", remote: true, url: informes_indexa_url, html: { id: "form-informes-produccion" }, method: 'GET' do |f| %>
+<%= form_for "informes", remote: true, url: informes_indexa_url, html: { id: "form-informes-carreras" }, method: 'GET' do |f| %>
 
   <div class="modal-body">    
 
@@ -88,21 +88,20 @@
     var pilotos = [];
     $("#datos_piloto").val('');
     $("#piloto_id").val('');
-    $("#datos_piloto").attr('readonly', false);
 
     $.getJSON("<%= url_for(pilotos_buscar_piloto_path) %>", { piloto: $("#datos_piloto").val()}, function(j){
         
-      var nombre_flota = "";
+      var nombre_piloto = "";
       var options = "<option value=''> -- Seleccione un Piloto -- </option>"
 
       for (var i = 0; i < j.length; i++) {
         
-        if(j[i].nombre_flota != nombre_flota ){
+        if(j[i].nombre_piloto != nombre_piloto ){
           
-          pilotos.push( {value: j[i].id +" - "+j[i].nombre });
-          nombre_flota =j[i].id +" - "+ j[i].nombre ;
+          pilotos.push( {value: j[i].piloto_id +" - "+ j[i].ci +" - "+ j[i].nombres +" "+ j[i].apellidos });
+          nombre_piloto =j[i].piloto_id +" - "+ j[i].nombres +" "+ j[i].apellidos  ;
 
-          options += "<option value="+ j[i].id +"-"+ j[i].nombres + "</option>"
+          options += "<option value="+ j[i].piloto_id +"-"+ j[i].nombres +" "+ j[i].apellidos + "</option>"
 
         }
 
