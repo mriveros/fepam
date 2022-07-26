@@ -41,27 +41,6 @@
         <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= text_area_tag :datos_piloto, nil, rows: 3 ,class: 'form-control input-sm'%></div>
         <br style="clear: both;"/>
 
-        
-
-        <div class="col-sm-1"></div><br />
-        <div class="col-sm-4"><%= label_tag :nil, "Desde Fecha #{attr_requerido}".html_safe %></div>
-        <div class="col-sm-5" style= "margin: 0px 0px 21px;"><%= date_field_tag :fecha_desde, @fecha, class: 'form-control input-sm', style: "margin-top:0px;height:42px" %>
-        </div>    
-        <div class="col-sm-1"></div><br /> 
-
-         <div class="col-sm-1"></div><br />
-        <div class="col-sm-4"><%= label_tag :nil, "Hasta Fecha #{attr_requerido}".html_safe %></div>
-        <div class="col-sm-5" style= "margin: 0px 0px 21px;"><%= date_field_tag :fecha_hasta, @fecha, class: 'form-control input-sm', style: "margin-top:0px;height:42px" %>
-        </div>    
-        <div class="col-sm-1"></div><br />  
-
-              
-        <div class="col-sm-1"></div><br />
-        <div class="col-sm-4"><%= label_tag :nil, "Estado".html_safe %></div>
-        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_produccion, :estado_produccion_id, EstadoCarrera.order('id'), :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
-         <div class="col-sm-1"></div><br />
-
-
       </div>
       <div class="modal-footer" style="background:#e6e6e6; text-align: center">
 
