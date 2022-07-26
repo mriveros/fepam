@@ -17,11 +17,31 @@ class InformesController < ApplicationController
 
     end
 
+    if params[:form_buscar_resumen][:torneo_id].present?
 
-    if params[:form_buscar_produccion][:estado_produccion_id].present?
+      cond << "torneo_id = ?"
+      args << params[:form_buscar_resumen][:torneo_id]
 
-      cond << "estado_produccion_id = ?"
-      args << params[:form_buscar_produccion][:estado_produccion_id]
+    end
+
+    if params[:form_buscar_resumen][:torneo_detalle_id].present?
+
+      cond << "torneo_detalle_id = ?"
+      args << params[:form_buscar_resumen][:torneo_detalle_id]
+
+    end
+
+    if params[:form_buscar_resumen][:categoria_id].present?
+
+      cond << "categoria_id = ?"
+      args << params[:form_buscar_resumen][:categoria_id]
+
+    end
+
+    if params[:form_buscar_resumen][:carrera_id].present?
+
+      cond << "carrera_id = ?"
+      args << params[:form_buscar_resumen][:carrera_id]
 
     end
 
@@ -30,15 +50,15 @@ class InformesController < ApplicationController
 
     if cond.size > 0
      
-      @resumen_carreras_detalles =  VResumenPuntajeCarrera.where(cond).orden_01.paginate(per_page: 10, page: params[:page])
+      @resumen_puntaje_carreras =  VResumenPuntajeCarrera.where(cond).orden_01.paginate(per_page: 10, page: params[:page])
 
     else
 
-      @resumen_carreras_detalles = VResumenPuntajeCarrera.orden_01.paginate(per_page: 10, page: params[:page])
+      @resumen_puntaje_carreras = VResumenPuntajeCarrera.orden_01.paginate(per_page: 10, page: params[:page])
      
     end
 
-    @parametros = { format: :pdf, carrera_id: @resumen_carreras_detalles.map(&:carrera_id), piloto_id: params[:piloto_id], campeonato_id: params[:campeonato_id], fecha_id: params[:fecha_id], fecha_desde: params[:fecha_desde], fecha_hasta: params[:fecha_hasta] }
+    @parametros = { format: :pdf, carrera_id: @resumen_puntaje_carreras.map(&:carrera_id), piloto_id: params[:piloto_id], torneo_id: params[:torneo_id], torneo_detalle_id: params[:torneo_detalle_id], fecha_desde: params[:fecha_desde], fecha_hasta: params[:fecha_hasta] }
 
     respond_to do |f|
 
