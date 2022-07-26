@@ -38,14 +38,6 @@ class InformesController < ApplicationController
 
     end
 
-    if params[:form_buscar_resumen][:carrera_id].present?
-
-      cond << "carrera_id = ?"
-      args << params[:form_buscar_resumen][:carrera_id]
-
-    end
-
-
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
     if cond.size > 0
@@ -58,7 +50,7 @@ class InformesController < ApplicationController
      
     end
 
-    @parametros = { format: :pdf, carrera_id: @resumen_puntaje_carreras.map(&:carrera_id), piloto_id: params[:piloto_id], torneo_id: params[:torneo_id], torneo_detalle_id: params[:torneo_detalle_id], fecha_desde: params[:fecha_desde], fecha_hasta: params[:fecha_hasta] }
+    @parametros = { format: :pdf, carrera_id: @resumen_puntaje_carreras.map(&:carrera_id), piloto_id: params[:piloto_id], torneo_id: params[:form_buscar_resumen][:torneo_id], torneo_detalle_id: params[:form_buscar_resumen][:torneo_detalle_id], categoria_id: params[:form_buscar_resumen][:categoria_id]}
 
     respond_to do |f|
 
