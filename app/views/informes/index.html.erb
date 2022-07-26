@@ -22,18 +22,18 @@
 
         <div class="col-sm-1"></div><br />
         <div class="col-sm-4"><%= label_tag :nil, "Campeonato".html_safe %></div>
-        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_carreras, :torneo_id, Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
+        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_resumen, :torneo_id, Torneo.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
          <div class="col-sm-1"></div><br />
 
         <div class="col-sm-1"></div><br />
         <div class="col-sm-4"><%= label_tag :nil, "Fecha".html_safe %></div>
-        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_carreras, :fecha_id, TorneoDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
+        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_resumen, :torneo_detalle_id, TorneoDetalle.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
          <div class="col-sm-1"></div><br />
 
 
          <div class="col-sm-1"></div><br />
         <div class="col-sm-4"><%= label_tag :nil, "Categoría".html_safe %></div>
-        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_carreras, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
+        <div class="col-sm-7" style= "margin: 0px 0px 21px;"><%= collection_select :form_buscar_resumen, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %></div>
          <div class="col-sm-1"></div><br />
         
         <div class="col-sm-4"><%= label_tag nil, "Piloto #{attr_requerido}".html_safe %></div>
