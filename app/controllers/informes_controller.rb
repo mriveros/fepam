@@ -42,7 +42,7 @@ class InformesController < ApplicationController
 
     if cond.size > 0
      
-      @resumen_puntaje_carreras =  VResumenPuntajeCarrera.where(cond).orden_01.paginate(per_page: 10, page: params[:page])
+      @resumen_puntaje_carreras =  VResumenPuntajeCarrera.where(cond).orden_01
 
     else
 
@@ -63,7 +63,7 @@ class InformesController < ApplicationController
   def generar_pdf
     
     
-   @resumen_carreras_detalles =  VResumenPuntajeCarrera.where("produccion_id in (?)", params[:produccion_id]).orden_01.paginate(per_page: 10, page: params[:page])
+   @resumen_puntaje_carreras =  VResumenPuntajeCarrera.where("carrera_id in (?)", params[:carrera_id]).orden_01.paginate(per_page: 25, page: params[:page])
     
 
     respond_to do |f|
@@ -74,7 +74,7 @@ class InformesController < ApplicationController
                   :template => 'informes/planilla_resumen_carreras.pdf.erb',
                   :layout => 'pdf.html',
                   :header => {:html => { :template => "informes/cabecera_planilla_resumen_carreras.pdf.erb" ,
-                  :locals   => { :resumen_carreras => @resumen_carreras_detalles }}},
+                  :locals   => { :resumen_carreras => @resumen_puntaje_carreras }}},
                   :margin => {:top => 65,                         # default 10 (mm)
                   :bottom => 11,
                   :left => 3,
