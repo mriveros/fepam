@@ -4,66 +4,36 @@
   <tr>
 
       <th>ID Detalle</th>
-      <th>Mes/Periodo</th>
-      <th>Nivel</th>
-      <th>Fecha Generación</th>
-      <th>Fecha Pago</th>
-      <th>Comprobante</th>
-      <th>Alumno</th>
-      <th>Monto Cuota</th>
-      <th>Estado Cuota</th>
+      <th>Campeonato</th>
+      <th>Fecha</th>
+      <th>Categoria</th>
+      <th>Piloto</th>
+      <th>Posición</th>
+      <th>Puntaje Total</th>
+      
 
   </tr>
 
-  <% @cuota_detalle.each do |cuota_detalle|%>
+  <% @resumen_puntaje_carreras.each do |resumen_puntaje|%>
     
 
   
     <tr>
 
-      <td><%= cuota_detalle.cuota_detalle_id%></td>
-      <td><%= cuota_detalle.mes_periodo + "/" + cuota_detalle.anho_periodo%></td>
-      <td><%= cuota_detalle.nivel%></td>
-      <td><%= cuota_detalle.fecha_generacion.strftime('%d/%m/%Y') if cuota_detalle.fecha_generacion.present?%></td>
-      <td><%= cuota_detalle.fecha_pago.strftime('%d/%m/%Y') if cuota_detalle.fecha_pago.present?%></td>
-      <td><%= cuota_detalle.numero_comprobante%></td>
-      <td><%= cuota_detalle.nombre_alumno%></td>
-      <td><%= cuota_detalle.pago_cuota.to_s.reverse.gsub(/...(?=.)/,'\&.').reverse%></td>
-      <td><%= cuota_detalle.estado_pago_cuota_detalle%></td>
+      <td><%= resumen_puntaje.resumen_puntaje_id%></td>
+      <td><%= resumen_puntaje.torneo%></td>
+      <td><%= resumen_puntaje.torneo_detalle%></td>
+      <td><%= resumen_puntaje.categoria%></td>
+      <td><%= resumen_puntaje.datos_piloto%></td>
+      <td><%= resumen_puntaje.posicion%></td>
+      <td><%= resumen_puntaje.puntaje%></td>
 
     </tr>
       
     
 <%end%>
 
-<!--
-    <table align="center" class="cual" style="width: 80%; border: 1px solid #000 !important;">
-      
 
-      <tr>
-
-        <th>TOTAL GENERAL</th>
-        <th>GASOIL UTILIZADO</th>
-        <th>TOTAL FLETE</th>
-        <th>ADELANTOS</th>
-        <th>GASTOS</th>
-        <th>MONTO COBRADO</th>
-        
-      </tr>
-      <tr>
-
-        <th>TOTAL GENERAL</th>
-        <th></th>
-        <th> </th>
-        <th></th>
-        <th></th>
-        <th>%></th>
-        
-      </tr>
-      
-
-    </table> 
--->
 
 <br/>
 <br/>
