@@ -290,7 +290,7 @@ class InscripcionesController < ApplicationController
 
     @inscripcion_detalle = InscripcionDetalle.find(params[:inscripcion_detalle_id])
 
-    @carrera = Carrera.where('inscripcion_id = ? and estado_carrera_id = ?', @inscripcion_detalle.inscripcion_id, PARAMETRO).first
+    @carrera = Carrera.where('inscripcion_id = ? and estado_carrera_id = ?', @inscripcion_detalle.inscripcion_id, PARAMETRO[:estado_carrera_finalizada]).first
     
     if @carrera.present?
     	
