@@ -290,6 +290,21 @@ class InscripcionesController < ApplicationController
 
     @inscripcion_detalle = InscripcionDetalle.find(params[:inscripcion_detalle_id])
 
+    @carrera = Carrera.where('inscripcion_id = ? and estado_carrera_id = ?', @inscripcion_detalle.inscripcion_id, PARAMETRO).first
+    
+    if @carrera.present?
+    	
+    	@carrera_detalle = CarreraDetalle.where('carrera_id = ? and piloto_id = ?',@carrera.id,@inscripcion_detalle.piloto_id).first
+    	
+    	if @carrera_detalle.present?
+    		
+    		@valido = false
+    		@msg = "Este piloto ya ha participado en la carrera."
+    	
+    	end
+    
+    end
+
     if @valido
 
       if @inscripcion_detalle.destroy
