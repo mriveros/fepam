@@ -333,4 +333,16 @@ class TorneosController < ApplicationController
   
   end  
 
+  def finalizar_campeonato
+  	
+  	@torneo =  Torneo.where('id = ?', params[:torneo_id]).first
+  	
+  	respond_to do |f|
+      
+      f.json { render :json => @torneo_detalle }
+    
+    end
+
+  end
+
 end
