@@ -79,7 +79,7 @@ class CategoriasController < ApplicationController
 	    @categoria = Categoria.new()
 
 	    @categoria.descripcion = params[:categoria][:descripcion].upcase
-	    @categoria.descripcion = params[:categoria][:nivel]
+	    @categoria.nivel = params[:categoria][:nivel]
 	    
 	    
 	      if @categoria.save
@@ -149,7 +149,7 @@ class CategoriasController < ApplicationController
 	    if valido
 
 	    	@categoria.descripcion = params[:categoria][:descripcion].upcase
-	    	@categoria.descripcion = params[:categoria][:nivel]
+	    	@categoria.nivel = params[:categoria][:nivel]
 	      	
 	      	if @categoria.save
 

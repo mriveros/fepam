@@ -41,6 +41,14 @@
             <em class="nmb"></em>
           </th>
 
+          <th style="width:20px;">
+            <span>Nivel</span>
+            <div class="input-group input-group-sm">
+              <%= text_field_tag :form_buscar_categorias_nivel, nil, :class => 'form-control', :placeholder => "" %>
+              <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-categorias', '#form_buscar_categorias_nivel');"><i class="fa fa-times"></i></span>
+            </div>
+          </th>
+
           <th style="width:150px;"></th>
 
         </tr>
