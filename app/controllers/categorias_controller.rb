@@ -24,6 +24,13 @@ class CategoriasController < ApplicationController
 	      args << "%#{params[:form_buscar_categorias_descripcion]}%"
 
 	    end
+
+	    if params[:form_buscar_categorias_nivel].present?
+
+	      cond << "nivel = ?"
+	      args << params[:form_buscar_categorias_nivel]
+
+	    end
    
 
 	    cond = cond.join(" and ").lines.to_a + args if cond.size > 0
@@ -72,6 +79,7 @@ class CategoriasController < ApplicationController
 	    @categoria = Categoria.new()
 
 	    @categoria.descripcion = params[:categoria][:descripcion].upcase
+	    @categoria.descripcion = params[:categoria][:nivel]
 	    
 	    
 	      if @categoria.save
@@ -141,6 +149,7 @@ class CategoriasController < ApplicationController
 	    if valido
 
 	    	@categoria.descripcion = params[:categoria][:descripcion].upcase
+	    	@categoria.descripcion = params[:categoria][:nivel]
 	      	
 	      	if @categoria.save
 
