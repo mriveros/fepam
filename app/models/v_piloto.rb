@@ -9,7 +9,7 @@ class VPiloto < ActiveRecord::Base
   dragonfly_accessor :photo
   attr_accessor :image_uid
 
-  attr_accessible :piloto_id, :nombres, :apellidos, :ci, :grupo_sanguineo_id ,:grupo_sanguineo,:direccion, :telefono, :fecha_nacimiento
+  attr_accessible :piloto_id, :nombres, :apellidos, :ci, :grupo_sanguineo_id ,:grupo_sanguineo,:direccion, :telefono, :fecha_nacimiento, :nivel
   
   def full_name
     [nombres, apellidos].join(' ')

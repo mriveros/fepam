@@ -8,7 +8,7 @@ class Piloto < ActiveRecord::Base
 
   dragonfly_accessor :photo
 
-  attr_accessible :id, :nombres, :apellidos, :ci, :grupo_sanguineo_id, :direccion, :telefono, :fecha_nacimiento
+  attr_accessible :id, :nombres, :apellidos, :ci, :grupo_sanguineo_id, :direccion, :telefono, :fecha_nacimiento, :nivel
   
   scope :orden_01, -> { order("id")}
   scope :orden_descripcion, -> { order("nombres, apellidos")}

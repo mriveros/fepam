@@ -63,6 +63,10 @@
           <div class="col-md-4"><%= f.label nil, "Adjunto #{attr_requerido}".html_safe, id: "lbl-imagen" %></div>
           <div class="col-md-7">Imagen&hellip; <%= f.file_field :photo %></div>
           <div class="col-md-1"></div><br /><br />
+
+           <div class="col-sm-4"><%= label_tag nil, "Nivel Piloto".html_safe, id: "lbl-telefono" %></div>
+          <div class="col-sm-7"><%= text_field_tag :nivel, nil, class: 'form-control input-sm' %></div>
+          <div class="col-sm-1"></div><br />
           
        
       </div>
@@ -159,7 +163,14 @@
 
       if($("#direccion").val().length == 0){
 
-        msg +="Debe ingrear una dirección.\n"
+        msg +="Debe ingresar una dirección.\n"
+        valido = false
+      
+      }
+
+      if($("#nivel").val().length == 0){
+
+        msg +="Debe ingresar el nivel del pilotaje.\n"
         valido = false
       
       }

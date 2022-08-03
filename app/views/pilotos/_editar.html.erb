@@ -64,6 +64,11 @@
           <div class="col-md-7"> <%= f.file_field :photo %></div>
           <div class="col-md-1"></div><br /><br />
 
+          <div class="col-sm-4"><%= label_tag nil, "Nivel Piloto".html_safe, id: "lbl-telefono" %></div>
+          <div class="col-sm-7"><%= f.text_field :nivel, class: 'form-control input-sm'%></div>
+          <div class="col-sm-1"></div><br />
+          
+
        
       </div>
 
@@ -147,6 +152,13 @@ $("#btn-guardar-piloto").bind('click', function () {
       if($("#piloto_direccion").val().length == 0){
 
         msg +="Debe ingrear una dirección.\n"
+        valido = false
+      
+      }
+
+      if($("#piloto_nivel").val().length == 0){
+
+        msg +="Debe ingrear el nivel de Pilotaje.\n"
         valido = false
       
       }

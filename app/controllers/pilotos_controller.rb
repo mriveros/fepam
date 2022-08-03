@@ -69,6 +69,14 @@ skip_before_action :verify_authenticity_token
 
     end
 
+    if params[:form_buscar_pilotos_nivel].present?
+
+      cond << "nivel = ?"
+      args << params[:form_buscar_pilotos_nivel]
+
+    end
+
+
     cond = cond.join(" and ").lines.to_a + args if cond.size > 0
 
     if cond.size > 0
@@ -122,6 +130,7 @@ skip_before_action :verify_authenticity_token
       @piloto.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
       @piloto.direccion = params[:direccion].upcase
       @piloto.telefono = params[:telefono]
+      @piloto.nivel = params[:nivel]
       
 
         if @piloto.save
@@ -203,7 +212,7 @@ skip_before_action :verify_authenticity_token
       @piloto.fecha_nacimiento = params[:piloto][:fecha_nacimiento]
       @piloto.direccion = params[:piloto][:direccion].upcase
       @piloto.telefono = params[:piloto][:telefono]
-
+      @piloto.nivel = params[:piloto][:nivel]
       if @piloto.save
 
         auditoria_despues(@piloto, auditoria_id)
