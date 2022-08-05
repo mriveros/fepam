@@ -240,9 +240,21 @@ class InscripcionesController < ApplicationController
     if @inscripcion_detalle.present?
     	
     	@valido = false
-    	@msg = "El piloto ya se ha inscripto en esta Categoría."
+    	@guardado_ok = false
+    	@msg = " El piloto ya se ha inscripto en esta Categoría."
 
-   	end 
+   	end
+
+   	piloto = Piloto.where('id = ?', params[:piloto_id]).first
+   	categoria = Categoria.where('id = ?', @inscripcion.categoria_id).first
+   	puts '##########DEBUG!'
+   	if  piloto.nivel <= categoria.nivel
+
+   		@valido = false
+   		@guardado_ok = false
+    	@msg = " El piloto supera el nivel de esta Categoría."
+
+   	end
 
     if @valido
       
@@ -251,7 +263,6 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle.piloto_id = params[:piloto_id]
       #verificar este issue
       @inscripcion_detalle.fecha_inscripcion = Date.today
- 	puts '##########DEBUG!'
       @inscripcion_detalle.precio_id = params[:inscripcion_detalle][:precio_id]
       @inscripcion_detalle.numero = params[:inscripcion_detalle][:numero]
       @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion_detalle][:estado_inscripcion_detalle_id]
@@ -264,16 +275,7 @@ class InscripcionesController < ApplicationController
          
         end 
 
-    end
-  
-    rescue Exception => exc  
-    # dispone el mensaje de error 
-    #puts "Aqui si muestra el error ".concat(exc.message)
-      if exc.present?        
-        @excep = exc.message.split(':')    
-        @msg = @excep
-      
-      end                
+    end           
 
     respond_to do |f|
 

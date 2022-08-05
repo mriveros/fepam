@@ -12,7 +12,11 @@
     }, 1000);
  
 <% else %>
+  
+  setTimeout( function(){ 
 
-  swal("No se pudo guardar la Inscripcion. <%=@msg%>");
+    $("<div class='col-sm-12' id='msg-agregar-inscripcion-detalle' style='color:#000;padding-top:5px;font-size:10px;background: #f8dfdf;border-radius:5px;text-align:center;'><%= @msg.html_safe %></div>").insertBefore("#form-agregar-inscripcion-detalle");
+    swal("No se pudo guardar la Inscripcion. <%=@msg%>");
+  }, 1000);
 
 <% end %>
