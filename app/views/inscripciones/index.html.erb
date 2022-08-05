@@ -54,7 +54,8 @@
           </th>
 
           <th >
-              <span>Categoría</span>
+          
+          <span>Categoría</span>
             <div class="input-group input-group-sm">
               <%= collection_select :form_buscar_inscripciones, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
               <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-inscripciones', '#form_buscar_inscripciones_categoria_id');"><i class="fa fa-times"></i></span>
