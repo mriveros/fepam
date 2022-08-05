@@ -337,7 +337,21 @@ class TorneosController < ApplicationController
   	
   	@torneo =  Torneo.where('id = ?', params[:torneo_id]).first
   	@torneo_detalle = TorneoDetalle.where('torneo_id = ?', params[:torneo_id])
-	
+	@torneo_detalle.each do |td|
+		
+		@inscripciones = Inscripciones.where("torneo_detalle_id = ?", td.id);
+		@inscripciones.each do |ins|
+			
+			@carreras = Carrera.where('inscripcion_id = ?', ins.id);
+			@carreras.each do |car|
+			
+				@resumen_puntaje_carrera = VResumenPuntajeCarrera.where('carrera_id = ?', car.id)
+			
+			end
+
+		end
+
+	end
 
 
 
