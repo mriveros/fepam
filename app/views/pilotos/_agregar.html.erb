@@ -63,11 +63,10 @@
           <div class="col-md-4"><%= f.label nil, "Adjunto #{attr_requerido}".html_safe, id: "lbl-imagen" %></div>
           <div class="col-md-7">Imagen&hellip; <%= f.file_field :photo %></div>
           <div class="col-md-1"></div><br /><br />
-
-           <div class="col-sm-4"><%= label_tag nil, "Nivel Piloto".html_safe, id: "lbl-telefono" %></div>
-          <div class="col-sm-7"><%= text_field_tag :nivel, nil, class: 'form-control input-sm' %></div>
-          <div class="col-sm-1"></div><br />
           
+          <div class="col-sm-4"><%= label_tag :nil, "Nivel Piloto #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"><%= text_field_tag :nivel, nil ,:onkeypress=> "return isNumberKey(event)", class: 'form-control input-sm'%></div>
+          <div class="col-sm-1"></div><br/>
        
       </div>
 
@@ -97,6 +96,18 @@
 </style>
 
 <script type="text/javascript">
+
+  function isNumberKey(evt)
+ {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46) {
+
+        return false;
+    }
+
+    return true;
+ }
+ 
   aplicar_datepicker2();
   
   setTimeout(function(){ 

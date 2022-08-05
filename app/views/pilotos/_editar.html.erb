@@ -65,7 +65,7 @@
           <div class="col-md-1"></div><br /><br />
 
           <div class="col-sm-4"><%= label_tag nil, "Nivel Piloto".html_safe, id: "lbl-telefono" %></div>
-          <div class="col-sm-7"><%= f.text_field :nivel, class: 'form-control input-sm'%></div>
+          <div class="col-sm-7"><%= f.text_field :nivel, class: 'form-control input-sm' ,:onkeypress=> "return isNumberKey(event)"%></div>
           <div class="col-sm-1"></div><br />
           
 
@@ -94,6 +94,18 @@
 </style>
 
 <script type="text/javascript">
+ 
+  function isNumberKey(evt)
+ {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode != 46) {
+
+        return false;
+    }
+
+    return true;
+ }
+
   aplicar_datepicker2();
 
   setTimeout(function(){ 
