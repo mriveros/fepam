@@ -247,7 +247,6 @@ class InscripcionesController < ApplicationController
 
    	piloto = Piloto.where('id = ?', params[:piloto_id]).first
    	categoria = Categoria.where('id = ?', @inscripcion.categoria_id).first
-   	puts '##########DEBUG!'
    	if  piloto.nivel <= categoria.nivel
 
    		@valido = false
