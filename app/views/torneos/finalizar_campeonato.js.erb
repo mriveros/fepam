@@ -1,0 +1,16 @@
+<% if @finalizado_ok %>
+
+ 
+setTimeout( function(){ 
+  
+    swal("Se ha generado los resultados finales del Campeonato!");
+
+    }, 2000);
+ 
+<% else %>
+    
+    setTimeout( function(){ 
+        swal('No se pudo generar los resultados finales del campeonato. Intente más tarde.');
+    }, 2000);
+
+<% end %>

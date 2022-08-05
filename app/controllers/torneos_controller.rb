@@ -336,12 +336,16 @@ class TorneosController < ApplicationController
   def finalizar_campeonato
   	
   	@torneo =  Torneo.where('id = ?', params[:torneo_id]).first
-  	
-  	respond_to do |f|
-      
-      f.json { render :json => @torneo_detalle }
-    
-    end
+  	@torneo_detalle = TorneoDetalle.where('torneo_id = ?', params[:torneo_id])
+	
+
+
+
+	respond_to do |f|
+
+		f.js
+  
+	end
 
   end
 
