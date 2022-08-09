@@ -335,32 +335,29 @@ class TorneosController < ApplicationController
 
   def finalizar_campeonato
   	
+  	@finalizado_ok = false
   	@torneo =  Torneo.where('id = ?', params[:torneo_id]).first
-  	@torneo_detalle = TorneoDetalle.where('torneo_id = ?', params[:torneo_id])
-		
-		@torneo_detalle.each do |td|
-		
-		@inscripciones = Inscripciones.where("torneo_detalle_id = ?", td.id);
-			@inscripciones.each do |ins|
-			
-				@carreras = Carrera.where('inscripcion_id = ?', ins.id);
-				@carreras.each do |car|
-					@categoria = Categoria.all
-					@categoria.each do |cat|
+		@categoria = Categoria.all
+		@categoria.each do |cat|
 
-						@resumen_puntaje_carrera = VResumenPuntajeCarrera.where('categoria_id = ?', cat.id)						
-						@resumen_puntaje_carrera.each do |rpc|
+			@resumen_puntaje_carrera = VResumenPuntajeCarrera.select('piloto_id, sum(puntaje)').where('categoria_id = ? and torneo_id = ?', cat.id, params[:torneo_id]).group('piloto_id');						
+			@resumen_puntaje_carrera.each do |rpc|
+				
+				resumen_torneo = ResumenTorneo.new
+				resumen_torneo.torneo_id = params[:torneo_id]
+				resumen_torneo.categoria_id = cat.id
+				resumen_torneo.piloto_id = rpc.piloto_id
+				resumen_torneo.puntaje_total = rpc.sum
+				if resumen_torneo.save
 
+					@finalizado_ok = true
 
-						end
-
-					end 
-					
 				end
 
-		end
 
-	end
+			end
+
+		end
 
 
 
