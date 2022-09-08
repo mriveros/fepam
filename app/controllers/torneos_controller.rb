@@ -248,6 +248,7 @@ class TorneosController < ApplicationController
       @torneo_detalle.descripcion = params[:torneo_detalle][:descripcion].upcase
       @torneo_detalle.fecha = params[:torneo_detalle][:fecha]
       @torneo_detalle.torneo_id = params[:torneo_id]
+      @torneo_detalle.estado_torneo_detalle_id = PARAMETRO[:estado_torneo_detalle_activo]
 
         if @torneo_detalle.save
 
