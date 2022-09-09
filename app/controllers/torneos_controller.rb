@@ -319,10 +319,16 @@ class TorneosController < ApplicationController
   end  
 
   def buscar_torneo_detalle
-
-    if params[:form_buscar_inscripciones_torneo_id].present?
+  	
+    if params[:form_buscar_inscripciones_torneo_id].present?  
       
        @torneo_detalle = TorneoDetalle.where("torneo_id = ? and estado_torneo_detalle_id = ?", params[:form_buscar_inscripciones_torneo_id], PARAMETRO[:estado_torneo_detalle_activo])
+    
+    end
+
+     if params[:form_buscar_resumen_torneo_id].present? 
+      
+       @torneo_detalle = TorneoDetalle.where("torneo_id = ? and estado_torneo_detalle_id = ?", params[:form_buscar_resumen_torneo_id], PARAMETRO[:estado_torneo_detalle_activo])
     
     end
 

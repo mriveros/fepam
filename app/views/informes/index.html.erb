@@ -34,7 +34,7 @@
       
         <div class="col-sm-1"></div><br />
         <div class="col-sm-4"><%= label_tag nil, "Fecha#{attr_requerido}".html_safe, id: "lbl-fecha" %></div>
-        <div class="col-sm-7"><%= collection_select :resumen, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %></div>
+        <div class="col-sm-7"><%= collection_select :form_buscar_resumen, :torneo_detalle_id,{}, :id, :descripcion, { include_blank: true}, { class: 'form-control input-sm'} %></div>
         <div class="col-sm-1"></div><br />
 
 
