@@ -74,7 +74,7 @@ class InformesController < ApplicationController
                   :template => 'informes/planilla_resumen_carreras.pdf.erb',
                   :layout => 'pdf.html',
                   :header => {:html => { :template => "informes/cabecera_planilla_resumen_carreras.pdf.erb" ,
-                  :locals   => { :resumen_carreras => @resumen_puntaje_carreras }}},
+                  :locals   => { :resumen_carreras => @resumen_puntaje_carreras, :torneo_id => params[:torneo_id] }}},
                   :margin => {:top => 65,                         # default 10 (mm)
                   :bottom => 11,
                   :left => 3,

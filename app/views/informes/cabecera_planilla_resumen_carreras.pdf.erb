@@ -19,23 +19,30 @@
 <div id="cont" style="width:80%;">
 
   <table style="text-align: left; font-size: 12px; margin-left: 10%;" width="80%">
-    
-      <tr>
-        <th width="20%">Campeonato:</th>
-        <td width="40%"><%#=%></td>
-      </tr>
+      <%
+      if params[:torneo_id].present?
+        @torneo = Torneo.where('id =?',params[:torneo_id]).first
+      end
 
-     
+      %>
+      <%if @torneo.present?%>
+      <tr>
+        <th width="10%">Campeonato:</th>
+        <td width="30%"><%=@torneo.descripcion%></td>
+      </tr>
+      <%end%>
+      <%
+      if params[:categoria_id].present?
+        @categoria = Categoria.where('id =?',params[:categoria_id]).first
+      end
+      %>
+      
+      <%if @categoria.present?%>
       <tr>
         <th width="20%">Categoria:</th>
-        <td width="40%"><%#=%></td>
+        <td width="40%"><%=@categoria.descripcion%></td>
       </tr>
-    
-      <tr>
-          <th width="20%">Piloto:</th>
-          <td width="40%"><%#=%></td>
-      </tr>
- 
+      <%end%>
   </table>
 <br/>
 <br/>
