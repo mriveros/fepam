@@ -68,7 +68,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
-    ffi (1.12.2)
+    ffi (1.12.0)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -101,19 +101,17 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    mimemagic (0.3.0)
     mini_portile2 (2.4.0)
     minitest (5.12.0)
     multi_json (1.14.1)
     multi_xml (0.6.0)
     nokogiri (1.9.1)
       mini_portile2 (~> 2.4.0)
-    paperclip (4.3.7)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      cocaine (~> 0.5.5)
+    paperclip (3.5.4)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
       mime-types
-      mimemagic (= 0.3.0)
     pdf-reader (2.4.0)
       Ascii85 (~> 1.0.0)
       afm (~> 0.2.1)
@@ -240,6 +238,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   csv_builder (= 2.1.1)
   dragonfly (~> 1.0.11)
+  ffi (= 1.12.0)
   groupdate
   highcharts
   httparty

@@ -20,8 +20,8 @@ default: &default
 development:
    <<: *default
    database: fepam
-   username: mriveros
-   password: mriveros
+   username: postgres
+   password: postgres
    host: localhost
    port: 5432
 
@@ -37,9 +37,9 @@ development:
 
 DB_AUDITORIAS:
   <<: *default
-  database: fepam_auditoria
-  username: mriveros
-  password: mriveros
+  database: fepam_auditorias
+  username: postgres
+  password: postgres
   host: localhost
   port: 5432
 

@@ -78,7 +78,7 @@
 
   <script type="text/javascript">
 
-    function eliminar_registro(potrero_id) {
+    function eliminar_registro(torneo_id) {
 
         swal({
           title: "Confirmar",
@@ -96,7 +96,7 @@
 
               $.ajax({
                 url: "<%= url_for(torneos_eliminar_torneo_detalle_path) %>", 
-                data: {potrero_id: potrero_id},
+                data: {torneo_id: torneo_id},
                 dataType: 'script'
               });
             

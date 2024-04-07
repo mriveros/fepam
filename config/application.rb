@@ -6,6 +6,8 @@ ENV['gmail_password'] = 'passwd_gmail'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 module DatosAbiertos
