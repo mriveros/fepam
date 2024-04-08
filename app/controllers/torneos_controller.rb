@@ -282,7 +282,7 @@ class TorneosController < ApplicationController
     @msg = ""
 
     @torneo_detalle = TorneoDetalle.find(params[:torneo_id])
-
+    
     if @valido
 
       if @torneo_detalle.destroy

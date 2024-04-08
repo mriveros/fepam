@@ -1,6 +1,8 @@
 class CarrerasController < ApplicationController
+	
+	require 'serialport'
 
-	before_filter :require_usuario
+	before_filter :require_usuario, except: [:conectar_puerto_serie, :iniciar_carrera]
 
 	  def index
 
@@ -271,6 +273,70 @@ class CarrerasController < ApplicationController
 	    end
 
 	end
+
+	def conectar_puerto_serie
+	  
+	  puerto = '/dev/ttyACM0'  # Nombre del puerto serie
+	  velocidad = 115200       # Velocidad de baudios
+	  tiempo_ejecucion = 60
+	  puts "Conexión al puerto serie establecida correctamente."
+	  begin
+	    # Abrir una conexión al puerto serie
+	    serial_port = SerialPort.new(puerto, velocidad)
+	    puts "Conexión al puerto serie establecida correctamente."
+
+	    # Leer datos del puerto serie continuamente
+	    Timeout.timeout(tiempo_ejecucion) do
+		    loop do
+		      # Leer una línea del puerto serie
+		      linea = serial_port.gets.chomp
+		      # Imprimir la línea recibida
+		      puts "Recibido: #{linea}"
+
+		    end
+		end
+	   
+	   rescue Timeout::Error
+    	
+    	puts "El tiempo de ejecución ha terminado. La conexión se cerrará."
+
+	  rescue => e
+	  
+	    puts "Error al conectar al puerto serie: #{e.message}"
+	  
+	  ensure
+	  
+	    # Cerrar la conexión al puerto serie cuando hayamos terminado
+	    serial_port.close if serial_port
+	    puts "Conexión al puerto serie cerrada."
+	  
+	  end
+
+	end
+
+
+	def iniciar_carrera
+
+	    @msg = ""
+	    # Llamar a la función para conectar al puerto serie
+	    @carrera = Carrera.find(params[:carrera_id])    
+	    #@carrera.estado_carrera_id = PARAMETRO[:estado_carrera_iniciado]
+	    if @carrera.save
+	    	
+	    	@iniciar_carrera_ok = true
+	    	conectar_puerto_serie
+
+	    end
+
+	    
+	    respond_to do |f|
+
+	      f.js
+
+	    end
+
+	end
+
 
 	def finalizar_carrera
 

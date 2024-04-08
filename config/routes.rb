@@ -59,6 +59,7 @@ get "informes/generar_pdf"
   get 'carreras/carrera_detalle'
   get 'carreras/marcar_tiempo'
   get 'carreras/penalizar_piloto'
+  get 'carreras/iniciar_carrera'
   get 'carreras/finalizar_carrera'
   get 'carreras/puntaje_carrera'
   get 'carreras/generar_resumen_puntaje'

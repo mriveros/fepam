@@ -47,6 +47,7 @@ development:
 
   #ESTADO CARRERAS
   estado_carrera_en_proceso: 1
+  estado_carrera_iniciado: 3
   estado_carrera_finalizada: 2
 
 production:
@@ -98,5 +99,7 @@ production:
   #ESTADO CARRERAS
   estado_carrera_en_proceso: 1
   estado_carrera_finalizada: 2
+  estado_carrera_iniciado: 3
+
 
  
