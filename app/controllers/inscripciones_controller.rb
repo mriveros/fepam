@@ -264,6 +264,7 @@ class InscripcionesController < ApplicationController
       @inscripcion_detalle.fecha_inscripcion = Date.today
       @inscripcion_detalle.precio_id = params[:inscripcion_detalle][:precio_id]
       @inscripcion_detalle.numero = params[:inscripcion_detalle][:numero]
+      @inscripcion_detalle.numero_rfid = params[:inscripcion_detalle][:numero_rfid]
       @inscripcion_detalle.estado_inscripcion_detalle_id = params[:inscripcion_detalle][:estado_inscripcion_detalle_id]
       
 

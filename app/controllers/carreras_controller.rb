@@ -296,6 +296,7 @@ class CarrerasController < ApplicationController
 		    end
 		end
 	   
+	   
 	   rescue Timeout::Error
     	
     	puts "El tiempo de ejecución ha terminado. La conexión se cerrará."

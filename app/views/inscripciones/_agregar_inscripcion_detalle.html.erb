@@ -39,6 +39,10 @@
 
           <div class="col-sm-4"><%= f.label :numero_moto, "Número #{attr_requerido}".html_safe %></div>
           <div class="col-sm-7"><%= f.text_field :numero, class: 'form-control input-sm',style:"text-transform:uppercase;" %></div>
+          <div class="col-sm-1"></div><br />
+
+          <div class="col-sm-4"><%= f.label :numero_rfid, "Número CHIP #{attr_requerido}".html_safe %></div>
+          <div class="col-sm-7"><%= f.text_field :numero_rfid, class: 'form-control input-sm',style:"text-transform:uppercase;" %></div>
           <div class="col-sm-1"></div><br />  
 
           <div class="col-sm-4"><%= f.label :precio, "Monto Inscripción #{attr_requerido}".html_safe %></div>
