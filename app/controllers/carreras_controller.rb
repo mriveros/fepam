@@ -278,7 +278,7 @@ class CarrerasController < ApplicationController
 	  
 	  puerto = '/dev/ttyACM0'  # Nombre del puerto serie
 	  velocidad = 115200       # Velocidad de baudios
-	  tiempo_ejecucion = 60
+	  tiempo_ejecucion = 20
 	  puts "Conexión al puerto serie establecida correctamente."
 	  begin
 	    # Abrir una conexión al puerto serie
@@ -291,9 +291,36 @@ class CarrerasController < ApplicationController
 		      # Leer una línea del puerto serie
 		      linea = serial_port.gets.chomp
 		      # Imprimir la línea recibida
-		      puts "Recibido: #{linea}"
+			    begin
+			        linea = linea.force_encoding('UTF-8')
+			        
+			        if linea.include?("EPC")
 
-		    end
+			        	@numero_rfid = linea.split(":")[1]
+
+			    	end
+
+			      	rescue Encoding::UndefinedConversionError
+			        # Si la conversión a UTF-8 falla, descartar la línea
+			        puts "La línea no es de tipo UTF-8. Se descarta."
+			        next
+
+			    end
+
+			    if @numero_rfid != @ultimo_numero_rfid
+
+			    	#Este control es medianamente viable
+			    	@ultimo_numero_rfid = @numero_rfid
+			    	inscripcion_detalle = InscripcionDetalle.where('numero_rfid = ?',@numero_rfid).first
+			    	puts inscripcion_detalle.inspect
+			    	#En esta parte se tiene que registrar en la carrera como una vuelta realizada
+
+
+			    	
+			  	end
+		    
+		   end
+
 		end
 	   
 	   
