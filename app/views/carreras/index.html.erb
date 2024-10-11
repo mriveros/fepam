@@ -69,7 +69,15 @@
         <%= collection_select :form_buscar_carreras, :categoria_id, Categoria.orden_descripcion, :id, :descripcion, { include_blank: true}, {:class => 'form-control input-sm', style: "font-size:9px;"} %>
         <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_categoria_id');"><i class="fa fa-times"></i></span>
         </div>
-    </th> 
+    </th>
+
+     <th style="width:20px;">
+      <span>Tiempo</span>
+        <div class="input-group input-group-sm">
+          <%= text_field_tag :form_buscar_carreras_tiempo, nil, :class => 'form-control', :placeholder => "" %>
+        <span class="input-group-addon limpiar" onclick="quitar_filtro('#form-buscar-carreras', '#form_buscar_carreras_tiempo');"><i class="fa fa-times"></i></span>
+        </div>
+      </th>
 
     <th >
       <span>Estado Carrera</span>

@@ -48,7 +48,12 @@ class CarrerasController < ApplicationController
 
 	    end
 
-	    
+	    if params[:form_buscar_carreras_tiempo].present?
+
+	      cond << "tiempo = ?"
+	      args << params[:form_buscar_carreras_tiempo]
+
+	    end
 
 	    if params[:form_buscar_carreras][:estado_carrera_id].present?
 
@@ -108,6 +113,7 @@ class CarrerasController < ApplicationController
 		    @carrera.inscripcion_id = params[:inscripcion_id]
 		  	@carrera.fecha = Date.today
 		  	@carrera.estado_carrera_id = params[:carrera][:estado_carrera_id]
+		  	@carrera.tiempo = params[:carrera][:tiempo]
 		    
 		    if @carrera.save
 
@@ -274,12 +280,13 @@ class CarrerasController < ApplicationController
 
 	end
 
-	def conectar_puerto_serie
-	  
+	def conectar_puerto_serie(carrera)
+	  puts "tiempo"
+	  puts carrera.tiempo
 	  puerto = '/dev/ttyACM0'  # Nombre del puerto serie
 	  velocidad = 115200       # Velocidad de baudios
-	  tiempo_ejecucion = 20
-	  puts "Conexión al puerto serie establecida correctamente."
+	  tiempo_ejecucion = 30 #(carrera.tiempo * 60) # multiplicamos por 60 para convertir en segundos
+	 
 	  begin
 	    # Abrir una conexión al puerto serie
 	    serial_port = SerialPort.new(puerto, velocidad)
@@ -312,9 +319,35 @@ class CarrerasController < ApplicationController
 			    	#Este control es medianamente viable
 			    	@ultimo_numero_rfid = @numero_rfid
 			    	inscripcion_detalle = InscripcionDetalle.where('numero_rfid = ?',@numero_rfid).first
-			    	puts inscripcion_detalle.inspect
-			    	#En esta parte se tiene que registrar en la carrera como una vuelta realizada
 
+			    	if inscripcion_detalle.present?
+				    	
+				    	carrera_detalle = CarreraDetalle.where('carrera_id = ? and piloto_id = ?', carrera.id, inscripcion_detalle.piloto_id).first
+
+				    	#En esta parte se tiene que registrar en la carrera como una vuelta realizada
+					    time = Time.new
+					    @carrera_tiempo = CarreraTiempo.new()
+					    @carrera_tiempo.carrera_detalle_id = carrera_detalle.id
+					    @carrera_tiempo.carrera_id = carrera.id
+					    @carrera_tiempo.piloto_id = carrera_detalle.piloto_id
+					    @carrera_tiempo.tiempo = time.strftime("%H:%M:%S")
+					   	@carrera_tiempo.tag_rfid = inscripcion_detalle.numero_rfid
+					   	@carrera_tiempo.save
+					   	#calcular posicion
+					   	posicion_piloto = VCarreraTiempo.orden_tiempo.where('carrera_id = ?', carrera_detalle.carrera_id)
+						if posicion_piloto.find(carrera_detalle.piloto_id).present?	
+
+							@carrera_tiempo.posicion = posicion_piloto.find(carrera_detalle.piloto_id).posicion   
+
+					    end
+
+					    if @carrera_tiempo.save
+
+					    	@tiempo_marcado_ok = true
+
+					    end
+
+					end
 
 			    	
 			  	end
@@ -349,14 +382,16 @@ class CarrerasController < ApplicationController
 	    # Llamar a la función para conectar al puerto serie
 	    @carrera = Carrera.find(params[:carrera_id])    
 	    #@carrera.estado_carrera_id = PARAMETRO[:estado_carrera_iniciado]
+	    
 	    if @carrera.save
 	    	
 	    	@iniciar_carrera_ok = true
-	    	conectar_puerto_serie
+	    	conectar_puerto_serie(@carrera)
 
 	    end
 
-	    
+	   
+
 	    respond_to do |f|
 
 	      f.js
